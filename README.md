@@ -3,6 +3,7 @@ This document defines the site structure, requirements, and specifications.
 
 We will build in stages and are focusing on V1 elements now:
 - Full support for **Portfolio**.
+- Minimal support for **Home**.
 - Needs foundations in place for **V2** expansion.
 
 ## Site Map
