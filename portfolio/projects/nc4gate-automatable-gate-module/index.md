@@ -1,163 +1,145 @@
 ---
 layout: project
-title: "NC4touch Behavioral Apparatus"
-card_summary: "Fully open research-grade touchscreen rig; CAD, control, and validation."
+title: "NC4gate Automatable Gate Module"
+summary: "Modular motorized gate system for autonomous control of rodent behavior in maze experiments."
 hero: "hero.png"
-model: "models/nc4touch-behavioral-apparatus.glb"
+model: "models/nc4gate-automatable-gate-module.glb"
 images:
   - src: "images/render_1.png"
-    caption: "Oblique view (right, top) render of full NC4touch behavioral apparatus including exposed interior."
-  - src: "images/render_2_annotated.png"
-    caption: "Annotated oblique view (front, right) render of interior touchscreen end of apparatus."
-  - src: "images/render_3_annotated.png"
-    caption: "Annotated front view render of electronics bay on touchscreen side of apparatus."
+    caption: "three-quarter view (front/rear, right, top) render of gate module"
+  - src: "images/render_2.png"
+    caption: "three-quarter view (front, right, top) render of gate module in raised and lowered state"
+  - src: "images/render_3.png"
+    caption: "three-quarter view (rear, right, top) render of gate module in raised and lowered state"
   - src: "images/render_4_annotated.png"
-    caption: "Annotated oblique view (rear, right) render of interior feeder port end of apparatus."
-  - src: "images/render_5_annotated.png"
-    caption: "Annotated rear view render of electronics bay on feeder port end of apparatus."
+    caption: "annotated three-quarter view (front/rear, right, top) render of gate module"
+  - src: "images/render_5.png"
+    caption: "three-quarter view (front, right, top) render of 60 gate modules installed in Omniroute rig"
+  - src: "images/cadview_1_annotated.png"
+    caption: "annotated exploded CAD view of gate module"
   - src: "images/photo_1.png"
-    caption: "Bench photo of full NC4touch behavioral apparatus."
+    caption: "bench photo of gate module, electronics side"
   - src: "images/photo_2.png"
-    caption: "Bench close-up photo of interior touchscreen end of apparatus."
+    caption: "bench photo of gate module, wall panel side"
   - src: "images/photo_3.png"
-    caption: "Bench close-up photo of interior feeder port end of apparatus."
+    caption: "bench photo of 60 gate modules installed in Omniroute rig"
 ---
-Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats.
 
 ## Description
 
-NC4touch is a three-screen, Raspberry Pi-controlled chamber with calibrated liquid-reward delivery, overhead video tracking, sensory cue delivery, and modular device I/O for flexible, high-throughput cognitive testing in mice and rats.
+These gate modules, termed the NC4gate, were designed for use with another portfolio project: the [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system). 
 
-The enclosure consists of a trapezoidal workspace with three touchscreens at the front and a food-reward dispensing system in the rear. The frame uses 10 × 10 mm aluminum T-slot extrusion with SLA-printed brackets and mounts, and laser-cut acetal panels for the enclosure and electronics bays, keeping the electronics fully separated from the behavioral space.
+Each module is constructed from laser-cut POM-C acetal panels joined with snap-fits and minimal fasteners, with a waterjet-cut aluminum pin-in-slot linkage driven by a compact 12 V DC gearmotor. Limit switches at the top and bottom of travel register position and ensure safe, reliable operation. The design provides 180 mm of gate travel in a compact 117 × 86 × 290 mm footprint, allowing modules to be densely packed in multi-gate maze systems. Standard hardware and drilling jigs streamline fabrication and assembly.  
 
-A USB camera mounted above the system captures the full field of view, and removable, laser-cut, 3/16 in clear acrylic lid and floor panels provide visibility and can be easily removed to aid wipe-down cleaning.
-
-The front panel includes three capacitive touchscreens, each with a cue RGB LED and a buzzer for trial timing and feedback. Each screen is driven by a dedicated FireBeetle 2 M0 microcontroller over a single GDI ribbon cable, with USB used for command and data. Using a dedicated controller per display lets the screens load and render images in parallel, so updates do not block each other and refresh times stay fast under load. Because rodents can behave like a floating ground, a thin copper-foil-laminated floor panel beneath the screens nests into the removable acrylic floor but stays attached to the frame to keep the ground path intact.
-
-The rear panel integrates a 3D-printed feeder port assembly with IR sensors, a stainless-steel lick spout, and a panel-mount cue RGB LED. A peristaltic pump with a dual-motor controller provides calibrated liquid rewards via food-grade silicone tubing. The IR break-beam detects nose-in and feeder occupancy for precise dosing and event logging. All tubing, port components, and the spout are quick to remove for cleaning, with standard fittings and clear service access.
-
-A Raspberry Pi manages task state, device I/O, and logging. It sends display updates to each screen via its dedicated microcontroller, controls the cue LEDs and buzzer, and triggers pump dosing. It receives touch events from all three screens and feeder IR signals, and timestamps these alongside the video stream from the overhead camera. Data are written to disk as compact CSV logs plus an optional frame-synchronized MP4 file to support reproducible analysis.
-
-Single- or multi-chamber operation is supported. A single Raspberry Pi can run one or multiple daisy-chained chambers. Multi-chamber setups can be networked over Ethernet with a lightweight browser UI for monitoring and control. Optional PoE provides single-cable power and data to reduce clutter and simplify installation.
-
-Mechanical and electrical design emphasize maintainability and replication. Panels are flat-pattern, laser-cut parts with captive fasteners where appropriate. 3D-printed brackets localize loads and register panel geometry. All external connectors are panel-mount for strain relief and quick replacement. Front and rear electronics bays are isolated from the behavioral space to protect components and simplify wipe-down.
+Electronics include a custom motor driver board (based on the TI DRV8870 chip) for PWM motor control and limit switch monitoring. For large-scale setups, modules connect via I²C to Cypress expansion boards, enabling a single Arduino Mega to control up to 512 gates.
 
 ## Role & Contributions
 
-- Co-conceived and co-architected the system
+- Conceived, designed, and fabricated the mechanical system
 - Developed all CAD models and assemblies
-- Led hardware validation (team of 3)
-- Contributed to control firmware
-- Primary hardware maintainer
+- Directed custom PCB development team
+- Principal author of firmware and host software
+- Produced assembly, wiring, and operating documentation
+- Primary maintainer
 
 ## Highlights & Key Specs
 
-**Workspace:**
-- Trapezoidal chamber with isolated electronics bays
-- Removable clear acrylic lid and floor for wipe-down cleaning
+**Envelope:**  
+117 × 86 × 290 mm (gate lowered)
 
-**Displays:**
-- Three 3.5 in 320 × 480 capacitive touchscreens
-- Three screen-dedicated microcontrollers
-- GDI ribbon cable for display, USB for command and data
+**Gate travel:**  
+180 mm total
 
-**Control:**
-- Raspberry Pi 4 with PoE
-- Single or multi-chamber orchestration via browser UI
-- Unified I/O and logging
+**Typical actuation time:**  
+~578 ms up, ~531 ms down
 
-**Cue delivery:** 
-- Front and rear interior panel RGB indicators
-- Front interior panel buzzer
+**Endurance:**  
+- Thousands of cycles  
+- Individual modules tested up to 100,000 cycles  
 
-**Tracking:** 
-- 8 MP USB overhead camera covering the full field of view
+**Control scale:**  
+Up to 512 gates from a single PC and microcontroller
 
-**Reward:** 
-- IR break-beam for reward timing and logging
-- Peristaltic pump for precise, repeatable food dosing
-
-**Data:** 
-- CSV logging
-- Optional synchronized MP4 with millisecond event timestamps
+**Interfaces:**  
+Qt-based GUI for manual operation; Python API for programmatic control
 
 ## Materials & Fabrication
 
-**Frame:**
-- Miniature T-slotted aluminum extrusion; associated T-nuts and fasteners
-- Custom SLA-printed frame-to-panel joining brackets
+**Structure:**  
+Laser-cut POM-C acetal (3.175 mm) with snap-fit features and minimal fasteners
 
-**Enclosure and electronics bays:**
-- Laser-cut POM-C (acetal) sidewalls and electronics panels
-- Laser-cut clear acrylic top, floor, and grounding panel
-- SLA-printed brackets for panel registration and service access
-- SLA-printed clips and cable mounts
+**Actuation:**  
+12 V 50 RPM DC gear motor (37 mm can) driving pin-in-slot linkage
 
-**Displays and controllers:** 
-- Three capacitive touchscreens (DFRobot Fermion DFR0669)
-- Three FireBeetle 2 M0 (DFR0652) development board controllers
+**Linkage:**  
+Waterjet-cut aluminum arm for durability under repeated cycling
 
-**Cue delivery:** 
-- Four Dialight 8 mm RGB panel indicators (6201121317F)
-- Gravity digital buzzer (DFR0032)
+**Sensing:**  
+Upper and lower limit switches for hard-stop detection
 
-**Camera:** 
-- DFRobot 8 MP USB camera (FIT0729)
-- Dedicated SLA-printed camera mount assembly
-
-**Feeder system:**
-- SLA-printed feeder port assembly
-- Adafruit IR break-beam sensor (2167)
-- TFS RP-CIII ring pump
-- Stainless-steel tubing, food-grade silicone tubing, and glass vials
+**Hardware:**  
+Standard fasteners, spacers, rollers; cable ties and strain relief provisions
 
 ## Validation & Performance
 
-**Bench validation:** 
-- End-to-end verification across touch detection, cue delivery, pump dosing, synchronized video, and CSV logging
-- Validation performed on single- and multi-chamber setups using the browser UI and PoE
+**Actuation latency:**  
+Tests on N=5 modules across 50 cycles each show consistent latencies: upward ~578 ms and downward ~531 ms, suitable for behavioral control
 
-**Timing and data integrity:**
-- Frame-aligned MP4 confirmed millisecond event–video alignment
-- Chambers wrote synchronized session logs to shared storage
-
-**Networked operation:**
-- Multi-chamber control over Ethernet with shared code, firmware, and image directories
-- No desynchronization observed during concurrent runs
-
-**Behavioral performance:** 
-- 3/3 tested rats completed an eight-stage visual discrimination task with stage-wise performance gains, meeting the ≥77 percent correct advancement criterion at each stage
+**Stress testing:**  
+- Long operational life up to 100,000 cycles, with field-repairable failure modes (motor wear, linkage retention, wiring)  
+- 60-module system running near-daily for over one year  
 
 ## Deployment & Status
 
 **Development:**  
-Completed, Sep 2023–Nov 2024  
+Completed, Dec 2021–Sep 2023
 
 **Deployment:**  
-NC4 Lab, University of British Columbia (2 studies, 4 rigs)  
-Snyder Lab, University of British Columbia (1 study, 2 rigs)  
+NC4 Lab, University of British Columbia (3 studies)
 
 **Status:**  
-Active, Nov 2024–present, NC4 Lab
+Active, Sep 2023–present, NC4 Lab	
+
+## Included files
+
+*Attached on this page.*
+
+### Image Files
+
+- **render_1.png:** three-quarter view (front/rear, right, top) render of gate module
+- **render_2.png:** three-quarter view (front, right, top) render of gate module in raised and lowered state
+- **render_3.png:** three-quarter view (rear, right, top) render of gate module in raised and lowered state
+- **render_4_annotated.png:** annotated three-quarter view (front/rear, right, top) render of gate module
+- **render_5.png:** three-quarter view (front, right, top) render of 60 gate modules installed in Omniroute rig
+- **cadview_1_annotated.png:** annotated exploded CAD view of gate module
+- **photo_1.png:** bench photo of gate module, electronics side
+- **photo_2.png:** bench photo of gate module, wall panel side
+- **photo_3.png:** bench photo of 60 gate modules installed in Omniroute rig
+
+### 3D Model Files
+
+- **nc4_gate_TOP_ASSY_lowered.step:** top-level assembly of automatable gate module in lowered position
+- **nc4_gate_TOP_ASSY_raised.step:** top-level assembly of automatable gate module in raised position
 
 ## Release
 
-**CAD:**  
-Design files including SolidWorks assemblies and parts, cutting templates, and documentation: [https://osf.io/8q9tk](https://osf.io/8q9tk)
-
-**Software:**   
-Firmware and software repo: [https://github.com/NC4Lab/TouchscreenApparatus](https://github.com/NC4Lab/TouchscreenApparatus)
-
-**On request:**  
-Additional design files; assembly notes  
+- **CAD:** 
+  - Design files including SolidWorks assemblies and parts, PCBs, jigs, cutting templates, and documentation: [https://osf.io/uy7ez](https://osf.io/uy7ez)
+- **Software:**
+  - Standalone NC4gate firmware and software repo: [https://github.com/NC4Lab/NC4gate](https://github.com/NC4Lab/NC4gate)
+  - Omniroute system firmware and software repo:
+    - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
+    - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
+- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
 
 ## Licensing
 
-**Hardware:** CERN-OHL-W v2.0  
-**Software:** Apache-2.0  
-**Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W v2.0
+- **Software:** Apache-2.0
+- **Documentation:** CC BY 4.0
 
 ## References
 
-For additional details, see:  
-Modara, G., Lester, A. W., Schwein, I., & Madhav, M. S. (2025). NC4touch: An open-source modular touchscreen apparatus for rodent behavioral testing. bioRxiv. [link pending]
+For additional details, including system performance tests and detailed schematics, see the preprint methods manuscripts for the NC4gate system and associated Omniroute maze:
+- Lester, A. W., Kaur, G., Djafri, N., & Madhav, M. S. (2024). [A modular gate system for autonomous control of rodent behavior](https://www.biorxiv.org/content/10.1101/2024.11.22.624912v1). bioRxiv.
+- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.

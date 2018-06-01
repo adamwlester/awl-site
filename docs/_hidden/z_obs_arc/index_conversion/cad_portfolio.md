@@ -1,5 +1,6 @@
 # Roller-Bearing Cable Guide
 
+## Summary
 Compact, low-torsion cable guide with a bearing-mounted collet and dual-rail carriage for quiet, low-resistance travel in tethered rodent recordings.
 
 ## Description
@@ -23,7 +24,7 @@ Designed for linear-track experiments, this guide prevents torsion on the headst
 - **Hardware**: #4-40 stainless bolts with nylon-insert lock nuts and #4 washers for roller assemblies
 
 ## Validation & Performance
-In-rig and in vivo use with stable recordings for 2 experiments and 3 rigs.
+- **Stable use:** In-rig and in vivo use with stable recordings for 2 experiments and 3 rigs.
 
 ## Deployment & Status
 - **Development:** completed, Jan 2018–Feb 2018
@@ -54,6 +55,7 @@ In-rig and in vivo use with stable recordings for 2 experiments and 3 rigs.
 
 # Dual-Bundle Electrode Drive
 
+## Summary
 Split-bundle implant for dual-region tetrode recordings in freely moving rats.
 
 ## Description
@@ -63,15 +65,6 @@ During recording, a headstage cover secures the NeuraLynx FreeLynx wireless head
 
 ## Role & Contributions
 Core drive elements (body, core, shuttle) derived from NeuraLynx Halo-18 with substantial redesigns:
-- Reconceived drive core with higher-strength components to reinforce 3D-printed parts
-- Reconceived drive core and shuttle to add support and guide cannulae for split-bundle use, improving tetrode-travel stability and reliability
-- Newly developed all other components, including cap and cover assemblies, tracking-LED electronics, and the split-bundle guide system
-- Developed all CAD models and assemblies
-- Authored build documentation and SOPs
-- Primary maintainer
-
-## Role & Contributions
-Inspired by NeuraLynx Halo-18; independently redesigned in a Halo-18–compatible form factor; non-affiliated:
 - Reconceived drive core with higher-strength components to reinforce 3D-printed parts
 - Reconceived drive core and shuttle to add support and guide cannulae for split-bundle use, improving tetrode-travel stability and reliability
 - Newly developed all other components, including cap and cover assemblies, tracking-LED electronics, and the split-bundle guide system
@@ -93,7 +86,7 @@ Inspired by NeuraLynx Halo-18; independently redesigned in a Halo-18–compatibl
 - **Hardware:** standard hardware including #0-80 and M1 fasteners, washers, springs, neodymium magnets, center post
 
 ## Validation & Performance
-In-rig and in vivo use with stable recordings for 2 studies and 9 implants total.
+- **Stable use:** In-rig and in vivo use with stable recordings for 2 studies and 9 implants total.
 
 ## Deployment & Status
 - **Development:** completed, Aug 2019–Jun 2020
@@ -136,6 +129,8 @@ In-rig and in vivo use with stable recordings for 2 studies and 9 implants total
 - **electrode_drive_SUB_cap.step:** cap with weight attachment
 
 # Silicon Probe Microdrive Housing
+
+## Summary
 Implantable housing for high-density chronic silicon probe recordings in freely moving rats.
 
 ## Description
@@ -157,7 +152,7 @@ The housing is compatible with the 128-channel SpikeGadgets Horizontal Headstage
 - **Hardware:** #0-80 fasteners and nuts; stainless-steel tube segment for lead screw access
 
 ## Validation & Performance
-In-rig and in vivo use with stable recordings across 5 implants.
+- **Stable use:** In-rig and in vivo use with stable recordings across 5 implants.
 
 ## Deployment & Status
 - **Development:** completed, Feb 2023–Oct 2023
@@ -193,6 +188,8 @@ In-rig and in vivo use with stable recordings across 5 implants.
 - **probe_housing_PART_housing_base.step:** part model of housing base
 
 # Fischer 344 Rat Model
+
+## Summary
 To-scale 3D model of a Fischer 344 laboratory rat for design planning, visualization, and demonstration of behavioral systems; proportions match strain-specific morphology for accurate spatial layouts.
 
 ## Role & Contributions
@@ -216,6 +213,8 @@ To-scale 3D model of a Fischer 344 laboratory rat for design planning, visualiza
 - **3d_rat_PART.step:** single-part rat model
 
 # Wireless Mobile Feeder Robot
+
+## Summary
 A mobile feeder robot for delivering liquid rewards to rats during circular track experiments
 
 ## Description
@@ -255,8 +254,8 @@ To minimize odor and visual cues, a rear-mounted cleaning module continuously cl
 - **Fasteners and hardware:** standard metric fasteners, washers, springs, magnets, and aluminum posts; thread-lock on vibration-prone joints
 
 ## Validation & Performance
-- Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)
-- Deployed in-rig and in vivo across 2 experiments
+- **Behavioral performance:** Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)
+- **Stable use:** Deployed in-rig and in vivo across 2 experiments
 
 ## Deployment & Status
 - **Development:** completed, Aug 2015–May 2017
@@ -296,6 +295,8 @@ For additional details, see the published methods manuscript featuring this syst
 - **feeder_robot_TOP_ASSY.step:** top-level feeder robot assembly
 
 # Adjustable Aluminum Projector Mount
+
+## Summary
 Adjustable aluminum projector mount for precise alignment of short-throw projectors in behavioral arenas.
 
 ## Description
@@ -352,6 +353,8 @@ For additional details, see the preprint methods article for the Omniroute syste
 - **projector_mount_SUB_pivot.step:** pivot subassembly with yaw plate and slotted clamp hardware
 
 # Two-Axis Feeder Gantry
+
+## Summary
 CNC-based gantry system for automated spatially targeted reward delivery in rodent open-field experiments.
 
 ## Description
@@ -434,6 +437,8 @@ For additional details, including system performance tests, see the preprint met
 - **feeder_gantry_SUB_cover_carriage.step:** cover carriage subassembly with feeder arm
 
 # NC4gate Automatable Gate Module
+
+## Summary
 Modular motorized gate system for autonomous control of rodent behavior in maze experiments.
 
 ## Description
@@ -514,6 +519,8 @@ For additional details, including system performance tests and detailed schemati
 - **nc4_gate_TOP_ASSY_raised.step:** top-level assembly of automatable gate module in raised position
 
 # Track-Mounted Feeder Cart
+
+## Summary
 Mobile feeder cart for controlled on-track liquid reinforcement with gated feeder access for rodent circular track experiments
 
 ## Description
@@ -550,7 +557,7 @@ This feeder cart was designed for use with the Dome system, a rodent augmented-r
 - **Tether guide:** SLA-printed tether-roller housing; waterjet-cut 1/8 in 6061 aluminum curved guide components; five 1/4 in roller bearings
 
 ## Validation & Performance
-In-rig and in vivo use with stable operation for 2 experiments
+- **Stable use:** In-rig and in vivo use with stable operation for 2 experiments
 
 ## Deployment & Status
 - **Development:** completed, Feb 2024–Mar 2024
@@ -588,6 +595,8 @@ The original Dome system and cart design that this version was adapted from are 
 - **feeder_cart_SUB_tether_guide.step:** tether guide clamp subassembly for overhead rail
 
 # Instantaneous Cue Rotation (ICR) Arena
+
+## Summary
 An augmented reality behavioral arena for studying cue-based navigation in freely moving rats.
 
 ## Description
@@ -623,8 +632,8 @@ This design cleanly dissociates external cues from self-motion feedback, while a
 - **Electronics:** Arduino Due microcontrollers; NeuraLynx Digital Lynx SX; phototransistors; XBee-PRO Series 1 radios; LiPo battery system; Pixy vision module
 
 ## Validation & Performance
-- Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)
-- In-rig and in vivo use across 2 experiments
+- **Behavioral performance:** Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)
+- **Stable use:** In-rig and in vivo use across 2 experiments
 
 ## Deployment & Status
 - **Development:** completed, Aug 2013–May 2017
@@ -665,6 +674,8 @@ For additional details, see the published methods manuscript, which features thi
 - **feeder_robot_SUB.step:** feeder robot subassembly
 
 # Omniroute Maze System
+
+## Summary
 A dynamically reconfigurable rodent maze system that integrates automated route configurations, sensory cue control, and targeted reward delivery.
 
 ## Description
@@ -751,7 +762,9 @@ For additional details, including system performance tests, rodent behavior, and
 - **omniroute_SUB_feeder_gantry.step:** subassembly of feeder gantry
 - **omniroute_SUB_projector_mount.step:** subassembly of adjustable projector mount
 
-# NC4touch Behavioral Apparatus 
+# NC4touch Behavioral Apparatus
+
+## Summary
 Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats.
 
 ## Description

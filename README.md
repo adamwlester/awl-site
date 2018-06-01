@@ -112,11 +112,11 @@ index.md                                    # homepage (**site root** or chosen 
 **Includes header and text for the project detail page.**
 
 **Header Content**  
-The header provides: the project title, a short card summary line, the hero image, the single 3D model, and the set of images to load.  
+The header provides: the project title, a short summary line, the hero image, the single 3D model, and the set of images to load.  
 It includes the following fields:
 
 - `title`: Full project title shown on the card and project detail page. Rendered as the first element in the left column on the project detail page.
-- `card_summary`: One-line card summary used on the project list page and directly beneath the title on the project detail page.
+- `summary`: One-line summary used for the project card on the project list page and directly beneath the title on the project detail page.
 - `hero`: Filename of the thumbnail image used for the project card on the project list page. Not used on the project detail page.
 - `model`: String path to the `.glb` file in the `/models/` folder.  
   - Example: `model: "models/nc4touch-behavioral-apparatus.glb"`
@@ -147,8 +147,7 @@ On the project detail page, these authored sections are rendered into two column
 
 - **Left-column narrative (wide):**
   - `title` from the header
-  - `card_summary` from the header
-  - lead sentence (first sentence after the header)
+  - `summary` from the header
   - Description
   - Validation and Performance
   - Materials and Fabrication
@@ -237,3 +236,56 @@ portfolio/projects/<slug>/index.md
   - `portfolio/index.md` → header + ordered `projects:` list  
   - `portfolio/projects/<slug>/index.md` → project card fields (`title`, `card_summary`, `hero`)
 
+## Human Notes
+
+### Random
+^#[ ]\S+
+
+### List of project slugs
+nc4touch-behavioral-apparatus
+omniroute-maze-system
+instantaneous-cue-rotation-icr-arena
+track-mounted-feeder-cart
+nc4gate-automatable-gate-module
+two-axis-feeder-gantry
+adjustable-aluminum-projector-mount
+wireless-mobile-feeder-robot
+silicon-probe-microdrive-housing
+dual-bundle-electrode-drive
+fischer-344-rat-model
+roller-bearing-cable-guide
+
+### 3D Model Conversion
+
+**SolidWorks SLDPRT/SLDASM → STEP AP214 using SolidWorks Assistant**
+- Export SolidWorks parts/assemblies as STEP AP214 (`.step`) **with these STEP options**:
+  - File format: `STEP`
+  - Output as: `Solid / Surface geometry`
+  - Set STEP configuration data: `OFF`
+  - Export face/edge properties: `ON`
+  - Split periodic faces: `ON`
+  - Export 3D curve features: `ON`
+  - Output coordinate system: `Default`
+
+**Convert STEP to glTF (.glb) using CAD Assistant:**
+- Open STEP in **CAD Assistant** (no special import options; use defaults).
+- In CAD Assistant, **Save As → glTF 2.0 (Binary .glb)** with:
+  - Format: `glTF 2.0` → `Binary (.glb)`
+  - Units: `From source` (millimeters from STEP)
+  - Transformation format: `Compact`
+  - Node name format: `InstanceOrProduct`
+  - Mesh name format: `Product`
+  - Export UV for elements without texture maps: `OFF`
+  - Merge faces within the same part: `ON`
+  - Merge faces within 16-bit indices limit: `ON`
+
+**(Optional) Make faces transparent in Blender 4.3.2:**
+- Import the `.glb` into Blender: **File → Import → glTF 2.0 (.glb/.gltf)**
+- Select each object that should be semi-transparent:
+  - In **Material Properties → Surface → Principled BSDF**, lower **Alpha** from `1.0` to `0.1` (or desired value)
+  - In **Material Properties → Settings → Surface**, set **Render Method** to `Blended`
+- Export back to `.glb`: **File → Export → glTF 2.0** with:
+  - **Format:** `glTF Binary (.glb)`
+  - **Include → Data:** uncheck `Cameras` and `Punctual Lights`
+  - **Compression:** check `Compression` (keep the default numeric values)
+  - **Animation:** uncheck `Animation`

@@ -1,0 +1,112 @@
+---
+layout: project
+title: "Silicon Probe Microdrive Housing"
+summary: "Implantable housing for high-density chronic silicon probe recordings in freely moving rats."
+hero: "hero.png"
+model: "models/silicon-probe-microdrive-housing.glb"
+images:
+  - src: "images/render_1.png"
+    caption: "three-quarter view (front, left, top) render of housing and headstage"
+  - src: "images/render_2.png"
+    caption: "three-quarter view (rear, right, top) render of connector side of housing"
+  - src: "images/render_3.png"
+    caption: "three-quarter view (front, left, top) render with right-side housing removed to show interior"
+  - src: "images/render_4_annotated.png"
+    caption: "annotated right view render with right-side housing removed to show interior"
+  - src: "images/render_5.png"
+    caption: "exploded three-quarter view (front, left, top) render of all components"
+  - src: "images/render_6.png"
+    caption: "right view render of the assembly mounted on a rat model at scale"
+  - src: "images/photo_1.png"
+    caption: "bench photo of assembled housing, side view"
+  - src: "images/photo_2.png"
+    caption: "bench photo of assembled housing, connector-side rear view"
+  - src: "images/photo_3.png"
+    caption: "bench photo of assembled housing, top view"
+---
+
+## Description
+
+The housing is compatible with the 128-channel SpikeGadgets Horizontal Headstage and Cambridge Neurotech ASSY-236 F probes, and incorporates the Cambridge Neurotech NanoDrive for probe positioning. A custom probe interface PCB provides electrical interconnect and mechanical support between the probe and headstage. The three-part SLA-printed resin housing uses standard #0-80 fasteners for straightforward fabrication, assembly, and maintenance. Fine adjustment is achieved by accessing the NanoDrive through a top access hole that isolates the lead screw from probe components, providing approximately 6 mm of travel. The headstage clips into place on the back of the housing, angled at 10° to allow free head movement. The detachable base of the housing provides an adhesion point for surgical cement and enables easy extraction of the intact probe and main housing body for reuse.
+
+## Role & Contributions
+
+- Conceived, designed, fabricated, and maintained mechanical components end to end
+- Directed custom probe-interface PCB development team
+- Primary maintainer
+
+## Highlights & Key Specs
+
+**Drive:**  
+- Adjustment resolution ~250 µm per turn  
+- Rated travel up to 7.5 mm (implemented ~6 mm)
+
+**Mass:**  
+~5 g with housing, hardware, NanoDrive, and probe
+
+**Assembly:**  
+Straightforward three-part assembly with standard #0-80 fasteners and nuts
+
+**Compatibility:**  
+- Cambridge Neurotech 64-channel probes (ASSY-236 F) and SpikeGadgets 128-channel Horizontal Headstage  
+- Custom probe interface PCB for electrical interconnect and alignment
+
+## Materials & Fabrication
+
+**Structure:**  
+SLA-printed resin body  
+
+**Hardware:**  
+- #0-80 fasteners and nuts  
+- Stainless-steel tube segment for lead screw access
+
+## Validation & Performance
+
+**Stable use:**  
+In-rig and in vivo use with stable recordings across 5 implants.
+
+## Deployment & Status
+
+**Development:**  
+Completed, Feb 2023–Oct 2023  
+
+**Deployment:**  
+NC4 Lab, University of British Columbia  
+
+**Status:**  
+Active, Oct 2023–present, NC4 Lab
+
+## Included files
+
+*Attached on this page.*
+
+### Image Files
+- **render_1.png:** three-quarter view (front, left, top) render of housing and headstage
+- **render_2.png:** three-quarter view (rear, right, top) render of connector side of housing
+- **render_3.png:** three-quarter view (front, left, top) render with right-side housing removed to show interior
+- **render_4_annotated.png:** annotated right view render with right-side housing removed to show interior
+- **render_5.png:** exploded three-quarter view (front, left, top) render of all components
+- **render_6.png:** right view render of the assembly mounted on a rat model at scale
+- **photo_1.png:** bench photo of assembled housing, side view
+- **photo_2.png:** bench photo of assembled housing, connector-side rear view 
+- **photo_3.png:** bench photo of assembled housing, top view
+
+### 3D Model Files
+- **probe_housing_TOP_ASSY.step:** top-level assembly of the silicon probe microdrive housing
+- **probe_housing_PART_housing_body_a.step:** part model of housing body A
+- **probe_housing_PART_housing_body_b.step:** part model of housing body B
+- **probe_housing_PART_housing_base.step:** part model of housing base
+
+## Release
+
+- **CAD:** STEP files available in portfolio (see 3D Model Files)
+- **On request:** assembly notes
+
+## References
+
+- (content not provided)
+
+## Licensing
+
+- **Hardware:** CERN-OHL-W v2.0
+- **Documentation:** CC BY 4.0
