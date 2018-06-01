@@ -7,7 +7,7 @@ We will build in stages and are focusing on V1 elements now:
 
 ## Site Map (rough draft)
 
-```text
+```yaml
 /
   ├─ Portfolio                                    # section page (index.md) -> section intro + project grid
   │   ├─ Project: nc4touch-behavioral-apparatus   # /portfolio/professional/nc4touch-behavioral-apparatus  -> project page
@@ -29,7 +29,7 @@ We will build in stages and are focusing on V1 elements now:
 
 ## GitHub Repo Structure (rough draft)
 
-```markdown
+```yaml
 Repo: adamwlester-site
 Deploy: GitHub Pages (project site)
 Public URL now: https://github.com/adamwlester/adamwlester-site/
@@ -166,3 +166,74 @@ The 3D viewer sits at the top of the right column and loads the model defined by
 On smaller screens, all sections stack into a **single column** in the same logical order as authored.
 
 ### Project List Page Overview
+
+#### Main Elements
+- **Page Header (`portfolio/index.md`):**  
+  Full-width introductory block at the top of the portfolio section page.  
+  It displays two fields sourced from the section’s `index.md` front matter:  
+  - `header_title`: Page title (e.g., “Portfolio”).  
+  - `header_lead`: Short introductory paragraph describing the portfolio section.
+
+- **Project Card Grid:**  
+  Responsive grid of uniformly styled project cards.  
+  Each card displays:  
+  - The project’s `hero` image (thumbnail) in a fixed-aspect-ratio area.  
+  - The project `title`.  
+  - The project `card_summary` (one-line summary).  
+  Each card links directly to its corresponding project detail page.
+
+#### Content Source & Ordering
+- **Header content** comes exclusively from `portfolio/index.md` front matter:  
+  - `header_title`  
+  - `header_lead`
+
+- **Project ordering** is defined by the `projects:` list in `portfolio/index.md`; cards render in that order, from top-left to bottom-right in the grid.
+  - Example `projects:` list:
+  ```yaml
+  projects:
+    - nc4touch-behavioral-apparatus
+    - omniroute-maze-system
+    - instantaneous-cue-rotation-icr-arena
+    # ...in desired display order
+
+- Each listed slug corresponds to a project folder located at:
+
+```yaml
+portfolio/projects/<slug>/index.md
+```
+
+- For each slug in `projects:`, the project card pulls these fields from its project `index.md`:  
+  - `title`  
+  - `card_summary`  
+  - `hero`
+
+#### Card Composition
+- **Hero image:**  
+  Rendered in a fixed-aspect-ratio top region of the card.  
+  The `hero` field must reference a valid image file located in the project’s folder.
+
+- **Card text:**  
+  - `title` displayed beneath the hero image.  
+  - `card_summary` displayed beneath the title in a consistent style across all cards.
+
+- **Interactivity:**  
+  - The **entire card is clickable**, linking to `/portfolio/projects/<slug>/`.  
+  - Subtle hover and active states provide visual feedback (gentle lift or shadow change on hover; slight depress on click).
+
+#### Layout
+- **Single-column structure:**  
+  The page stacks a full-width header block followed by a full-width card grid.
+
+- **Responsive grid:**  
+  - Cards arrange into multiple columns on larger screens.  
+  - On smaller screens, the grid collapses to fewer columns, eventually to a single column, while preserving card aspect and spacing.
+
+- **Consistency:**  
+  Card dimensions, spacing, typography, and hover states are controlled via `assets/css/custom.css` for a cohesive presentation across all projects.
+
+#### Behavior Summary
+- The project list page is declarative and fully data-driven.  
+- Ordering, visibility, and card content are entirely defined by:  
+  - `portfolio/index.md` → header + ordered `projects:` list  
+  - `portfolio/projects/<slug>/index.md` → project card fields (`title`, `card_summary`, `hero`)
+
