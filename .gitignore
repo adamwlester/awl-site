@@ -1,0 +1,55 @@
+# ------------------------------------------------------------
+# Jekyll / GitHub Pages build artifacts
+# ------------------------------------------------------------
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# ------------------------------------------------------------
+# OS / Editor cruft
+# ------------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+.history/
+*.code-workspace
+
+# ------------------------------------------------------------
+# Node / package managers (if ever added)
+# ------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ------------------------------------------------------------
+# Temporary / scratch
+# ------------------------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Copilot Edits temp files
+*.copilot_tool*
+
+# ------------------------------------------------------------
+# Media and model safety (only ignore accidental additions)
+# ------------------------------------------------------------
+# Ignore all .gitkeep files created by agents
+*.gitkeep
+
+# ------------------------------------------------------------
+# Build / cache / misc internal
+# ------------------------------------------------------------
+.cache/
+.sass-cache/
+.jekyll-cache/
+*.afdesign~lock~
+*.afphoto~lock~
+*.afpub~lock~
