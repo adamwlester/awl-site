@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "NC4touch Behavioral Apparatus"
 summary: "Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/nc4touch-behavioral-apparatus.glb"
 images:
   - src: "images/render_1.png"

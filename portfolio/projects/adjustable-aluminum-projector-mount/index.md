@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Adjustable Aluminum Projector Mount"
 summary: "Adjustable aluminum projector mount for precise alignment of short-throw projectors in behavioral arenas."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/adjustable-aluminum-projector-mount.glb"
 images:
   - src: "images/render_1.png"
@@ -73,6 +73,22 @@ NC4 Lab, University of British Columbia (3 studies)
 **Status:**  
 Active, Oct 2023–present, NC4 Lab  
 
+## Release
+
+- **CAD:** select STEP files available in portfolio (see 3D Model Files)
+- **On request:** additional design files
+- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
+
+## Licensing
+
+- **Hardware:** CERN-OHL-W v2.0
+- **Documentation:** CC BY 4.0
+
+## References
+
+For additional details, see the preprint methods article for the Omniroute system, which featured this component:
+- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
+
 ## Included files
 
 *Attached on this page.*
@@ -89,19 +105,3 @@ Active, Oct 2023–present, NC4 Lab
 
 - **projector_mount_TOP_ASSY.step:** top-level assembly of adjustable aluminum projector mount for 1020 rail
 - **projector_mount_SUB_pivot.step:** pivot subassembly with yaw plate and slotted clamp hardware
-
-## Release
-
-- **CAD:** select STEP files available in portfolio (see 3D Model Files)
-- **On request:** additional design files
-- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
-
-## Licensing
-
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
-
-## References
-
-For additional details, see the preprint methods article for the Omniroute system, which featured this component:
-- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.

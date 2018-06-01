@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Roller-Bearing Cable Guide"
 summary: "Compact, low-torsion cable guide with a bearing-mounted collet and dual-rail carriage for quiet, low-resistance travel in tethered rodent recordings."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/roller-bearing-cable-guide.glb"
 images:
   - src: "images/render_1.png"
@@ -69,9 +69,6 @@ Barnes Lab, University of Arizona (2 studies; 3 rigs)
 **Status:**  
 Active, Feb 2018–present, Barnes Lab
 
-## Included files
-*Attached on this page.*
-
 ## Release
 
 - **CAD:** STEP files available in portfolio (see 3D Model Files)
@@ -84,6 +81,9 @@ Active, Feb 2018–present, Barnes Lab
 
 ## References
 - (content not provided)
+
+## Included files
+*Attached on this page.*
 
 ### Image Files
 - **render_1.png:** three-quarter view (front, right, top) render of the cable guide assembly

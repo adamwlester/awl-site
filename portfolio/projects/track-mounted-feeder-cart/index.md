@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Track-Mounted Feeder Cart"
 summary: "Mobile feeder cart for controlled on-track liquid reinforcement with gated feeder access for rodent circular track experiments"
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/track-mounted-feeder-cart.glb"
 images:
   - src: "images/render_1.png"
@@ -96,6 +96,21 @@ NC4 Lab, University of British Columbia (2 studies)
 **Status:**  
 active, Mar 2024–present, NC4 Lab  
 
+## Release
+
+- **CAD:** STEP files available in portfolio (see 3D Model Files)
+- **On request:** assembly notes; additional design files
+
+## Licensing
+
+- **Hardware:** CERN-OHL-W v2.0
+- **Documentation:** CC BY 4.0
+
+## References
+
+The original Dome system and cart design that this version was adapted from are described in detail in the following methods article:
+- Madhav, M. S., Jayakumar, R. P., Lashkari, S. G., Savelli, F., Blair, H. T., Knierim, J. J., & Cowan, N. J. (2022). The Dome: a virtual reality apparatus for freely locomoting rodents. Journal of Neuroscience Methods, 368, 109336.
+
 ## Included files
 
 *Attached on this page.*
@@ -116,18 +131,3 @@ active, Mar 2024–present, NC4 Lab
 - **feeder_cart_TOP_ASSY.step:** top-level assembly of track-mounted feeder cart
 - **feeder_cart_SUB_gated_port.step:** gated feeder port subassembly with servo, gate, and IR sensors
 - **feeder_cart_SUB_tether_guide.step:** tether guide clamp subassembly for overhead rail
-
-## Release
-
-- **CAD:** STEP files available in portfolio (see 3D Model Files)
-- **On request:** assembly notes; additional design files
-
-## Licensing
-
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
-
-## References
-
-The original Dome system and cart design that this version was adapted from are described in detail in the following methods article:
-- Madhav, M. S., Jayakumar, R. P., Lashkari, S. G., Savelli, F., Blair, H. T., Knierim, J. J., & Cowan, N. J. (2022). The Dome: a virtual reality apparatus for freely locomoting rodents. Journal of Neuroscience Methods, 368, 109336.

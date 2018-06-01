@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Silicon Probe Microdrive Housing"
 summary: "Implantable housing for high-density chronic silicon probe recordings in freely moving rats."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/silicon-probe-microdrive-housing.glb"
 images:
   - src: "images/render_1.png"
@@ -76,6 +76,20 @@ NC4 Lab, University of British Columbia
 **Status:**  
 Active, Oct 2023–present, NC4 Lab
 
+## Release
+
+- **CAD:** STEP files available in portfolio (see 3D Model Files)
+- **On request:** assembly notes
+
+## References
+
+- (content not provided)
+
+## Licensing
+
+- **Hardware:** CERN-OHL-W v2.0
+- **Documentation:** CC BY 4.0
+
 ## Included files
 
 *Attached on this page.*
@@ -96,17 +110,3 @@ Active, Oct 2023–present, NC4 Lab
 - **probe_housing_PART_housing_body_a.step:** part model of housing body A
 - **probe_housing_PART_housing_body_b.step:** part model of housing body B
 - **probe_housing_PART_housing_base.step:** part model of housing base
-
-## Release
-
-- **CAD:** STEP files available in portfolio (see 3D Model Files)
-- **On request:** assembly notes
-
-## References
-
-- (content not provided)
-
-## Licensing
-
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0

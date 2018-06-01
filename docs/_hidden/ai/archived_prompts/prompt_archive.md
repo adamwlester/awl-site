@@ -70,10 +70,10 @@ Generate a YAML front matter block at the top of the file:
 
 ```yaml
 ---
-layout: project
+layout: project-detail-page
 title: "<Project Title>"
 summary: "<One-sentence summary previously under ## Summary>"
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/<slug>.glb"
 images:
   - src: "<image filename>"

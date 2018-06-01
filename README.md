@@ -5,287 +5,230 @@ We will build in stages and are focusing on V1 elements now:
 - Full support for **Portfolio**.
 - Needs foundations in place for **V2** expansion.
 
-## Site Map (rough draft)
+## Site Map
 
-```yaml
+```markdown
 /
-  ├─ Portfolio                                    # section page (index.md) -> section intro + project grid
-  │   ├─ Project: nc4touch-behavioral-apparatus   # /portfolio/professional/nc4touch-behavioral-apparatus  -> project page
-  │   ├─ Project: omniroute-maze-system           # /portfolio/professional/omniroute-maze-system   -> project page
-  │   └─ Project: <slug>                          # /portfolio/professional/<slug>    -> project page
-  └─ Future V2 Top-Level Pages                    # placeholders for site expansion
-      ├─ Home                                     # landing page (optional later)
-      ├─ About                                    # bio/overview (optional later)
-      └─ Contact                                  # email/links/form (optional later)
+  ├─ Home                                       # site root (/index.md) -> landing page + link to portfolio
+  ├─ Portfolio                                  # /portfolio/index.md -> section intro + project grid
+  │   ├─ Project: nc4touch-behavioral-apparatus # /portfolio/projects/nc4touch-behavioral-apparatus -> project page
+  │   ├─ Project: omniroute-maze-system         # /portfolio/projects/omniroute-maze-system -> project page
+  │   └─ Project: <slug>                        # /portfolio/projects/<slug> -> project page
+  └─ Future V2 Top-Level Pages                  # placeholders for site expansion
+      ├─ About                                  # bio/overview (optional later)
+      └─ Contact                                # email/links/form (optional later)
 ```
 
-## Stack Overview (rough draft)
+## Stack Overview
 
 - **Platform:** Jekyll static site generator (GitHub Pages).
 - **Templating:** Liquid templates.
 - **Styling:** Custom CSS (no framework).
-- **3d-viewer:** Google `<model-viewer>`.
+- **3D-viewer:** Google `<model-viewer>`.
 - **image-viewer:** Custom CSS scroll-snap carousel with lightweight vanilla-JS arrows + thumbnails.
 
-## GitHub Repo Structure (rough draft)
+## GitHub Repo Structure
 
-```yaml
+```markdown
 Repo: adamwlester-site
 Deploy: GitHub Pages (project site)
-Public URL now: https://github.com/adamwlester/adamwlester-site/
+Public URL now: https://adamwlester.github.io/adamwlester-site/
 Future (V2): map to a custom domain without changing content.
 
 # repo root == site root (GitHub Pages/Jekyll)
 _config.yml
-index.md                                    # homepage (**site root** or chosen root page)
+index.md                                    # homepage (**site root**) -> minimal landing + link to /portfolio/
 ├── assets/
 │   └── css/
 │       └── custom.css                      # single stylesheet for colors, spacing, typography, visual treatments
 ├── _includes/
-│   ├── section.html                        # wrapper include for styled sections (optional background/spacing)
-│   ├── grid.html                           # include for simple two/three-column content grids
-│   └── card.html                           # markup for a single **project card** in the grid
+│   ├── section.html                        # generic wrapper include for styled sections (spacing, background)
+│   ├── project-grid.html                   # include for the **portfolio project grid** on /portfolio/
+│   └── project-card.html                   # include for a single **portfolio project card** (thumbnail + title + summary)
 ├── _layouts/
-│   └── project.html                        # layout used by each **project detail page**
-└── portfolio/                              # section container
-    ├── index.md                            # **project list page** (section intro + project grid)
+│   ├── default.html                        # base site layout (html/head/body shell, global header/footer)
+│   ├── portfolio-list-page.html            # layout for the **portfolio list page** (/portfolio/ grid view)
+│   └── project-detail-page.html            # layout for each **project detail page** (banner + 3D viewer + content columns)
+└── portfolio/                              # portfolio section container
+    ├── index.md                            # **portfolio list page** (uses layout: portfolio-list-page; section intro + project grid)
     └── projects/                           # only this section’s projects live here
         └── <slug>/                         # slug is the folder name (becomes the URL tail)
-            ├── index.md                    # **project detail page** (front matter + full narrative; single source of truth)
-            ├── hero.png                    # banner/card image referenced in the project detail page
-            ├── images/                     # additional images referenced in Markdown
-            │   └── <image>.png
+            ├── index.md                    # **project detail page** (uses layout: project-detail-page; front matter + content body; single source of truth)
+            ├── images/                     # image assets referenced in front matter + Markdown content
+            |    └── <image>.png
             └── models/                     # 3D assets (only one model per project)
-                └── <slug>.glb              # GLB model file (≤ 100 MB)
-
+                └── <slug>.glb              # GLB model file (≤ 100 MB; referenced by the `model` front matter field)
 ```
 
 ## Key Components & Behavior
 
 **Note:** I am open to changing or modifying some of these requirements based on practicality and optimal approach.
 
+### Portfolio List Page Overview
+
+#### Main Elements
+
+**Page Header Text (`portfolio/index.md`):**  
+- Full-width introductory block at the top of the portfolio list page.  
+- It displays two fields sourced from the `portfolio/index.md` front matter:  
+  - `page_title`: Page title (e.g., “Portfolio”).  
+  - `page_lead`: Short introductory paragraph describing the portfolio list page.
+
+**Project Card Grid:**  
+- Responsive grid of uniformly styled project cards.  
+- Each card displays the following content pulled from its project `portfolio/projects/<slug>/index.md` front matter:  
+  - The project’s `hero` image (thumbnail) in a fixed-aspect-ratio area.  
+    - The `hero` field is a path relative to the project folder (for example, `images/render_3.png` in `portfolio/projects/<slug>/images/`)
+  - The project `title` below the image.  
+  - The project `summary` below the title.  
+- Each card links directly to its corresponding project detail page.
+- The **entire card is clickable**, linking to `/portfolio/projects/<slug>/`.  
+- Subtle hover and active states provide visual feedback (gentle lift or shadow change on hover; slight depress on click).
+
+#### Layout
+
+**Card ordering** is defined by the `projects:` list in `portfolio/index.md` front matter:
+- The order of slugs in this list (each entry is a project slug matching `portfolio/projects/<slug>/`) determines the order of cards in the grid from top-left to bottom-right.
+- Example `projects:` list:
+  - nc4touch-behavioral-apparatus
+  - omniroute-maze-system
+  - instantaneous-cue-rotation-icr-arena
+
+**Consistency:**  
+- Card dimensions, spacing, typography, and hover states are controlled via `assets/css/custom.css` for a cohesive presentation across all projects.
+
+**Single-column structure:**  
+- The page stacks a full-width header block followed by a full-width card grid in a single vertical flow.
+
+**Responsive grid:**  
+- Cards arrange into multiple columns on larger screens.  
+- On smaller screens, the grid collapses to fewer columns, eventually to a single column, while preserving card aspect and spacing.
+
 ### Project Detail Page Overview
 
 #### Main Elements
-- **Image Viewer (banner):** Full-width media strip at the top of the project detail page. Displays the primary render and secondary images via a carousel/thumbnail interface.
-- **3D Viewer (window):** Right-aligned, fixed-width panel positioned below the image viewer. Renders the single `.glb` model associated with the project.
-- **Project Detail Content (`portfolio/projects/<slug>/index.md`):** The full narrative and structured Markdown for the project. All text on the project detail page (both columns) is derived from this file.
-- **Independence of components:** The image viewer and 3D viewer are independent in implementation; the image viewer handles all image media, and the 3D viewer handles the single model. Their behavior and rendering do not affect how the Markdown content is authored.
-
-#### Layout
-- The image viewer banner spans the full content width at the top of the project detail page.
-- Directly beneath the banner, the page uses a **two-column layout** on desktop:
-  - A **right column** that contains the 3D viewer, followed by sidebar-style text blocks derived from the project detail content.
-  - A **wider left column** that contains the remaining project detail content and flows alongside the 3D viewer until its bottom.
-- On smaller screens, the layout **stacks vertically** in this order:
-  1. Image viewer (banner)
-  2. 3D viewer (window)
-  3. All project detail content in a single column.
+- **Image-Viewer (banner):** 
+  - Full-width media strip at the top of the project detail page. Displays the primary render and secondary images via a carousel/thumbnail interface.
+- **3D-Viewer (window):** 
+  - Right-aligned, fixed-width panel positioned below the image-viewer. Renders the single `.glb` model associated with the project.
+- **Project Detail Content (`portfolio/projects/<slug>/index.md`):** 
+  - The full structured Markdown (front matter + content body) for the project. 
+  - All text on the project detail page (both columns) is derived from this file.
+- **Independence of components:** 
+  - The image-viewer and 3D-viewer are independent in implementation
+  - The image-viewer handles all image media, and the 3D-viewer handles the single model.
+  - Their behavior and rendering do not affect how the Markdown content is authored.
 
 #### Media Image-Viewer Banner
-- **Component:** Peeking carousel banner for render and photo images, implemented as a **custom CSS scroll-snap carousel** with lightweight vanilla-JS controls.
+
+**Component:** 
+- Peeking carousel banner for render and photo images, implemented as a **custom CSS scroll-snap carousel** with lightweight vanilla-JS controls.
+
+**Data source:**  
+- The banner loads all images listed in the `images:` field of the project’s front matter (`portfolio/projects/<slug>/index.md`).  
+- Images should be shown in the order they are listed in the front matter.  
+- Each `images.src` value is a path **relative to the project folder** pointing to a `.png` file in that project’s local `images/` subfolder.  
+  - Example front matter entry: `- src: "images/render_1.png"`  
+  - Example corresponding filesystem path:  
+    `portfolio/projects/nc4touch-behavioral-apparatus/images/render_1.png`
+
+**Behavior:**  
 - Horizontal snap-scrolling viewport with fixed aspect-ratio slides and `object-fit: cover`.
 - Supports click or swipe navigation on the main carousel.
 - Includes a clickable thumbnail strip; thumbnail clicks scroll the main carousel to the selected slide.
 - Shows peeking neighbors by sizing slides slightly narrower than the viewport.
 - Provides prev/next arrow buttons wired to smooth scroll between slides.
-- All non-hero slides use native `loading="lazy"` for images; nonvisible slides are lazy-loaded where supported.
-- **Images**:
+- All non-visible slides use native `loading="lazy"` for images where supported.
+
+**Constraints:**  
   - Renders and photos are standardized at 2000 px height (up to 5000 px width).
   - All image files are PNG.
-  - Assume these both as the default for all project image media. 
+  - These are required constraints for all images in the `images:` front matter list.
 
 #### 3D Model Viewer Integration
-- **Component:** Single 3D viewer window, implemented with one `<model-viewer>` element in the right column of the project detail page.
-- **Behavior:**
-  - On page load, the 3D viewer autoloads the single `.glb` file defined in the front matter `model` field.
-  - The `model` field must point to the project’s model file in the `models/` folder, e.g. `model: "models/<slug>.glb"`.
-  - The viewer presents basic interactive controls (orbit, zoom, pan) using `<model-viewer>`’s built-in functionality; the camera is initialized to a sensible default view on load.
-- **Front matter requirement:**
-  - Each project detail page must define:
-    - `model`: string path to the `.glb` file in `models/` (e.g. `model: "models/nc4touch-behavioral-apparatus.glb"`).
-- **Constraints:**
-  - Exactly one `.glb` file per project; it must reside under `models/` and be ≤ 100 MB.
+
+**Component:**  
+- Single 3D-viewer window implemented with one `<model-viewer>` element in the right column of the project detail page.
+
+**Data source:**  
+- The viewer uses the `model` field in the project’s front matter (`portfolio/projects/<slug>/index.md`).  
+- `model` is a path **relative to the project folder** pointing to the `.glb` file in that project’s local `models/` subfolder.  
+  - Example front matter: `model: "models/nc4touch-behavioral-apparatus.glb"`  
+  - Example corresponding filesystem path:  
+    `portfolio/projects/nc4touch-behavioral-apparatus/models/nc4touch-behavioral-apparatus.glb`
+
+**Behavior:**  
+- On page load, `<model-viewer>` autoloads the `.glb` file referenced by `model`.  
+- Provides basic interactive controls (orbit, zoom, pan) using `<model-viewer>`’s built-in functionality.  
+- Initializes the camera to a sensible default view on load.
+
+**Constraints:**  
+- Exactly one `.glb` file per project is supported.  
+- The `.glb` file must reside under the project’s `models/` subfolder.  
+- Recommended maximum file size: ≤ 100 MB.
 
 #### Project Markdown (`portfolio/projects/<slug>/index.md`)
 
 **Includes header and text for the project detail page.**
 
-**Header Content**  
-The header provides: the project title, a short summary line, the hero image, the single 3D model, and the set of images to load.  
+**Front Matter Content**  
+The front matter provides: the project title, a short summary line, the hero image (referencing one of the 'images.src' entries), the single 3D model, and the set of images to load for the project detail page banner.  
 It includes the following fields:
 
 - `title`: Full project title shown on the card and project detail page. Rendered as the first element in the left column on the project detail page.
-- `summary`: One-line summary used for the project card on the project list page and directly beneath the title on the project detail page.
-- `hero`: Filename of the thumbnail image used for the project card on the project list page. Not used on the project detail page.
-- `model`: String path to the `.glb` file in the `/models/` folder.  
+- `summary`: One-line summary used for the project card on the portfolio list page and directly beneath the title on the project detail page.
+- `hero`: Path (relative to the project folder) to the hero image file (for example, `images/render_1.png`).
+  - This image is used as the project card thumbnail on the portfolio list page.
+  - The value of 'hero' must exactly match the 'src' of one of the entries in the 'images:' array.
+- `model`: String path to the `.glb` file in the `/models/` folder.
   - Example: `model: "models/nc4touch-behavioral-apparatus.glb"`
 - `images`: List of supporting render or photo entries, each with:
   - `src`: Path to the `.png` file in the `/images/` folder.
-  - `caption`: Optional description for context and accessibility.
+  - `caption`: Optional description for context and accessibility (*unused for V1*).
 - *(Future fields, if added)* should follow this explicit key-value format; no implicit defaults or fallback behavior.
 
 **Core Markdown Content Sections (authoring order)**  
-All narrative content is authored in a single Markdown flow directly after the front matter. Sections appear in this order in the source file:
-
-1. Lead sentence (no heading): Single sentence stating system and purpose. First sentence after the header.
-2. Description
-3. Role and Contributions
-4. Highlights & Key Specs
-5. Materials and Fabrication
-6. Validation and Performance
-7. Deployment and Status
-8. Licensing
-9. Release
-10. References
-
-Headings use normal Markdown syntax (`#`, `##`, `###`); their visual sizes, spacing, and hierarchy are controlled globally in `assets/css/custom.css` so the same Markdown renders consistently across all project pages.
-
-**Layout Mapping (desktop)**  
-
-On the project detail page, these authored sections are rendered into two columns under the media band, in this order:
-
-- **Left-column narrative (wide):**
-  - `title` from the header
-  - `summary` from the header
+- All narrative content is authored in a single Markdown flow (content body) directly after the front matter. 
+- The following is the required authoring order in each project’s `index.md`. This is **authoring order only**, not the final DOM or visual order.
+- The layout engine (desktop/tablet/mobile) reads these sections and determines the final visual placement, column grouping, and **may reorder sections in the DOM** (see Layout below).
+- Sections appear in this order in the source Markdown file content body:
   - Description
-  - Validation and Performance
-  - Materials and Fabrication
-  - Release
-  - References
-
-- **Right-column summary blocks (sidebar below 3D viewer):**
   - Role and Contributions
   - Highlights & Key Specs
+  - Materials and Fabrication
+  - Validation and Performance
   - Deployment and Status
   - Licensing
-
-The 3D viewer sits at the top of the right column and loads the model defined by `model`. The summary blocks listed above render **below** the 3D viewer, using the content from their corresponding Markdown sections.
-
-On smaller screens, all sections stack into a **single column** in the same logical order as authored.
-
-### Project List Page Overview
-
-#### Main Elements
-- **Page Header (`portfolio/index.md`):**  
-  Full-width introductory block at the top of the portfolio section page.  
-  It displays two fields sourced from the section’s `index.md` front matter:  
-  - `header_title`: Page title (e.g., “Portfolio”).  
-  - `header_lead`: Short introductory paragraph describing the portfolio section.
-
-- **Project Card Grid:**  
-  Responsive grid of uniformly styled project cards.  
-  Each card displays:  
-  - The project’s `hero` image (thumbnail) in a fixed-aspect-ratio area.  
-  - The project `title`.  
-  - The project `card_summary` (one-line summary).  
-  Each card links directly to its corresponding project detail page.
-
-#### Content Source & Ordering
-- **Header content** comes exclusively from `portfolio/index.md` front matter:  
-  - `header_title`  
-  - `header_lead`
-
-- **Project ordering** is defined by the `projects:` list in `portfolio/index.md`; cards render in that order, from top-left to bottom-right in the grid.
-  - Example `projects:` list:
-  ```yaml
-  projects:
-    - nc4touch-behavioral-apparatus
-    - omniroute-maze-system
-    - instantaneous-cue-rotation-icr-arena
-    # ...in desired display order
-
-- Each listed slug corresponds to a project folder located at:
-
-```yaml
-portfolio/projects/<slug>/index.md
-```
-
-- For each slug in `projects:`, the project card pulls these fields from its project `index.md`:  
-  - `title`  
-  - `card_summary`  
-  - `hero`
-
-#### Card Composition
-- **Hero image:**  
-  Rendered in a fixed-aspect-ratio top region of the card.  
-  The `hero` field must reference a valid image file located in the project’s folder.
-
-- **Card text:**  
-  - `title` displayed beneath the hero image.  
-  - `card_summary` displayed beneath the title in a consistent style across all cards.
-
-- **Interactivity:**  
-  - The **entire card is clickable**, linking to `/portfolio/projects/<slug>/`.  
-  - Subtle hover and active states provide visual feedback (gentle lift or shadow change on hover; slight depress on click).
+  - Release
+  - References
+- Headings use normal Markdown syntax (`#`, `##`, `###`); their visual sizes, spacing, and hierarchy are controlled globally in `assets/css/custom.css` so the same Markdown renders consistently across all project pages.
 
 #### Layout
-- **Single-column structure:**  
-  The page stacks a full-width header block followed by a full-width card grid.
 
-- **Responsive grid:**  
-  - Cards arrange into multiple columns on larger screens.  
-  - On smaller screens, the grid collapses to fewer columns, eventually to a single column, while preserving card aspect and spacing.
+**Desktop**
+- The image-viewer banner spans the full content width at the top of the project detail page.
+- Directly beneath the banner, the page uses a **two-column layout**:
+  - **Left-column:**
+    - `title` (from front matter)
+    - `summary` (from front matter)
+    - Description (from content body)
+    - Validation and Performance (from content body)
+    - Materials and Fabrication (from content body)
+    - Release (from content body)
+    - References (from content body)
+  - **Right-column:**
+    - 3D-viewer window at the top
+    - Role and Contributions (from content body)
+    - Highlights & Key Specs (from content body)
+    - Deployment and Status (from content body)
+    - Licensing (from content body)
 
-- **Consistency:**  
-  Card dimensions, spacing, typography, and hover states are controlled via `assets/css/custom.css` for a cohesive presentation across all projects.
+**Mobile / small screens**
+- On smaller screens, all elements stack vertically in this order:
+  1. Image-viewer (banner)
+  2. 3D-viewer (window)
+  3. Left-column front matter and content body sections (listed above)
+  4. Right-column content body sections (listed above)
 
-#### Behavior Summary
-- The project list page is declarative and fully data-driven.  
-- Ordering, visibility, and card content are entirely defined by:  
-  - `portfolio/index.md` → header + ordered `projects:` list  
-  - `portfolio/projects/<slug>/index.md` → project card fields (`title`, `card_summary`, `hero`)
-
-## Human Notes
-
-### Random
-^#[ ]\S+
-
-### List of project slugs
-nc4touch-behavioral-apparatus
-omniroute-maze-system
-instantaneous-cue-rotation-icr-arena
-track-mounted-feeder-cart
-nc4gate-automatable-gate-module
-two-axis-feeder-gantry
-adjustable-aluminum-projector-mount
-wireless-mobile-feeder-robot
-silicon-probe-microdrive-housing
-dual-bundle-electrode-drive
-fischer-344-rat-model
-roller-bearing-cable-guide
-
-### 3D Model Conversion
-
-**SolidWorks SLDPRT/SLDASM → STEP AP214 using SolidWorks Assistant**
-- Export SolidWorks parts/assemblies as STEP AP214 (`.step`) **with these STEP options**:
-  - File format: `STEP`
-  - Output as: `Solid / Surface geometry`
-  - Set STEP configuration data: `OFF`
-  - Export face/edge properties: `ON`
-  - Split periodic faces: `ON`
-  - Export 3D curve features: `ON`
-  - Output coordinate system: `Default`
-
-**Convert STEP to glTF (.glb) using CAD Assistant:**
-- Open STEP in **CAD Assistant** (no special import options; use defaults).
-- In CAD Assistant, **Save As → glTF 2.0 (Binary .glb)** with:
-  - Format: `glTF 2.0` → `Binary (.glb)`
-  - Units: `From source` (millimeters from STEP)
-  - Transformation format: `Compact`
-  - Node name format: `InstanceOrProduct`
-  - Mesh name format: `Product`
-  - Export UV for elements without texture maps: `OFF`
-  - Merge faces within the same part: `ON`
-  - Merge faces within 16-bit indices limit: `ON`
-
-**(Optional) Make faces transparent in Blender 4.3.2:**
-- Import the `.glb` into Blender: **File → Import → glTF 2.0 (.glb/.gltf)**
-- Select each object that should be semi-transparent:
-  - In **Material Properties → Surface → Principled BSDF**, lower **Alpha** from `1.0` to `0.1` (or desired value)
-  - In **Material Properties → Settings → Surface**, set **Render Method** to `Blended`
-- Export back to `.glb`: **File → Export → glTF 2.0** with:
-  - **Format:** `glTF Binary (.glb)`
-  - **Include → Data:** uncheck `Cameras` and `Punctual Lights`
-  - **Compression:** check `Compression` (keep the default numeric values)
-  - **Animation:** uncheck `Animation`
+- The DOM order matches the mobile stacking order above **not the source Markdown file**.  
+  The desktop layout is achieved purely via CSS (grid/flex) positioning of these groups.

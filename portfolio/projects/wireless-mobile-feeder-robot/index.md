@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Wireless Mobile Feeder Robot"
 summary: "A mobile feeder robot for delivering liquid rewards to rats during circular track experiments"
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/wireless-mobile-feeder-robot.glb"
 images:
   - src: "images/render_1.png"
@@ -120,24 +120,6 @@ Barnes Lab, University of Arizona (2 studies)
 **Status:**  
 Retired, May 2017–Aug 2021, Barnes Lab  
 
-## Included files
-
-*Attached on this page.*
-
-### Image Files
-- **render_1.png:** three-quarter view (front, right, top) render of feeder robot
-- **render_2.png:** oblique view (right, top) render of robot and rat inside ICR arena
-- **render_3.png:** top view render of robot and rat on track
-- **render_4_annotated.png:** annotated top view render of feeder and rat
-- **render_5_annotated.png:** annotated right view render of robot body
-- **render_6_annotated.png:** annotated left view render of robot body
-- **photo_1.png:** in-rig photo of assembled robot body on track
-- **photo_2.png:** close-up photo of feeder dish and cue LED
-- **photo_3.png:** close-up photo of dish-pivot stepper and pulley
-
-### 3D Model Files
-- **feeder_robot_TOP_ASSY.step:** top-level feeder robot assembly
-
 ## Release
 
 - **CAD:** full assembly STEP available in portfolio (see 3D Model Files)
@@ -155,3 +137,21 @@ Retired, May 2017–Aug 2021, Barnes Lab
 
 For additional details, see the published methods manuscript featuring this system and performance comparisons with an earlier fixed-feeder variant:
 - Lester, A. W., Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). Journal of Neuroscience Methods, 338, 108667.
+
+## Included files
+
+*Attached on this page.*
+
+### Image Files
+- **render_1.png:** three-quarter view (front, right, top) render of feeder robot
+- **render_2.png:** oblique view (right, top) render of robot and rat inside ICR arena
+- **render_3.png:** top view render of robot and rat on track
+- **render_4_annotated.png:** annotated top view render of feeder and rat
+- **render_5_annotated.png:** annotated right view render of robot body
+- **render_6_annotated.png:** annotated left view render of robot body
+- **photo_1.png:** in-rig photo of assembled robot body on track
+- **photo_2.png:** close-up photo of feeder dish and cue LED
+- **photo_3.png:** close-up photo of dish-pivot stepper and pulley
+
+### 3D Model Files
+- **feeder_robot_TOP_ASSY.step:** top-level feeder robot assembly

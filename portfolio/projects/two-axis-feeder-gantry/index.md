@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Two-Axis Feeder Gantry"
 summary: "CNC-based gantry system for automated spatially targeted reward delivery in rodent open-field experiments."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/two-axis-feeder-gantry.glb"
 images:
   - src: "images/diagram_1.png"
@@ -116,6 +116,26 @@ NC4 Lab, University of British Columbia (3 studies)
 **Status:**  
 active, Sep 2023–present, NC4 Lab  
 
+## Release
+
+- **CAD:** select STEP files available in portfolio (see 3D Model Files)
+- **Software:**
+- ROS workspace (Ubuntu): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
+- ROS workspace (Windows): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
+- **On request:** additional design files
+- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
+
+## Licensing
+
+- **Hardware:** CERN-OHL-W v2.0
+- **Software:** Apache-2.0
+- **Documentation:** CC BY 4.0
+
+## References
+
+For additional details, including system performance tests, see the preprint methods manuscript for the Omniroute maze, which features this subsystem:
+- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
+
 ## Included files
 
 *Attached on this page.*
@@ -136,23 +156,3 @@ active, Sep 2023–present, NC4 Lab
 
 - **feeder_gantry_TOP_ASSY.step:** top-level assembly of full feeder gantry
 - **feeder_gantry_SUB_cover_carriage.step:** cover carriage subassembly with feeder arm
-
-## Release
-
-- **CAD:** select STEP files available in portfolio (see 3D Model Files)
-- **Software:**
-- ROS workspace (Ubuntu): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
-- ROS workspace (Windows): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
-- **On request:** additional design files
-- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
-
-## Licensing
-
-- **Hardware:** CERN-OHL-W v2.0
-- **Software:** Apache-2.0
-- **Documentation:** CC BY 4.0
-
-## References
-
-For additional details, including system performance tests, see the preprint methods manuscript for the Omniroute maze, which features this subsystem:
-- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.

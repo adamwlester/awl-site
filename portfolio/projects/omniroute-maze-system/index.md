@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Omniroute Maze System"
 summary: "A dynamically reconfigurable rodent maze system that integrates automated route configurations, sensory cue control, and targeted reward delivery."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/omniroute-maze-system.glb"
 images:
   - src: "images/render_1.png"
@@ -116,6 +116,24 @@ The system is controlled via the Robot Operating System (ROS) with custom nodes 
 **Status:**  
 Active, Sep 2023–present, NC4 Lab  
 
+## Release
+
+- **CAD:**
+  - Gate modules:
+    - Design files (CAD, PCB, documentation): [https://osf.io/uy7ez](https://osf.io/uy7ez)
+    - See portfolio entry: ["NC4gate Automatable Gate Module"](https://www.cadcrowd.com/3d-models/modular-gate-mechanism)
+  - Feeder gantry: see portfolio entry ["Two-Axis Maze Feeder Gantry"](https://www.cadcrowd.com/3d-models/feeder-gantry)
+  - Projector mounts: see portfolio entry ["Adjustable Aluminum Projector Mount"](https://www.cadcrowd.com/3d-models/projector-mount)
+- **Software:**
+  - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
+  - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
+
+## References
+
+For additional details, including system performance tests, rodent behavior, and detailed schematics, see the preprint methods manuscripts for the Omniroute and the associated NC4gate system:
+- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
+- Lester, A. W., Kaur, G., Djafri, N., & Madhav, M. S. (2024). [A modular gate system for autonomous control of rodent behavior](https://www.biorxiv.org/content/10.1101/2024.11.22.624912v1). bioRxiv.
+
 ## Included files
 
 *Attached on this page.*
@@ -135,21 +153,3 @@ Active, Sep 2023–present, NC4 Lab
 - **omniroute_SUB_gates_and_platform.step:** subassembly of maze platform with NC4gate modules
 - **omniroute_SUB_feeder_gantry.step:** subassembly of feeder gantry
 - **omniroute_SUB_projector_mount.step:** subassembly of adjustable projector mount
-
-## Release
-
-- **CAD:**
-  - Gate modules:
-    - Design files (CAD, PCB, documentation): [https://osf.io/uy7ez](https://osf.io/uy7ez)
-    - See portfolio entry: ["NC4gate Automatable Gate Module"](https://www.cadcrowd.com/3d-models/modular-gate-mechanism)
-  - Feeder gantry: see portfolio entry ["Two-Axis Maze Feeder Gantry"](https://www.cadcrowd.com/3d-models/feeder-gantry)
-  - Projector mounts: see portfolio entry ["Adjustable Aluminum Projector Mount"](https://www.cadcrowd.com/3d-models/projector-mount)
-- **Software:**
-  - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
-  - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
-
-## References
-
-For additional details, including system performance tests, rodent behavior, and detailed schematics, see the preprint methods manuscripts for the Omniroute and the associated NC4gate system:
-- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
-- Lester, A. W., Kaur, G., Djafri, N., & Madhav, M. S. (2024). [A modular gate system for autonomous control of rodent behavior](https://www.biorxiv.org/content/10.1101/2024.11.22.624912v1). bioRxiv.

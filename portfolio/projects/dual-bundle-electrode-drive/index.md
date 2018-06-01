@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Dual-Bundle Electrode Drive"
 summary: "Split-bundle implant for dual-region tetrode recordings in freely moving rats."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/dual-bundle-electrode-drive.glb"
 images:
   - src: "images/render_1.png"
@@ -90,10 +90,6 @@ Barnes Lab, University of Arizona (2 studies)
 **Status:**  
 Active, Jun 2020–present, Barnes Lab
 
-## Included files
-
-*Attached on this page.*
-
 ## Release
 
 **CAD:** 
@@ -114,6 +110,10 @@ Active, Jun 2020–present, Barnes Lab
 ## References
 
 - (content not provided)
+
+## Included files
+
+*Attached on this page.*
 
 ### Image Files
 

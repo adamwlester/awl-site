@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "Instantaneous Cue Rotation (ICR) Arena"
 summary: "An augmented reality behavioral arena for studying cue-based navigation in freely moving rats."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/instantaneous-cue-rotation-icr-arena.glb"
 images:
   - src: "images/render_1.png"
@@ -105,25 +105,6 @@ Barnes Lab, University of Arizona (2 studies)
 **Status:**  
 Active, May 2017–present, Barnes Lab  
 
-## Included files
-
-*Attached on this page.*
-
-### Image Files
-
-- **render_1.png:** three-quarter view (front, right, top) render of full arena exterior with ceiling recess and strut channels
-- **render_2_annotated.png:** annotated front view render of arena layout
-- **render_3.png:** three-quarter view (rear, right, top) render of arena interior with robot and rat
-- **render_4.png:** top view render of arena interior with robot and rat
-- **render_5.png:** oblique view (right, top) render of robot and rat inside ICR arena
-- **photo_1.png:** in-rig photo of full arena in lab
-- **photo_2.png:** in-rig photo of rat on track with wall cues
-
-### 3D Model Files
-
-- **icr_arena_TOP_ASSY.step:** top-level Instantaneous Cue Rotation arena assembly
-- **feeder_robot_SUB.step:** feeder robot subassembly
-
 ## Release
 
 - **CAD:**
@@ -143,3 +124,22 @@ Active, May 2017–present, Barnes Lab
 For additional details, see the published methods manuscript, which features this system, and the subsequent study:
 - Lester, A. W., Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). Journal of Neuroscience Methods, 338, 108667.
 - Lester, A. W., Jordan, G. A., Blum, C. J., Philpot, Z. P., & Barnes, C. A. (2022). [Differential effects in young and aged rats’ navigational accuracy following instantaneous rotation of environmental cues](https://pubmed.ncbi.nlm.nih.gov/36395015/). Behavioral Neuroscience, 136, 561–574.
+
+## Included files
+
+*Attached on this page.*
+
+### Image Files
+
+- **render_1.png:** three-quarter view (front, right, top) render of full arena exterior with ceiling recess and strut channels
+- **render_2_annotated.png:** annotated front view render of arena layout
+- **render_3.png:** three-quarter view (rear, right, top) render of arena interior with robot and rat
+- **render_4.png:** top view render of arena interior with robot and rat
+- **render_5.png:** oblique view (right, top) render of robot and rat inside ICR arena
+- **photo_1.png:** in-rig photo of full arena in lab
+- **photo_2.png:** in-rig photo of rat on track with wall cues
+
+### 3D Model Files
+
+- **icr_arena_TOP_ASSY.step:** top-level Instantaneous Cue Rotation arena assembly
+- **feeder_robot_SUB.step:** feeder robot subassembly

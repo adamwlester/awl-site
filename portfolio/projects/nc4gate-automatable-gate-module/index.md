@@ -1,8 +1,8 @@
 ---
-layout: project
+layout: project-detail-page
 title: "NC4gate Automatable Gate Module"
 summary: "Modular motorized gate system for autonomous control of rodent behavior in maze experiments."
-hero: "hero.png"
+hero: "images/render_1.png"
 model: "models/nc4gate-automatable-gate-module.glb"
 images:
   - src: "images/render_1.png"
@@ -100,27 +100,6 @@ NC4 Lab, University of British Columbia (3 studies)
 **Status:**  
 Active, Sep 2023–present, NC4 Lab	
 
-## Included files
-
-*Attached on this page.*
-
-### Image Files
-
-- **render_1.png:** three-quarter view (front/rear, right, top) render of gate module
-- **render_2.png:** three-quarter view (front, right, top) render of gate module in raised and lowered state
-- **render_3.png:** three-quarter view (rear, right, top) render of gate module in raised and lowered state
-- **render_4_annotated.png:** annotated three-quarter view (front/rear, right, top) render of gate module
-- **render_5.png:** three-quarter view (front, right, top) render of 60 gate modules installed in Omniroute rig
-- **cadview_1_annotated.png:** annotated exploded CAD view of gate module
-- **photo_1.png:** bench photo of gate module, electronics side
-- **photo_2.png:** bench photo of gate module, wall panel side
-- **photo_3.png:** bench photo of 60 gate modules installed in Omniroute rig
-
-### 3D Model Files
-
-- **nc4_gate_TOP_ASSY_lowered.step:** top-level assembly of automatable gate module in lowered position
-- **nc4_gate_TOP_ASSY_raised.step:** top-level assembly of automatable gate module in raised position
-
 ## Release
 
 - **CAD:** 
@@ -143,3 +122,24 @@ Active, Sep 2023–present, NC4 Lab
 For additional details, including system performance tests and detailed schematics, see the preprint methods manuscripts for the NC4gate system and associated Omniroute maze:
 - Lester, A. W., Kaur, G., Djafri, N., & Madhav, M. S. (2024). [A modular gate system for autonomous control of rodent behavior](https://www.biorxiv.org/content/10.1101/2024.11.22.624912v1). bioRxiv.
 - Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
+
+## Included files
+
+*Attached on this page.*
+
+### Image Files
+
+- **render_1.png:** three-quarter view (front/rear, right, top) render of gate module
+- **render_2.png:** three-quarter view (front, right, top) render of gate module in raised and lowered state
+- **render_3.png:** three-quarter view (rear, right, top) render of gate module in raised and lowered state
+- **render_4_annotated.png:** annotated three-quarter view (front/rear, right, top) render of gate module
+- **render_5.png:** three-quarter view (front, right, top) render of 60 gate modules installed in Omniroute rig
+- **cadview_1_annotated.png:** annotated exploded CAD view of gate module
+- **photo_1.png:** bench photo of gate module, electronics side
+- **photo_2.png:** bench photo of gate module, wall panel side
+- **photo_3.png:** bench photo of 60 gate modules installed in Omniroute rig
+
+### 3D Model Files
+
+- **nc4_gate_TOP_ASSY_lowered.step:** top-level assembly of automatable gate module in lowered position
+- **nc4_gate_TOP_ASSY_raised.step:** top-level assembly of automatable gate module in raised position
