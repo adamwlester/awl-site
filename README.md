@@ -30,9 +30,9 @@ We will build in stages and are focusing on V1 elements now:
 ## GitHub Repo Structure
 
 ```markdown
-Repo: adamwlester-site
+Repo: adamwlester-website
 Deploy: GitHub Pages (project site)
-Public URL now: https://adamwlester.github.io/adamwlester-site/
+Public URL now: https://adamwlester.github.io/adamwlester-website/
 Future (V2): map to a custom domain without changing content.
 
 # repo root == site root (GitHub Pages/Jekyll)
@@ -180,6 +180,7 @@ It includes the following fields:
 - `hero`: Path (relative to the project folder) to the hero image file (for example, `images/render_1.png`).
   - This image is used as the project card thumbnail on the portfolio list page.
   - The value of 'hero' must exactly match the 'src' of one of the entries in the 'images:' array.
+  - The hero image does not need to be first in the images: list; it is selected solely by matching hero to an images.src value.
 - `model`: String path to the `.glb` file in the `/models/` folder.
   - Example: `model: "models/nc4touch-behavioral-apparatus.glb"`
 - `images`: List of supporting render or photo entries, each with:
@@ -206,7 +207,7 @@ It includes the following fields:
 #### Layout
 
 **Desktop**
-- The image-viewer banner spans the full content width at the top of the project detail page.
+- **Image-viewer** (banner), which spans the full content width at the top of the project detail page.
 - Directly beneath the banner, the page uses a **two-column layout**:
   - **Left-column:**
     - `title` (from front matter)
@@ -217,7 +218,7 @@ It includes the following fields:
     - Release (from content body)
     - References (from content body)
   - **Right-column:**
-    - 3D-viewer window at the top
+    - **3D-viewer** window at the top
     - Role and Contributions (from content body)
     - Highlights & Key Specs (from content body)
     - Deployment and Status (from content body)
@@ -227,8 +228,19 @@ It includes the following fields:
 - On smaller screens, all elements stack vertically in this order:
   1. Image-viewer (banner)
   2. 3D-viewer (window)
-  3. Left-column front matter and content body sections (listed above)
-  4. Right-column content body sections (listed above)
+  3. Left-column front matter and content body sections
+    - `title` (from front matter)
+    - `summary` (from front matter)
+    - Description (from content body)
+    - Validation and Performance (from content body)
+    - Materials and Fabrication (from content body)
+    - Release (from content body)
+    - References (from content body)
+  4. Right-column content body sections
+    - Role and Contributions (from content body)
+    - Highlights & Key Specs (from content body)
+    - Deployment and Status (from content body)
+    - Licensing (from content body)
 
 - The DOM order matches the mobile stacking order above **not the source Markdown file**.  
   The desktop layout is achieved purely via CSS (grid/flex) positioning of these groups.
