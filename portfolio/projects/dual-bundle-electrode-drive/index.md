@@ -5,6 +5,9 @@ description: "Split-bundle implant for dual-region tetrode recordings in freely 
 summary: "Split-bundle implant for dual-region tetrode recordings in freely moving rats."
 hero: "images/render_1.png"
 model_src: "models/dual-bundle-electrode-drive.glb"
+model_camera_orbit: "auto auto auto"
+model_camera_target: "auto auto auto"
+model_fov: "auto"
 images:
   - src: "images/render_1.png"
     caption: "Three-quarter view (rear, left, top) render of the complete dual-bundle drive with FreeLynx cover and Halo-18 components"

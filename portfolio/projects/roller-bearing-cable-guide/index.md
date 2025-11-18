@@ -5,6 +5,9 @@ description: "Compact, low-torsion cable guide with a bearing-mounted collet and
 summary: "Compact, low-torsion cable guide with a bearing-mounted collet and dual-rail carriage for quiet, low-resistance travel in tethered rodent recordings."
 hero: "images/render_1.png"
 model_src: "models/roller-bearing-cable-guide.glb"
+model_camera_orbit: "auto auto auto"
+model_camera_target: "auto auto auto"
+model_fov: "auto"
 images:
   - src: "images/render_1.png"
     caption: "Three-quarter view (front, right, top) render of the cable guide assembly"

@@ -5,6 +5,9 @@ description: "An augmented reality behavioral arena for studying cue-based navig
 summary: "An augmented reality behavioral arena for studying cue-based navigation in freely moving rats."
 hero: "images/render_1.png"
 model_src: "models/instantaneous-cue-rotation-arena.glb"
+model_camera_orbit: "auto auto auto"
+model_camera_target: "auto auto auto"
+model_fov: "auto"
 images:
   - src: "images/render_1.png"
     caption: "Three-quarter view (front, right, top) render of full arena exterior with ceiling recess and strut channels"

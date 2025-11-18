@@ -489,7 +489,11 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - `model_src` is a path **relative to the project folder** pointing to the `.glb` file in that project’s local `models/` subfolder.  
   - Example front matter: `model_src: "models/nc4touch-behavioral-apparatus.glb"`  
   - Example corresponding filesystem path:  
-    `portfolio/projects/nc4touch-behavioral-apparatus/models/nc4touch-behavioral-apparatus.glb`
+    `portfolio/projects/nc4touch-behavioral-apparatus/models/nc4touch-behavioral-apparatus.glb`  
+- Per-model viewer fields in front matter:
+  - `model_camera_orbit`: String passed to `<model-viewer>` `camera-orbit` (e.g., `"auto auto auto"` or `"45deg 75deg 2.5m"`).
+  - `model_camera_target`: String passed to `<model-viewer>` `camera-target` (e.g., `"auto auto auto"` or `"0m 0.5m 0m"`).
+  - `model_fov`: String passed to `<model-viewer>` `field-of-view` (e.g., `"auto"` or `"45deg"`).
 
 **Behavior:**  
 - On page load, `<model-viewer>` autoloads the `.glb` file referenced by `model_src`.  
@@ -521,21 +525,29 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
   - `model_src`: Path (relative to the project folder) to the `.glb` file in that project’s `models/` subfolder.
     - Example: `models/nc4touch-behavioral-apparatus.glb`.
     - This file is loaded into the 3D-viewer window on the project detail page.
+  - `model_camera_orbit`: String passed to `<model-viewer>` `camera-orbit`.
+    - Example values include `"auto auto auto"` or an explicit orbit such as `"45deg 75deg 2.5m"`.
+  - `model_camera_target`: String passed to `<model-viewer>` `camera-target`.
+    - Example values include `"auto auto auto"` or a specific target such as `"0m 0.5m 0m"`.
+  - `model_fov`: String passed to `<model-viewer>` `field-of-view`.
+    - Example values include `"auto"` or a specific FOV such as `"45deg"`.
   - `images`: List of supporting render or photo entries, each with:
     - `src`: Path to the `.png` file, relative to the project folder, typically in that project’s `images/` subfolder.
       - Used by the image-viewer media carousel at the top of the project detail page.
     - `caption`: One-line description for context and accessibility.
       - This field is used as the source of the `<img>` `alt` text for the image-viewer.
       - Not visually rendered in V1
-
-  - *(Future fields, if added)* **must** follow this explicit key-value format; no implicit defaults or fallback behavior.
 - Example front matter:
   ```yaml
   ---
   title: "NC4Touch Behavioral Apparatus"
   summary: "An open-source, modular behavioral apparatus for rodent cognitive experiments."
+  description: "An open-source, modular behavioral apparatus for rodent cognitive experiments."
   hero: "images/render_1.png"
   model_src: "models/nc4touch-behavioral-apparatus.glb"
+  model_camera_orbit: "auto auto auto"
+  model_camera_target: "auto auto auto"
+  model_fov: "auto"
   images:
     - src: "images/render_1.png"
       caption: "Isometric view of the NC4Touch apparatus."
