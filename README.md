@@ -443,7 +443,6 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
   - `Highlights & Key Specs`
   - `Deployment & Status`
   - `Licensing`
-- No additional sections are used outside this wrapper for V1.
 - Headings:
   - Use normal Markdown syntax (`#`, `##`, `###`).
   - Visual styles (sizes, spacing, hierarchy) are controlled globally in `assets/css/custom.css`.

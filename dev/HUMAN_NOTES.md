@@ -58,3 +58,73 @@ foldable-adjustable-painting-easel
   - **Include → Data:** uncheck `Cameras` and `Punctual Lights`
   - **Compression:** check `Compression` (keep the default numeric values)
   - **Animation:** uncheck `Animation`
+
+## Styling
+
+### Font Stack Options (Personal Notes)
+
+Two recommended approaches for defining global typography in `assets/css/custom.css`. These declarations go inside a top-level `:root` block and are used to set the default fonts for the entire site.
+
+#### Option A — System UI Sans-Serif (Fast + Clean)
+Uses native OS fonts (San Francisco, Segoe UI, Roboto) for a modern, high-performance look. No webfonts to load.
+```css
+:root {
+  --ff-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-heading: var(--ff-body);
+}
+```
+Context:
+This mirrors the stack used on the reference site and provides excellent readability with zero load time. Ideal default choice for a technical portfolio.
+
+#### Option B — Inter Webfont Heading (More Designed)
+Loads the Inter font for headings and uses it throughout via cascading fallbacks.
+```css
+:root {
+  --ff-heading: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-body: var(--ff-heading);
+}
+```
+Context:
+Inter is a polished, modern sans-serif with strong legibility. This adds a more refined visual tone but requires importing a webfont (minor performance cost).
+
+## To Do
+
+Files & directories to add before enabling GitHub Pages:
+
+1. _config.yml
+   - Minimal Jekyll config with:
+     - url: "https://adamwlester.github.io"
+     - baseurl: "/awl-site"  (or current repo name)
+     - exclude: [.github/, .vscode/, README.md, etc.]
+
+2. _layouts/default.html
+   - Base HTML shell with global header, {{ content }}, and link to assets/css/custom.css.
+
+3. _layouts/portfolio-list-page.html
+   - Front matter: layout: default
+   - Simple wrapper around {{ content }}.
+
+4. _layouts/project-detail-page.html
+   - Front matter: layout: default
+   - Simple wrapper around {{ content }}.
+
+5. _includes/section.html
+   - Simple section wrapper stub.
+
+6. _includes/project-grid.html
+   - Basic stub container for project grid.
+
+7. _includes/project-card.html
+   - Basic stub container for individual project cards.
+
+8. assets/css/custom.css
+   - Minimal base stylesheet (just enough to avoid a broken layout).
+
+9. docs/
+   - Add CV.pdf and Resume.pdf *if* linked from the header; otherwise skip or remove links.
+
+10. Front matter checks (edits only):
+    - index.md → layout: default, title: "Home"
+    - portfolio/index.md → layout: portfolio-list-page, title: "Portfolio"
+    - each project’s index.md → layout: project-detail-page
+
