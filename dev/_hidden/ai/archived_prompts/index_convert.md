@@ -31,7 +31,7 @@ layout: project-detail-page
 title: "<Project Title>"
 summary: "<One-sentence summary previously under ## Summary>"
 hero: "images/render_1.png"
-model: "models/<slug>.glb"
+model_src: "models/<slug>.glb"
 - For images:
   - Extract them from the “### Image Files” section of the old markdown.
   - Each original filename like `render_01.png` must become:

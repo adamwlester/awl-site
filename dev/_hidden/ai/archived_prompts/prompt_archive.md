@@ -74,7 +74,7 @@ layout: project-detail-page
 title: "<Project Title>"
 summary: "<One-sentence summary previously under ## Summary>"
 hero: "images/render_1.png"
-model: "models/<slug>.glb"
+model_src: "models/<slug>.glb"
 images:
   - src: "<image filename>"
     caption: "<caption text>"
