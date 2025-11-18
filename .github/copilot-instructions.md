@@ -1,5 +1,5 @@
 <!-- Purpose: concise, repo-specific guidance for AI coding agents -->
-# Copilot instructions — adamwlester-website
+# Copilot instructions — awl-site
 
 Purpose: Help an AI coding agent be immediately productive in this repository.
 

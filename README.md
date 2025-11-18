@@ -6,7 +6,7 @@ We will build in stages and are focusing on V1 elements now:
 - Minimal support for **Home**.
 - Needs foundations in place for **V2** expansion.
 
-## Site Map
+## SITE MAP
 
 ```markdown
 /
@@ -20,20 +20,20 @@ We will build in stages and are focusing on V1 elements now:
       └─ Contact                                # email/links/form (optional later)
 ```
 
-## Stack Overview
+## STACK OVERVIEW
 
 - **Platform:** Jekyll static site generator (GitHub Pages).
 - **Templating:** Liquid templates.
 - **Styling:** Custom CSS (no framework).
-- **3D-viewer:** Google `<model-viewer>`.
-- **image-viewer:** Custom CSS scroll-snap carousel with lightweight vanilla-JS arrows + thumbnails.
+- **3D-viewer (window):** Google `<model-viewer>`.
+- **image-viewer (media banner):** Custom CSS scroll-snap carousel with lightweight vanilla-JS arrows + thumbnails.
 
-## GitHub Repo Structure
+## GITHUB REPO STRUCTURE
 
 ```markdown
-Repo: adamwlester-website
+Repo: awl-site
 Deploy: GitHub Pages (project site)
-Public URL now: https://adamwlester.github.io/adamwlester-website/
+Public URL now: https://adamwlester.github.io/awl-site/
 Future (V2): map to a custom domain without changing content.
 
 # repo root == site root (GitHub Pages/Jekyll)
@@ -44,18 +44,18 @@ index.md                                    # homepage (**site root**) -> minima
 │   │   └── custom.css                      # single stylesheet for colors, spacing, typography, global header, banner, layout
 │   └── images/
 │       ├── home-banner.png                 # used by homepage front matter: banner_image: /assets/images/home-banner.png
-│       └── portfolio-list-banner.png       # used by portfolio/index.md front matter: banner_image: /assets/images/portfolio-list-page-banner.png
+│       └── portfolio-list-banner.png       # used by portfolio/index.md front matter: banner_image: /assets/images/portfolio-list-banner.png
 ├── docs/
 │   ├── CV.pdf                              # full academic CV (served directly via GitHub Pages)
 │   └── Resume.pdf                          # short professional resume (also served directly)
 ├── _includes/
-│   ├── section.html                        # generic wrapper include for styled sections (spacing, background)
+│   ├── section.html                        # generic wrapper include for styled sections
 │   ├── project-grid.html                   # include for the **portfolio project grid** on /portfolio/
-│   └── project-card.html                   # include for a single **portfolio project card** (thumbnail + title + summary)
+│   └── project-card.html                   # include for a single **portfolio project card**
 ├── _layouts/
-│   ├── default.html                        # base site layout (html/head/body shell, global header/footer)
-│   ├── portfolio-list-page.html            # layout for the **portfolio list page** (/portfolio/ grid view)
-│   └── project-detail-page.html            # layout for each **project detail page** (banner + 3D viewer + content columns)
+│   ├── default.html                        # base site layout (html/head/body shell + global header)
+│   ├── portfolio-list-page.html            # layout for the **portfolio list page** (/portfolio/)
+│   └── project-detail-page.html            # layout for each **project detail page**
 └── portfolio/                              # portfolio section container
     ├── index.md                            # **portfolio list page** (uses layout: portfolio-list-page; section intro + project grid)
     └── projects/                           # only this section’s projects live here
@@ -67,41 +67,24 @@ index.md                                    # homepage (**site root**) -> minima
                 └── <slug>.glb              # GLB model file (≤ 100 MB; referenced by the `model` front matter field)
 ```
 
-```markdown
-Repo: adamwlester-website
-Deploy: GitHub Pages (project site)
-Public URL now: https://adamwlester.github.io/adamwlester-website/
-Future (V2): map to a custom domain without changing content.
+## Layout & CSS Responsibilities (Quick Map)
 
-# repo root == site root (GitHub Pages/Jekyll)
-_config.yml                                 # Jekyll site settings + global configuration
-index.md                                    # homepage (**site root**) -> uses layout: default; banner + intro text + CTA to /portfolio/
-├── assets/
-│   └── css/
-│       └── custom.css                      # single stylesheet for colors, spacing, typography, global header, banner, layout
-├── docs/
-│   ├── CV.pdf                              # full academic CV (served directly via GitHub Pages)
-│   └── Resume.pdf                          # short professional resume (also served directly)
-├── _includes/
-│   ├── section.html                        # generic wrapper include for styled sections (spacing, background)
-│   ├── project-grid.html                   # include for the **portfolio project grid** on /portfolio/
-│   └── project-card.html                   # include for a single **portfolio project card** (thumbnail + title + summary)
-├── _layouts/
-│   ├── default.html                        # base site layout (html/head/body shell, global header with nav links, optional banner region)
-│   ├── portfolio-list-page.html            # layout for the **portfolio list page** (/portfolio/ banner + grid view)
-│   └── project-detail-page.html            # layout for each **project detail page** (image banner + 3D viewer + content columns)
-└── portfolio/                              # portfolio section container
-    ├── index.md                            # **portfolio list page** (uses layout: portfolio-list-page; banner + lead text + project grid)
-    └── projects/                           # only this section’s projects live here
-        └── <slug>/                         # slug is the folder name (becomes the URL tail)
-            ├── index.md                    # **project detail page** (uses layout: project-detail-page; front matter + content body; single source of truth)
-            ├── images/                     # image assets referenced in front matter + Markdown content
-            │    └── <image>.png            # PNG image files (renders, photos; referenced by the `images` and `hero` front matter fields)
-            └── models/                     # 3D assets (only one model per project)
-                └── <slug>.glb              # GLB model file (≤ 100 MB; referenced by the `model` front matter field)
-```
+- `_layouts/default.html`  
+  - Global page shell: wraps every page, renders the site-wide header and optional shared banner region.
+- `_layouts/portfolio-list-page.html`  
+  - Specializes the layout for `/portfolio/`: shared banner, page lead/intro text, and the project card grid.
+- `_layouts/project-detail-page.html`  
+  - Project detail layout: image-viewer banner, 3D-viewer window, and two-column narrative content.
+- `_includes/section.html`  
+  - Generic section wrapper for consistent spacing and max-width across different page sections.
+- `_includes/project-grid.html`  
+  - Renders the portfolio grid by looping over the configured list of projects.
+- `_includes/project-card.html`  
+  - Renders a single project card (hero image, title, summary, link to the detail page).
+- `assets/css/custom.css`  
+  - Single stylesheet that defines base typography, colors, layout, header/banner styling, and responsive behavior across pages.
 
-## Key Components & Behavior
+## KEY COMPONENTS & BEHAVIOR
 
 **Note:** I am open to changing or modifying these requirements to some degree based on practicality and optimal approach.
 
@@ -139,7 +122,7 @@ index.md                                    # homepage (**site root**) -> uses l
 
 **Data source:**  
 - Front matter fields defined in each page’s `index.md`:
-  - `banner_image`: Path to the banner image file, relative to the site root or page.  
+  - `banner_image`: Path to the banner image file, always a root-relative path (e.g., `/assets/images/home-banner.png`).
   - `banner_title`: Short title rendered over or adjacent to the banner image.  
   - `banner_subtitle`: One- or two-line subtitle providing additional context.
 
@@ -155,6 +138,7 @@ index.md                                    # homepage (**site root**) -> uses l
 **Constraints / Notes:**  
 - Banner image sizing, aspect ratio, and responsive behavior are controlled via `assets/css/custom.css`.  
 - The home page and portfolio list page both use this shared banner pattern for consistent visual branding.
+- Project detail pages do not use this shared banner; they instead use the media image-viewer banner described in the Project Detail section.
 
 ### Home Page Overview
 
@@ -170,8 +154,9 @@ index.md                                    # homepage (**site root**) -> uses l
 
 **Front Matter Content (`index.md`):**  
 - `layout`: Must be set to `default`.  
+- `title`: Page title (i.e., `Home`) used for metadata (browser tab, SEO).
 - `banner_image`: Path to the banner image file.  
-- `banner_title`: Text title displayed in the banner.  
+- `banner_title`: Text title (i.e., `Adam W. Lester`) displayed in the banner.  
 - `banner_subtitle`: Supporting subtitle text displayed in the banner.
 
 #### Intro Text Block
@@ -235,20 +220,29 @@ index.md                                    # homepage (**site root**) -> uses l
 #### Main Elements
 
 **Main elements of the portfolio list page include:**
+- **Banner Region (`portfolio/index.md`)**  
+  – Full-width banner at the top of the portfolio list page, displaying the banner image, title, and subtitle.
 - **Page Header Text (`portfolio/index.md`)**  
-  – Full-width introductory block at the top of the portfolio list page, displaying page title and lead.
+  – Full-width introductory block directly **below the banner**, displaying the page lead text.
 - **Project Card Grid**  
   – Responsive grid of uniformly styled project cards, each showing the project hero image, title, and summary.
 
 **Front Matter Content (`portfolio/index.md`):** 
-- `banner_title`: Page title (e.g., “Portfolio”).  
-- `page_lead`: Short introductory paragraph describing the portfolio list page.
+- `layout`: Must be set to `portfolio-list-page`.  
+- `title`: Page title (i.e., `Portfolio`) used for metadata (browser tab, SEO).
+- `banner_image`: Path to the banner image used in the shared banner component.
+- `banner_title`: Text title (i.e., `Portfolio`) displayed in the banner.  
+- `banner_subtitle`: Short supporting line shown inside the banner under the title.
+- `page_lead`: Short introductory paragraph rendered below the banner, describing the portfolio list page.
 - `projects:`: Array of project slugs determining which projects to show and their order.
 - Example front matter:
   ```yaml
   ---
   layout: portfolio-list-page
+  title: "Portfolio"
+  banner_image: /assets/images/portfolio-list-banner.png
   banner_title: "Portfolio"
+  banner_subtitle: "Open-source research instruments, behavioral platforms, and supporting hardware"
   page_lead: "A collection of open-source research instruments, behavioral platforms, and supporting hardware developed across neuroscience and biomedical engineering projects. Each entry links to a detailed project page with full narrative, images, and a 3D model."
   projects:
     - nc4touch-behavioral-apparatus
@@ -260,14 +254,14 @@ index.md                                    # homepage (**site root**) -> uses l
 #### Page Header Text
 
 **Component:**  
-- Full-width introductory block at the top of the portfolio list page.
-- *Rendered as the header region in `_layouts/portfolio-list-page.html`, optionally wrapped with `_includes/section.html` for consistent spacing.*
+- Full-width introductory block rendered **below the banner** on the portfolio list page.
+- *Rendered as the header/lead region in `_layouts/portfolio-list-page.html`, optionally wrapped with `_includes/section.html` for consistent spacing.*
 
 **Data source:**  
-- `portfolio/index.md` front matter: `banner_title` and `page_lead`.
+- `portfolio/index.md` front matter: `page_lead`.
 
 **Behavior:**  
-- Renders as a single, full-width header above the project card grid.  
+- Renders as a full-width lead paragraph **between** the banner and the project card grid.  
 - Provides context for the portfolio list and orients the user to the content below.
 
 **Constraints / Notes:**  
@@ -301,17 +295,21 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 
 **Desktop / large screens:**  
 - The page stacks elements vertically in this order:
-  1. **Page Header Text** (full-width block at the top)
+  1. **Banner Region**
+     - `banner_image` as the background/visual.
      - `banner_title` as the primary heading.
-     - `page_lead` as a descriptive paragraph directly below the title.
-  2. **Project Card Grid**
+     - `banner_subtitle` as the supporting line beneath the title.
+  2. **Page Header Text**
+     - `page_lead` rendered as a descriptive paragraph below the banner.
+  3. **Project Card Grid**
      - Cards arranged in multiple columns (e.g., 2–4, depending on viewport width).
      - Cards maintain consistent aspect ratio, spacing, and typography across the grid.
 
 **Mobile / small screens:**  
 - All elements stack vertically in this order:
-  1. Page Header Text (full-width, with `banner_title` and `page_lead` stacked)
-  2. Project Card Grid
+  1. Banner Region (image with `banner_title` and `banner_subtitle` stacked)
+  2. Page Header Text (`page_lead` as a full-width intro block)
+  3. Project Card Grid
      - Grid collapses to fewer columns as the viewport narrows, eventually to a single column on very small screens.
      - Vertical spacing and padding are preserved so cards remain readable and visually distinct.
 
@@ -332,9 +330,8 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - **Project Detail Content (`portfolio/projects/<slug>/index.md`):** 
   - The full structured Markdown (front matter + content body) for the project. 
   - All text on the project detail page (both columns) is derived from this file.
-- **Independence of components:** 
-  - The image-viewer and 3D-viewer are independent in implementation
-  - The image-viewer handles all image media, and the 3D-viewer handles the single model.
+- **Independence of components:**  
+  - The image-viewer and 3D-viewer are independent in implementation. The image-viewer handles all image media, and the 3D-viewer handles the single model.  
   - Their behavior and rendering do not affect how the Markdown content is authored.
 
 #### Media Image-Viewer Banner
@@ -495,42 +492,39 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - The DOM order matches the mobile stacking order above.
 - The desktop layout is achieved purely via CSS (grid/flex) positioning of the left and right column containers.
 
-## Implementation Status
+## IMPLEMENTATION STATUS
 *A concise overview of what currently exists in the site and how the core pieces are structured.*
 
 ### Structure & Content
 *Overall site foundation, routing, and project content.*
 
 **Done:**
-- Jekyll site scaffolded with `index.md` as the home page (just a stub right now).
-- Portfolio section implemented (`/portfolio/`) with project-specific routes under `portfolio/projects/<slug>/`.
+- Jekyll site scaffolded with `index.md` as the home page (minimal content for now).
+- Portfolio section in place (`/portfolio/`) with project-specific routes under `portfolio/projects/<slug>/`.
 - Standardized project folder pattern established (`images/`, `models/`, `index.md`).
 - All professional project folders added with full image sets, model files, and `index.md` content.
-- Portfolio index configured with project slugs in the intended display order.
+- Portfolio index configured with project slugs listed in the intended display order.
 
 **To Do:**
-- Populate and style the home page (`index.md` at the site root).
+- Only minor content tweaks and copy refinements as needed.
 
 ### Layouts & Includes
 *Templates responsible for rendering pages and reusable components.*
 
 **Done:**
-- Nothing
+- Layout and include structure defined in this README (names, responsibilities, and how they should work together).
 
 **To Do:**
-- `default.html` functioning as the global page wrapper.
-- `portfolio-list-page.html` implemented for the project listing view.
-- `project-detail-page.html` implemented for individual project pages.
-- Includes added for grid and card rendering (`project-grid.html`, `project-card.html`).
-- Section wrapper include (`section.html`) available for consistent spacing and structure.
+- Implement the core layouts for the base page shell, portfolio list view, and project detail view.
+- Implement the includes for reusable sections and project grids/cards.
 
 ### Styling & Components
 *Global styles and UI behavior.*
 
 **Done:**
-- Nothing
+- Global styling approach defined in this README (single main stylesheet, shared patterns for layout and components).
 
 **To Do:**
-- `custom.css` implemented with core typography, layout, grid, and responsive rules.
-- Image viewer banner and thumbnail strip styled and functional.
-- Base two-column layout for project detail pages in place with mobile fallback.
+- Implement global styles in `assets/css/custom.css`.
+- Add responsive behavior and visual styling for the header, banner, portfolio cards, image viewer, and project detail layout.
+

@@ -1,5 +1,6 @@
 ---
 layout: portfolio-list-page
+title: Portfolio
 banner_image: /assets/images/portfolio-list-banner.png
 banner_title: Portfolio
 banner_subtitle: Open-source research instruments, behavioral platforms, and supporting hardware

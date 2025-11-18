@@ -50,9 +50,9 @@ We will build in stages and are focusing on V1 elements now:
 ## GitHub Repo Structure
 
 ```text
-Repo: adamwlester-website
+Repo: awl-site
 Deploy: GitHub Pages (project site)
-Public URL now: https://adamwlester.github.io/adamwlester-website/
+Public URL now: https://adamwlester.github.io/awl-site/
 Future (V2): map to a custom domain without changing content.
 Future (V2): add personal portfolio at portfolio/personal/
 
