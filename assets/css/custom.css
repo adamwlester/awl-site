@@ -1,9 +1,53 @@
-/* Minimal V1 base styles for awl-site */
+/* =========================================================
+   1. Design tokens (colors, typography, spacing, layout)
+   ========================================================= */
 
 :root {
-  --ff-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Typography */
+  --ff-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+             "Helvetica Neue", Arial, sans-serif;
   --ff-heading: var(--ff-body);
+
+  /* Colors */
+  --color-bg: #f7f5f1;            /* page background */
+  --color-surface: #ffffff;       /* cards, sections, header */
+  --color-border-subtle: #e3dfd7; /* light borders & dividers */
+
+  --color-text: #222222;          /* main text */
+  --color-text-muted: #666666;    /* secondary text */
+  --color-accent: #2b5f8a;        /* links, key highlights */
+  --color-accent-soft: #eef3f9;   /* soft accent background for tags/badges */
+
+  /* Shadows */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.04);      /* default card shadow */
+  --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.10);
+
+  /* Spacing scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+
+  /* Layout */
+  --max-width-content: 960px;
+  --header-height: 56px;
+  --page-banner-height: 280px;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
 }
+
+/* Breakpoints (for reference in comments)
+   - Small:  < 768px
+   - Medium: 768px–1023px
+   - Large:  >= 1024px
+*/
+
+/* =========================================================
+   2. Base / reset styles
+   ========================================================= */
 
 *,
 *::before,
@@ -19,111 +63,660 @@ body {
 
 body {
   font-family: var(--ff-body);
-  line-height: 1.5;
-  color: #111;
-  background-color: #fff;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Global header */
+/* Make images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--ff-heading);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-2);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.1rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1.05rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+  padding-left: 1.5rem;
+}
+
+li + li {
+  margin-top: 0.25rem;
+}
+
+/* Links */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+/* Code / pre */
+code {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 0.95em;
+}
+
+/* =========================================================
+   3. Layout wrappers & global structure
+   ========================================================= */
+
+.site-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Primary content wrapper inside layouts */
+.site-wrapper {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding-inline: var(--space-2);
+}
+
+/* Main content area (used inside default layout) */
+.site-main {
+  flex: 1 0 auto;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-5);
+}
+
+/* Optional footer */
+.site-footer {
+  flex-shrink: 0;
+  padding: var(--space-3) var(--space-2);
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* =========================================================
+   4. Global header / navigation
+   ========================================================= */
 
 .site-header {
-  border-bottom: 1px solid #ddd;
-  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-subtle);
+  height: var(--header-height);
 }
 
-.site-nav {
+.site-header-inner {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding-inline: var(--space-2);
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+}
+
+/* Left: nav links */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 .site-nav a {
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  color: var(--color-accent);
   text-decoration: none;
-  color: inherit;
-  opacity: 0.85;
 }
 
-.site-nav a:hover {
-  opacity: 1;
-}
-
+/* Right: site title (name) */
 .site-title {
   font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
 }
 
-/* Layout */
+/* Mobile header stacking */
+@media (max-width: 640px) {
+  .site-header-inner {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.25rem;
+  }
 
-.site-main {
-  padding: 2rem 1.5rem 3rem;
-  max-width: 960px;
-  margin: 0 auto;
+  .site-header {
+    height: auto;
+    padding-block: var(--space-1);
+  }
 }
 
-/* Basic page banner */
+/* =========================================================
+   5. Shared page banner (home + portfolio list)
+   ========================================================= */
 
+/* Banner wrapper rendered by layouts when banner_image is present */
 .page-banner {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.page-banner-image img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.page-banner-text h1 {
-  margin-top: 0;
-}
-
-/* Project card grid (placeholder styles) */
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-}
-
-.project-card {
-  border: 1px solid #eee;
-  border-radius: 0.5rem;
+  position: relative;
+  height: var(--page-banner-height);
+  background-color: var(--color-border-subtle);
+  color: var(--color-text);
   overflow: hidden;
-  background-color: #fff;
 }
 
-.project-card a {
-  color: inherit;
-  text-decoration: none;
-  display: block;
+/* Banner background image applied inline as background-image style
+   on an inner div for better control. */
+.page-banner-bg {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: brightness(0.9);
+}
+
+/* Overlay to soften the image slightly */
+.page-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.95)
+  );
+}
+
+/* Banner content (title + subtitle) */
+.page-banner-content {
+  position: relative;
+  z-index: 1;
   height: 100%;
 }
 
-.project-card-image img {
-  display: block;
-  width: 100%;
-  height: auto;
+.page-banner-inner {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding-inline: var(--space-2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+.page-banner-title {
+  font-size: 1.8rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.page-banner-subtitle {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+/* =========================================================
+   6. Generic section include (.section.html)
+   ========================================================= */
+
+.section {
+  padding-block: var(--space-4);
+}
+
+.section--tight {
+  padding-block: var(--space-3);
+}
+
+.section--flush-top {
+  padding-top: 0;
+}
+
+.section--flush-bottom {
+  padding-bottom: 0;
+}
+
+.section-inner {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding-inline: var(--space-2);
+}
+
+/* Use for muted / alternate background sections if needed */
+.section--surface {
+  background-color: var(--color-surface);
+}
+
+/* =========================================================
+   7. Home / generic content
+   ========================================================= */
+
+.page-lead {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 40rem;
+}
+
+/* Simple primary link-like button (e.g., "View Portfolio") */
+.button-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.95rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent);
+  color: #ffffff;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.button-link:hover,
+.button-link:focus {
+  text-decoration: none;
+  background-color: #234b6c; /* slightly darker accent */
+}
+
+/* =========================================================
+   8. Portfolio list page: project grid & cards
+   ========================================================= */
+
+/* Lead text on portfolio list page */
+.portfolio-lead {
+  margin-bottom: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+/* Project grid container */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+/* Individual project card (wrapper) */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  text-decoration: none; /* in case card is an <a> */
+  color: inherit;
+  transform-origin: center;
+  transition:
+    transform 140ms ease-out,
+    box-shadow 140ms ease-out,
+    border-color 140ms ease-out,
+    background-color 140ms ease-out;
+}
+
+/* Hero image at the top of the card */
+.project-card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition:
+    transform 160ms ease-out,
+    filter 160ms ease-out;
+}
+
+/* Card body (title + summary) */
 .project-card-body {
-  padding: 1rem;
+  padding: var(--space-2);
 }
 
 .project-card-title {
-  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem 0;
+  color: var(--color-text);
 }
 
 .project-card-summary {
-  margin: 0;
   font-size: 0.95rem;
-  opacity: 0.9;
+  margin: 0;
+  color: var(--color-text-muted);
 }
 
-/* Basic project detail */
+/* Hover state: lift, slight scale, stronger shadow, image focus */
+.project-card:hover,
+.project-card:focus-within {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+}
 
-.project-detail .project-summary {
+.project-card:hover .project-card-image img,
+.project-card:focus-within .project-card-image img {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Ensure title link (if used) doesn't add underline on hover */
+.project-card-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-card-title a:hover,
+.project-card-title a:focus {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   9. Project detail layout (2-column + content)
+   ========================================================= */
+
+/* Overall detail page wrapper */
+.project-detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* Media section (image viewer full-width) */
+.project-media-section {
+  margin-bottom: var(--space-3);
+}
+
+/* Two-column layout for main content + aside */
+.project-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+/* Left column (narrative) */
+.project-main-column {
+  min-width: 0;
+}
+
+/* Right column (3D viewer + secondary sections) */
+.project-aside-column {
+  min-width: 0;
+}
+
+/* Title and summary at top of left column */
+.project-title {
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 0.35rem;
+}
+
+.project-summary {
   font-size: 1.05rem;
-  opacity: 0.9;
+  color: var(--color-text-muted);
+  margin-top: 0;
+  margin-bottom: var(--space-3);
+}
+
+/* Generic spacing for content sections inside columns */
+.project-content-section + .project-content-section {
+  margin-top: var(--space-3);
+}
+
+/* Smaller screens: stack columns */
+@media (max-width: 767px) {
+  .project-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .project-aside-column {
+    order: -1; /* 3D viewer appears before text on very small screens if desired */
+  }
+}
+
+/* Medium screens: allow columns but with tighter gap */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .project-layout {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--space-3);
+  }
+}
+
+/* =========================================================
+   10. Image viewer (banner carousel on project detail)
+   ========================================================= */
+
+/* Outer container */
+.image-viewer {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-2);
+}
+
+/* Main area: arrows + scrollable track */
+.image-viewer-main {
+  position: relative;
+}
+
+/* Scrollable horizontal track */
+.image-viewer-track {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: var(--space-1);
+  margin-bottom: var(--space-1);
+}
+
+/* Hide default scrollbar (where supported) for cleaner look */
+.image-viewer-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.image-viewer-track::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+}
+
+/* Individual slides */
+.image-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.image-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Navigation arrows (visual style only; JS hooks will wire behavior) */
+.image-viewer-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.image-viewer-arrow--prev {
+  left: var(--space-1);
+}
+
+.image-viewer-arrow--next {
+  right: var(--space-1);
+}
+
+.image-viewer-arrow-icon {
+  font-size: 1rem;
+}
+
+/* Thumbnail strip */
+.image-viewer-thumbnails {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+}
+
+.image-viewer-thumb {
+  width: 72px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.image-viewer-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Active thumbnail state (set via JS) */
+.image-viewer-thumb--active {
+  border-color: var(--color-accent);
+}
+
+/* Smaller screens: let slides be slightly narrower than viewport for breathing room */
+@media (max-width: 767px) {
+  .image-slide {
+    flex-basis: 92%;
+  }
+}
+
+/* =========================================================
+   11. 3D viewer panel (<model-viewer>)
+   ========================================================= */
+
+.model-viewer-panel {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-2);
+}
+
+/* Title above the 3D viewer, if used */
+.model-viewer-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+}
+
+/* Make the <model-viewer> element a responsive box */
+model-viewer {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-height: 480px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: #e5e5e5; /* neutral fallback while model loads */
+}
+
+/* =========================================================
+   12. Utility classes & responsive tweaks
+   ========================================================= */
+
+/* Utility for muted text */
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* Utility for slightly smaller text */
+.text-small {
+  font-size: 0.9rem;
+}
+
+/* Stack vertical spacing in generic content blocks */
+.stack > * + * {
+  margin-top: var(--space-2);
+}
+
+/* On very small screens, reduce padding slightly */
+@media (max-width: 480px) {
+  .site-wrapper,
+  .section-inner {
+    padding-inline: var(--space-1);
+  }
+
+  .site-main {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-4);
+  }
+}
+
+/* =========================================================
+   13. Reduced motion preferences
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

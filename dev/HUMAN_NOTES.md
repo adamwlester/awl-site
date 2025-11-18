@@ -128,3 +128,11 @@ Files & directories to add before enabling GitHub Pages:
     - portfolio/index.md → layout: portfolio-list-page, title: "Portfolio"
     - each project’s index.md → layout: project-detail-page
 
+_config.yml
+_assets/css/custom.css
+_layouts/default.html
+_layouts/portfolio-list-page.html
+_layouts/project-detail-page.html
+_includes/section.html
+_includes/project-grid.html
+_includes/project-card.html
