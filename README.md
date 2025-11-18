@@ -273,7 +273,6 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
   - `Release`
   - `Licensing`
   - `References`
-  - `Included files`
 - Headings use normal Markdown syntax (`#`, `##`, `###`); their visual sizes, spacing, and hierarchy are controlled globally in `assets/css/custom.css` so the same Markdown renders consistently across all project pages.
 
 #### Layout
@@ -289,7 +288,6 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
     - `Materials & Fabrication` (from content body)
     - `Release` (from content body)
     - `References` (from content body)
-    - `Included files` (from content body)
   - **Right-column:**
     - **3D-viewer** window at the top
     - `Role & Contributions` (from content body)
@@ -309,7 +307,6 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
     - `Materials & Fabrication` (from content body)
     - `Release` (from content body)
     - `References` (from content body)
-    - `Included files` (from content body)
   4. Right-column content body sections
     - `Role & Contributions` (from content body)
     - `Highlights & Key Specs` (from content body)

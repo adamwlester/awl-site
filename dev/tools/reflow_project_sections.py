@@ -29,7 +29,6 @@ LEFT_HEADINGS = [
     "Materials & Fabrication",
     "Release",
     "References",
-    "Included files",
 ]
 
 RIGHT_HEADINGS = [
