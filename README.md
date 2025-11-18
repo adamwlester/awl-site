@@ -24,7 +24,7 @@ We will build in stages and are focusing on V1 elements now:
 
 - **Platform:** Jekyll static site generator (GitHub Pages).
 - **Templating:** Liquid templates.
-- **Styling:** Custom CSS (no framework).
+- **Styling:** Custom CSS (no framework) using a single system sans-serif font stack for both body and headings (no external web fonts).
 - **3D-viewer (window):** Google `<model-viewer>`.
 - **image-viewer (media banner):** Custom CSS scroll-snap carousel with lightweight vanilla-JS arrows + thumbnails.
 
@@ -66,6 +66,19 @@ index.md                                    # homepage (**site root**) -> minima
             └── models/                     # 3D assets (only one model per project)
                 └── <slug>.glb              # GLB model file (≤ 100 MB; referenced by the `model` front matter field)
 ```
+### Jekyll Config Conventions
+
+- `_config.yml` is the single source of truth for site-level settings:
+  - `url: "https://adamwlester.github.io"`
+  - `baseurl: "/awl-site"` (matches the repo name and project-site path).
+  - `title: "Adam W. Lester"` (used for the site title in the global header when referenced as `{{ site.title }}`).
+  - `description`: Short site description used for metadata (optional but recommended).
+  - `exclude`: Files and folders that should not be processed by Jekyll (e.g., `.github/`, `.vscode/`, `README.md`, `date-debug.txt`, `verify.txt`).
+- All templates that generate internal links (header nav, buttons, etc.) should use `{{ site.baseurl }}` when building URLs so they work correctly on GitHub Pages:
+  - Example: `href="{{ site.baseurl }}/portfolio/"` instead of `href="/portfolio/"`.
+  - Example: `href="{{ site.baseurl }}/docs/CV.pdf"` instead of `href="/docs/CV.pdf"`.
+- Front matter paths for images and models remain **repo-relative strings** (e.g., `/assets/images/home-banner.png`, `images/render_1.png`).
+  - Layouts are responsible for prepending `{{ site.baseurl }}` when needed.
 
 ## Layout & CSS Responsibilities (Quick Map)
 
@@ -98,11 +111,11 @@ index.md                                    # homepage (**site root**) -> minima
 - *Implemented directly in `_layouts/default.html`.*
 
 **Data source:**  
-- Site title text (e.g., “Adam W. Lester”) is defined in `_layouts/default.html` or read from `_config.yml`.  
-- Navigation links are hard-coded in the header markup and point to:
-  - `/portfolio/` (Portfolio)
-  - `/docs/CV.pdf` (CV)
-  - `/docs/Resume.pdf` (Resume)
+- Site title text (e.g., “Adam W. Lester”) is defined once in `_config.yml` as `title` and referenced in the header via `{{ site.title }}`.  
+- Navigation links are defined in the header markup in `_layouts/default.html` using `{{ site.baseurl }}` so they work both locally and on GitHub Pages. The canonical targets are:
+  - `{{ site.baseurl }}/portfolio/` (Portfolio)
+  - `{{ site.baseurl }}/docs/CV.pdf` (CV)
+  - `{{ site.baseurl }}/docs/Resume.pdf` (Resume)
 
 **Behavior:**  
 - The header appears on all pages that use `layout: default` or layouts extending it (`portfolio-list-page`, `project-detail-page`).  
@@ -360,6 +373,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - Renders and photos are standardized at 2000 px height (up to 5000 px width).
 - All image files are PNG.
 - These are required constraints for all images in the `images:` front matter list.
+- All JavaScript behavior for the carousel (scrolling, arrows, thumbnails) lives in a small inline `<script>` block at the bottom of `_layouts/project-detail-page.html` (no separate JS bundle is used for V1).
 
 #### 3D Model Viewer Integration
 
@@ -383,6 +397,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - Exactly one `.glb` file per project is supported.  
 - The `.glb` file must reside under the project’s `models/` subfolder.  
 - Recommended maximum file size: ≤ 100 MB.
+- The `<model-viewer>` web component script is loaded once in the `<head>` of `_layouts/default.html` from the official CDN (e.g., via a `<script type="module" src="…model-viewer.min.js"></script>` tag) so it is available on all pages that need it.
 
 #### Project Detail Content
 
