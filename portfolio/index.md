@@ -5,7 +5,7 @@ page_lead: "A collection of open-source research instruments, behavioral platfor
 projects:
   - nc4touch-behavioral-apparatus
   - omniroute-maze-system
-  - instantaneous-cue-rotation-icr-arena
+  - instantaneous-cue-rotation-arena
   - track-mounted-feeder-cart
   - nc4gate-automatable-gate-module
   - two-axis-feeder-gantry

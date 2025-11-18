@@ -14,7 +14,7 @@ Inside the existing folder `portfolio/projects/`, create one folder for each of 
 - two-axis-feeder-gantry
 - nc4gate-automatable-gate-module
 - track-mounted-feeder-cart
-- instantaneous-cue-rotation-icr-arena
+- instantaneous-cue-rotation-arena
 - omniroute-maze-system
 - nc4touch-behavioral-apparatus
 

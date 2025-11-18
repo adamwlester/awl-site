@@ -93,7 +93,7 @@ index.md                                    # homepage (**site root**) -> minima
 - Example `projects:` list:
   - nc4touch-behavioral-apparatus
   - omniroute-maze-system
-  - instantaneous-cue-rotation-icr-arena
+  - instantaneous-cue-rotation-arena
 
 **Consistency:**  
 - Card dimensions, spacing, typography, and hover states are controlled via `assets/css/custom.css` for a cohesive presentation across all projects.

@@ -6,7 +6,7 @@
 ### List of project slugs
 nc4touch-behavioral-apparatus
 omniroute-maze-system
-instantaneous-cue-rotation-icr-arena
+instantaneous-cue-rotation-arena
 track-mounted-feeder-cart
 nc4gate-automatable-gate-module
 two-axis-feeder-gantry
@@ -16,6 +16,13 @@ silicon-probe-microdrive-housing
 dual-bundle-electrode-drive
 fischer-344-rat-model
 roller-bearing-cable-guide
+
+#### Personal projects
+modular-rolling-tool-wall
+hidden-drawer-nightstand
+adjustable-tv-easel-stand
+foldable-adjustable-painting-easel
+
 
 ### 3D Model Conversion
 
