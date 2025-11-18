@@ -25,10 +25,11 @@ from typing import List, Tuple, Dict
 # Column layout configuration
 LEFT_HEADINGS = [
     "Description",
-    "Materials & Fabrication",
     "Validation & Performance",
+    "Materials & Fabrication",
     "Release",
     "References",
+    "Included files",
 ]
 
 RIGHT_HEADINGS = [
@@ -179,8 +180,8 @@ def process_index_file(index_path: Path) -> None:
     new_lines = front + new_body
 
     # Optional: make a simple backup beside the original (overwritten each run)
-    backup_path = index_path.with_suffix(".md.bak")
-    backup_path.write_text(text, encoding="utf-8")
+    # backup_path = index_path.with_suffix(".md.bak")
+    # backup_path.write_text(text, encoding="utf-8")
 
     index_path.write_text("".join(new_lines), encoding="utf-8")
 
