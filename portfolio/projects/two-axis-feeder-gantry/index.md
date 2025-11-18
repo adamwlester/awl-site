@@ -25,6 +25,9 @@ images:
     caption: "On-rig top view of the cover carriage over the Omniroute system; legacy servo-driven feeder arm"
 ---
 
+<div class="project-columns">
+<div class="project-column project-column-left" markdown="1">
+
 ## Description
 
 This reward delivery system was designed for use with another portfolio project: the [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system).
@@ -39,28 +42,20 @@ The gantry provides spatially targeted liquid reward by tracking animal movement
 
 **Design revision:** Upgraded to a stepper-driven actuator with integrated limit switch detection, replacing the original servo. The design is complete and being integrated into the assembly. The revised arm has stiffer components and a flexible end.
 
-## Role & Contributions
+## Validation & Performance
 
-- Conceived, designed, built, and maintained end to end
-- Developed all CAD models and assemblies
-- Led mechanical and electrical build team
-- Authored firmware and PC software
-- Designed and executed validation
-- Primary maintainer
+**Traverse speed:**  
+- Peak 0.47 m/s  
+- Mean 0.21 m/s  
 
-## Highlights & Key Specs
+**Arrival latency:**  
+1.5 s to within 2 cm over a 0.43 m move  
 
-**Footprint:**  
-2.2 × 1.4 m (X, Y) frame envelope  
+**Positional accuracy:**  
+0.7 cm final error at stop  
 
-**Travel:**  
-1.6 × 0.8 m (X, Y) commanded range  
-
-**Carriage capacity:**  
-60 × 60 cm cover area  
-
-**Motion performance:**  
-peak traverse speed: 0.47 m/s  
+**Acoustic profile:**  
++20 dB SPL during motion vs idle  
 
 ## Materials & Fabrication
 
@@ -89,20 +84,46 @@ peak traverse speed: 0.47 m/s
 - Food-grade silicone tubing  
 - Glass vial reservoir  
 
-## Validation & Performance
+## Release
 
-**Traverse speed:**  
-- Peak 0.47 m/s  
-- Mean 0.21 m/s  
+- **CAD:** select STEP files available in portfolio (see 3D Model Files)
+- **Software:**
+- ROS workspace (Ubuntu): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
+- ROS workspace (Windows): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
+- **On request:** additional design files
+- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
 
-**Arrival latency:**  
-1.5 s to within 2 cm over a 0.43 m move  
+## References
 
-**Positional accuracy:**  
-0.7 cm final error at stop  
+For additional details, including system performance tests, see the preprint methods manuscript for the Omniroute maze, which features this subsystem:
+- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
 
-**Acoustic profile:**  
-+20 dB SPL during motion vs idle  
+
+</div>
+<div class="project-column project-column-right" markdown="1">
+
+## Role & Contributions
+
+- Conceived, designed, built, and maintained end to end
+- Developed all CAD models and assemblies
+- Led mechanical and electrical build team
+- Authored firmware and PC software
+- Designed and executed validation
+- Primary maintainer
+
+## Highlights & Key Specs
+
+**Footprint:**  
+2.2 × 1.4 m (X, Y) frame envelope  
+
+**Travel:**  
+1.6 × 0.8 m (X, Y) commanded range  
+
+**Carriage capacity:**  
+60 × 60 cm cover area  
+
+**Motion performance:**  
+peak traverse speed: 0.47 m/s  
 
 ## Deployment & Status
 
@@ -116,43 +137,12 @@ NC4 Lab, University of British Columbia (3 studies)
 **Status:**  
 active, Sep 2023–present, NC4 Lab  
 
-## Release
-
-- **CAD:** select STEP files available in portfolio (see 3D Model Files)
-- **Software:**
-- ROS workspace (Ubuntu): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
-- ROS workspace (Windows): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
-- **On request:** additional design files
-- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
-
 ## Licensing
 
 - **Hardware:** CERN-OHL-W-2.0
 - **Software:** MIT
 - **Documentation:** CC-BY-4.0
 
-## References
 
-For additional details, including system performance tests, see the preprint methods manuscript for the Omniroute maze, which features this subsystem:
-- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
-
-## Included files
-
-*Attached on this page.*
-
-### Image Files
-
-- **diagram_1.png:** annotated top view diagram of gantry layout and travel
-- **diagram_2.png:** annotated top and side view diagram of feeder arm assembly
-- **render_1.png:** three-quarter view (front, left, top) render of full feeder gantry
-- **render_2.png:** top view render of full feeder gantry
-- **render_3.png:** top view render of cover carriage with feeder arm
-- **render_4.png:** three-quarter view (front, right, top) render of cover carriage with feeder arm
-- **render_5.png:** three-quarter view (front, right, top) render of feeder arm assembly, close-up
-- **photo_1.png:** On-rig photo of the feeder gantry installed on the Omniroute system; legacy servo-driven feeder arm
-- **photo_2.png:** On-rig top view of the cover carriage over the Omniroute system; legacy servo-driven feeder arm
-
-### 3D Model Files
-
-- **feeder_gantry_TOP_ASSY.step:** top-level assembly of full feeder gantry
-- **feeder_gantry_SUB_cover_carriage.step:** cover carriage subassembly with feeder arm
+</div>
+</div>

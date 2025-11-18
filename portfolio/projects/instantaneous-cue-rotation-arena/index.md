@@ -21,6 +21,9 @@ images:
     caption: "in-rig photo of rat on track with wall cues"
 ---
 
+<div class="project-columns">
+<div class="project-column project-column-left" markdown="1">
+
 ## Description
 
 The Instantaneous Cue Rotation Arena is an augmented-reality rodent behavioral arena enabling instantaneous rotation of all orienting visual cues during ongoing navigation with extracellular electrophysiology recordings. The 1.4 m diameter circular track is enclosed by 68 cm tall rear-projection panels that form a seamless 360° panorama of visual cues. Four short-throw projectors render these cues and can rotate them remotely and instantaneously without removing the animal from the track to assess their effect on navigation accuracy. A mobile feeder robot tracks the rat to deliver food-based reinforcement, which is featured as a separate portfolio entry ([Wireless Mobile Feeder Robot](https://www.cadcrowd.com/3d-models/feeder-robot)). All static elements within the behavioral space are repeated every 10° to eliminate symmetry-breaking spatial cues. The structure uses 80/20 aluminum extrusion with ESD-coated acrylic and PVC foam board for durability and electrophysiology compatibility. The assembly is suspended from ceiling strut channels to keep the interior clear and allow access from below. An overhead speaker, recessed into the ceiling, delivers auditory cues and continuous white noise to mask potential orienting sounds that could conflict with the cue manipulation. Below this, a centrally mounted commutator with a drop-down boom arm keeps the tether aligned directly above the circular track for wired electrophysiology. Two overhead color cameras are offset to either side of the commutator to maintain coverage when either camera’s line of sight is occluded by the boom arm and provide continuous tracking data for the rat and feeder robot. The floor of the arena can be lowered via gas springs and pulleys to allow easy access to the base for cleaning and maintenance.
@@ -32,6 +35,47 @@ The mobile feeder robot tracks the rat to deliver precisely timed, spatially tar
 A custom codebase coordinates all hardware components: C and C++ firmware on the microcontrollers for wireless communication, motor control, and timing; a C# application for wireless data streaming and interface tasks; and MATLAB scripts that provide the experimenter frontend, process tracking data, control visual cues, and synchronize peripheral systems.
 
 This design cleanly dissociates external cues from self-motion feedback, while also restricting any olfactory or auditory orienting cues, in order to assess real-time visual cue use during uninterrupted navigation with full neural and behavioral synchronization.
+
+## Validation & Performance
+
+**Behavioral performance:**  
+Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)  
+
+**Stable use:**  
+In-rig and in vivo use across 2 experiments  
+
+## Materials & Fabrication
+
+**Structure:**  
+- 80/20 aluminum extrusion frame  
+- Acrylic and PVC foam board  
+- FlexGlass projection surface for rear projection  
+
+**Electronics:**  
+- Arduino Due microcontrollers  
+- NeuraLynx Digital Lynx SX  
+- Phototransistors  
+- XBee-PRO Series 1 radios  
+- LiPo battery system  
+- Pixy vision module  
+
+## Release
+
+- **CAD:**
+  - ICR: full assembly STEP available in portfolio (see 3D Model Files)
+  - Mobile feeder robot: see portfolio entry “[Wireless Mobile Feeder Robot](https://www.cadcrowd.com/3d-models/feeder-robot)”
+- **Software:**
+  - Firmware and software repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
+
+## References
+
+For additional details, see the published methods manuscript, which features this system, and the subsequent study:
+- Lester, A. W., Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). Journal of Neuroscience Methods, 338, 108667.
+- Lester, A. W., Jordan, G. A., Blum, C. J., Philpot, Z. P., & Barnes, C. A. (2022). [Differential effects in young and aged rats’ navigational accuracy following instantaneous rotation of environmental cues](https://pubmed.ncbi.nlm.nih.gov/36395015/). Behavioral Neuroscience, 136, 561–574.
+
+
+</div>
+<div class="project-column project-column-right" markdown="1">
 
 ## Role & Contributions
 
@@ -71,29 +115,6 @@ Four short-throw projectors (BenQ MW621ST) with instantaneous remote cue rotatio
 **Acoustic control:**  
 Continuous white noise to mask orienting auditory cues and optional sound cues  
 
-## Materials & Fabrication
-
-**Structure:**  
-- 80/20 aluminum extrusion frame  
-- Acrylic and PVC foam board  
-- FlexGlass projection surface for rear projection  
-
-**Electronics:**  
-- Arduino Due microcontrollers  
-- NeuraLynx Digital Lynx SX  
-- Phototransistors  
-- XBee-PRO Series 1 radios  
-- LiPo battery system  
-- Pixy vision module  
-
-## Validation & Performance
-
-**Behavioral performance:**  
-Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)  
-
-**Stable use:**  
-In-rig and in vivo use across 2 experiments  
-
 ## Deployment & Status
 
 **Development:**  
@@ -105,41 +126,12 @@ Barnes Lab, University of Arizona (2 studies)
 **Status:**  
 Active, May 2017–present, Barnes Lab  
 
-## Release
-
-- **CAD:**
-  - ICR: full assembly STEP available in portfolio (see 3D Model Files)
-  - Mobile feeder robot: see portfolio entry “[Wireless Mobile Feeder Robot](https://www.cadcrowd.com/3d-models/feeder-robot)”
-- **Software:**
-  - Firmware and software repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
-
 ## Licensing
 
 - **Hardware:** CERN-OHL-W-2.0
 - **Software:** MIT
 - **Documentation:** CC-BY-4.0
 
-## References
 
-For additional details, see the published methods manuscript, which features this system, and the subsequent study:
-- Lester, A. W., Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). Journal of Neuroscience Methods, 338, 108667.
-- Lester, A. W., Jordan, G. A., Blum, C. J., Philpot, Z. P., & Barnes, C. A. (2022). [Differential effects in young and aged rats’ navigational accuracy following instantaneous rotation of environmental cues](https://pubmed.ncbi.nlm.nih.gov/36395015/). Behavioral Neuroscience, 136, 561–574.
-
-## Included files
-
-*Attached on this page.*
-
-### Image Files
-
-- **render_1.png:** three-quarter view (front, right, top) render of full arena exterior with ceiling recess and strut channels
-- **render_2_annotated.png:** annotated front view render of arena layout
-- **render_3.png:** three-quarter view (rear, right, top) render of arena interior with robot and rat
-- **render_4.png:** top view render of arena interior with robot and rat
-- **render_5.png:** oblique view (right, top) render of robot and rat inside ICR arena
-- **photo_1.png:** in-rig photo of full arena in lab
-- **photo_2.png:** in-rig photo of rat on track with wall cues
-
-### 3D Model Files
-
-- **icr_arena_TOP_ASSY.step:** top-level Instantaneous Cue Rotation arena assembly
-- **feeder_robot_SUB.step:** feeder robot subassembly
+</div>
+</div>

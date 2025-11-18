@@ -13,9 +13,32 @@ images:
     caption: "three-quarter view (rear, right, top) render of the rat model"
 ---
 
+<div class="project-columns">
+<div class="project-column project-column-left" markdown="1">
+
 ## Description
 
 - (content not provided)
+
+## Validation & Performance
+
+- (content not provided)
+
+## Materials & Fabrication
+
+- (content not provided)
+
+## Release
+
+- **CAD:** STEP file available in portfolio (see 3D Model Files)
+
+## References
+
+- (content not provided)
+
+
+</div>
+<div class="project-column project-column-right" markdown="1">
 
 ## Role & Contributions
 
@@ -25,38 +48,14 @@ images:
 
 - (content not provided)
 
-## Materials & Fabrication
-
-- (content not provided)
-
-## Validation & Performance
-
-- (content not provided)
-
 ## Deployment & Status
 
 - (content not provided)
-
-## Release
-
-- **CAD:** STEP file available in portfolio (see 3D Model Files)
 
 ## Licensing
 
 - **Design files:** CC-BY-4.0
 
-## References
 
-- (content not provided)
-
-## Included files
-
-*Attached on this page.*
-
-### Image Files
-- **render_1.png:** three-quarter view (front, left, top) render of the rat model
-- **render_2.png:** three-quarter view (rear, left, top) render of the rat model
-- **render_3.png:** three-quarter view (rear, right, top) render of the rat model
-
-### 3D Model Files
-- **3d_rat_PART.step:** single-part rat model
+</div>
+</div>

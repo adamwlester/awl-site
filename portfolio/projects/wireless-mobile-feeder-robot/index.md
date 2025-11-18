@@ -25,6 +25,9 @@ images:
     caption: "close-up photo of dish-pivot stepper and pulley"
 ---
 
+<div class="project-columns">
+<div class="project-column project-column-left" markdown="1">
+
 ## Description
 
 This mobile feeder robot was designed for use with another portfolio project: the [Instantaneous Cue Rotation Arena](https://www.cadcrowd.com/3d-models/instantaneous-cue-rotation-arena).
@@ -41,31 +44,13 @@ Liquid reward is dispensed from a feeder dish mounted on a retractable arm that 
 
 To minimize odor and visual cues, a rear-mounted cleaning module continuously clears the track. A dual-shaft stepper motor drives the wheel from its front shaft and, via a 3D-printed elliptical-pulley belt drive on the rear shaft, actuates a neoprene flap that scoops debris into a trap. The elliptical pulleys impart a burst of speed at contact with the track surface so the flap knocks debris loose rather than smearing it. A polyurethane foam wiper is periodically wetted with ethanol from an onboard reservoir through a second hydraulic solenoid valve to keep the track clean. The entire rear cleaning assembly can be removed via a thumbscrew for cleaning.
 
-## Role & Contributions
+## Validation & Performance
 
-- Conceived, designed, and maintained end to end
-- Fabricated and assembled key hardware
-- Coordinated machining/fabrication of select parts
-- Authored control software
-- Designed and executed behavioral validation
+**Behavioral performance:**  
+Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)  
 
-## Highlights & Key Specs
-
-**Drive and motion:**  
-- Stepper-motor-driven robot with wireless control and onboard microcontroller and 11.1 V power  
-- Commutator-free operation  
-- Embedded Arduino Due microcontroller and motor driver  
-
-**Tracking:**  
-Dual-source tracking fused with an extended Kalman filter using overhead-camera and Pixy (CMUcam5) inputs for smooth position/velocity tracking  
-
-**Reward delivery:**  
-- Retractable feeder arm extends ~60 cm and pivots for access during reward  
-- Hydraulic solenoid valve dispenses liquid reward  
-- Synchronized event timestamps  
-
-**Track cleaning:**  
-Integrated track-cleaning module with neoprene flap and ethanol wiper to minimize odor and visual cues  
+**Stable use:**  
+Deployed in-rig and in vivo across 2 experiments  
 
 ## Materials & Fabrication
 
@@ -101,13 +86,47 @@ Integrated track-cleaning module with neoprene flap and ethanol wiper to minimiz
 - Standard metric fasteners, washers, springs, magnets, and aluminum posts  
 - Thread-lock on vibration-prone joints  
 
-## Validation & Performance
+## Release
 
-**Behavioral performance:**  
-Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)  
+- **CAD:** full assembly STEP available in portfolio (see 3D Model Files)
+- **Software:** 
+  - Firmware repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
+- **Related portfolio entry:** [Instantaneous Cue Rotation Arena](https://www.cadcrowd.com/3d-models/instantaneous-cue-rotation-arena)
 
-**Stable use:**  
-Deployed in-rig and in vivo across 2 experiments  
+## References
+
+For additional details, see the published methods manuscript featuring this system and performance comparisons with an earlier fixed-feeder variant:
+- Lester, A. W., Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). Journal of Neuroscience Methods, 338, 108667.
+
+
+</div>
+<div class="project-column project-column-right" markdown="1">
+
+## Role & Contributions
+
+- Conceived, designed, and maintained end to end
+- Fabricated and assembled key hardware
+- Coordinated machining/fabrication of select parts
+- Authored control software
+- Designed and executed behavioral validation
+
+## Highlights & Key Specs
+
+**Drive and motion:**  
+- Stepper-motor-driven robot with wireless control and onboard microcontroller and 11.1 V power  
+- Commutator-free operation  
+- Embedded Arduino Due microcontroller and motor driver  
+
+**Tracking:**  
+Dual-source tracking fused with an extended Kalman filter using overhead-camera and Pixy (CMUcam5) inputs for smooth position/velocity tracking  
+
+**Reward delivery:**  
+- Retractable feeder arm extends ~60 cm and pivots for access during reward  
+- Hydraulic solenoid valve dispenses liquid reward  
+- Synchronized event timestamps  
+
+**Track cleaning:**  
+Integrated track-cleaning module with neoprene flap and ethanol wiper to minimize odor and visual cues  
 
 ## Deployment & Status
 
@@ -120,38 +139,12 @@ Barnes Lab, University of Arizona (2 studies)
 **Status:**  
 Retired, May 2017–Aug 2021, Barnes Lab  
 
-## Release
-
-- **CAD:** full assembly STEP available in portfolio (see 3D Model Files)
-- **Software:** 
-  - Firmware repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
-- **Related portfolio entry:** [Instantaneous Cue Rotation Arena](https://www.cadcrowd.com/3d-models/instantaneous-cue-rotation-arena)
-
 ## Licensing
 
 - **Hardware:** CERN-OHL-W-2.0
 - **Software:** MIT
 - **Documentation:** CC-BY-4.0
 
-## References
 
-For additional details, see the published methods manuscript featuring this system and performance comparisons with an earlier fixed-feeder variant:
-- Lester, A. W., Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). Journal of Neuroscience Methods, 338, 108667.
-
-## Included files
-
-*Attached on this page.*
-
-### Image Files
-- **render_1.png:** three-quarter view (front, right, top) render of feeder robot
-- **render_2.png:** oblique view (right, top) render of robot and rat inside ICR arena
-- **render_3.png:** top view render of robot and rat on track
-- **render_4_annotated.png:** annotated top view render of feeder and rat
-- **render_5_annotated.png:** annotated right view render of robot body
-- **render_6_annotated.png:** annotated left view render of robot body
-- **photo_1.png:** in-rig photo of assembled robot body on track
-- **photo_2.png:** close-up photo of feeder dish and cue LED
-- **photo_3.png:** close-up photo of dish-pivot stepper and pulley
-
-### 3D Model Files
-- **feeder_robot_TOP_ASSY.step:** top-level feeder robot assembly
+</div>
+</div>
