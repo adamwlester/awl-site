@@ -1,0 +1,9 @@
+<div class="project-grid">
+  {% assign project_slugs = page.projects %}
+  {% for slug in project_slugs %}
+    {% assign project = site.pages | where: "slug", slug | first %}
+    {% if project %}
+      {% include project-card.html project=project %}
+    {% endif %}
+  {% endfor %}
+</div>

@@ -149,8 +149,9 @@ index.md                                    # homepage (**site root**) -> minima
 - If the front matter banner fields are not present, the banner region is omitted and the page content starts immediately below the header.
 
 **Constraints / Notes:**  
+- Banner images should be created at **1920 × 300 px** to maintain the intended thin panoramic visual style across pages.  
 - Banner image sizing, aspect ratio, and responsive behavior are controlled via `assets/css/custom.css`.  
-- The home page and portfolio list page both use this shared banner pattern for consistent visual branding.
+- The home page and portfolio list page both use this shared banner pattern for consistent visual branding.  
 - Project detail pages do not use this shared banner; they instead use the media image-viewer banner described in the Project Detail section.
 
 ### Home Page Overview

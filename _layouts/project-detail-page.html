@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<article class="project-detail">
+  <header class="project-header">
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}
+      <p class="project-summary">{{ page.summary }}</p>
+    {% endif %}
+  </header>
+
+  <section class="project-media">
+    <!-- TODO: image-viewer banner + 3D <model-viewer> window -->
+    <!-- This will be wired up in a later pass. -->
+  </section>
+
+  <section class="project-content">
+    {{ content }}
+  </section>
+
+  <!-- TODO: inline JS for carousel behavior can live here in V1. -->
+</article>

@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<div class="page-banner">
+  <!-- Optional banner image + title/subtitle driven by front matter -->
+  {% if page.banner_image %}
+    <div class="page-banner-image">
+      <img src="{{ site.baseurl }}{{ page.banner_image }}" alt="{{ page.banner_alt | default: page.title }}">
+    </div>
+  {% endif %}
+  <div class="page-banner-text">
+    <h1>{{ page.title }}</h1>
+    {% if page.banner_subtitle %}
+      <p class="page-banner-subtitle">{{ page.banner_subtitle }}</p>
+    {% endif %}
+    {% if page.page_lead %}
+      <p class="page-lead">{{ page.page_lead }}</p>
+    {% endif %}
+  </div>
+</div>
+
+<section class="portfolio-section">
+  {% include project-grid.html %}
+</section>

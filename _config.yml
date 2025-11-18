@@ -1,0 +1,11 @@
+url: "https://adamwlester.github.io"
+baseurl: "/awl-site"
+title: "Adam W. Lester"
+description: "Research instruments portfolio."
+exclude:
+  - .github/
+  - .vscode/
+  - README.md
+  - date-debug.txt
+  - verify.txt
+markdown: kramdown
