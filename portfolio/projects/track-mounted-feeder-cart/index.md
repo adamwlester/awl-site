@@ -23,8 +23,8 @@ images:
     caption: "combined bench close-up photos of gated feeder port, open and closed"
 ---
 
-<div class="project-columns">
-<div class="project-column project-column-left" markdown="1">
+<div class="content-groups">
+<div class="content-group content-group-primary" markdown="1">
 
 ## Description
 
@@ -76,7 +76,7 @@ The original Dome system and cart design that this version was adapted from are 
 
 
 </div>
-<div class="project-column project-column-right" markdown="1">
+<div class="content-group content-group-secondary" markdown="1">
 
 ## Role & Contributions
 

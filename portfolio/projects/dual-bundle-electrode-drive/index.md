@@ -27,8 +27,8 @@ images:
     caption: "close-up bench photo showing the drive body and core with bundle guide"
 ---
 
-<div class="project-columns">
-<div class="project-column project-column-left" markdown="1">
+<div class="content-groups">
+<div class="content-group content-group-primary" markdown="1">
 
 ## Description
 
@@ -68,7 +68,7 @@ Standard hardware including #0-80 and M1 fasteners, washers, springs, neodymium 
 
 
 </div>
-<div class="project-column project-column-right" markdown="1">
+<div class="content-group content-group-secondary" markdown="1">
 
 ## Role & Contributions
 

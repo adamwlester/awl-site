@@ -40,8 +40,14 @@ Future (V2): map to a custom domain without changing content.
 _config.yml                                 # Jekyll site settings + global configuration
 index.md                                    # homepage (**site root**) -> minimal landing + link to /portfolio/
 ├── assets/
-│   └── css/
-│       └── custom.css                      # single stylesheet for colors, spacing, typography, visual treatments
+│   ├── css/
+│   │   └── custom.css                      # single stylesheet for colors, spacing, typography, global header, banner, layout
+│   └── images/
+│       ├── home-banner.png                 # used by homepage front matter: banner_image: /assets/images/home-banner.png
+│       └── portfolio-list-banner.png       # used by portfolio/index.md front matter: banner_image: /assets/images/portfolio-list-page-banner.png
+├── docs/
+│   ├── CV.pdf                              # full academic CV (served directly via GitHub Pages)
+│   └── Resume.pdf                          # short professional resume (also served directly)
 ├── _includes/
 │   ├── section.html                        # generic wrapper include for styled sections (spacing, background)
 │   ├── project-grid.html                   # include for the **portfolio project grid** on /portfolio/
@@ -56,33 +62,193 @@ index.md                                    # homepage (**site root**) -> minima
         └── <slug>/                         # slug is the folder name (becomes the URL tail)
             ├── index.md                    # **project detail page** (uses layout: project-detail-page; front matter + content body; single source of truth)
             ├── images/                     # image assets referenced in front matter + Markdown content
-            |    └── <image>.png
+            │    └── <image>.png            # PNG image files (renders, photos; referenced by the `images` and `hero` front matter fields)
+            └── models/                     # 3D assets (only one model per project)
+                └── <slug>.glb              # GLB model file (≤ 100 MB; referenced by the `model` front matter field)
+```
+
+```markdown
+Repo: adamwlester-website
+Deploy: GitHub Pages (project site)
+Public URL now: https://adamwlester.github.io/adamwlester-website/
+Future (V2): map to a custom domain without changing content.
+
+# repo root == site root (GitHub Pages/Jekyll)
+_config.yml                                 # Jekyll site settings + global configuration
+index.md                                    # homepage (**site root**) -> uses layout: default; banner + intro text + CTA to /portfolio/
+├── assets/
+│   └── css/
+│       └── custom.css                      # single stylesheet for colors, spacing, typography, global header, banner, layout
+├── docs/
+│   ├── CV.pdf                              # full academic CV (served directly via GitHub Pages)
+│   └── Resume.pdf                          # short professional resume (also served directly)
+├── _includes/
+│   ├── section.html                        # generic wrapper include for styled sections (spacing, background)
+│   ├── project-grid.html                   # include for the **portfolio project grid** on /portfolio/
+│   └── project-card.html                   # include for a single **portfolio project card** (thumbnail + title + summary)
+├── _layouts/
+│   ├── default.html                        # base site layout (html/head/body shell, global header with nav links, optional banner region)
+│   ├── portfolio-list-page.html            # layout for the **portfolio list page** (/portfolio/ banner + grid view)
+│   └── project-detail-page.html            # layout for each **project detail page** (image banner + 3D viewer + content columns)
+└── portfolio/                              # portfolio section container
+    ├── index.md                            # **portfolio list page** (uses layout: portfolio-list-page; banner + lead text + project grid)
+    └── projects/                           # only this section’s projects live here
+        └── <slug>/                         # slug is the folder name (becomes the URL tail)
+            ├── index.md                    # **project detail page** (uses layout: project-detail-page; front matter + content body; single source of truth)
+            ├── images/                     # image assets referenced in front matter + Markdown content
+            │    └── <image>.png            # PNG image files (renders, photos; referenced by the `images` and `hero` front matter fields)
             └── models/                     # 3D assets (only one model per project)
                 └── <slug>.glb              # GLB model file (≤ 100 MB; referenced by the `model` front matter field)
 ```
 
 ## Key Components & Behavior
 
-**Note:** I am open to changing or modifying some of these requirements based on practicality and optimal approach.
+**Note:** I am open to changing or modifying these requirements to some degree based on practicality and optimal approach.
+
+### Shared Page Components
+
+#### Global Header
+
+**Component:**  
+- Site-wide header bar rendered at the top of every page.  
+- Displays the site title (my name) on the left and navigation links on the right, matching the reference layout.  
+- *Implemented directly in `_layouts/default.html`.*
+
+**Data source:**  
+- Site title text (e.g., “Adam W. Lester”) is defined in `_layouts/default.html` or read from `_config.yml`.  
+- Navigation links are hard-coded in the header markup and point to:
+  - `/portfolio/` (Portfolio)
+  - `/docs/CV.pdf` (CV)
+  - `/docs/Resume.pdf` (Resume)
+
+**Behavior:**  
+- The header appears on all pages that use `layout: default` or layouts extending it (`portfolio-list-page`, `project-detail-page`).  
+- On desktop, the site title is aligned to the left and the navigation links are aligned to the right.  
+- On mobile, the title and links stack or compress according to the responsive rules in `assets/css/custom.css`.
+
+**Constraints / Notes:**  
+- Styling (typography, spacing, alignment, hover states) is controlled via `assets/css/custom.css`.  
+- The header is consistent across Home, Portfolio, and Project Detail pages.
+
+#### Banner Region
+
+**Component:**  
+- Page-level banner rendered directly below the global header and above the main page content.  
+- Displays a large banner image with a title and subtitle text.  
+- *Implemented in `_layouts/default.html` (for the home page) and `_layouts/portfolio-list-page.html` (for the portfolio list page).*
+
+**Data source:**  
+- Front matter fields defined in each page’s `index.md`:
+  - `banner_image`: Path to the banner image file, relative to the site root or page.  
+  - `banner_title`: Short title rendered over or adjacent to the banner image.  
+  - `banner_subtitle`: One- or two-line subtitle providing additional context.
+
+- Used on:
+  - `index.md` at the site root (Home page).  
+  - `portfolio/index.md` (Portfolio list page).
+
+**Behavior:**  
+- When `banner_image`, `banner_title`, and `banner_subtitle` are present in front matter, the layout renders the banner at the top of the page content area.  
+- The banner appears directly under the global header and directly above any page-specific content (such as intro text or the project grid).  
+- If the front matter banner fields are not present, the banner region is omitted and the page content starts immediately below the header.
+
+**Constraints / Notes:**  
+- Banner image sizing, aspect ratio, and responsive behavior are controlled via `assets/css/custom.css`.  
+- The home page and portfolio list page both use this shared banner pattern for consistent visual branding.
+
+### Home Page Overview
+
+#### Main Elements
+
+**Main elements of the home page include:**
+- **Banner Region (`index.md`):**  
+  – Top-of-page banner using the shared banner component (image, title, subtitle).
+- **Intro Text Block (`index.md`):**  
+  – Short welcome/identity copy introducing you and the purpose of the site.
+- **Primary Call-to-Action (CTA):**  
+  – Prominent link or button that routes users to `/portfolio/`.
+
+**Front Matter Content (`index.md`):**  
+- `layout`: Must be set to `default`.  
+- `banner_image`: Path to the banner image file.  
+- `banner_title`: Text title displayed in the banner.  
+- `banner_subtitle`: Supporting subtitle text displayed in the banner.
+
+#### Intro Text Block
+
+**Component:**  
+- Short introductory block rendered below the banner region on the home page.  
+- *Rendered as part of the Markdown body content of `index.md` inside the main content area of `_layouts/default.html`.*
+
+**Data source:**  
+- Markdown body content of the site-root `index.md`, immediately after the front matter.  
+- Optional front matter field `title` may also be used as a page-level heading if desired.
+
+**Behavior:**  
+- Displays a brief description of who you are and what the site contains.  
+- Provides enough context that the “View portfolio” CTA is clear and actionable.  
+- Appears above the primary call-to-action link/button.
+
+**Constraints / Notes:**  
+- Kept to 1–3 short paragraphs.  
+- Typography, spacing, and alignment are controlled via `assets/css/custom.css` for consistency with the portfolio list and project detail pages.
+
+#### Primary Call-to-Action (CTA)
+
+**Component:**  
+- Visually prominent link or button directing users to the portfolio list page.  
+- *Rendered as a standard link element (`<a>`) in the `index.md` body and styled via `assets/css/custom.css`.*
+
+**Data source:**  
+- Markdown link in `index.md` pointing to `/portfolio/`, for example:  
+  - `[View Portfolio](/portfolio/)`  
+  - Optionally annotated with a class (e.g., `{: .button }`) for button styling.
+
+**Behavior:**  
+- Positioned immediately after the intro text block in the page content.  
+- On click, navigates directly to `/portfolio/`.  
+- Serves as the primary action on the home page.
+
+**Constraints / Notes:**  
+- Only one primary CTA is used on the home page.  
+- Button-like appearance, hover states, and spacing are implemented in `assets/css/custom.css`.
+
+#### Layout
+
+**Desktop / large screens:**  
+- The home page stacks elements vertically in this order:
+  1. **Global Header** (site-wide header with nav links and site title).  
+  2. **Banner Region** (`banner_image`, `banner_title`, `banner_subtitle`).  
+  3. **Intro Text Block** (Markdown content from `index.md`).  
+  4. **Primary Call-to-Action** linking to `/portfolio/`.
+
+**Mobile / small screens:**  
+- Elements appear in the same order as on desktop:
+  1. Global Header.  
+  2. Banner Region.  
+  3. Intro Text Block.  
+  4. Primary Call-to-Action.  
+- Vertical spacing, text sizing, and banner scaling are controlled via `assets/css/custom.css` to keep the layout readable and consistent with other pages.
 
 ### Portfolio List Page Overview
 
 #### Main Elements
 
+**Main elements of the portfolio list page include:**
 - **Page Header Text (`portfolio/index.md`)**  
   – Full-width introductory block at the top of the portfolio list page, displaying page title and lead.
 - **Project Card Grid**  
   – Responsive grid of uniformly styled project cards, each showing the project hero image, title, and summary.
 
 **Front Matter Content (`portfolio/index.md`):** 
-- `page_title`: Page title (e.g., “Portfolio”).  
+- `banner_title`: Page title (e.g., “Portfolio”).  
 - `page_lead`: Short introductory paragraph describing the portfolio list page.
 - `projects:`: Array of project slugs determining which projects to show and their order.
 - Example front matter:
   ```yaml
   ---
   layout: portfolio-list-page
-  page_title: "Portfolio"
+  banner_title: "Portfolio"
   page_lead: "A collection of open-source research instruments, behavioral platforms, and supporting hardware developed across neuroscience and biomedical engineering projects. Each entry links to a detailed project page with full narrative, images, and a 3D model."
   projects:
     - nc4touch-behavioral-apparatus
@@ -98,7 +264,7 @@ index.md                                    # homepage (**site root**) -> minima
 - *Rendered as the header region in `_layouts/portfolio-list-page.html`, optionally wrapped with `_includes/section.html` for consistent spacing.*
 
 **Data source:**  
-`portfolio/index.md` front matter: `page_title` and `page_lead`.
+- `portfolio/index.md` front matter: `banner_title` and `page_lead`.
 
 **Behavior:**  
 - Renders as a single, full-width header above the project card grid.  
@@ -136,7 +302,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 **Desktop / large screens:**  
 - The page stacks elements vertically in this order:
   1. **Page Header Text** (full-width block at the top)
-     - `page_title` as the primary heading.
+     - `banner_title` as the primary heading.
      - `page_lead` as a descriptive paragraph directly below the title.
   2. **Project Card Grid**
      - Cards arranged in multiple columns (e.g., 2–4, depending on viewport width).
@@ -144,7 +310,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 
 **Mobile / small screens:**  
 - All elements stack vertically in this order:
-  1. Page Header Text (full-width, with `page_title` and `page_lead` stacked)
+  1. Page Header Text (full-width, with `banner_title` and `page_lead` stacked)
   2. Project Card Grid
      - Grid collapses to fewer columns as the viewport narrows, eventually to a single column on very small screens.
      - Vertical spacing and padding are preserved so cards remain readable and visually distinct.
@@ -156,6 +322,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 
 #### Main Elements
 
+**Main elements of the project detail page include:**
 - **Image-Viewer (banner):** 
   - Full-width media strip at the top of the project detail page.
   - Displays the primary render and secondary images via a carousel/thumbnail interface.
@@ -260,62 +427,73 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
   ```
 
 **Markdown Content Sections (`portfolio/projects/<slug>/index.md`):**  
-- All narrative content is authored in a single Markdown flow (content body) directly after the front matter. 
-- The following is the required authoring order in each project’s `index.md`. This is **authoring order only**, not the final DOM or visual order.
-- The project detail layout (`_layouts/project-detail-page.html`) and CSS handle desktop/tablet/mobile behavior, determining final visual placement and column grouping, and **may reorder sections in the DOM** (see Layout below).
-- Sections appear in this order in the source Markdown file content body:
+- All narrative content for a project is authored in the Markdown body directly after the front matter in `index.md`.  
+- The content body is wrapped in a structural container that groups sections into two content blocks. The project detail layout (`_layouts/project-detail-page.html`) renders these as the main content region.
+- Structure in `index.md`:
+  - Parent wrapper: `<div class="content-groups">`
+  - Inside it, two content groups:
+    - `<div class="content-group content-group-primary" markdown="1">` — primary content sections  
+    - `<div class="content-group content-group-secondary" markdown="1">` — secondary content sections  
+- Each section is a normal Markdown heading and body inside one of these content groups.
+- **Primary content sections (in order):**
   - `Description`
+  - `Validation & Performance`
+  - `Materials & Fabrication`
+  - `Release`
+  - `References`
+- **Secondary content sections (in order):**
   - `Role & Contributions`
   - `Highlights & Key Specs`
-  - `Materials & Fabrication`
-  - `Validation & Performance`
   - `Deployment & Status`
-  - `Release`
   - `Licensing`
-  - `References`
-- Headings use normal Markdown syntax (`#`, `##`, `###`); their visual sizes, spacing, and hierarchy are controlled globally in `assets/css/custom.css` so the same Markdown renders consistently across all project pages.
+- No additional sections are used outside this wrapper for V1.
+- Headings:
+  - Use normal Markdown syntax (`#`, `##`, `###`).
+  - Visual styles (sizes, spacing, hierarchy) are controlled globally in `assets/css/custom.css`.
+- **Minimal example content body (after front matter):**
+  ```markdown
+  <div class="content-groups">
+  <div class="content-group content-group-primary" markdown="1">
+  ## Description
+  ...
+  ## References
+  </div>
+  <div class="content-group content-group-secondary" markdown="1">
+  ## Role & Contributions
+  ...
+  ## Licensing
+  ...
+  </div>
+  </div>
+  ```
 
 #### Layout
 
 **Desktop**
-- **Image-viewer** (banner), which spans the full content width at the top of the project detail page.
+- Image-viewer (banner) spans the full content width at the top.
 - Directly beneath the banner, the page uses a **two-column layout**:
-  - **Left-column:**
+  - **Left column:**
     - `title` (from front matter)
     - `summary` (from front matter)
-    - `Description` (from content body)
-    - `Validation & Performance` (from content body)
-    - `Materials & Fabrication` (from content body)
-    - `Release` (from content body)
-    - `References` (from content body)
-  - **Right-column:**
-    - **3D-viewer** window at the top
-    - `Role & Contributions` (from content body)
-    - `Highlights & Key Specs` (from content body)
-    - `Deployment & Status` (from content body)
-    - `Licensing` (from content body)
+    - Primary content sections (from content body)
+  - **Right column:**
+    - 3D-viewer at the top
+    - Secondary content sections (from content body)
 
 **Mobile / small screens**
 - On smaller screens, all elements stack vertically in this order:
   1. Image-viewer (banner)
   2. 3D-viewer (window)
-  3. Left-column front matter and content body sections
-    - `title` (from front matter)
-    - `summary` (from front matter)
-    - `Description` (from content body)
-    - `Validation & Performance` (from content body)
-    - `Materials & Fabrication` (from content body)
-    - `Release` (from content body)
-    - `References` (from content body)
-  4. Right-column content body sections
-    - `Role & Contributions` (from content body)
-    - `Highlights & Key Specs` (from content body)
-    - `Deployment & Status` (from content body)
-    - `Licensing` (from content body)
+  3. Left-column narrative block:
+      - `title` (from front matter)
+      - `summary` (from front matter)
+      - Primary content sections (from content body)
+  4. Right-column narrative block:
+      - Secondary content sections (from content body)
 
-**Layout Notes:**
-- The DOM order matches the mobile stacking order above **not the source Markdown file content body**.  
-- The desktop layout is achieved purely via CSS (grid/flex) positioning of these groups.
+**Layout Notes**
+- The DOM order matches the mobile stacking order above.
+- The desktop layout is achieved purely via CSS (grid/flex) positioning of the left and right column containers.
 
 ## Implementation Status
 *A concise overview of what currently exists in the site and how the core pieces are structured.*

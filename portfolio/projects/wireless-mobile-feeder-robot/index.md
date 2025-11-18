@@ -25,8 +25,8 @@ images:
     caption: "close-up photo of dish-pivot stepper and pulley"
 ---
 
-<div class="project-columns">
-<div class="project-column project-column-left" markdown="1">
+<div class="content-groups">
+<div class="content-group content-group-primary" markdown="1">
 
 ## Description
 
@@ -100,7 +100,7 @@ For additional details, see the published methods manuscript featuring this syst
 
 
 </div>
-<div class="project-column project-column-right" markdown="1">
+<div class="content-group content-group-secondary" markdown="1">
 
 ## Role & Contributions
 

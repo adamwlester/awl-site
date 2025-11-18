@@ -1,6 +1,8 @@
 ---
 layout: portfolio-list-page
-page_title: "Portfolio"
+banner_image: /assets/images/portfolio-list-banner.png
+banner_title: Portfolio
+banner_subtitle: Open-source research instruments, behavioral platforms, and supporting hardware
 page_lead: "A collection of open-source research instruments, behavioral platforms, and supporting hardware developed across neuroscience and biomedical engineering projects. Each entry links to a detailed project page with full narrative, images, and a 3D model."
 projects:
   - nc4touch-behavioral-apparatus

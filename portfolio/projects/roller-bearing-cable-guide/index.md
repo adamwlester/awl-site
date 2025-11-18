@@ -15,8 +15,8 @@ images:
 
 # Roller-Bearing Cable Guide
 
-<div class="project-columns">
-<div class="project-column project-column-left" markdown="1">
+<div class="content-groups">
+<div class="content-group content-group-primary" markdown="1">
 
 ## Description
 Designed for linear-track experiments, this guide prevents torsion on the headstage cable while allowing smooth travel along the track. A collet mounted in a roller bearing isolates twist from the signal cable as the animal runs, and the carriage rides on dual stainless-steel rails using adjustable plastic roller bearings for quiet motion.
@@ -51,7 +51,7 @@ SLA-printed resin two-part housing and two-part collet
 
 
 </div>
-<div class="project-column project-column-right" markdown="1">
+<div class="content-group content-group-secondary" markdown="1">
 
 ## Role & Contributions
 - Designed and fabricated all components

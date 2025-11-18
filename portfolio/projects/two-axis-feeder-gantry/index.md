@@ -25,8 +25,8 @@ images:
     caption: "On-rig top view of the cover carriage over the Omniroute system; legacy servo-driven feeder arm"
 ---
 
-<div class="project-columns">
-<div class="project-column project-column-left" markdown="1">
+<div class="content-groups">
+<div class="content-group content-group-primary" markdown="1">
 
 ## Description
 
@@ -100,7 +100,7 @@ For additional details, including system performance tests, see the preprint met
 
 
 </div>
-<div class="project-column project-column-right" markdown="1">
+<div class="content-group content-group-secondary" markdown="1">
 
 ## Role & Contributions
 

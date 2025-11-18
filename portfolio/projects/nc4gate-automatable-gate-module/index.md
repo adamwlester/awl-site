@@ -25,8 +25,8 @@ images:
     caption: "bench photo of 60 gate modules installed in Omniroute rig"
 ---
 
-<div class="project-columns">
-<div class="project-column project-column-left" markdown="1">
+<div class="content-groups">
+<div class="content-group content-group-primary" markdown="1">
 
 ## Description
 
@@ -81,7 +81,7 @@ For additional details, including system performance tests and detailed schemati
 
 
 </div>
-<div class="project-column project-column-right" markdown="1">
+<div class="content-group content-group-secondary" markdown="1">
 
 ## Role & Contributions
 

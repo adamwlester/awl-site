@@ -160,13 +160,13 @@ def reflow_body(body_lines: List[str], index_path: Path) -> List[str]:
         new_body.append("\n")
 
     # Column wrapper with Kramdown markdown="1" so inner Markdown is processed
-    new_body.append('<div class="project-columns">\n')
-    new_body.append('<div class="project-column project-column-left" markdown="1">\n\n')
+    new_body.append('<div class="content-groups">\n')
+    new_body.append('<div class="content-group content-group-primary" markdown="1">\n\n')
     new_body.extend(left_lines)
     if not new_body[-1].endswith("\n"):
         new_body[-1] = new_body[-1] + "\n"
     new_body.append("\n</div>\n")
-    new_body.append('<div class="project-column project-column-right" markdown="1">\n\n')
+    new_body.append('<div class="content-group content-group-secondary" markdown="1">\n\n')
     new_body.extend(right_lines)
     if not new_body[-1].endswith("\n"):
         new_body[-1] = new_body[-1] + "\n"

@@ -17,8 +17,8 @@ images:
     caption: "in-rig photo of four installed projector mounts in NC4 Lab Omniroute system"
 ---
 
-<div class="project-columns">
-<div class="project-column project-column-left" markdown="1">
+<div class="content-groups">
+<div class="content-group content-group-primary" markdown="1">
 
 ## Description
 
@@ -58,7 +58,7 @@ For additional details, see the preprint methods article for the Omniroute syste
 
 
 </div>
-<div class="project-column project-column-right" markdown="1">
+<div class="content-group content-group-secondary" markdown="1">
 
 ## Role & Contributions
 
