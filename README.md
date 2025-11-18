@@ -28,6 +28,17 @@ We will build in stages and are focusing on V1 elements now:
 - **3D-viewer (window):** Google `<model-viewer>`.
 - **image-viewer (media banner):** Custom CSS scroll-snap carousel with lightweight vanilla-JS arrows + thumbnails.
 
+> **URL note:**  
+> In production, public URLs are constructed as  
+> `{{ site.baseurl }}` + the paths shown in the Site Map above  
+> (for example:  
+> `{{ site.baseurl }}/portfolio/` and  
+> `{{ site.baseurl }}/portfolio/projects/<slug>/`).  
+>  
+> Internal links in templates should always prepend `{{ site.baseurl }}`,  
+> as described in the Jekyll Config Conventions section.
+
+
 ## GITHUB REPO STRUCTURE
 
 ```markdown
@@ -38,7 +49,7 @@ Future (V2): map to a custom domain without changing content.
 
 # repo root == site root (GitHub Pages/Jekyll)
 _config.yml                                 # Jekyll site settings + global configuration
-index.md                                    # homepage (**site root**) -> minimal landing + link to /portfolio/
+index.md                                    # homepage (**site root**) -> minimal landing + link to {{ site.baseurl }}/portfolio/
 ├── assets/
 │   ├── css/
 │   │   └── custom.css                      # single stylesheet for colors, spacing, typography, global header, banner, layout
@@ -50,11 +61,11 @@ index.md                                    # homepage (**site root**) -> minima
 │   └── Resume.pdf                          # short professional resume (also served directly)
 ├── _includes/
 │   ├── section.html                        # generic wrapper include for styled sections
-│   ├── project-grid.html                   # include for the **portfolio project grid** on /portfolio/
+│   ├── project-grid.html                   # include for the **portfolio project grid** on the portfolio list page ({{ site.baseurl }}/portfolio/)
 │   └── project-card.html                   # include for a single **portfolio project card**
 ├── _layouts/
 │   ├── default.html                        # base site layout (html/head/body shell + global header)
-│   ├── portfolio-list-page.html            # layout for the **portfolio list page** (/portfolio/)
+│   ├── portfolio-list-page.html            # layout for the **portfolio list page** ({{ site.baseurl }}/portfolio/)
 │   └── project-detail-page.html            # layout for each **project detail page**
 └── portfolio/                              # portfolio section container
     ├── index.md                            # **portfolio list page** (uses layout: portfolio-list-page; section intro + project grid)
@@ -73,6 +84,7 @@ index.md                                    # homepage (**site root**) -> minima
   - `baseurl: "/awl-site"` (matches the repo name and GitHub Pages path).
   - `title: "Adam W. Lester"`
   - `description`: Optional short metadata description.
+    - Used as the global fallback for `<meta name="description">` when a page does not define its own `description` in front matter.
   - `exclude`: Files and folders that should not be processed or published by Jekyll (e.g., `.github/`, `.vscode/`, `README.md`, `dev/`; see `_config.yml` for the current list).
 - All templates must use `{{ site.baseurl }}` when building internal links so they resolve correctly on GitHub Pages:
   - Example: `href="{{ site.baseurl }}/portfolio/"`
@@ -85,9 +97,7 @@ index.md                                    # homepage (**site root**) -> minima
 - `_layouts/default.html`  
   - Global page shell: wraps every page, renders the site-wide header and optional shared banner region.
 - `_layouts/portfolio-list-page.html`  
-  - Specializes the layout for `/portfolio/`: shared banner, page lead/intro text, and the project card grid.
-- `_layouts/portfolio-list-page.html`  
-  - Specializes the layout for `/portfolio/`: page lead/intro text and the project card grid.
+  - Specializes the layout for the portfolio list page: page lead/intro text and the project card grid.
 - `_layouts/project-detail-page.html`  
   - Project detail layout: image-viewer banner, 3D-viewer window, and two-column narrative content.
 - `_includes/section.html`  
@@ -226,11 +236,13 @@ This section defines the implicit global style conventions used across `assets/c
 - **Intro Text Block (`index.md`):**  
   – Short welcome/identity copy introducing you and the purpose of the site.
 - **Primary Call-to-Action (CTA):**  
-  – Prominent link or button that routes users to `/portfolio/`.
+  – Prominent link or button that routes users to the portfolio list page (`{{ site.baseurl }}/portfolio/`).
+
 
 **Front Matter Content (`index.md`):**  
 - `layout`: Must be set to `default`.  
 - `title`: Page title (i.e., `Home`) used for metadata (browser tab, SEO).
+- `description`: Short one-line description for the home page; used for the `<meta name="description">` tag.
 - `banner_image`: Path to the banner image file.  
 - `banner_title`: Text title (i.e., `Adam W. Lester`) displayed in the banner.  
 - `banner_subtitle`: Supporting subtitle text displayed in the banner.
@@ -261,13 +273,13 @@ This section defines the implicit global style conventions used across `assets/c
 - *Rendered as a standard link element (`<a>`) in the `index.md` body and styled via `assets/css/custom.css`.*
 
 **Data source:**  
-- Markdown link in `index.md` pointing to `/portfolio/`, for example:  
-  - `[View Portfolio](/portfolio/)`  
+- Markdown link in `index.md` pointing to the portfolio list page via `{{ site.baseurl }}`, for example:  
+  - `[View Portfolio]({{ site.baseurl }}/portfolio/)`  
   - Optionally annotated with a class (e.g., `{: .button }`) for button styling.
 
 **Behavior:**  
 - Positioned immediately after the intro text block in the page content.  
-- On click, navigates directly to `/portfolio/`.  
+- On click, navigates directly to `{{ site.baseurl }}/portfolio/`.  
 - Serves as the primary action on the home page.
 
 **Constraints / Notes:**  
@@ -281,7 +293,7 @@ This section defines the implicit global style conventions used across `assets/c
   1. **Global Header** (site-wide header with nav links and site title).  
   2. **Banner Region** (`banner_image`, `banner_title`, `banner_subtitle`).  
   3. **Intro Text Block** (Markdown content from `index.md`).  
-  4. **Primary Call-to-Action** linking to `/portfolio/`.
+  4. **Primary Call-to-Action** linking to the portfolio list page.
 
 **Mobile / small screens:**  
 - Elements appear in the same order as on desktop:
@@ -306,6 +318,7 @@ This section defines the implicit global style conventions used across `assets/c
 **Front Matter Content (`portfolio/index.md`):** 
 - `layout`: Must be set to `portfolio-list-page`.  
 - `title`: Page title (i.e., `Portfolio`) used for metadata (browser tab, SEO).
+- `description`: Short one-line description for the portfolio list page; used for the `<meta name="description">` tag.
 - `banner_image`: Path to the banner image used in the shared banner component.
 - `banner_title`: Text title (i.e., `Portfolio`) displayed in the banner.  
 - `banner_subtitle`: Short supporting line shown inside the banner under the title.
@@ -360,7 +373,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - Generates one card per slug listed in the `projects:` array in `portfolio/index.md`.  
 - The order of slugs in this list (each entry is a project slug matching `portfolio/projects/<slug>/`) determines the order of cards in the grid from top-left to bottom-right.
 - Each card displays its hero image, title, and summary in a consistent layout.  
-- The **entire card is clickable**, linking to `/portfolio/projects/<slug>/`.  
+- The **entire card is clickable**, linking to `{{ site.baseurl }}/portfolio/projects/<slug>/`.  
 - Subtle hover and active states provide visual feedback (gentle lift or shadow change on hover; slight depress on click).
 
 **Constraints / Notes:**  
@@ -472,6 +485,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - It includes the following fields:
   - `title`: Full project title shown on the card and project detail page. Rendered as the first element in the left column on the project detail page.
   - `summary`: One-line summary used for the project card on the portfolio list page and directly beneath the title on the project detail page.
+  - `description`: One-sentence description used for the page’s `<meta name="description">` tag.
   - `hero`: Path (relative to the project folder) to the hero image file in that project’s `images/` subfolder.
     - Example: `images/render_1.png`.
     - This image is used as the project card thumbnail on the portfolio list page.
@@ -485,6 +499,9 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
       - Used by the image-viewer banner at the top of the project detail page.
     - `caption`: Optional description for context and accessibility
       - *Unused for V1*.
+    - `caption`: One- or two-sentence description for context and accessibility.
+      - Even though captions are not visually rendered in V1, this field is used as the source of the `<img>` `alt` text for both the image-viewer banner and any future caption UI.
+
   - *(Future fields, if added)* should follow this explicit key-value format; no implicit defaults or fallback behavior.
 - Example front matter:
   ```yaml
@@ -577,7 +594,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 
 **Done:**
 - Jekyll site scaffolded with `index.md` as the home page (minimal content for now).
-- Portfolio section in place (`/portfolio/`) with project-specific routes under `portfolio/projects/<slug>/`.
+- Portfolio section in place (portfolio list and project-specific routes wired up as defined in the Site Map above).
 - Standardized project folder pattern established (`images/`, `models/`, `index.md`).
 - All professional project folders added with full image sets, model files, and `index.md` content.
 - Portfolio index configured with project slugs listed in the intended display order.
