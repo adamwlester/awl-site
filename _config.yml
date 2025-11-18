@@ -1,11 +1,50 @@
-url: "https://adamwlester.github.io"
-baseurl: "/awl-site"
+# ------------------------------
+# Jekyll Site Configuration
+# ------------------------------
+
+# Core identity
 title: "Adam W. Lester"
-description: "Research instruments portfolio."
+description: "Design portfolio of research instruments, mechanisms, and experimental hardware."
+url: "https://adamwlester.github.io"     # GitHub Pages user domain
+baseurl: "/awl-site"          # Repo name (required for correct link resolution)
+
+# Markdown + HTML rendering
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Collections (use default pages in /portfolio/projects)
+# No custom collections needed for V1
+
+# Permalinks: use clean folder-style output
+permalink: pretty
+
+# Default values for pages/posts
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+
+# Exclusions (not processed into the site build)
 exclude:
+  - README.md
+  - README_assets/
   - .github/
   - .vscode/
-  - README.md
-  - date-debug.txt
-  - verify.txt
-markdown: kramdown
+  - .idea/
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - Gemfile
+  - Gemfile.lock
+  - dev
+
+# Plugins (keep minimal for GitHub Pages compatibility)
+plugins: []
+
+# Allow future-proofing for assets
+sass:
+  style: compressed

@@ -24,7 +24,7 @@ We will build in stages and are focusing on V1 elements now:
 
 - **Platform:** Jekyll static site generator (GitHub Pages).
 - **Templating:** Liquid templates.
-- **Styling:** Custom CSS (no framework) using a single system sans-serif font stack for both body and headings (no external web fonts).
+- **Styling:** Custom CSS (no framework) with a single main stylesheet.
 - **3D-viewer (window):** Google `<model-viewer>`.
 - **image-viewer (media banner):** Custom CSS scroll-snap carousel with lightweight vanilla-JS arrows + thumbnails.
 
@@ -70,15 +70,15 @@ index.md                                    # homepage (**site root**) -> minima
 
 - `_config.yml` is the single source of truth for site-level settings:
   - `url: "https://adamwlester.github.io"`
-  - `baseurl: "/awl-site"` (matches the repo name and project-site path).
-  - `title: "Adam W. Lester"` (used for the site title in the global header when referenced as `{{ site.title }}`).
-  - `description`: Short site description used for metadata (optional but recommended).
-  - `exclude`: Files and folders that should not be processed by Jekyll (e.g., `.github/`, `.vscode/`, `README.md`, `date-debug.txt`, `verify.txt`).
-- All templates that generate internal links (header nav, buttons, etc.) should use `{{ site.baseurl }}` when building URLs so they work correctly on GitHub Pages:
-  - Example: `href="{{ site.baseurl }}/portfolio/"` instead of `href="/portfolio/"`.
-  - Example: `href="{{ site.baseurl }}/docs/CV.pdf"` instead of `href="/docs/CV.pdf"`.
-- Front matter paths for images and models remain **repo-relative strings** (e.g., `/assets/images/home-banner.png`, `images/render_1.png`).
-  - Layouts are responsible for prepending `{{ site.baseurl }}` when needed.
+  - `baseurl: "/awl-site"` (matches the repo name and GitHub Pages path).
+  - `title: "Adam W. Lester"`
+  - `description`: Optional short metadata description.
+  - `exclude`: Files and folders that should not be processed or published by Jekyll (e.g., `.github/`, `.vscode/`, `README.md`, `dev/`; see `_config.yml` for the current list).
+- All templates must use `{{ site.baseurl }}` when building internal links so they resolve correctly on GitHub Pages:
+  - Example: `href="{{ site.baseurl }}/portfolio/"`
+  - Example: `href="{{ site.baseurl }}/docs/CV.pdf"`
+- Front matter paths for images and models remain repo-relative strings (e.g., `images/render_1.png`, `/assets/images/home-banner.png`).
+  - Layouts prepend `{{ site.baseurl }}` when generating final URLs.
 
 ## Layout & CSS Responsibilities (Quick Map)
 
@@ -167,7 +167,7 @@ This section defines the implicit global style conventions used across `assets/c
 
 **Component:**  
 - Site-wide header bar rendered at the top of every page.  
-- Displays the site title (my name) on the left and navigation links on the right, matching the reference layout.  
+- Displays the site title (my name: `Adam W. Lester`) on the left and navigation links on the right, matching the reference layout.  
 - *Implemented directly in `_layouts/default.html`.*
 
 **Data source:**  
@@ -191,7 +191,7 @@ This section defines the implicit global style conventions used across `assets/c
 **Component:**  
 - Page-level banner rendered directly below the global header and above the main page content.  
 - Displays a large banner image with a title and subtitle text.  
-- *Implemented in `_layouts/default.html` (for the home page) and `_layouts/portfolio-list-page.html` (for the portfolio list page).*
+- *Implemented once in `_layouts/default.html` and automatically used on any page that defines `banner_image`, `banner_title`, and `banner_subtitle` in its front matter.*
 
 **Data source:**  
 - Front matter fields defined in each page’s `index.md`:
