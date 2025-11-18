@@ -43,7 +43,7 @@ images:
 
 ## Licensing
 
-- **Design files:** CC BY 4.0
+- **Design files:** CC-BY-4.0
 
 ## References
 

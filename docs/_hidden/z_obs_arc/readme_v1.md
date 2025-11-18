@@ -215,11 +215,11 @@ It includes the following fields:
 **Core Markdown Content Sections**
 - One-line summary (no heading): Single sentence stating system and purpose. First sentence after header
 - Description: Full narrative; includes inline Markdown links `[text](url)` to related entries and external sources.
-- Role and Contributions: Bulleted ownership across design/build/integration/validation/docs/maintenance.
+- Role & Contributions: Bulleted ownership across design/build/integration/validation/docs/maintenance.
 - Key Specs: Bulleted technical parameters and interfaces.
-- Materials and Fabrication: Bulleted materials and processes (frame/panels/electronics/mounts/custom parts).
-- Validation and Performance: Bulleted results and quantitative metrics.
-- Deployment and Status: Development window, deployments, current status.
+- Materials & Fabrication: Bulleted materials and processes (frame/panels/electronics/mounts/custom parts).
+- Validation & Performance: Bulleted results and quantitative metrics.
+- Deployment & Status: Development window, deployments, current status.
 - Release: Links to CAD/firmware/ROS/related entries using standard Markdown link syntax.
 - Licensing: Explicit hardware/software/docs licenses.
 - References: Preprints/papers with Markdown hyperlinks.
@@ -276,9 +276,9 @@ It includes the following fields:
 
 **Purpose:** Site-level control over Markdown rendering and reusable **visual treatments** with a minimal set of files, keeping content in `index.md` and styling opt-in.
 - `/site/assets/css/custom.css` — Defines all typography, spacing, and visual rules so Markdown sections render cleanly and consistently.  
-  *Example:* ensures headings in “Role and Contributions” or “Key Specs” share spacing and hierarchy across every project page.
+  *Example:* ensures headings in “Role & Contributions” or “Key Specs” share spacing and hierarchy across every project page.
 - `/site/_includes/section.html` — Wraps any Markdown block in a styled section with optional background and padding.  
-  *Example:* show “Validation and Performance” in a soft `brand-50` background to separate it from “Materials and Fabrication.”
+  *Example:* show “Validation & Performance” in a soft `brand-50` background to separate it from “Materials & Fabrication.”
 - `/site/_includes/grid.html` — Builds a simple two- or three-column grid for evenly spaced content blocks or links.  
   *Example:* in “Release,” present GitHub, OSF, and Preprint links side-by-side in a 3-column layout.
 - `/site/_layouts/project.html` — Provides the project page frame (left navigation pane, `image viewer`, 3D model viewer area, Markdown body below).  

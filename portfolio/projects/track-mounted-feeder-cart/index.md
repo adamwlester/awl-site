@@ -103,8 +103,8 @@ active, Mar 2024–present, NC4 Lab
 
 ## Licensing
 
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Documentation:** CC-BY-4.0
 
 ## References
 

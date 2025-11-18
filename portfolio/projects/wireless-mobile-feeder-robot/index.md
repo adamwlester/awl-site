@@ -129,9 +129,9 @@ Retired, May 2017–Aug 2021, Barnes Lab
 
 ## Licensing
 
-- **Hardware:** CERN-OHL-W v2.0
-- **Software:** Apache-2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Software:** MIT
+- **Documentation:** CC-BY-4.0
 
 ## References
 

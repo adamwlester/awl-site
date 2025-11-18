@@ -194,15 +194,16 @@ It includes the following fields:
 - The following is the required authoring order in each project’s `index.md`. This is **authoring order only**, not the final DOM or visual order.
 - The layout engine (desktop/tablet/mobile) reads these sections and determines the final visual placement, column grouping, and **may reorder sections in the DOM** (see Layout below).
 - Sections appear in this order in the source Markdown file content body:
-  - Description
-  - Role and Contributions
-  - Highlights & Key Specs
-  - Materials and Fabrication
-  - Validation and Performance
-  - Deployment and Status
-  - Licensing
-  - Release
-  - References
+  - `Description`
+  - `Role & Contributions`
+  - `Highlights & Key Specs`
+  - `Materials & Fabrication`
+  - `Validation & Performance`
+  - `Deployment & Status`
+  - `Release`
+  - `Licensing`
+  - `References`
+  - `Included files`
 - Headings use normal Markdown syntax (`#`, `##`, `###`); their visual sizes, spacing, and hierarchy are controlled globally in `assets/css/custom.css` so the same Markdown renders consistently across all project pages.
 
 #### Layout
@@ -213,17 +214,17 @@ It includes the following fields:
   - **Left-column:**
     - `title` (from front matter)
     - `summary` (from front matter)
-    - Description (from content body)
-    - Validation and Performance (from content body)
-    - Materials and Fabrication (from content body)
-    - Release (from content body)
-    - References (from content body)
+    - `Description` (from content body)
+    - `Validation & Performance` (from content body)
+    - `Materials & Fabrication` (from content body)
+    - `Release` (from content body)
+    - `References` (from content body)
   - **Right-column:**
     - **3D-viewer** window at the top
-    - Role and Contributions (from content body)
-    - Highlights & Key Specs (from content body)
-    - Deployment and Status (from content body)
-    - Licensing (from content body)
+    - `Role & Contributions` (from content body)
+    - `Highlights & Key Specs` (from content body)
+    - `Deployment & Status` (from content body)
+    - `Licensing` (from content body)
 
 **Mobile / small screens**
 - On smaller screens, all elements stack vertically in this order:
@@ -232,16 +233,18 @@ It includes the following fields:
   3. Left-column front matter and content body sections
     - `title` (from front matter)
     - `summary` (from front matter)
-    - Description (from content body)
-    - Validation and Performance (from content body)
-    - Materials and Fabrication (from content body)
-    - Release (from content body)
-    - References (from content body)
+    - `Description` (from content body)
+    - `Validation & Performance` (from content body)
+    - `Materials & Fabrication` (from content body)
+    - `Release` (from content body)
+    - `References` (from content body)
   4. Right-column content body sections
-    - Role and Contributions (from content body)
-    - Highlights & Key Specs (from content body)
-    - Deployment and Status (from content body)
-    - Licensing (from content body)
+    - `Role & Contributions` (from content body)
+    - `Highlights & Key Specs` (from content body)
+    - `Deployment & Status` (from content body)
+    - `Licensing` (from content body)
 
-- The DOM order matches the mobile stacking order above **not the source Markdown file**.  
-  The desktop layout is achieved purely via CSS (grid/flex) positioning of these groups.
+**Notes:**
+- The DOM order matches the mobile stacking order above **not the source Markdown file content body**.  
+- The desktop layout is achieved purely via CSS (grid/flex) positioning of these groups.
+- The `Included files` section in the source Markdown file content body is **not used in V1** and is ignored by the layout.

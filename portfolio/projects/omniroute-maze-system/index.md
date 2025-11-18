@@ -128,6 +128,12 @@ Active, Sep 2023–present, NC4 Lab
   - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
   - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
 
+## Licensing
+
+- **Hardware:** CERN-OHL-W-2.0
+- **Software:** MIT
+- **Documentation:** CC-BY-4.0
+
 ## References
 
 For additional details, including system performance tests, rodent behavior, and detailed schematics, see the preprint methods manuscripts for the Omniroute and the associated NC4gate system:

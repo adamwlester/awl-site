@@ -36,8 +36,8 @@ Designed for linear-track experiments, this guide prevents torsion on the headst
 - **On request:** additional design files
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Documentation:** CC-BY-4.0
 
 ## Included files
 *Attached on this page.*
@@ -100,8 +100,8 @@ Core drive elements (body, core, shuttle) derived from NeuraLynx Halo-18 with su
 - **On request:** assembly notes
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Documentation:** CC-BY-4.0
 
 ### Attribution
 - Inspired by the NeuraLynx Halo-18; Halo-18-compatible geometry; independent, non-affiliated design. NeuraLynx and FreeLynx are trademarks of their owner; names used for identification only.
@@ -164,8 +164,8 @@ The housing is compatible with the 128-channel SpikeGadgets Horizontal Headstage
 - **On request:** assembly notes
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Documentation:** CC-BY-4.0
 
 ## Included files
 *Attached on this page.*
@@ -199,7 +199,7 @@ To-scale 3D model of a Fischer 344 laboratory rat for design planning, visualiza
 - **CAD:** STEP file available in portfolio (see 3D Model Files)
 
 ## Licensing
-- **Design files:** CC BY 4.0
+- **Design files:** CC-BY-4.0
 
 ## Included files
 *Attached on this page.*
@@ -269,9 +269,9 @@ To minimize odor and visual cues, a rear-mounted cleaning module continuously cl
 - **Related portfolio entry:** [Instantaneous Cue Rotation (ICR) Arena](https://www.cadcrowd.com/3d-models/instantaneous-cue-rotation-arena)
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Software:** Apache-2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Software:** MIT
+- **Documentation:** CC-BY-4.0
 
 ## References
 For additional details, see the published methods manuscript featuring this system and performance comparisons with an earlier fixed-feeder variant:
@@ -331,8 +331,8 @@ At the projector end, a waterjet-cut three-plate yaw assembly provides ±30° ro
 - **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Documentation:** CC-BY-4.0
 
 ## References
 For additional details, see the preprint methods article for the Omniroute system, which featured this component:
@@ -410,9 +410,9 @@ The gantry provides spatially targeted liquid reward by tracking animal movement
 - **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Software:** Apache-2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Software:** MIT
+- **Documentation:** CC-BY-4.0
 
 ## References
 For additional details, including system performance tests, see the preprint methods manuscript for the Omniroute maze, which features this subsystem:
@@ -491,9 +491,9 @@ Electronics include a custom motor driver board (based on the TI DRV8870 chip) f
 - **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Software:** Apache-2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Software:** MIT
+- **Documentation:** CC-BY-4.0
 
 ## References
 For additional details, including system performance tests and detailed schematics, see the preprint methods manuscripts for the NC4gate system and associated Omniroute maze:
@@ -569,8 +569,8 @@ This feeder cart was designed for use with the Dome system, a rodent augmented-r
 - **On request:** assembly notes; additional design files
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Documentation:** CC-BY-4.0
 
 ## References
 The original Dome system and cart design that this version was adapted from are described in detail in the following methods article:
@@ -648,9 +648,9 @@ This design cleanly dissociates external cues from self-motion feedback, while a
   - Firmware and software repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Software:** Apache-2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Software:** MIT
+- **Documentation:** CC-BY-4.0
 
 ## References
 For additional details, see the published methods manuscript, which features this system, and the subsequent study:
@@ -734,9 +734,9 @@ The system is controlled via the Robot Operating System (ROS) with custom nodes 
   - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Software:** Apache-2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Software:** MIT
+- **Documentation:** CC-BY-4.0
 
 ## References
 For additional details, including system performance tests, rodent behavior, and detailed schematics, see the preprint methods manuscripts for the Omniroute and the associated NC4gate system:
@@ -829,9 +829,9 @@ Mechanical and electrical design emphasize maintainability and replication. Pane
 - **On request:** additional design files; assembly notes
 
 ## Licensing
-- **Hardware:** CERN-OHL-W v2.0
-- **Software:** Apache-2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Software:** MIT
+- **Documentation:** CC-BY-4.0
 
 ## References
 For additional details, see:

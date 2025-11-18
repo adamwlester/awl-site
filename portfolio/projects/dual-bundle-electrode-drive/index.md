@@ -99,8 +99,8 @@ Active, Jun 2020–present, Barnes Lab
 
 ## Licensing
 
-- **Hardware:** CERN-OHL-W v2.0
-- **Documentation:** CC BY 4.0
+- **Hardware:** CERN-OHL-W-2.0
+- **Documentation:** CC-BY-4.0
 
 ### Attribution
 
