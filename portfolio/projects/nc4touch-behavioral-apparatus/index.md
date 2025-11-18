@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "NC4touch Behavioral Apparatus"
+description: "Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats."
 summary: "Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats."
 hero: "images/render_1.png"
 model: "models/nc4touch-behavioral-apparatus.glb"

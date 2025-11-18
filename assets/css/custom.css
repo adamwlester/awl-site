@@ -196,7 +196,14 @@ code {
   justify-content: space-between;
 }
 
-/* Left: nav links */
+/* Left: site title (name) */
+.site-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+}
+
+/* Right: nav links */
 .site-nav {
   display: flex;
   align-items: center;
@@ -212,13 +219,6 @@ code {
 .site-nav a:focus {
   color: var(--color-accent);
   text-decoration: none;
-}
-
-/* Right: site title (name) */
-.site-title {
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--color-text);
 }
 
 /* Mobile header stacking */

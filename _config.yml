@@ -4,7 +4,7 @@
 
 # Core identity
 title: "Adam W. Lester"
-description: "Design portfolio of research instruments, mechanisms, and experimental hardware."
+description: "Professional site and portfolio for Adam W. Lester."
 url: "https://adamwlester.github.io"     # GitHub Pages user domain
 baseurl: "/awl-site"          # Repo name (required for correct link resolution)
 

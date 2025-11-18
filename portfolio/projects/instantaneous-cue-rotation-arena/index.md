@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "Instantaneous Cue Rotation Arena"
+description: "An augmented reality behavioral arena for studying cue-based navigation in freely moving rats."
 summary: "An augmented reality behavioral arena for studying cue-based navigation in freely moving rats."
 hero: "images/render_1.png"
 model: "models/instantaneous-cue-rotation-arena.glb"

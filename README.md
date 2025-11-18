@@ -86,6 +86,8 @@ index.md                                    # homepage (**site root**) -> minima
   - Global page shell: wraps every page, renders the site-wide header and optional shared banner region.
 - `_layouts/portfolio-list-page.html`  
   - Specializes the layout for `/portfolio/`: shared banner, page lead/intro text, and the project card grid.
+- `_layouts/portfolio-list-page.html`  
+  - Specializes the layout for `/portfolio/`: page lead/intro text and the project card grid.
 - `_layouts/project-detail-page.html`  
   - Project detail layout: image-viewer banner, 3D-viewer window, and two-column narrative content.
 - `_includes/section.html`  

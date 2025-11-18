@@ -1,6 +1,7 @@
 ---
 layout: portfolio-list-page
 title: Portfolio
+description: "A curated collection of research instrument design projects featuring mechanical, electronic, and behavioral assay systems."
 banner_image: /assets/images/portfolio-list-banner.png
 banner_title: Portfolio
 banner_subtitle: Open-source research instruments, behavioral platforms, and supporting hardware

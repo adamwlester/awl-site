@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Home
+description: "Professional site and portfolio for Adam W. Lester."
 banner_image: /assets/images/home-banner.png
 banner_title: Adam W. Lester
 banner_subtitle: Research Instruments • Hardware Systems • Open Science Tools

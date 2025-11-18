@@ -5,8 +5,10 @@ Add `description:` to project index.md front matter by duplicating the existing 
 Assumptions:
 - Repo structure: <repo_root>/portfolio/projects/<slug>/index.md
 - This script lives at:   dev/tools/add_description_from_summary.py
+- Each target file has YAML front matter starting with '---' and ending with '---'
+- `summary:` already exists in the front matter.
 
-Example usage (from repo root):
+Example usage (from repo root, in VS Code terminal):
 
   # Run on all projects
   python dev/tools/add_description_from_summary.py --all
@@ -19,81 +21,94 @@ import argparse
 import sys
 import re
 from pathlib import Path
-from typing import List, Tuple
+from typing import Tuple
 
 
-def split_front_matter_and_body(lines: List[str]) -> Tuple[List[str], List[str]]:
-    """Split lines into (front_matter_lines, body_lines)."""
-    if not lines:
-        raise RuntimeError("File is empty.")
-
-    if lines[0].strip() != "---":
-        raise RuntimeError("Expected YAML front matter starting with '---' on the first line.")
-
-    # Find closing '---'
-    for i in range(1, len(lines)):
-        if lines[i].strip() == "---":
-            front = lines[: i + 1]  # includes closing ---
-            body = lines[i + 1 :]
-            return front, body
-
-    raise RuntimeError("Could not find closing '---' for YAML front matter.")
-
-
-def add_description_to_front_matter(front_lines: List[str]) -> List[str]:
+def split_front_matter_and_body(text: str) -> Tuple[str, str]:
     """
-    Given front matter lines (including opening and closing '---'),
+    Split a markdown file into (front_matter_text, body_text).
+
+    Expects front matter of the form:
+
+        ---
+        key: value
+        ...
+        ---
+        (rest of file)
+
+    Returns (front_matter_without_delimiters, body_text).
+    """
+    match = re.match(r"^---\n(.*?)\n---\n?(.*)$", text, re.DOTALL)
+    if not match:
+        raise RuntimeError("File does not contain valid YAML front matter.")
+    front_matter = match.group(1)
+    body = match.group(2)
+    return front_matter, body
+
+
+def add_description_from_summary(front_matter: str) -> str:
+    """
+    Given the YAML front matter *without* the surrounding --- lines,
     insert a `description:` line immediately above the first `summary:` line,
-    copying its value, if `description:` is not already present.
+    copying its value.
+
+    If `description:` already exists, or no `summary:` is found, the
+    original front matter is returned unchanged.
     """
-    # Work on the body of the front matter (between the --- lines)
-    header = front_lines[0]
-    footer = front_lines[-1]
-    body_lines = front_lines[1:-1]
+    # If description already exists, don't touch it
+    if re.search(r"^\s*description\s*:", front_matter, re.MULTILINE):
+        return front_matter
 
-    # If description already exists, do nothing
-    for line in body_lines:
-        if re.match(r"^\s*description\s*:", line):
-            return front_lines
-
-    new_body_lines: List[str] = []
+    lines = front_matter.split("\n")
+    new_lines = []
     inserted = False
 
-    summary_pattern = re.compile(r"^(\s*)summary\s*:(.*)$")
+    for line in lines:
+        stripped = line.lstrip()
 
-    for line in body_lines:
-        m = summary_pattern.match(line)
-        if m and not inserted:
-            indent, value = m.groups()
-            # Preserve indentation and value (including quotes / spacing)
-            description_line = f"{indent}description:{value}"
-            new_body_lines.append(description_line)
+        if stripped.startswith("summary:") and not inserted:
+            # Preserve indentation
+            indent_len = len(line) - len(stripped)
+            indent = line[:indent_len]
+
+            # Everything after "summary:" (including space + value, e.g. ' "foo"')
+            after = stripped[len("summary:") :]
+
+            # Build description line, mirroring the value and spacing
+            description_line = f"{indent}description:{after}"
+
+            # Insert description line immediately above summary line
+            new_lines.append(description_line)
             inserted = True
-        new_body_lines.append(line)
 
-    # If no summary found, just return original
+        new_lines.append(line)
+
+    # If no summary found, return unchanged
     if not inserted:
-        return front_lines
+        return front_matter
 
-    return [header] + new_body_lines + [footer]
+    return "\n".join(new_lines)
 
 
 def process_index_file(index_path: Path) -> None:
     """Read, transform, and overwrite a single index.md file."""
     text = index_path.read_text(encoding="utf-8")
-    lines = text.splitlines(keepends=True)
 
-    front, body = split_front_matter_and_body(lines)
-    new_front = add_description_to_front_matter(front)
+    try:
+        front_matter, body = split_front_matter_and_body(text)
+    except RuntimeError as e:
+        print(f"Skipping {index_path}: {e}")
+        return
 
-    new_lines = new_front + body
-    new_text = "".join(new_lines)
+    new_front_matter = add_description_from_summary(front_matter)
 
-    if new_text != text:
-        index_path.write_text(new_text, encoding="utf-8")
-        print(f"Updated: {index_path}")
-    else:
+    if new_front_matter == front_matter:
         print(f"No changes needed: {index_path}")
+        return
+
+    new_text = f"---\n{new_front_matter}\n---\n{body}"
+    index_path.write_text(new_text, encoding="utf-8")
+    print(f"Updated: {index_path}")
 
 
 def find_projects_root() -> Path:

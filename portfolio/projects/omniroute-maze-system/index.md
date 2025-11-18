@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "Omniroute Maze System"
+description: "A dynamically reconfigurable rodent maze system that integrates automated route configurations, sensory cue control, and targeted reward delivery."
 summary: "A dynamically reconfigurable rodent maze system that integrates automated route configurations, sensory cue control, and targeted reward delivery."
 hero: "images/render_1.png"
 model: "models/omniroute-maze-system.glb"

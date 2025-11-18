@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "Adjustable Aluminum Projector Mount"
+description: "Adjustable aluminum projector mount for precise alignment of short-throw projectors in behavioral arenas."
 summary: "Adjustable aluminum projector mount for precise alignment of short-throw projectors in behavioral arenas."
 hero: "images/render_1.png"
 model: "models/adjustable-aluminum-projector-mount.glb"

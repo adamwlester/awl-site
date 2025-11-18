@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "NC4gate Automatable Gate Module"
+description: "Modular motorized gate system for autonomous control of rodent behavior in maze experiments."
 summary: "Modular motorized gate system for autonomous control of rodent behavior in maze experiments."
 hero: "images/render_1.png"
 model: "models/nc4gate-automatable-gate-module.glb"
