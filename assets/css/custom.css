@@ -508,15 +508,11 @@ code {
   margin-top: var(--space-3);
 }
 
-/* Smaller screens: stack columns */
+/* Small screens: stack columns */
 @media (max-width: 767px) {
   .project-layout {
     grid-template-columns: 1fr;
     gap: var(--space-3);
-  }
-
-  .project-aside-column {
-    order: -1; /* 3D viewer appears before text on very small screens if desired */
   }
 }
 
@@ -574,12 +570,14 @@ code {
   position: relative;
   border-radius: var(--radius-sm);
   overflow: hidden;
+  aspect-ratio: 16 / 9; /* adjust if you prefer a different frame shape */
 }
 
 .image-slide img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
+  object-fit: cover;
 }
 
 /* Navigation arrows (visual style only; JS hooks will wire behavior) */

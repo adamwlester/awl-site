@@ -97,6 +97,66 @@ index.md                                    # homepage (**site root**) -> minima
 - `assets/css/custom.css`  
   - Single stylesheet that defines base typography, colors, layout, header/banner styling, and responsive behavior across pages.
 
+## CSS STYLE BASELINES (GLOBAL DESIGN CONVENTIONS)
+
+This section defines the implicit global style conventions used across `assets/css/custom.css`. These choices are not restated elsewhere in the README but serve as **ground truth** for all visual styling.
+
+### Typography
+- **Font family:**  
+  - Single **system sans-serif stack** used for all text (body + headings).  
+  - No external web fonts or font-loading behavior.
+- **Headings:**  
+  - Standard Markdown headings (`#`, `##`, `###`) map to a simple, consistent hierarchy (size/weight) controlled entirely in `custom.css`.  
+  - No per-page or per-component overrides.
+
+### Spacing & Layout Scale
+- **Spacing scale:**  
+  - A small global spacing system (`--space-1` … `--space-5`) defines all padding, gaps, and vertical rhythm.  
+  - Section spacing (`_includes/section.html`) uses this same scale.
+- **Max content width:**  
+  - Primary content areas use a standardized max-width container (≈960px) for consistent readable line-length.
+- **Border radius:**  
+  - A minimal set of radii tokens (`--radius-sm`, `--radius-md`) applied consistently across cards, media containers, and interactive elements.
+
+### Color & Surfaces
+- **Neutral palette:**  
+  - Background: white  
+  - Text: near-black  
+  - Surfaces (e.g., cards, media blocks): white with subtle borders/shadows  
+- **Shadows:**  
+  - Very light default shadow on cards and media containers.  
+  - Slightly stronger shadow + gentle lift on hover (portfolio cards, interactive tiles).  
+- **Links:**  
+  - Subtle underline-on-hover behavior; no brand color palette.
+
+### Responsive Behavior
+- **Breakpoints:**  
+  - Major layout transitions occur at ~768px (small screens) and ~1024px (medium/large screens).  
+  - Desktop uses multi-column layouts where appropriate; mobile stacks all content in DOM order.
+- **Desktop vs Mobile Ordering:**  
+  - **DOM order = mobile visual order** across all pages.  
+  - Desktop layout uses CSS grid/flex positioning without content reordering.
+
+### Banner & Media Conventions
+- **Shared banner (Home + Portfolio):**  
+  - Fixed-height panoramic band (`--page-banner-height`).  
+  - Background images centered and cover-filled with a soft overlay for text readability.
+- **Image-viewer (project detail):**  
+  - Each slide uses a **fixed aspect ratio** (default `16:9`) with `object-fit: cover` for consistent height.  
+  - Carousel uses CSS scroll-snap with lightweight JS only for arrow/thumbnail control.
+- **3D-viewer window:**  
+  - Uses `<model-viewer>` with a stable aspect ratio (≈4:3) and max-height to harmonize visually with the left-column narrative.
+
+### Interactions & Motion
+- **Hover states:**  
+  - Only cards and explicitly interactive elements exhibit scale/shadow/brightness changes.  
+  - No global hover animations.
+- **Motion preferences:**  
+  - All transitions respect `prefers-reduced-motion` with fallbacks defined in CSS.
+
+### Utilities
+- A small set of global utility classes exist (`.stack`, `.text-muted`, `.text-small`) to enforce consistent micro-layout and typography without introducing framework-like patterns.
+
 ## KEY COMPONENTS & BEHAVIOR
 
 **Note:** I am open to changing or modifying these requirements to some degree based on practicality and optimal approach.
