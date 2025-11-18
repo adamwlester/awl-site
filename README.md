@@ -289,6 +289,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
     - `Materials & Fabrication` (from content body)
     - `Release` (from content body)
     - `References` (from content body)
+    - `Included files` (from content body)
   - **Right-column:**
     - **3D-viewer** window at the top
     - `Role & Contributions` (from content body)
@@ -308,6 +309,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
     - `Materials & Fabrication` (from content body)
     - `Release` (from content body)
     - `References` (from content body)
+    - `Included files` (from content body)
   4. Right-column content body sections
     - `Role & Contributions` (from content body)
     - `Highlights & Key Specs` (from content body)
@@ -317,7 +319,6 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 **Layout Notes:**
 - The DOM order matches the mobile stacking order above **not the source Markdown file content body**.  
 - The desktop layout is achieved purely via CSS (grid/flex) positioning of these groups.
-- The `Included files` section in the source Markdown file content body is **not used in V1** and is ignored by the layout.
 
 ## Implementation Status
 *A concise overview of what currently exists in the site and how the core pieces are structured.*
