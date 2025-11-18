@@ -8,6 +8,6 @@ Purpose: Help an AI coding agent be immediately productive in this repository.
 - **Key files / locations (in progress):**
   - `README.md` — high-level architecture, naming conventions, and media constraints. This is the first place to look for repo context for now.
   - `portfolio/projects/<slug>/index.md` — project content (front matter fields: `title`, `summary`, `hero`, `images`, `models`).
-  - `dev/_hidden` — do not use any content in here for context.
+  - `dev/` — do not use any content in here for context.
 
 — End of file —

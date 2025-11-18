@@ -92,7 +92,8 @@ def build_sections_by_heading(
         end_idx = indices[i + 1]
         section_lines = body_lines[start_idx:end_idx]
         # Only store sections we care about; others can be ignored
-        sections[title] = (start_idx, end_idx, section_lines)
+        if title in REQUIRED_HEADINGS:
+            sections[title] = (start_idx, end_idx, section_lines)
 
     return sections
 
@@ -126,6 +127,20 @@ def reflow_body(body_lines: List[str], index_path: Path) -> List[str]:
     before_columns = body_lines[:earliest_start]
     after_columns = body_lines[latest_end:]
 
+    # Drop any trailing H2 sections whose headings are not in our configured lists
+    # (e.g. "Included files" blocks imported from CadCrowd).
+    # We only do this if the first non-blank line in `after_columns` is an H2.
+    if after_columns:
+        j = 0
+        while j < len(after_columns) and after_columns[j].strip() == "":
+            j += 1
+        if j < len(after_columns):
+            stripped = after_columns[j].lstrip()
+            if stripped.startswith("## "):
+                title = stripped[3:].strip()
+                if title not in REQUIRED_HEADINGS:
+                    after_columns = []
+
     # Build left and right column content in the configured order
     left_lines: List[str] = []
     for h in LEFT_HEADINGS:
@@ -158,7 +173,7 @@ def reflow_body(body_lines: List[str], index_path: Path) -> List[str]:
     new_body.append("\n</div>\n")
     new_body.append("</div>\n")
 
-    # Ensure a blank line before any trailing content
+    # Ensure a blank line before any trailing content we decided to keep
     if after_columns:
         if new_body and new_body[-1].strip() != "":
             new_body.append("\n")
