@@ -466,17 +466,21 @@ code {
   gap: var(--space-4);
 }
 
-/* Media section (image viewer full-width) */
+/* Media section (image viewer full-width above the grid) */
 .project-media-section {
   margin-bottom: var(--space-3);
 }
 
-/* Two-column layout for main content + aside */
+/* Core grid:
+   - Desktop: 2 columns
+       main  | model
+       main  | aside
+   - Mobile: stacked in logical reading order:
+       model → main → aside
+*/
 .project-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  /* Left column: main (title + summary + primary content)
-     Right column: model (top) + aside (secondary content) */
   grid-template-areas:
     "main model"
     "main aside";
@@ -484,38 +488,77 @@ code {
   align-items: flex-start;
 }
 
-/* Left column (narrative) */
-.project-main-column {
-  grid-area: main;
-  min-width: 0;
-}
-
-/* Right column (3D viewer + secondary sections) */
+/* Legacy column wrappers:
+   - Used as semantic containers in the layout markup.
+   - We flatten them with display: contents so their children
+     can become the real grid items (title/summary + content groups).
+*/
+.project-main-column,
 .project-aside-column {
-  grid-area: aside;
+  display: contents;
   min-width: 0;
 }
 
-/* Title and summary at top of left column */
+/* Title and summary:
+   - Visually part of the left "main" column.
+   - They share the same grid-area as the primary content group,
+     so on desktop they sit above it; on mobile they stack between
+     the model and secondary content.
+*/
 .project-title {
+  grid-area: main;
   font-size: 1.8rem;
   margin-top: 0;
   margin-bottom: 0.35rem;
 }
 
 .project-summary {
+  grid-area: main;
   font-size: 1.05rem;
   color: var(--color-text-muted);
   margin-top: 0;
   margin-bottom: var(--space-3);
 }
 
-/* Generic spacing for content sections inside columns */
+/* Content groups inside the Markdown body:
+   - .content-groups is a structural wrapper inserted by authoring.
+   - We use display: contents so its children (primary/secondary)
+     can participate directly in the grid as distinct areas.
+*/
+.content-groups {
+  display: contents;
+}
+
+/* Optional shared styling hook for any content-group wrapper */
+.content-group {
+  /* no layout rules here on purpose; treat as a semantic hook */
+}
+
+/* Primary narrative group:
+   - Left column (main) under the title + summary.
+   - Shares grid-area: main with the header elements above.
+*/
+.content-group-primary {
+  grid-area: main;
+  min-width: 0;
+}
+
+/* Secondary narrative group:
+   - Right column (aside) beneath the 3D model on desktop.
+*/
+.content-group-secondary {
+  grid-area: aside;
+  min-width: 0;
+}
+
+/* Generic spacing between narrative sections inside each group */
 .project-content-section + .project-content-section {
   margin-top: var(--space-3);
 }
 
-/* Small screens: stack in DOM order (model → main → aside) */
+/* Small screens: stack in logical order:
+   model → main (title + summary + primary) → aside (secondary)
+*/
 @media (max-width: 767px) {
   .project-layout {
     grid-template-columns: 1fr;
@@ -527,7 +570,8 @@ code {
   }
 }
 
-/* Medium screens: allow columns but with tighter gap */
+/* Medium screens: allow columns with slightly different ratio
+   and a tighter gap, but keep the same area mapping */
 @media (min-width: 768px) and (max-width: 1023px) {
   .project-layout {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);

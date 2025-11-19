@@ -1,75 +1,120 @@
 ---
 ---
+<!--
+  DEFAULT LAYOUT
+  This file defines the global HTML structure shared by all pages:
+  - <html>, <head>, <body>
+  - Metadata (title, description)
+  - Global styles/scripts
+  - Header + navigation
+  - Optional banner
+  - Footer
+  Child layouts only supply content for {{ content }} inside <main>.
+-->
 
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en' }}">
   <head>
+    <!-- Meta: charset + responsive viewport -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Page <title> construction -->
     {% if page.title %}
       <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
     {% else %}
       <title>{{ site.title | escape }}</title>
     {% endif %}
 
+    <!-- Meta description: prefer page.description, fallback to site.description -->
     {% if page.description %}
       <meta name="description" content="{{ page.description | escape }}">
     {% elsif site.description %}
       <meta name="description" content="{{ site.description | escape }}">
     {% endif %}
 
+    <!-- Global stylesheet -->
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css">
 
-    <!-- Global <model-viewer> web component (loaded once for all pages) -->
+    <!-- Global <model-viewer> web component (loaded once per site) -->
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
     </script>
   </head>
+
   <body class="site-page">
+    <!-- ======================================== -->
+    <!-- GLOBAL HEADER + PRIMARY NAVIGATION       -->
+    <!-- ======================================== -->
     <header class="site-header">
       <div class="site-header-inner">
+
+        <!-- Site title: always links to homepage -->
         <a class="site-title" href="{{ site.baseurl }}/">
           {{ site.title }}
         </a>
 
+        <!-- Primary navigation links -->
         <nav class="site-nav" aria-label="Primary">
           <a href="{{ site.baseurl }}/portfolio/">Portfolio</a>
           <a href="{{ site.baseurl }}/docs/CV.pdf">CV</a>
           <a href="{{ site.baseurl }}/docs/Resume.pdf">Resume</a>
         </nav>
+
       </div>
     </header>
 
+    <!-- ======================================== -->
+    <!-- OPTIONAL PAGE BANNER                     -->
+    <!-- Renders only if page.banner_image exists -->
+    <!-- ======================================== -->
     {% if page.banner_image %}
       <section class="page-banner">
+
+        <!-- Banner background image -->
         <div
           class="page-banner-bg"
           style="background-image: url('{{ site.baseurl }}{{ page.banner_image }}');">
         </div>
+
+        <!-- Dark overlay to improve legibility -->
         <div class="page-banner-overlay"></div>
 
+        <!-- Foreground banner content -->
         <div class="page-banner-content">
           <div class="page-banner-inner">
+
+            <!-- Banner title (serves as page H1) -->
             {% if page.banner_title %}
               <h1 class="page-banner-title">{{ page.banner_title }}</h1>
             {% endif %}
 
+            <!-- Optional subtitle -->
             {% if page.banner_subtitle %}
               <p class="page-banner-subtitle">{{ page.banner_subtitle }}</p>
             {% endif %}
+
           </div>
         </div>
+
       </section>
     {% endif %}
 
+    <!-- ======================================== -->
+    <!-- MAIN CONTENT AREA                        -->
+    <!-- Child layouts provide all markup inside  -->
+    <!-- {{ content }} (wrapped in .site-wrapper) -->
+    <!-- ======================================== -->
     <main class="site-main" role="main">
       <div class="site-wrapper">
         {{ content }}
       </div>
     </main>
 
+    <!-- ======================================== -->
+    <!-- GLOBAL FOOTER                            -->
+    <!-- ======================================== -->
     <footer class="site-footer">
       <div class="site-wrapper">
         <small>
@@ -77,5 +122,6 @@
         </small>
       </div>
     </footer>
+
   </body>
 </html>
