@@ -3,7 +3,7 @@ layout: project-detail-page
 title: "Roller-Bearing Cable Guide"
 description: "Compact, low-torsion cable guide with a bearing-mounted collet and dual-rail carriage for quiet, low-resistance travel in tethered rodent recordings."
 summary: "Compact, low-torsion cable guide with a bearing-mounted collet and dual-rail carriage for quiet, low-resistance travel in tethered rodent recordings."
-hero: "images/render_1.png"
+hero: "images/hero.png"
 model_src: "models/roller-bearing-cable-guide.glb"
 model_camera_orbit: "auto auto auto"
 model_camera_target: "auto auto auto"

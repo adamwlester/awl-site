@@ -3,7 +3,7 @@ layout: project-detail-page
 title: "Wireless Mobile Feeder Robot"
 description: "A mobile feeder robot for delivering liquid rewards to rats during circular track experiments"
 summary: "A mobile feeder robot for delivering liquid rewards to rats during circular track experiments"
-hero: "images/render_1.png"
+hero: "images/hero.png"
 model_src: "models/wireless-mobile-feeder-robot.glb"
 model_camera_orbit: "auto auto auto"
 model_camera_target: "auto auto auto"

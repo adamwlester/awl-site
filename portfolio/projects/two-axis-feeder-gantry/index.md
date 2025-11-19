@@ -3,7 +3,7 @@ layout: project-detail-page
 title: "Two-Axis Feeder Gantry"
 description: "CNC-based gantry system for automated spatially targeted reward delivery in rodent open-field experiments."
 summary: "CNC-based gantry system for automated spatially targeted reward delivery in rodent open-field experiments."
-hero: "images/render_1.png"
+hero: "images/hero.png"
 model_src: "models/two-axis-feeder-gantry.glb"
 model_camera_orbit: "auto auto auto"
 model_camera_target: "auto auto auto"

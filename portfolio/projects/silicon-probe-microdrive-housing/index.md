@@ -3,7 +3,7 @@ layout: project-detail-page
 title: "Silicon Probe Microdrive Housing"
 description: "Implantable housing for high-density chronic silicon probe recordings in freely moving rats."
 summary: "Implantable housing for high-density chronic silicon probe recordings in freely moving rats."
-hero: "images/render_1.png"
+hero: "images/hero.png"
 model_src: "models/silicon-probe-microdrive-housing.glb"
 model_camera_orbit: "auto auto auto"
 model_camera_target: "auto auto auto"
