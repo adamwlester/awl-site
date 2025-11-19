@@ -2,24 +2,20 @@
 layout: default
 ---
 
-<div class="page-banner">
-  <!-- Optional banner image + title/subtitle driven by front matter -->
-  {% if page.banner_image %}
-    <div class="page-banner-image">
-      <img src="{{ site.baseurl }}{{ page.banner_image }}" alt="{{ page.banner_alt | default: page.title }}">
+<!-- Lead section: renders page_lead (Markdown → HTML) inside a neutral/default band -->
+{% if page.page_lead %}
+  {% capture portfolio_lead_content %}
+    <div class="portfolio-lead">
+      {{ page.page_lead | markdownify }}
     </div>
-  {% endif %}
-  <div class="page-banner-text">
-    <h1>{{ page.title }}</h1>
-    {% if page.banner_subtitle %}
-      <p class="page-banner-subtitle">{{ page.banner_subtitle }}</p>
-    {% endif %}
-    {% if page.page_lead %}
-      <p class="page-lead">{{ page.page_lead }}</p>
-    {% endif %}
-  </div>
-</div>
+  {% endcapture %}
+  {% include section.html content=portfolio_lead_content %}
+{% endif %}
 
-<section class="portfolio-section">
-  {% include project-grid.html %}
-</section>
+<!-- Grid section: renders the project grid inside a surface band -->
+{% if page.projects and page.projects.size > 0 %}
+  {% capture portfolio_grid_content %}
+    {% include project-grid.html projects=page.projects %}
+  {% endcapture %}
+  {% include section.html class="section--surface" content=portfolio_grid_content %}
+{% endif %}

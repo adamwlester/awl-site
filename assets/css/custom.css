@@ -475,17 +475,24 @@ code {
 .project-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  /* Left column: main (title + summary + primary content)
+     Right column: model (top) + aside (secondary content) */
+  grid-template-areas:
+    "main model"
+    "main aside";
   gap: var(--space-4);
   align-items: flex-start;
 }
 
 /* Left column (narrative) */
 .project-main-column {
+  grid-area: main;
   min-width: 0;
 }
 
 /* Right column (3D viewer + secondary sections) */
 .project-aside-column {
+  grid-area: aside;
   min-width: 0;
 }
 
@@ -508,10 +515,14 @@ code {
   margin-top: var(--space-3);
 }
 
-/* Small screens: stack columns */
+/* Small screens: stack in DOM order (model → main → aside) */
 @media (max-width: 767px) {
   .project-layout {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "model"
+      "main"
+      "aside";
     gap: var(--space-3);
   }
 }
@@ -649,6 +660,7 @@ code {
    ========================================================= */
 
 .model-viewer-panel {
+  grid-area: model;
   background-color: var(--color-surface);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);

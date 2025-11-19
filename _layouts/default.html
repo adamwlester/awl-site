@@ -1,33 +1,81 @@
 ---
-layout: null
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.lang | default: 'en' }}">
   <head>
     <meta charset="utf-8">
-    <title>{% if page.title %}{{ page.title }} · {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ site.description | default: '' }}">
+
+    {% if page.title %}
+      <title>{{ page.title | escape }} | {{ site.title | escape }}</title>
+    {% else %}
+      <title>{{ site.title | escape }}</title>
+    {% endif %}
+
+    {% if page.description %}
+      <meta name="description" content="{{ page.description | escape }}">
+    {% elsif site.description %}
+      <meta name="description" content="{{ site.description | escape }}">
+    {% endif %}
+
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css">
-    <!-- TODO: add <model-viewer> script import here for the 3D viewer -->
+
+    <!-- Global <model-viewer> web component (loaded once for all pages) -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+    </script>
   </head>
-  <body>
+  <body class="site-page">
     <header class="site-header">
-      <nav class="site-nav">
-        <div class="site-nav-left">
+      <div class="site-header-inner">
+        <a class="site-title" href="{{ site.baseurl }}/">
+          {{ site.title }}
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
           <a href="{{ site.baseurl }}/portfolio/">Portfolio</a>
           <a href="{{ site.baseurl }}/docs/CV.pdf">CV</a>
           <a href="{{ site.baseurl }}/docs/Resume.pdf">Resume</a>
-        </div>
-        <div class="site-nav-right">
-          <span class="site-title">{{ site.title }}</span>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
 
-    <main class="site-main">
-      {{ content }}
+    {% if page.banner_image %}
+      <section class="page-banner">
+        <div
+          class="page-banner-bg"
+          style="background-image: url('{{ site.baseurl }}{{ page.banner_image }}');">
+        </div>
+        <div class="page-banner-overlay"></div>
+
+        <div class="page-banner-content">
+          <div class="page-banner-inner">
+            {% if page.banner_title %}
+              <h1 class="page-banner-title">{{ page.banner_title }}</h1>
+            {% endif %}
+
+            {% if page.banner_subtitle %}
+              <p class="page-banner-subtitle">{{ page.banner_subtitle }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+
+    <main class="site-main" role="main">
+      <div class="site-wrapper">
+        {{ content }}
+      </div>
     </main>
+
+    <footer class="site-footer">
+      <div class="site-wrapper">
+        <small>
+          &copy; {{ site.time | date: "%Y" }} {{ site.title }}.
+        </small>
+      </div>
+    </footer>
   </body>
 </html>

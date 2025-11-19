@@ -212,3 +212,111 @@ This avoids it doing surprising things and is the recommended workflow for struc
     * **Edit:** propose file changes
         
 * Copilot does **not** scan arbitrary directories for instructions.
+
+
+
+
+
+
+
+
+
+
+Generate the complete `_layouts/default.html` in a single code block.  
+Do an excellent job — treat this as a production-ready file, not a draft.
+
+Before writing the file, apply **full contextual reasoning**:
+
+• Use the FINAL, corrected CSS and the FINAL README spec.  
+• Respect the exact DOM responsibilities of `default.html`:  
+  – HTML shell  
+  – <head> with correct title/meta logic  
+  – global header and nav  
+  – conditional shared banner (only if page.banner_image is present)  
+  – main wrapper (`.site-main` → `.site-wrapper` → {{ content }})  
+  – optional footer using existing CSS class hooks  
+• Use `{{ site.baseurl }}` correctly for ALL asset paths and links.  
+• Implement the model-viewer script import ONCE globally in <head>.  
+• Do NOT include any project-detail or portfolio-grid logic here — that belongs in their own layouts.  
+• Ensure ALL class names match the CSS exactly.
+
+Take a moment to fully internalize the project context before producing output.
+
+If after reasoning you identify any remaining assumptions, resolve them in the most consistent and conservative way that aligns with the README and CSS.
+
+Then output ONLY the final `_layouts/default.html` file inside one fenced code block — no commentary.
+
+
+
+
+Generate the complete `_layouts/portfolio-list-page.html` in a single code block.  
+Produce a polished, production-quality file and apply full contextual reasoning before writing anything.
+
+Use ONLY the current project context (README + final CSS + established layout conventions).  
+Do not assume or invent behaviors outside that context.
+
+Key expectations for this layout:
+
+• This file uses `layout: default` and outputs only the content that belongs INSIDE the default layout’s {{ content }} region.  
+• It must correctly render the portfolio list page’s structure based on front matter fields such as:  
+  – title, description  
+  – banner_* (handled by default layout)  
+  – page_lead  
+  – projects: [slugs]
+
+• It must use the existing CSS class hooks exactly as defined (e.g., `.portfolio-lead`, `.section`, `.section-inner`, `.project-grid`, etc.).
+
+• It must not duplicate header, banner, or main wrapper markup — those belong exclusively to `default.html`.
+
+• It must render the project grid via the appropriate include (`project-grid.html`) and pass the project slugs correctly.
+
+• All URLs should be built using `{{ site.baseurl }}` where required.
+
+Before generating output, reason thoroughly about how the CSS, includes, and front matter interact.  
+If you encounter any unclear point, resolve it in the simplest and most consistent way aligned with the overall system.
+
+Then output ONLY the final `_layouts/portfolio-list-page.html` inside one fenced code block — no commentary.
+
+
+
+
+
+Generate the complete `_layouts/project-detail-page.html` in a single code block.  
+Produce a production-quality file and apply full contextual reasoning before writing anything.
+
+Work strictly from the current project context (final README, final CSS, and established layout conventions).  
+Do not assume or invent behaviors outside that context.
+
+Key expectations for this layout:
+
+• This file must declare `layout: default` and output only the markup that belongs INSIDE the default layout’s {{ content }} region.
+
+• The structure must reflect the project detail page requirements, including:
+  – Full-width image viewer at the top (`.project-media-section` containing `.image-viewer`)  
+  – A `.project-detail` wrapper containing a `.project-layout` grid  
+  – The three direct children of `.project-layout`, in DOM order, matching the CSS expectations:
+       1) `.model-viewer-panel`
+       2) `.project-main-column`
+       3) `.project-aside-column`
+
+• All CSS class names must match the final CSS exactly.  
+• All image and model paths must correctly use `{{ site.baseurl }}` and `{{ page.dir }}`.  
+• `<model-viewer>` must use the front matter fields (`model`, optional model_* fields) and follow the existing per-project configuration pattern.  
+• Render the primary and secondary content groups in a way that aligns with the README and current Markdown conventions, without hardcoding assumptions that conflict with the existing content model.
+
+• This layout must NOT include:  
+  – HTML shell  
+  – `<head>`  
+  – global nav  
+  – banner markup  
+These belong exclusively to `default.html`.
+
+Before generating output, take time to fully reason about:
+  – how the CSS grid dictates DOM order,
+  – how the README defines project page content,
+  – how images, hero media, and the 3D viewer integrate,
+  – how to structure the page so it works cleanly on both desktop and mobile.
+
+If any ambiguity arises, resolve it in the simplest, most consistent way that aligns with the project’s established patterns.
+
+Then output ONLY the final `_layouts/project-detail-page.html` inside one fenced code block — no commentary.

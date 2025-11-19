@@ -136,3 +136,95 @@ _layouts/project-detail-page.html
 _includes/section.html
 _includes/project-grid.html
 _includes/project-card.html
+
+
+## Layout Schematic
+
+======================================================================
+DESKTOP LAYOUT (wide screens)
+======================================================================
+
+Viewport / page width
+┌───────────────────────────────────────────────────────────────────┐
+│                      [ IMAGE VIEWER / CAROUSEL ]                  │
+│   - Uses front matter: images[] (hero + additional images)        │
+│   - Full-width "hero" media band at the top of the project page   │
+└───────────────────────────────────────────────────────────────────┘
+
+
+Two-column project content area
+┌───────────────────────────────┬───────────────────────────────────┐
+│           LEFT COLUMN         │             RIGHT COLUMN          │
+│        (.project-main)        │         (.project-aside)          │
+│                               │                                   │
+│  ┌─────────────────────────┐  │  ┌─────────────────────────────┐  │
+│  │   PROJECT TITLE         │  │  │      [ 3D VIEWER PANEL ]    │  │
+│  │   (page.title)          │  │  │   (.model-viewer-panel)     │  │
+│  └─────────────────────────┘  │  │  - <model-viewer> element   │  │
+│                               │  │  - Uses: model_src,         │  │
+│  ┌─────────────────────────┐  │  │          model_camera_*     │  │
+│  │   PROJECT SUMMARY       │  │  └─────────────────────────────┘  │
+│  │   (page.summary)        │  │                                   │
+│  └─────────────────────────┘  │  ┌─────────────────────────────┐  │
+│                               │  │   SECONDARY CONTENT         │  │
+│  ┌─────────────────────────┐  │  │   (Right-column sections    │  │
+│  │   PRIMARY CONTENT       │  │  │    from content body)       │  │
+│  │   (Left-column sections │  │  └─────────────────────────────┘  │
+│  │    from content body)   │  │                                   │
+│  └─────────────────────────┘  │                                   │
+│                               │                                   │
+└───────────────────────────────┴───────────────────────────────────┘
+
+High-level desktop structure:
+- Top band:  full-width image viewer
+- Below:     CSS grid with two columns
+  - Left:    title + summary + primary narrative sections
+  - Right:   3D viewer panel on top, secondary sections below it
+
+
+======================================================================
+MOBILE LAYOUT (narrow screens)
+======================================================================
+
+All elements stack vertically in *this* order,
+and the DOM order matches this sequence.
+
+┌───────────────────────────────────────────────────────────────────┐
+│ [1] IMAGE VIEWER / CAROUSEL                                       │
+│     - Full width                                                  │
+│     - media from images[]                                         │
+└───────────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────┐
+│ [2] 3D VIEWER PANEL                                               │
+│     - .model-viewer-panel                                         │
+│     - <model-viewer> using model_src, model_camera_*              │
+└───────────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────┐
+│ [3] LEFT-COLUMN NARRATIVE BLOCK                                   │
+│     - PROJECT TITLE (page.title)                                  │
+│     - PROJECT SUMMARY (page.summary)                              │
+│     - PRIMARY CONTENT SECTIONS (from content body,                │
+│       e.g. Description, Design Goals, Implementation, etc.)       │
+└───────────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────────────────────────────────────────────┐
+│ [4] RIGHT-COLUMN NARRATIVE BLOCK                                  │
+│     - SECONDARY CONTENT SECTIONS (from content body,              │
+│       e.g. Role & Contributions, Collaboration, Links, etc.)      │
+└───────────────────────────────────────────────────────────────────┘
+
+So in mobile order (top → bottom):
+
+  1. Image viewer (media carousel)
+  2. 3D viewer panel
+  3. Left narrative (title + summary + primary sections)
+  4. Right narrative (secondary sections)
+
+This *same* sequence is the DOM order, and desktop CSS uses a grid to
+place:
+- Left narrative into the left column,
+- 3D viewer + secondary sections into the right column,
+while preserving this underlying stacking order for small screens and
+assistive tech.
