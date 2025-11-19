@@ -29,6 +29,7 @@ images:
     caption: "Bench photo of the fully assembled drive with cap installed"
   - src: "images/photo_2.png"
     caption: "Close-up bench photo showing the drive body and core with bundle guide"
+published: true
 ---
 
 <div class="content-groups">

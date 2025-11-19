@@ -27,6 +27,7 @@ images:
     caption: "On-rig photo of the feeder gantry installed on the Omniroute system; legacy servo-driven feeder arm"
   - src: "images/photo_2.png"
     caption: "On-rig top view of the cover carriage over the Omniroute system; legacy servo-driven feeder arm"
+published: true
 ---
 
 <div class="content-groups">

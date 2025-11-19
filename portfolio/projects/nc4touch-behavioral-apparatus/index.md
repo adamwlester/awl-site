@@ -25,6 +25,7 @@ images:
     caption: "Bench close-up photo of interior touchscreen end of apparatus."
   - src: "images/photo_3.png"
     caption: "Bench close-up photo of interior feeder port end of apparatus."
+published: true
 ---
 
 <div class="content-groups">

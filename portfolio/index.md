@@ -19,5 +19,5 @@ projects:
   - dual-bundle-electrode-drive
   - fischer-344-rat-model
   - roller-bearing-cable-guide
-publish: false
+published: true
 ---

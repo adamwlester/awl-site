@@ -15,6 +15,7 @@ images:
     caption: "Annotated three-quarter view (front, right, top) render of the cable guide assembly"
   - src: "images/render_3.png"
     caption: "Top view render of the cable guide assembly"
+published: true
 ---
 
 # Roller-Bearing Cable Guide

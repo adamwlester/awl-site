@@ -25,6 +25,7 @@ images:
     caption: "Bench photo of prototype track-mounted feeder cart assembly"
   - src: "images/photo_2.png"
     caption: "Combined bench close-up photos of gated feeder port, open and closed"
+published: true
 ---
 
 <div class="content-groups">

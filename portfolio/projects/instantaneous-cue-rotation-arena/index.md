@@ -23,6 +23,7 @@ images:
     caption: "In-rig photo of full arena in lab"
   - src: "images/photo_2.png"
     caption: "In-rig photo of rat on track with wall cues"
+published: true
 ---
 
 <div class="content-groups">

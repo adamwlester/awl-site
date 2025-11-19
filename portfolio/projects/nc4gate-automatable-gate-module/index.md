@@ -27,6 +27,7 @@ images:
     caption: "Bench photo of gate module, wall panel side"
   - src: "images/photo_3.png"
     caption: "Bench photo of 60 gate modules installed in Omniroute rig"
+published: true
 ---
 
 <div class="content-groups">

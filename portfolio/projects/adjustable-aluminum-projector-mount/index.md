@@ -19,6 +19,7 @@ images:
     caption: "In-rig close-up photo of one installed projector mount"
   - src: "images/photo_2.png"
     caption: "In-rig photo of four installed projector mounts in NC4 Lab Omniroute system"
+published: true
 ---
 
 <div class="content-groups">

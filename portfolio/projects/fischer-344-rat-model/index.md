@@ -15,6 +15,7 @@ images:
     caption: "Three-quarter view (rear, left, top) render of the rat model"
   - src: "images/render_3.png"
     caption: "Three-quarter view (rear, right, top) render of the rat model"
+published: true
 ---
 
 <div class="content-groups">

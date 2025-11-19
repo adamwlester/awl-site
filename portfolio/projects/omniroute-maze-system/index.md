@@ -27,6 +27,7 @@ images:
     caption: "Combined in-rig photos of ceiling and floor components of the Omniroute system"
   - src: "images/photo_2.png"
     caption: "Combined in-rig photos of example wall and floor projected stimuli"
+published: true
 ---
 
 <div class="content-groups">

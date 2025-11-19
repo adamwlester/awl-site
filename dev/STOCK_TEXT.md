@@ -1,12 +1,21 @@
+### Welcome
+
+I lead the end-to-end design and delivery of research instruments and hardware–software platforms. Across my neuroscience PhD and a biomedical engineering postdoc, I’ve scoped, architected, built, and validated **more than ten instruments in active use**, including **three standalone behavioral systems** released as open source.
+
+On the science side, my work and publications span methods and translational research anchored in brain networks and behavior, with focus areas in:
+
+- navigation  
+- aging and neurodegeneration  
+- computational modeling  
+
+I’ve authored two funded project grants, served as the academic lead on three industry collaborations, and led cross-functional teams across multiple projects.
+
 ---
-layout: default
-title: Home
-description: "Professional site and portfolio for Adam W. Lester."
-banner_image: /assets/images/home-banner.png
-banner_title: Adam W. Lester
-banner_subtitle: Neuroscience PhD | UBC SBME Postdoc | Systems Neuroscience & Open Development | Research • Instrumentation • CAD • Code
-published: true
----
+
+My focus now is channeling a cross-domain generalist skill set into roles and ventures with wider impact, including an early-stage UBC-campus spinout bringing open-source lab instruments from release to deployment.
+
+[View Portfolio]({{ site.baseurl }}/portfolio/){: .button-link }
+
 
 ### Welcome
 
@@ -19,15 +28,6 @@ I’ve scoped, architected, built, and validated more than ten instruments in ac
 - spatial navigation  
 - aging and neurodegeneration  
 - computational modeling and psychedelics  
-- methods and instrumentation  
-- spatial navigation, aging, and neurodegeneration  
-- psychedelics and translational applications  
-
----
-
-My focus now is channeling a cross-domain generalist skill set into roles and ventures with wider impact, including an early-stage UBC-campus spinout bringing open-source lab instruments from release to deployment.
-
-[View Portfolio]({{ site.baseurl }}/portfolio/){: .button-link }
 
 [View Portfolio]({{ site.baseurl }}/portfolio/){: .button-link }
 
@@ -68,4 +68,3 @@ This site collects a subset of that work:
 - open-source releases with CAD, firmware, code, and replication assets  
 
 [View Portfolio]({{ site.baseurl }}/portfolio/){: .button-link }
-

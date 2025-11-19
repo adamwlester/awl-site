@@ -27,6 +27,7 @@ images:
     caption: "Bench photo of assembled housing, connector-side rear view"
   - src: "images/photo_3.png"
     caption: "Bench photo of assembled housing, top view"
+published: true
 ---
 
 <div class="content-groups">

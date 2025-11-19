@@ -27,6 +27,7 @@ images:
     caption: "Close-up photo of feeder dish and cue LED"
   - src: "images/photo_3.png"
     caption: "Close-up photo of dish-pivot stepper and pulley"
+published: true
 ---
 
 <div class="content-groups">
