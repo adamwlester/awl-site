@@ -473,17 +473,20 @@ code {
 
 /* Core grid:
    - Desktop: 2 columns
-       main  | model
-       main  | aside
+       main-title   | model
+       main-summary | model
+       main-body    | aside
+     → model spans the first two rows; aside sits directly below it.
    - Mobile: stacked in logical reading order:
-       model → main → aside
+       model → main-title → main-summary → main-body → aside
 */
 .project-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   grid-template-areas:
-    "main model"
-    "main aside";
+    "main-title   model"
+    "main-summary model"
+    "main-body    aside";
   gap: var(--space-4);
   align-items: flex-start;
 }
@@ -500,20 +503,19 @@ code {
 }
 
 /* Title and summary:
-   - Visually part of the left "main" column.
-   - They share the same grid-area as the primary content group,
-     so on desktop they sit above it; on mobile they stack between
-     the model and secondary content.
+   - Both live in the left column.
+   - Each gets its own grid-area so they stack vertically
+     above the primary content without overlapping.
 */
 .project-title {
-  grid-area: main;
+  grid-area: main-title;
   font-size: 1.8rem;
   margin-top: 0;
   margin-bottom: 0.35rem;
 }
 
 .project-summary {
-  grid-area: main;
+  grid-area: main-summary;
   font-size: 1.05rem;
   color: var(--color-text-muted);
   margin-top: 0;
@@ -535,11 +537,10 @@ code {
 }
 
 /* Primary narrative group:
-   - Left column (main) under the title + summary.
-   - Shares grid-area: main with the header elements above.
+   - Left column under the title + summary.
 */
 .content-group-primary {
-  grid-area: main;
+  grid-area: main-body;
   min-width: 0;
 }
 
@@ -557,14 +558,16 @@ code {
 }
 
 /* Small screens: stack in logical order:
-   model → main (title + summary + primary) → aside (secondary)
+   model → title → summary → primary → aside
 */
 @media (max-width: 767px) {
   .project-layout {
     grid-template-columns: 1fr;
     grid-template-areas:
       "model"
-      "main"
+      "main-title"
+      "main-summary"
+      "main-body"
       "aside";
     gap: var(--space-3);
   }
@@ -723,8 +726,8 @@ code {
 /* Make the <model-viewer> element a responsive box */
 model-viewer {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  max-height: 480px;
+  aspect-ratio: 1 / 1; /* square viewer */
+  max-height: 480px;   /* optional — adjust or remove if needed */
   border-radius: var(--radius-sm);
   overflow: hidden;
   background-color: #e5e5e5; /* neutral fallback while model loads */
