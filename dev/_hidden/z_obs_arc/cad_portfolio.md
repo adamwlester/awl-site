@@ -1,5 +1,5 @@
 # Modular Rolling Tool Wall
-Mobile tool wall for dense, modular storage of hand tools, hardware, and jigs; every surface is used for fast access.
+Mobile tool wall for dense, modular storage of hand scripts, hardware, and jigs; every surface is used for fast access.
 
 ## Highlights
 - **Construction:** plywood carcass with modular panels and cleats
@@ -126,7 +126,7 @@ Designed for linear-track experiments, this guide prevents torsion on the headst
 - **Guide travel:** along two 4 ft, 1/2 in diameter stainless-steel rails
 - **Bearings:** plastic roller bearings on rails; internal roller bearing at collet
 - **Commutator-ready:** intended for use downstream of a commutator to minimize cable torsion
-- **Serviceability:** field-adjustable preload on roller bearings; standard hand tools
+- **Serviceability:** field-adjustable preload on roller bearings; standard hand scripts
 
 ## Materials & Fabrication
 - **Housing and collet**: SLA-printed resin two-part housing and two-part collet
@@ -424,7 +424,7 @@ At the projector end, a waterjet-cut three-plate yaw assembly provides ±30° ro
 ## Highlights & Key Specs
 - **Adjustments:** independent yaw via 1/4-20 wing-head thumb screws over ±30°; vertical adjustment along an 80/20 1020 T-slot rail
 - **Mounting interface:** projector-interface plate drilled for Mi 4K Laser Projector; can be re-patterned for other models
-- **Installation:** standard hand tools; toolless yaw; secure, repeatable adjustment
+- **Installation:** standard hand scripts; toolless yaw; secure, repeatable adjustment
 
 ## Materials & Fabrication
 - **Plates:** waterjet-cut 1/4 in 6061 aluminum with tapped holes

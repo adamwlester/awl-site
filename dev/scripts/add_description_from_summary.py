@@ -4,17 +4,17 @@ Add `description:` to project index.md front matter by duplicating the existing 
 
 Assumptions:
 - Repo structure: <repo_root>/portfolio/projects/<slug>/index.md
-- This script lives at:   dev/tools/add_description_from_summary.py
+- This script lives at:   dev/scripts/add_description_from_summary.py
 - Each target file has YAML front matter starting with '---' and ending with '---'
 - `summary:` already exists in the front matter.
 
 Example usage (from repo root, in VS Code terminal):
 
   # Run on all projects
-  python dev/tools/add_description_from_summary.py --all
+  python dev/scripts/add_description_from_summary.py --all
 
   # Run on a single project
-  python dev/tools/add_description_from_summary.py --project wireless-mobile-feeder-robot
+  python dev/scripts/add_description_from_summary.py --project wireless-mobile-feeder-robot
 """
 
 import argparse
@@ -117,7 +117,7 @@ def find_projects_root() -> Path:
     <repo_root>/portfolio/projects
     """
     script_path = Path(__file__).resolve()
-    # .../dev/tools/add_description_from_summary.py -> repo root is two levels up
+    # .../dev/scripts/add_description_from_summary.py -> repo root is two levels up
     repo_root = script_path.parents[2]
     projects_root = repo_root / "portfolio" / "projects"
     if not projects_root.is_dir():

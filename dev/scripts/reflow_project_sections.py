@@ -4,16 +4,16 @@ Reflow project sections into left/right column wrappers for project detail pages
 
 Assumptions:
 - Repo structure: <repo_root>/portfolio/projects/<slug>/index.md
-- This script lives at:   dev/tools/reflow_project_sections.py
+- This script lives at:   dev/scripts/reflow_project_sections.py
 - All required headings are present and consistently named.
 
 Example usage (from repo root, in VS Code terminal):
 
   # Test on a single project
-  python dev/tools/reflow_project_sections.py --project nc4touch-behavioral-apparatus
+  python dev/scripts/reflow_project_sections.py --project nc4touch-behavioral-apparatus
 
   # Run on all projects
-  python dev/tools/reflow_project_sections.py --all
+  python dev/scripts/reflow_project_sections.py --all
 """
 
 import argparse
@@ -206,7 +206,7 @@ def find_projects_root() -> Path:
     <repo_root>/portfolio/projects
     """
     script_path = Path(__file__).resolve()
-    # .../dev/tools/reflow_project_sections.py -> repo root is two levels up
+    # .../dev/scripts/reflow_project_sections.py -> repo root is two levels up
     repo_root = script_path.parents[2]
     projects_root = repo_root / "portfolio" / "projects"
     if not projects_root.is_dir():

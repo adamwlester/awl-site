@@ -7,10 +7,10 @@ Normalize all image captions in project index.md files to sentence case:
 Usage (from repo root):
 
   # Single project
-  python dev/tools/fix_caption_case.py --project wireless-mobile-feeder-robot
+  python dev/scripts/fix_caption_case.py --project wireless-mobile-feeder-robot
 
   # All projects
-  python dev/tools/fix_caption_case.py --all
+  python dev/scripts/fix_caption_case.py --all
 """
 
 import argparse
@@ -21,10 +21,10 @@ from pathlib import Path
 def find_projects_root() -> Path:
     """
     Locate <repo_root>/portfolio/projects/ based on this script's path:
-    dev/tools/fix_caption_case.py
+    dev/scripts/fix_caption_case.py
     """
     script_path = Path(__file__).resolve()
-    repo_root = script_path.parents[2]        # dev/tools/ → dev/ → repo root
+    repo_root = script_path.parents[2]        # dev/scripts/ → dev/ → repo root
     projects_root = repo_root / "portfolio" / "projects"
 
     if not projects_root.is_dir():

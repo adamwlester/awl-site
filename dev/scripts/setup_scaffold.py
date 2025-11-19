@@ -7,7 +7,7 @@ for the awl-site repo.
 
 Usage (from the repo root):
 
-    python dev/tools/setup_scaffold.py
+    python dev/scripts/setup_scaffold.py
 
 The script is idempotent:
 - If a directory or file already exists, it will be skipped.
@@ -46,7 +46,7 @@ def create_binary_file(path: Path) -> None:
 
 def main() -> None:
     # Resolve repo root from this script location:
-    # dev/tools/setup_scaffold.py -> dev -> repo root
+    # dev/scripts/setup_scaffold.py -> dev -> repo root
     script_path = Path(__file__).resolve()
     repo_root = script_path.parents[2]
 

@@ -15,10 +15,10 @@ and not duplicated.
 Usage (from repo root):
 
   # Single project
-  python dev/tools/add_model_viewer_defaults.py --project wireless-mobile-feeder-robot
+  python dev/scripts/add_model_viewer_defaults.py --project wireless-mobile-feeder-robot
 
   # All projects
-  python dev/tools/add_model_viewer_defaults.py --all
+  python dev/scripts/add_model_viewer_defaults.py --all
 """
 
 import argparse
@@ -29,10 +29,10 @@ from pathlib import Path
 def find_projects_root() -> Path:
     """
     Locate <repo_root>/portfolio/projects/ based on this script's path:
-    dev/tools/add_model_viewer_defaults.py
+    dev/scripts/add_model_viewer_defaults.py
     """
     script_path = Path(__file__).resolve()
-    repo_root = script_path.parents[2]  # dev/tools/ → dev/ → repo root
+    repo_root = script_path.parents[2]  # dev/scripts/ → dev/ → repo root
     projects_root = repo_root / "portfolio" / "projects"
 
     if not projects_root.is_dir():
