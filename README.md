@@ -111,20 +111,20 @@ index.md                                    # homepage (**site root**) -> minima
   - This avoids the Liquid recursion bug while preserving the intended layout.
 
 **Commenting Liquid safely in templates**:
-  - HTML comments (`<!-- ... -->`) do **not** stop Liquid from executing; any `{% %}` or `{{ }}` inside them will still run.
-  - Use Liquid comments to hide Liquid syntax completely:
-    ```liquid
-    {%- comment -%}
-      Internal note that can mention {% include %} safely.
-    {%- endcomment -%}
-    ```
-  - When you want to show example Liquid code in a comment or docs without executing it, wrap it in `raw`:
-    ```liquid
-    {% raw %}
-      {% include section.html content=lead_html %}
-    {% endraw %}
-    ```
-  - General rule: keep Liquid tags out of plain HTML comments; use Liquid `{% comment %}` or `{% raw %}` whenever a comment needs to mention real Liquid code.
+- HTML comments (`<!-- ... -->`) do **not** stop Liquid from executing; any `{% %}` or `{{ }}` inside them will still run.
+- Use Liquid comments to hide Liquid syntax completely:
+  ```liquid
+  {%- comment -%}
+    Internal note that can mention {% include %} safely.
+  {%- endcomment -%}
+  ```
+- When you want to show example Liquid code in a comment or docs without executing it, wrap it in `raw`:
+  ```liquid
+  {% raw %}
+    {% include section.html content=lead_html %}
+  {% endraw %}
+  ```
+- General rule: keep Liquid tags out of plain HTML comments; use Liquid `{% comment %}` or `{% raw %}` whenever a comment needs to mention real Liquid code.
 
 ## Layout & CSS Responsibilities (Quick Map)
 
@@ -726,14 +726,13 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 **Jekyll Commands Verified:**
 - `bundle exec jekyll build`
 - `bundle exec jekyll serve --livereload`
-- Full log capture command for debugging:
-  ```yaml
-  bundle exec jekyll serve --livereload *>&1 | Tee-Object -FilePath jekyll-log.txt
-  ```
   
 **Site Structure Confirmed:**
 - All layouts, includes, assets, models, and project folders present
 - Portfolio pages routed correctly
 - Section include, project grid include, and project card include wired in
 
+**Current Build Status:**
+- `bundle exec jekyll serve --livereload` runs without Liquid errors  
+- Previous “Nesting too deep” issue resolved by wrapping example `{% include %}` lines in `_includes/section.html` with `{% raw %} ... {% endraw %}` so they are not executed  
 
