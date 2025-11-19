@@ -725,12 +725,15 @@ code {
 
 /* Make the <model-viewer> element a responsive box */
 model-viewer {
-  width: 100%;
-  aspect-ratio: 1 / 1; /* square viewer */
-  max-height: 480px;   /* optional — adjust or remove if needed */
+  display: block;              /* ensure it behaves like a normal block box */
+  width: 100%;                 /* fill the aside column */
+  height: auto !important;     /* override any default fixed height */
+  aspect-ratio: 1 / 1;         /* square; change to 4 / 3, 16 / 9, etc. */
+
+  /* no max-height here so aspect-ratio fully controls height */
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background-color: #e5e5e5; /* neutral fallback while model loads */
+  background-color: #e5e5e5;
 }
 
 /* =========================================================
