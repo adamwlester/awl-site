@@ -2,154 +2,227 @@
 layout: default
 ---
 
-{% if page.images %}
-<section class="project-media-section">
-  <div class="image-viewer">
-    <div class="image-viewer-main">
-      <button
-        type="button"
-        class="image-viewer-arrow image-viewer-arrow--prev"
-        aria-label="Previous image"
-      >
-        <span class="image-viewer-arrow-icon">&#8249;</span>
-      </button>
+<!--
+  PROJECT DETAIL LAYOUT
+  Renders the project detail page under the default layout shell.
+  Responsibilities:
+  - Full-width image-viewer media carousel at the top.
+  - 3D <model-viewer> panel in the right column.
+  - Two-column narrative layout driven by .content-groups in Markdown.
+-->
 
-      <div class="image-viewer-track">
-        {% for image in page.images %}
-          <div class="image-slide" data-index="{{ forloop.index0 }}">
-            <img
-              src="{{ site.baseurl }}{{ page.dir }}{{ image.src }}"
-              alt="{{ image.caption | default: page.title | escape }}"
-              {% unless forloop.first %}loading="lazy"{% endunless %}
-            >
+<div class="project-detail">
+
+  <!-- ======================================== -->
+  <!-- MEDIA STRIP: IMAGE-VIEWER CAROUSEL       -->
+  <!-- ======================================== -->
+  {% if page.images and page.images.size > 0 %}
+    <section class="project-media-section">
+      <div class="image-viewer" data-image-viewer>
+        <div class="image-viewer-main">
+
+          {% assign image_count = page.images | size %}
+
+          <!-- Navigation arrows (only if multiple images) -->
+          {% if image_count > 1 %}
+            <button
+              class="image-viewer-arrow image-viewer-arrow--prev"
+              type="button"
+              aria-label="Previous image">
+              <span class="image-viewer-arrow-icon">&#10094;</span>
+            </button>
+
+            <button
+              class="image-viewer-arrow image-viewer-arrow--next"
+              type="button"
+              aria-label="Next image">
+              <span class="image-viewer-arrow-icon">&#10095;</span>
+            </button>
+          {% endif %}
+
+          <!-- Scrollable track of main slides -->
+          <div class="image-viewer-track" data-image-viewer-track>
+            {% for image in page.images %}
+              {% assign image_src = image.src %}
+              {% assign image_alt = image.caption | default: page.title %}
+
+              <div class="image-slide" data-image-index="{{ forloop.index0 }}">
+                <img
+                  src="{{ site.baseurl }}{{ page.dir }}{{ image_src }}"
+                  alt="{{ image_alt }}"
+                  {% unless forloop.first %}loading="lazy"{% endunless %}>
+              </div>
+            {% endfor %}
           </div>
-        {% endfor %}
+        </div>
+
+        <!-- Thumbnail strip (only if multiple images) -->
+        {% if image_count > 1 %}
+          <div class="image-viewer-thumbnails" data-image-viewer-thumbnails>
+            {% for image in page.images %}
+              {% assign thumb_src = image.src %}
+
+              <button
+                class="image-viewer-thumb{% if forloop.first %} image-viewer-thumb--active{% endif %}"
+                type="button"
+                data-image-index="{{ forloop.index0 }}"
+                aria-label="View image {{ forloop.index }} of {{ image_count }}">
+                <img
+                  src="{{ site.baseurl }}{{ page.dir }}{{ thumb_src }}"
+                  alt="">
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
-
-      <button
-        type="button"
-        class="image-viewer-arrow image-viewer-arrow--next"
-        aria-label="Next image"
-      >
-        <span class="image-viewer-arrow-icon">&#8250;</span>
-      </button>
-    </div>
-
-    <div class="image-viewer-thumbnails">
-      {% for image in page.images %}
-        <button
-          type="button"
-          class="image-viewer-thumb{% if forloop.first %} image-viewer-thumb--active{% endif %}"
-          data-index="{{ forloop.index0 }}"
-          aria-label="View image {{ forloop.index }}"
-        >
-          <img
-            src="{{ site.baseurl }}{{ page.dir }}{{ image.src }}"
-            alt="{{ image.caption | default: page.title | escape }}"
-            {% unless forloop.first %}loading="lazy"{% endunless %}
-          >
-        </button>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-{% endif %}
-
-<section class="project-detail">
-  <div class="project-layout">
-    <section class="model-viewer-panel">
-      <h2 class="model-viewer-title">Interactive 3D model</h2>
-      <model-viewer
-        src="{{ site.baseurl }}{{ page.dir }}{{ page.model_src }}"
-        camera-controls
-        {% if page.model_camera_orbit %}camera-orbit="{{ page.model_camera_orbit }}"{% endif %}
-        {% if page.model_camera_target %}camera-target="{{ page.model_camera_target }}"{% endif %}
-        {% if page.model_fov %}field-of-view="{{ page.model_fov }}"{% endif %}
-      >
-      </model-viewer>
     </section>
+  {% endif %}
 
+  <!-- ======================================== -->
+  <!-- MAIN PROJECT LAYOUT (2-COLUMN GRID)      -->
+  <!-- ======================================== -->
+  <div class="project-layout">
+
+    <!-- Right column: 3D model viewer panel (grid-area: model) -->
+    <div class="project-aside-column">
+      {% if page.model_src %}
+        <div class="model-viewer-panel">
+          <model-viewer
+            src="{{ site.baseurl }}{{ page.dir }}{{ page.model_src }}"
+            {% if page.model_camera_orbit %}camera-orbit="{{ page.model_camera_orbit }}"{% endif %}
+            {% if page.model_camera_target %}camera-target="{{ page.model_camera_target }}"{% endif %}
+            {% if page.model_fov %}field-of-view="{{ page.model_fov }}"{% endif %}
+            aria-label="{{ page.title | escape }} 3D model"
+            autoplay
+            camera-controls
+            interaction-prompt="auto">
+          </model-viewer>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Left column: title, summary, and primary/secondary content groups -->
     <div class="project-main-column">
-      <h1 class="project-title">
-        {{ page.title }}
-      </h1>
 
+      <!-- Project title (page H1 when no banner is present) -->
+      {% unless page.banner_image %}
+        {% if page.title %}
+          <h1 class="project-title">{{ page.title }}</h1>
+        {% endif %}
+      {% endunless %}
+
+      <!-- Project summary (short one-line description) -->
       {% if page.summary %}
-        <p class="project-summary">
-          {{ page.summary }}
-        </p>
+        <p class="project-summary">{{ page.summary }}</p>
       {% endif %}
 
-      <div class="project-content-section">
-        {{ content }}
-      </div>
+      <!-- Structured Markdown body:
+           - Expects .content-groups wrapper with:
+             .content-group-primary (primary narrative)
+             .content-group-secondary (secondary narrative)
+           - CSS uses display: contents + grid-area to route
+             these groups into the left/right regions. -->
+      {{ content }}
     </div>
 
-    <aside class="project-aside-column">
-      <!-- Reserved for secondary narrative content if needed in future iterations -->
-    </aside>
   </div>
-</section>
 
-{% if page.images %}
+</div>
+
+<!-- ========================================== -->
+<!-- IMAGE-VIEWER BEHAVIOR (LIGHTWEIGHT JS)    -->
+<!-- ========================================== -->
 <script>
   (function () {
-    var viewer = document.querySelector('.image-viewer');
+    var viewer = document.querySelector('[data-image-viewer]');
     if (!viewer) return;
 
-    var track = viewer.querySelector('.image-viewer-track');
-    var slides = Array.prototype.slice.call(track.querySelectorAll('.image-slide'));
-    var thumbs = Array.prototype.slice.call(viewer.querySelectorAll('.image-viewer-thumb'));
-    var prevButton = viewer.querySelector('.image-viewer-arrow--prev');
-    var nextButton = viewer.querySelector('.image-viewer-arrow--next');
-    var currentIndex = 0;
+    var track = viewer.querySelector('[data-image-viewer-track]');
+    if (!track) return;
 
+    var slides = Array.prototype.slice.call(
+      track.querySelectorAll('.image-slide')
+    );
     if (!slides.length) return;
 
-    function setActive(index) {
-      currentIndex = (index + slides.length) % slides.length;
-      var targetSlide = slides[currentIndex];
+    var thumbsContainer = viewer.querySelector('[data-image-viewer-thumbnails]');
+    var thumbs = thumbsContainer
+      ? Array.prototype.slice.call(
+          thumbsContainer.querySelectorAll('.image-viewer-thumb')
+        )
+      : [];
 
-      if (targetSlide && targetSlide.scrollIntoView) {
-        targetSlide.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
-        });
+    var prevButton = viewer.querySelector('.image-viewer-arrow--prev');
+    var nextButton = viewer.querySelector('.image-viewer-arrow--next');
+
+    var activeIndex = 0;
+
+    function clampIndex(index) {
+      if (index < 0) return 0;
+      if (index >= slides.length) return slides.length - 1;
+      return index;
+    }
+
+    function setActive(index, options) {
+      index = clampIndex(index);
+      if (index === activeIndex) return;
+      activeIndex = index;
+
+      var slide = slides[activeIndex];
+      if (slide && slide.scrollIntoView) {
+        try {
+          slide.scrollIntoView({
+            behavior: (options && options.behavior) || 'smooth',
+            block: 'nearest',
+            inline: 'center'
+          });
+        } catch (e) {
+          // Older browsers may not support options; fall back to default.
+          slide.scrollIntoView();
+        }
       }
 
-      thumbs.forEach(function (thumb, i) {
-        if (i === currentIndex) {
-          thumb.classList.add('image-viewer-thumb--active');
-        } else {
-          thumb.classList.remove('image-viewer-thumb--active');
-        }
-      });
+      // Update active thumbnail state
+      if (thumbs.length) {
+        thumbs.forEach(function (thumb, i) {
+          if (i === activeIndex) {
+            thumb.classList.add('image-viewer-thumb--active');
+          } else {
+            thumb.classList.remove('image-viewer-thumb--active');
+          }
+        });
+      }
+    }
+
+    function handleArrow(delta) {
+      setActive(activeIndex + delta);
     }
 
     if (prevButton) {
       prevButton.addEventListener('click', function () {
-        setActive(currentIndex - 1);
+        handleArrow(-1);
       });
     }
 
     if (nextButton) {
       nextButton.addEventListener('click', function () {
-        setActive(currentIndex + 1);
+        handleArrow(1);
       });
     }
 
-    thumbs.forEach(function (thumb) {
-      thumb.addEventListener('click', function () {
-        var index = parseInt(thumb.getAttribute('data-index'), 10);
-        if (!isNaN(index)) {
-          setActive(index);
-        }
+    if (thumbs.length) {
+      thumbs.forEach(function (thumb) {
+        thumb.addEventListener('click', function () {
+          var indexAttr = thumb.getAttribute('data-image-index');
+          var index = parseInt(indexAttr, 10);
+          if (!isNaN(index)) {
+            setActive(index, { behavior: 'smooth' });
+          }
+        });
       });
-    });
+    }
 
-    // Ensure the first slide is active on load
-    setActive(0);
+    // Initialize state so the first thumbnail is synced with the first slide
+    setActive(0, { behavior: 'auto' });
   })();
 </script>
-{% endif %}

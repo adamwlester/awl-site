@@ -1,7 +1,3 @@
----
-layout: default
----
-
 <!--
   PORTFOLIO LIST PAGE LAYOUT
   ------------------------------------------------
@@ -10,10 +6,16 @@ layout: default
   global default.html layout and outputs only the
   content meant for the {{ content }} region.
 
+  General responsibilities:
+  - Render an optional lead/intro block.
+  - Render a grid of projects based on provided slugs.
+  - Use section.html for consistent spacing and layout.
+
   This layout avoids global elements (header, footer,
   banner, wrappers) and delegates project resolution
   and card rendering to the included grid/templates.
 -->
+
 
 <!-- ========================================= -->
 <!-- LEAD SECTION                              -->

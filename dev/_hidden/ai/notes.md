@@ -246,9 +246,6 @@ If after reasoning you identify any remaining assumptions, resolve them in the m
 
 Then output ONLY the final `_layouts/default.html` file inside one fenced code block — no commentary.
 
-
-
-
 Generate the complete `_layouts/portfolio-list-page.html` in a single code block.  
 Produce a polished, production-quality file and apply full contextual reasoning before writing anything.
 

@@ -1,4 +1,40 @@
-<section class="section {{ include.class | default: '' }}">
+<!--
+  SECTION INCLUDE
+  ------------------------------------------------------------------
+  Generic page-band wrapper used for major content sections
+  (e.g., portfolio lead, project grid, future About/Contact bands).
+
+  Responsibilities:
+  - Render a semantic <section> wrapper for the band.
+  - Always apply the base "section" class for spacing/layout.
+  - Optionally append modifier classes (e.g., "section--surface").
+  - Optionally apply an id attribute for in-page anchors.
+  - Wrap inner content in .section-inner for max-width and padding.
+
+  Expected usage examples:
+    {% capture lead_content %}
+      <div class="portfolio-lead">
+        {{ page.page_lead | markdownify }}
+      </div>
+    {% endcapture %}
+    {% include section.html content=lead_content %}
+
+    {% capture grid_content %}
+      {% include project-grid.html projects=page.projects %}
+    {% endcapture %}
+    {% include section.html class="section--surface" content=grid_content %}
+
+  Notes:
+  - Callers are responsible for guarding against empty content.
+  - include.content should already be HTML (Markdown → HTML if needed).
+-->
+
+{% assign section_class = "section" %}
+{% if include.class %}
+  {% assign section_class = section_class | append: " " | append: include.class %}
+{% endif %}
+
+<section class="{{ section_class }}"{% if include.id %} id="{{ include.id }}"{% endif %}>
   <div class="section-inner">
     {{ include.content }}
   </div>
