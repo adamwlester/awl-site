@@ -6,6 +6,10 @@ We will build in stages and are focusing on V1 elements now:
 - Minimal support for **Home**.
 - Needs foundations in place for **V2** expansion.
 
+
+
+
+
 ## SITE MAP
 
 ```markdown
@@ -19,6 +23,10 @@ We will build in stages and are focusing on V1 elements now:
       ├─ About                                  # bio/overview
       └─ Contact                                # email/links/form
 ```
+
+
+
+
 
 ## STACK OVERVIEW
 
@@ -37,6 +45,10 @@ We will build in stages and are focusing on V1 elements now:
 >  
 > Internal links in templates should always prepend `{{ site.baseurl }}`,  
 > as described in the Jekyll Config Conventions section.
+
+
+
+
 
 ## GITHUB REPO STRUCTURE
 
@@ -126,6 +138,10 @@ index.md                                    # homepage (**site root**) -> minima
   ```
 - General rule: keep Liquid tags out of plain HTML comments; use Liquid `{% comment %}` or `{% raw %}` whenever a comment needs to mention real Liquid code.
 
+
+
+
+
 ## Layout & CSS Responsibilities (Quick Map)
 
 - `_layouts/default.html`  
@@ -152,6 +168,10 @@ index.md                                    # homepage (**site root**) -> minima
   - `portfolio/index.md` → `layout: portfolio-list-page`
   - `portfolio/projects/<slug>/index.md` → `layout: project-detail-page`
 - This keeps the header/banner in one place and avoids duplicating the outer shell.
+
+
+
+
 
 ## CSS STYLE BASELINES (GLOBAL DESIGN CONVENTIONS)
 
@@ -232,6 +252,9 @@ This section defines the implicit global style conventions used across `assets/c
 
 ### Utilities
 A small set of global utility classes exist (`.stack`, `.text-muted`, `.text-small`) to enforce consistent micro-layout and typography without introducing framework-like patterns.
+
+
+
 
 ## KEY COMPONENTS & BEHAVIOR
 
@@ -659,6 +682,64 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - The DOM order matches the mobile stacking order above.
 - The desktop layout is achieved purely via CSS (grid/flex) positioning of the left and right column containers.
 
+
+
+
+## LOCAL DEVELOPMENT WORKFLOW
+*This section covers how to run the site locally with the same URL behavior as GitHub Pages for fast iteration and reliable path testing.
+
+### Local preview server
+
+Use the `github-pages` gem and Jekyll’s built-in server with a baseurl that matches production:
+```bash
+bundle exec jekyll serve --livereload --baseurl "/awl-site"
+```
+
+**Behavior:**
+- Serves the site at: 
+  - `http://localhost:4000/awl-site/`
+- Uses the same `site.baseurl` (`/awl-site`) as production.
+- Automatically reloads pages when layouts, includes, CSS, or content change.
+
+**Why `--baseurl "/awl-site"` matters:**
+- Internal links written as `href="{{ site.baseurl }}/portfolio/"` resolve correctly both:
+  - Locally:
+    - `http://localhost:4000/awl-site/portfolio/`
+  - On GitHub Pages:
+    - `https://adamwlester.github.io/awl-site/portfolio/`
+- Asset paths that rely on `{{ site.baseurl }}` (CSS, images, models, docs) behave exactly as they will in production.
+- Any baseurl-related issues (404s, broken links, missing assets) show up locally instead of only after a GitHub Pages deploy.
+
+**Recommended edit → test → deploy loop**
+**Develop locally:**
+- Start the server once with:  
+  ```bash
+  `bundle exec jekyll serve --livereload --baseurl "/awl-site"`
+  ```
+- Visit: `http://localhost:4000/awl-site/`
+- Make changes to layouts, includes, CSS, or Markdown content and verify in the browser as they auto-reload.
+
+**Commit in batches:**
+- After fixing a small cluster of issues (links, layout tweaks, copy edits), commit the changes locally.
+
+**Deploy to GitHub Pages:**
+- Push to `main` → GitHub Actions runs the **pages build and deployment** workflow.
+- Watch the **Actions** tab: when the latest run is green (success), the live site at  
+  `https://adamwlester.github.io/awl-site/` is updated.
+
+**Link List:**
+- **Local development root**
+  - <http://localhost:4000/awl-site/>
+- **Local portfolio index**
+  - <http://localhost:4000/awl-site/portfolio/>
+- **Production site root**
+  - <https://adamwlester.github.io/awl-site/>
+- **Production portfolio index**
+  - <https://adamwlester.github.io/awl-site/portfolio/>
+
+
+
+
 ## IMPLEMENTATION STATUS
 *Notes for maintaining this section:*
 * *Use concise, single-level bullets.*
@@ -696,18 +777,6 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - Image viewer (media carousel) styling implemented and wired to lightweight JS behavior.
 - 3D model viewer panel styled and integrated with the global `<model-viewer>` script.
 
-### TO DO
-- Verify the site builds cleanly locally (`bundle exec jekyll serve`) and fix any build warnings or Liquid errors.
-- Push the current site scaffold (all layouts, includes, assets, and content) to the `awl-site` GitHub repository.
-- Configure GitHub Pages for the repo (Settings → Pages) to build from the default branch using the built-in Jekyll engine.
-- Confirm `_config.yml` `url` and `baseurl` values match the live GitHub Pages URL and repo name.
-- After deployment, smoke-test the live site:
-  - Load home, portfolio list, and several project detail pages.
-  - Check internal links, image paths, and model paths.
-  - Confirm the image viewer carousel and `<model-viewer>` behave as expected.
-- Set up and verify a custom domain (when ready): DNS records, CNAME file, and `url` update in `_config.yml`.
-- Do a final content pass for copy tweaks, typos, and any missing references or links.
-
 ### Local Jekyll Environment Setup
 
 **Installed Components:**  
@@ -735,4 +804,6 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 **Current Build Status:**
 - `bundle exec jekyll serve --livereload` runs without Liquid errors  
 - Previous “Nesting too deep” issue resolved by wrapping example `{% include %}` lines in `_includes/section.html` with `{% raw %} ... {% endraw %}` so they are not executed  
+
+### To Do & Broken Shit
 

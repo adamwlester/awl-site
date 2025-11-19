@@ -1,8 +1,8 @@
 ---
 layout: project-detail-page
 title: "Fischer 344 Rat Model"
-description: "To-scale 3D model of a Fischer 344 laboratory rat for design planning, visualization, and demonstration of behavioral systems; proportions match strain-specific morphology for accurate spatial layouts."
-summary: "To-scale 3D model of a Fischer 344 laboratory rat for design planning, visualization, and demonstration of behavioral systems; proportions match strain-specific morphology for accurate spatial layouts."
+description: "To-scale 3D model of a Fischer 344 laboratory rat for design planning, visualization, and demonstration of behavioral systems."
+summary: "To-scale 3D model of a Fischer 344 laboratory rat for design planning, visualization, and demonstration of behavioral systems."
 hero: "images/render_1.png"
 model_src: "models/fischer-344-rat-model.glb"
 model_camera_orbit: "auto auto auto"

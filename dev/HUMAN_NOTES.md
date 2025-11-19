@@ -2,6 +2,7 @@
 
 ### Random
 ^#[ ]\S+
+^##[ ]\S+
 
 ### List of project slugs
 nc4touch-behavioral-apparatus
