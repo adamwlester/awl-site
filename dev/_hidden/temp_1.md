@@ -344,213 +344,66 @@ _includes\section.html questions:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Generate the complete `_layouts/project-detail-page.html` in a single code block.  
-Produce a production-quality file and lean on the current project context (final README, final CSS, and established layout conventions).  
-Assume content and front matter are well-structured; add only minimal guards to keep the page from breaking.
-
----
-
-### Layout scope
-
-- Begin with front matter: `layout: default`.
-- Output only the markup that belongs **inside** the default layout’s `{{ content }}` region.
-- Do **not** include the HTML shell, `<head>`, global header, or banner markup — those are handled by `_layouts/default.html`.
-
----
-
-### Overall structure (in this order)
-
-1. **Full-width media strip**
-
-   - Top-level wrapper: `<section class="project-media-section">` containing the image viewer.
-   - Render this section **only if** `page.images` exists and has at least one item.
-   - Image viewer:
-     - Use the `.image-viewer` / `.image-viewer-main` / `.image-viewer-track` / `.image-slide` / `.image-viewer-thumbnails` structure as described in the README and CSS.
-     - For each image in `page.images`:
-       - `src` should be built as: `{{ site.baseurl }}{{ page.dir }}{{ image.src }}`.
-       - `alt` should come from `image.caption`, falling back to `page.title` if `caption` is missing.
-     - Include the small inline JavaScript that wires up scrolling, arrow buttons, and thumbnail activation as described in the README, with minimal checks for 0–1 images.
-
-2. **Main project layout**
-
-   - Wrapper: `<div class="project-detail">`.
-   - Inner grid: `<div class="project-layout">` with **three direct children** in this DOM order (to match the CSS grid):
-
-     **(1) `.model-viewer-panel`**
-
-     - Render this block **only if** `page.model_src` exists.
-     - Include a fixed label above the model using `.model-viewer-title` (e.g., “3D model”).
-     - Use `<model-viewer>` with:
-       - `src="{{ site.baseurl }}{{ page.dir }}{{ page.model_src }}"`
-       - Optional camera attributes derived directly from front matter when present:  
-         `model_camera_orbit`, `model_camera_target`, `model_fov`.
-       - All other attributes should follow the shared, fixed configuration described in the README; do not invent new per-project settings.
-
-     **(2) `.project-main-column`**
-
-     - This is the primary narrative column.
-     - At the top, render:
-       - The project title from `page.title` using the appropriate class (e.g., `.project-title`).
-       - The project summary from `page.summary` using `.project-summary`.
-     - Below that, insert the Markdown body with a **single** `{{ content }}` call.
-       - Assume the Markdown already includes the `.content-groups` and `.content-group-*` structure described in the README.
-       - Do not split, duplicate, or reorder the Markdown in Liquid.
-
-     **(3) `.project-aside-column`**
-
-     - Provide the `.project-aside-column` container expected by the CSS grid.
-     - Do not duplicate or manually move content into this column; rely on the existing content model and CSS to handle how secondary sections are presented relative to the main narrative.
-
----
-
-### Paths, guards, and conventions
-
-- Whenever you reference images or models from front matter (`images.src`, `model_src`), build paths as `{{ site.baseurl }}{{ page.dir }}…`.
-- Use **minimal guards**:
-  - Skip the media strip if there are no images.
-  - Skip the model viewer if `model_src` is missing.
-- Do not add alternative layouts, placeholder UI, or visible warnings — just avoid broken markup and errors.
-
----
-
-### Output
-
-- Think through how this layout interacts with the existing CSS grid, mobile order, and README-described structure.  
-- Then output only the final `_layouts/project-detail-page.html` in a single fenced code block, with no extra commentary.
-
-
-
-
-
-
-
-
-
-Generate the complete `_layouts/project-detail-page.html` in a single code block.  
-Produce a production-quality file and apply full contextual reasoning before writing anything.
-
-Work strictly from the current project context (final README, final CSS, and established layout conventions).  
-Do **not** assume or invent behaviors outside that context.
-
----
-
-## Requirements
-
-### 1. Layout + scope
-- The file must begin with front matter declaring:  
-  `layout: default`
-- Output **only** the markup that belongs **inside** the default layout’s `{{ content }}` region.
-- **Do NOT include**: HTML shell, `<head>`, global nav, or banner markup.
-
-### 2. Page structure (must match CSS + README exactly)
-
-The layout must render the following structure, in this order:
-
-1. **Full-width media viewer at the very top**  
-   - Wrapper: `.project-media-section`  
-   - Contains the `.image-viewer` component (image track, arrows, thumbnails).  
-   - Render this block **only if** `page.images` exists and has at least one item.  
-   - For each slide:
-     - Image path: `{{ site.baseurl }}{{ page.dir }}{{ image.src }}`  
-     - `alt` text: `image.caption`, falling back to `page.title` if caption is missing.
-
-2. **Main project layout wrapper**  
-   - `<div class="project-detail">`  
-     - `<div class="project-layout">` containing **exactly three direct children** in this DOM order (required by the CSS grid):
-
-       **(1) `.model-viewer-panel`**  
-       - Render only if `page.model_src` exists.  
-       - `<model-viewer>` must use:
-         - `src="{{ site.baseurl }}{{ page.dir }}{{ page.model_src }}"`
-         - Optional camera fields if present:  
-           `model_camera_orbit`, `model_camera_target`, `model_fov`
-       - Use the standard shared model-viewer configuration defined by the project (do not invent new attributes).
-       - Include a fixed label above it using `.model-viewer-title`.
-
-       **(2) `.project-main-column`**  
-       - Insert **all** Markdown body content using a **single** `{{ content }}` call.  
-       - Assume the Markdown already contains the `.content-groups` wrapper with `.content-group-primary` and `.content-group-secondary`; do **not** split or manipulate the content in Liquid.
-
-       **(3) `.project-aside-column`**  
-       - The authored `.content-groups` inside the Markdown determine which sections flow here via the established CSS and content model.  
-       - Do not hardcode or duplicate any content here.
-
-### 3. Path construction
-- All image and model paths must use **both** `{{ site.baseurl }}` and `{{ page.dir }}`.
-- Do not generate root-relative or absolute paths unless explicitly defined in the README.
-
-### 4. Conventions and constraints
-- All CSS class names must match the final CSS exactly.  
-- Follow the README’s description of component structure (image viewer, content groups, model viewer).  
-- Include only **minimal guards** for missing media:  
-  - Skip the viewer if there are no images.  
-  - Skip the model viewer if `model_src` is missing.  
-- Do not add alternative layouts, warnings, or fallback UI.
-
-### 5. Output rules
-- Fully reason about CSS grid behavior, mobile order, and README conventions before writing.  
-- When ready, output **only** the final `_layouts/project-detail-page.html` inside a **single fenced code block**, with no explanation or commentary.
-
----
-
-
-
-Each project detail page already uses a clear authoring model in Markdown: the body content is wrapped in a `.content-groups` container with two children, `.content-group-primary` and `.content-group-secondary`, which label “primary” vs “secondary” narrative sections. The goal is to route these two groups into different visual regions of the project-detail layout: on desktop, primary content should sit in the left column under the title and summary, while secondary content lives in the right column below the 3D model viewer; above everything, a full-width image-viewer media strip spans the page.
-
-The working implementation plan is: (1) keep the Markdown structure exactly as-is (no Liquid splitting of `{{ content }}`), (2) in `_layouts/project-detail-page.html`, render the image-viewer section at the top, then a `.project-layout` grid containing the `.model-viewer-panel` and a single `{{ content }}` injection, and (3) in CSS, make `.project-layout` a grid and use `display: contents` on `.content-groups` so that `.content-group-primary` and `.content-group-secondary` become direct grid items. We then assign them grid areas (`main` and `aside`) alongside `model-viewer-panel` (`model`), defining a 2×2 grid on desktop (`"main model" / "main aside"`) and a stacked 1-column layout on mobile (`"model" / "main" / "aside"`). This satisfies the non-negotiable desktop layout and also yields the desired mobile order without changing the content model.
-
-
-Please review the changes that were made by the other GPT. Confirm this all looks correct and aligned with the goal and still also aligned with all other priorities for the project. Provide a summary followed by a TLDR with ANY issues, or potential issues, you identified.
+1. Card click target
+   How should the card markup be structured for clickability?
+   a) Make `.project-card` an <a> wrapping the entire card (hero + text).
+   b) Use a semantic wrapper (<article> or <div>.project-card) with only the title as an <a>.
+   c) Use a wrapper <article> and wrap both hero image and title in a single inner <a>.
+   d) Something else (describe).
+   - **Answer:** (a) Make `.project-card` an `<a>` wrapping the entire card  
+   - **Rationale:** The CSS already treats `.project-card` as a single interactive unit, with hover/active states on the card wrapper and a note that it may be an `<a>`. Making the entire card clickable is consistent with that design, gives a clear, large hit target, and avoids duplicating link targets on both the image and title. It also keeps the DOM simple and predictable for screen readers and keyboard users.
+
+2. Project URL construction
+   How should we build the link to each project detail page?
+   a) Use the Jekyll URL property: href="{{ site.baseurl }}{{ project.url }}".
+   b) Manually construct from the slug: href="{{ site.baseurl }}/portfolio/projects/{{ slug }}/".
+   c) Support both via some conditional logic.
+   d) You have a different preferred pattern.
+   - **Answer:** (a) Use `href="{{ site.baseurl }}{{ project.url }}"`  
+   - **Rationale:** Jekyll already computes a stable `url` for each project page based on its folder structure. Using `{{ project.url }}` and prefixing `{{ site.baseurl }}` matches how image/model paths are handled elsewhere and makes the grid resilient to any future changes in folder structure or collection setup. It keeps the slug resolution logic in one place (finding the project page) and lets Jekyll own the final URL format.
+
+3. Required front matter vs. guards
+   For V1, can we assume all listed projects have complete front matter (hero, title, summary)?
+   a) Yes – assume complete data; no extra guards beyond basic presence checks in layouts.
+   b) Mostly yes – but if hero is missing, hide the image block gracefully.
+   c) No – please add lightweight guards for missing hero/summary/title.
+   d) Other (describe your tolerance for “fail loud” vs “degrade gracefully”).
+   - **Answer:** (a) Yes – assume complete data with only light presence checks  
+   - **Rationale:** You’ve already committed to keeping all project assets and fields complete for V1 (including images and model fields) and prefer “assume valid data, minimal guards.” For cards, `title`, `summary`, and `hero` are core to the design and authored once in each project’s `index.md`. It’s reasonable to assume they exist for any project listed in `projects:`, with only basic checks (e.g., skip a card entirely if its page cannot be resolved) rather than complex per-field fallback behavior.
+
+4. Hero alt text source
+   Where should card hero <img> alt text come from by default?
+   a) The caption of the matching image in the project’s `images:` front matter, if found; else fall back to project.title.
+   b) Always project.title (ignore image captions).
+   c) A dedicated front matter field (e.g., hero_alt) if present; else fall back to (a) or (b).
+   d) You’re not sure yet; design card markup so the alt source is easy to change later.
+   - **Answer:** (d) Something else: treat the card hero as decorative (`alt=""`)  
+   - **Rationale:** For cards, the title and summary already expose the essential information as text, and the hero image acts primarily as a visual cue. You’ve previously chosen to treat card hero images as decorative for accessibility, which avoids redundant, noisy screen reader output. Using `alt=""` is the cleanest implementation and consistent with that prior decision; the template can be written so that swapping to a caption/title-based alt later would be straightforward if you change your mind.
+
+5. Summary length handling
+   How should we treat long `summary` text on cards?
+   a) Trust author discipline – no truncation logic; render whatever is in `summary`.
+   b) Use a purely CSS-based visual clamp (e.g., 2–3 lines) without changing the underlying HTML.
+   c) Implement text truncation in Liquid (e.g., `truncatewords`).
+   d) Other (describe).
+   - **Answer:** (a) Trust author discipline; no truncation in templates  
+   - **Rationale:** This is a single-author, tightly controlled site where you manage all front matter. Your general approach is to keep templates simple, assume well-formed content, and add only minimal guards. It’s easy to keep `summary` concise by editing content directly, and adding clamp/truncation logic now would increase complexity for marginal benefit. If summaries ever start to drift long, a future CSS clamp would be the first tool to reach for.
+
+6. Empty or missing `projects:` list
+   If `portfolio/index.md` has no `projects:` or an empty list, what should happen?
+   a) Render nothing for the grid section (current behavior) – page just shows the lead text.
+   b) Render a short “No projects to display yet.” message inside a section.
+   c) Treat this as a configuration error and make it visually obvious something is wrong.
+   d) Other (describe).
+   - **Answer:** (a) Render nothing for the grid section  
+   - **Rationale:** The portfolio list page’s primary purpose is to show projects, and you’ve already committed to curating the `projects:` list as part of maintaining the site. Treating an empty list as a content/config issue rather than a user-facing state keeps the UX clean and matches your “minimal guards” philosophy. The existing layout (`if page.projects and page.projects.size > 0`) already implements this behavior: no `projects:` means no grid, only the lead (if any).
+
+7. Future metadata on cards (for V2)
+   Do you anticipate wanting extra metadata on project cards (e.g., year, domain tags, repository links)?
+   - If yes, which 1–2 fields are most important to reserve visual/structural room for?
+   - If no, confirm you want cards to stay strictly “hero image + title + summary” for V1 and likely V2.
+   - **Answer:** No — keep cards strictly “hero + title + summary” for V1 and likely V2.
+   - **Rationale:** There’s no need to pre-allocate space now. If metadata becomes useful later (e.g., year, tags, repo link), adding a small metadata row in `_includes/project-card.html` is trivial and will only require a small CSS adjustment. Reserving empty structure today would complicate the layout without a clear purpose, whereas adding metadata in V2 is a low-cost, low-risk change.
 
 
 

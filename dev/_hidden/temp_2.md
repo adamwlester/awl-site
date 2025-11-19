@@ -1,45 +1,19 @@
 # PROMPT
-The site repo is fully scaffolded. All other site content has been added.
+Using the README, current `assets/css/custom.css`, `_layouts/default.html`, `_layouts/portfolio-list-page.html`, and `_layouts/project-detail-page.html`, plus the decisions already aligned on for `section.html` and the portfolio grid behavior, please:
 
-Here’s the current status:
+1. Write a brief outline (5–10 bullets) of your plan for:
+   – how `_includes/project-card.html` will be structured (outer element, click target, image + text blocks)  
+   – how `_includes/project-grid.html` will resolve slugs to project pages and build URLs  
+   – how hero image paths and alt text are handled (including decorative hero behavior)  
+   – how the `.project-grid` / `.project-card` CSS expectations shape the HTML structure  
+   – any light guards for missing/invalid project pages or data  
+   – how the includes stay consistent with the portfolio list layout and future V2 extensions
 
-Files that are complete:
-- _assets/css/custom.css
-- _config.yml
-- _layouts/default.html
-- _layouts/portfolio-list-page.html
-- _layouts/project-detail-page.html
-- _includes/section.html
+2. Immediately after the outline, generate the complete `_includes/project-card.html` and `_includes/project-grid.html` in a single code block (one after the other, clearly separated by comments).
 
-Files that still need content:
-- _includes/project-card.html
-- _includes/project-grid.html
+Both includes should be production-ready and fully consistent with the established site architecture and CSS.
 
-For this step, focus only on:
-- _includes/project-card.html
-- _includes/project-grid.html
-
-I am working with another GPT to generate these remaining files, but I want you to act as a careful second check.
-
-I am sharing the relevant files from the site repo:
-1. README.md
-2. assets\css\custom.css
-3. _layouts\default.html
-4. _layouts\portfolio-list-page.html
-5. _layouts\project-detail-page.html
-
-
-The file contents will be pasted below this prompt (separated by `#` markdown headings).
-
-First, thoroughly review and cross-reference the README and the current CSS, as well as the provided layout files. Build and store a clear mental model of:
-- Overall site architecture and routing
-- Layout responsibilities and inheritance
-- How each remaining file is expected to behave and interact with the others
-- How the CSS constrains and expects the HTML structure
-
-Then, write out a concise but complete summary of your understanding of the site: how it works, how the main layouts and includes should fit together, and how the CSS ties into that structure.
-
-Do not generate any of the remaining files yet. After your summary, I will share what the other GPT generated for review.
+Don’t introduce new behaviors or patterns beyond what’s described in these files and our prior decisions; just implement the agreed model cleanly.
 
 # README
 This document defines the site structure, requirements, and specifications.

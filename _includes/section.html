@@ -11,31 +11,33 @@
   - Optionally apply an id attribute for in-page anchors.
   - Wrap inner content in .section-inner for max-width and padding.
 
-  Expected usage examples:
-    {% capture lead_content %}
-      <div class="portfolio-lead">
-        {{ page.page_lead | markdownify }}
-      </div>
-    {% endcapture %}
-    {% include section.html content=lead_content %}
-
-    {% capture grid_content %}
-      {% include project-grid.html projects=page.projects %}
-    {% endcapture %}
-    {% include section.html class="section--surface" content=grid_content %}
+  Usage examples:
+    {% include section.html content=lead_html %}
+    {% include section.html class="section--surface" content=grid_html %}
 
   Notes:
-  - Callers are responsible for guarding against empty content.
-  - include.content should already be HTML (Markdown → HTML if needed).
+  - Callers guard against empty content.
+  - include.content should already be HTML (Markdownify upstream).
 -->
 
+{%- comment -%}
+  Build full class list for the <section>.
+  Always start with the base "section" class.
+  Append any modifier classes passed via include.class.
+{%- endcomment -%}
 {% assign section_class = "section" %}
 {% if include.class %}
   {% assign section_class = section_class | append: " " | append: include.class %}
 {% endif %}
 
+<!-- Section wrapper (outer band) -->
 <section class="{{ section_class }}"{% if include.id %} id="{{ include.id }}"{% endif %}>
+
+  <!-- Inner max-width container -->
   <div class="section-inner">
+
+    <!-- Injected HTML content (already formatted by caller) -->
     {{ include.content }}
+
   </div>
 </section>

@@ -1,17 +1,62 @@
-{% assign project = include.project %}
+<!--
+  PROJECT GRID INCLUDE
+  --------------------------------------------------
+  Renders the project grid on /portfolio/ using a
+  curated list of project slugs from the portfolio
+  index front matter.
 
-<article class="project-card">
-  <a href="{{ project.url | prepend: site.baseurl }}">
-    {% if project.hero %}
-      <div class="project-card-image">
-        <img src="{{ site.baseurl }}/{{ project.hero }}" alt="{{ project.title }}">
-      </div>
-    {% endif %}
-    <div class="project-card-body">
-      <h2 class="project-card-title">{{ project.title }}</h2>
-      {% if project.summary %}
-        <p class="project-card-summary">{{ project.summary }}</p>
-      {% endif %}
+  For each slug:
+    - Build the expected project page URL
+    - Resolve that page from site.pages
+    - Render a project-card for valid pages
+    - Emit a debug-only HTML comment for unresolved slugs
+-->
+
+{%- comment -%}
+  Internal developer notes:
+
+  Inputs:
+    - include.projects : array of project slugs in display order
+
+  Output structure:
+    <div class="project-grid">
+      <!-- multiple project-card includes -->
     </div>
-  </a>
-</article>
+
+  Resolution logic:
+    - Construct expected project URL:
+        /portfolio/projects/<slug>/
+    - Jekyll page.url never includes site.baseurl.
+    - Filter site.pages by that .url value.
+{%- endcomment -%}
+
+{%- if include.projects and include.projects.size > 0 -%}
+
+  <!-- ======================================== -->
+  <!-- PROJECT GRID WRAPPER                     -->
+  <!-- Container for all project cards          -->
+  <!-- ======================================== -->
+  <div class="project-grid">
+
+    {%- for slug in include.projects -%}
+
+      <!-- Resolve project page for slug: "{{ slug }}" -->
+      {%- assign project_path = '/portfolio/projects/' | append: slug | append: '/' -%}
+      {%- assign project = site.pages | where: 'url', project_path | first -%}
+
+      {%- if project -%}
+
+        <!-- Valid project found → render card -->
+        {%- include project-card.html project=project -%}
+
+      {%- else -%}
+
+        <!-- project-grid: no page found for slug "{{ slug }}" (expected url "{{ project_path }}") -->
+
+      {%- endif -%}
+
+    {%- endfor -%}
+
+  </div>
+
+{%- endif -%}

@@ -625,38 +625,52 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - The desktop layout is achieved purely via CSS (grid/flex) positioning of the left and right column containers.
 
 ## IMPLEMENTATION STATUS
+*Notes for maintaining this section:*
+* *Use concise, single-level bullets.*
+* *Keep entries in sync with the current repo state.*
+* *Prefer present-tense descriptions over historical build steps.*
+
 *A concise overview of what currently exists in the site and how the core pieces are structured.*
 
 ### Structure & Content
 *Overall site foundation, routing, and project content.*
 
-**Done:**
-- Jekyll site scaffolded with `index.md` as the home page (minimal content for V1).
-- Portfolio section in place (portfolio list and project-specific routes wired up as defined in the Site Map above).
-- Standardized project folder pattern established (`images/`, `models/`, `index.md`).
-- All professional project folders added with full image sets, model files, and `index.md` content.
-- Portfolio index configured with project slugs listed in the intended display order.
-
-**To Do:**
-- Only minor content tweaks and copy refinements as needed.
+**Status:**
+- Jekyll site scaffolded with `index.md` as the home page.
+- Portfolio section routes match the Site Map (`/portfolio/` and `/portfolio/projects/<slug>/`).
+- Standardized project folder pattern (`images/`, `models/`, `index.md`) applied across all projects.
+- All project folders include full image sets, model files, and `index.md` content.
+- Portfolio index front matter lists project slugs in the intended display order.
 
 ### Layouts & Includes
 *Templates responsible for rendering pages and reusable components.*
 
-**Done:**
-- Layout and include structure defined in this README (names, responsibilities, and how they should work together).
-
-**To Do:**
-- Implement the core layouts for the base page shell, portfolio list view, and project detail view.
-- Implement the includes for reusable sections and project grids/cards.
+**Status:**
+- Base layout (`_layouts/default.html`) implemented with global shell, header, banner, and footer.
+- Portfolio list layout (`_layouts/portfolio-list-page.html`) implemented with lead + project grid sections.
+- Project detail layout (`_layouts/project-detail-page.html`) implemented with media carousel, 3D viewer, and two-column narrative layout.
+- Section wrapper include (`_includes/section.html`) implemented for reusable page bands.
+- Project grid and card includes (`_includes/project-grid.html`, `_includes/project-card.html`) implemented and wired into the portfolio list page.
 
 ### Styling & Components
 *Global styles and UI behavior.*
 
-**Done:**
-- Global styling approach defined in this README (single main stylesheet, shared patterns for layout and components).
+**Status:**
+- Global styling implemented in `assets/css/custom.css` (typography, colors, spacing, layout tokens).
+- Responsive behavior in place for header, banner, portfolio grid/cards, and project detail layout.
+- Image viewer (media carousel) styling implemented and wired to lightweight JS behavior.
+- 3D model viewer panel styled and integrated with the global `<model-viewer>` script.
 
-**To Do:**
-- Implement global styles in `assets/css/custom.css`.
-- Add responsive behavior and visual styling for the header, banner, portfolio cards, image viewer, and project detail layout.
+### TO DO
+- Verify the site builds cleanly locally (`bundle exec jekyll serve`) and fix any build warnings or Liquid errors.
+- Push the current site scaffold (all layouts, includes, assets, and content) to the `awl-site` GitHub repository.
+- Configure GitHub Pages for the repo (Settings → Pages) to build from the default branch using the built-in Jekyll engine.
+- Confirm `_config.yml` `url` and `baseurl` values match the live GitHub Pages URL and repo name.
+- After deployment, smoke-test the live site:
+  - Load home, portfolio list, and several project detail pages.
+  - Check internal links, image paths, and model paths.
+  - Confirm the image viewer carousel and `<model-viewer>` behave as expected.
+- Set up and verify a custom domain (when ready): DNS records, CNAME file, and `url` update in `_config.yml`.
+- Do a final content pass for copy tweaks, typos, and any missing references or links.
+
 
