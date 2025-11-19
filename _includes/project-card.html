@@ -1,62 +1,70 @@
 <!--
-  PROJECT GRID INCLUDE
+  PROJECT CARD INCLUDE
   --------------------------------------------------
-  Renders the project grid on /portfolio/ using a
-  curated list of project slugs from the portfolio
-  index front matter.
+  Renders a single portfolio project card inside the
+  project grid on /portfolio/.
 
-  For each slug:
-    - Build the expected project page URL
-    - Resolve that page from site.pages
-    - Render a project-card for valid pages
-    - Emit a debug-only HTML comment for unresolved slugs
+  This include expects a resolved project page object
+  (passed as include.project) and outputs one fully
+  clickable card containing:
+    - A decorative hero image
+    - A project title
+    - A short summary
 -->
 
 {%- comment -%}
   Internal developer notes:
-
-  Inputs:
-    - include.projects : array of project slugs in display order
-
-  Output structure:
-    <div class="project-grid">
-      <!-- multiple project-card includes -->
-    </div>
-
-  Resolution logic:
-    - Construct expected project URL:
-        /portfolio/projects/<slug>/
-    - Jekyll page.url never includes site.baseurl.
-    - Filter site.pages by that .url value.
+  - Expected input:
+      include.project → a resolved Jekyll page object
+      (e.g., site.pages where url == "/portfolio/projects/<slug>/")
+  - Behavior:
+      * Render an <a class="project-card"> wrapper
+      * Hero path is project-relative: {{ project.dir }}{{ project.hero }}
+      * Href uses Jekyll’s page.url: {{ site.baseurl }}{{ project.url }}
+      * Hero images are decorative → alt=""
 {%- endcomment -%}
 
-{%- if include.projects and include.projects.size > 0 -%}
+{%- assign project = include.project -%}
+
+{%- if project -%}
 
   <!-- ======================================== -->
-  <!-- PROJECT GRID WRAPPER                     -->
-  <!-- Container for all project cards          -->
+  <!-- PROJECT CARD                              -->
+  <!-- Entire card is a single clickable link    -->
   <!-- ======================================== -->
-  <div class="project-grid">
+  <a
+    class="project-card"
+    href="{{ site.baseurl }}{{ project.url }}"
+  >
 
-    {%- for slug in include.projects -%}
+    <!-- Hero image (decorative only) -->
+    {%- if project.hero -%}
+      <div class="project-card-image">
+        <img
+          src="{{ site.baseurl }}{{ project.dir }}{{ project.hero }}"
+          alt=""
+        >
+      </div>
+    {%- endif -%}
 
-      <!-- Resolve project page for slug: "{{ slug }}" -->
-      {%- assign project_path = '/portfolio/projects/' | append: slug | append: '/' -%}
-      {%- assign project = site.pages | where: 'url', project_path | first -%}
+    <!-- Text block: title + summary -->
+    <div class="project-card-body">
 
-      {%- if project -%}
-
-        <!-- Valid project found → render card -->
-        {%- include project-card.html project=project -%}
-
-      {%- else -%}
-
-        <!-- project-grid: no page found for slug "{{ slug }}" (expected url "{{ project_path }}") -->
-
+      <!-- Project title -->
+      {%- if project.title -%}
+        <h2 class="project-card-title">
+          {{ project.title }}
+        </h2>
       {%- endif -%}
 
-    {%- endfor -%}
+      <!-- Short project summary -->
+      {%- if project.summary -%}
+        <p class="project-card-summary">
+          {{ project.summary }}
+        </p>
+      {%- endif -%}
 
-  </div>
+    </div>
+  </a>
 
 {%- endif -%}

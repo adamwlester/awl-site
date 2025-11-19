@@ -409,3 +409,87 @@ _includes\section.html questions:
 
 
 
+This was the old version:
+---
+layout: default
+---
+
+<!--
+  PORTFOLIO LIST PAGE LAYOUT
+  ------------------------------------------------
+  This file provides the page-level structure for
+  the portfolio index. It is rendered inside the
+  global default.html layout and outputs only the
+  content meant for the {{ content }} region.
+
+  This layout avoids global elements (header, footer,
+  banner, wrappers) and delegates project resolution
+  and card rendering to the included grid/templates.
+-->
+
+<!-- ========================================= -->
+<!-- LEAD SECTION                              -->
+<!-- Optional introductory text under banner   -->
+<!-- ========================================= -->
+{% if page.page_lead %}
+  {% capture portfolio_lead_content %}
+    <div class="portfolio-lead">
+      {{ page.page_lead | markdownify }}
+    </div>
+  {% endcapture %}
+  {% include section.html content=portfolio_lead_content %}
+{% endif %}
+
+
+<!-- ========================================= -->
+<!-- PROJECT GRID SECTION                      -->
+<!-- Main portfolio listing area               -->
+<!-- ========================================= -->
+{% if page.projects and page.projects.size > 0 %}
+  {% capture portfolio_grid_content %}
+    {% include project-grid.html projects=page.projects %}
+  {% endcapture %}
+  {% include section.html class="section--surface" content=portfolio_grid_content %}
+{% endif %}
+and the new:
+---
+layout: default
+---
+
+<!--
+  PORTFOLIO LIST PAGE LAYOUT
+  ------------------------------------------------
+  This file provides the page-level structure for
+  the portfolio index. It is rendered inside the
+  global default.html layout and outputs only the
+  content meant for the {{ content }} region.
+
+  This layout avoids global elements (header, footer,
+  banner, wrappers) and delegates project resolution
+  and card rendering to the included grid/templates.
+-->
+
+<!-- ========================================= -->
+<!-- LEAD SECTION                              -->
+<!-- Optional introductory text under banner   -->
+<!-- ========================================= -->
+{% if page.page_lead %}
+  {% capture lead_html %}
+    <div class="portfolio-lead">
+      {{ page.page_lead | markdownify }}
+    </div>
+  {% endcapture %}
+  {% include section.html content=lead_html %}
+{% endif %}
+
+<!-- ========================================= -->
+<!-- PROJECT GRID SECTION                      -->
+<!-- Main portfolio listing area               -->
+<!-- ========================================= -->
+{% if page.projects and page.projects.size > 0 %}
+<section class="section section--surface">
+  <div class="section-inner">
+    {% include project-grid.html projects=page.projects %}
+  </div>
+</section>
+{% endif %}

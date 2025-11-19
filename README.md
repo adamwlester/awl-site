@@ -91,6 +91,26 @@ index.md                                    # homepage (**site root**) -> minima
 - Front matter paths for images and models remain repo-relative strings (e.g., `images/render_1.png`, `/assets/images/home-banner.png`).
   - Layouts prepend `{{ site.baseurl }}` when generating final URLs.
 
+### Liquid Limitation in GitHub Pages (Jekyll 3)
+
+GitHub Pages uses **Jekyll 3.10 + Liquid 4**, which has a known issue:
+- Avoid this pattern:
+  ```liquid
+  {% capture x %}
+    {% include something.html %}
+  {% endcapture %}
+  {% include section.html content=x %}
+  ```
+  - It can trigger a false **“Nesting too deep”** Liquid error.
+
+- Use inline triple-quoted content instead:
+  ```liquid
+  {% include section.html content="""
+    {% include something.html %}
+  """ %}
+  ```
+  - This avoids the Liquid recursion bug while preserving the intended layout.
+
 ## Layout & CSS Responsibilities (Quick Map)
 
 - `_layouts/default.html`  
@@ -672,5 +692,33 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
   - Confirm the image viewer carousel and `<model-viewer>` behave as expected.
 - Set up and verify a custom domain (when ready): DNS records, CNAME file, and `url` update in `_config.yml`.
 - Do a final content pass for copy tweaks, typos, and any missing references or links.
+
+### Local Jekyll Environment Setup
+
+**Installed Components:**  
+- **Ruby:** 3.3.10 (x64, via RubyInstaller with MSYS2 toolchain)
+- **Bundler:** Installed via RubyGems  
+- **MSYS2 + MINGW toolchain:** Installed using option `3` during RubyInstaller setup  
+  - Required for native Ruby gem compilation on Windows  
+- **Gemfile created** with:
+  - `github-pages` gem (GitHub Pages’ locked Jekyll environment, Jekyll 3.10.0)
+  - `webrick` (required for Jekyll serving on Ruby 3+)
+- **bundle install** completed successfully  
+  - Installed Jekyll **3.10.0** (GitHub Pages version)  
+  - Installed Liquid **4.0.4**
+  - Installed all other GitHub Pages-pinned dependencies
+
+**Jekyll Commands Verified:**
+- `bundle exec jekyll build`
+- `bundle exec jekyll serve --livereload`
+- Full log capture command for debugging:
+  ```yaml
+  bundle exec jekyll serve --livereload *>&1 | Tee-Object -FilePath jekyll-log.txt
+  ```
+  
+**Site Structure Confirmed:**
+- All layouts, includes, assets, models, and project folders present
+- Portfolio pages routed correctly
+- Section include, project grid include, and project card include wired in
 
 
