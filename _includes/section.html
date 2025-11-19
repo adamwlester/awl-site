@@ -12,8 +12,10 @@
   - Wrap inner content in .section-inner for max-width and padding.
 
   Usage examples:
+  {% raw %}
     {% include section.html content=lead_html %}
     {% include section.html class="section--surface" content=grid_html %}
+  {% endraw %}
 
   Notes:
   - Callers guard against empty content.

@@ -93,23 +93,38 @@ index.md                                    # homepage (**site root**) -> minima
 
 ### Liquid Limitation in GitHub Pages (Jekyll 3)
 
-GitHub Pages uses **Jekyll 3.10 + Liquid 4**, which has a known issue:
+**GitHub Pages uses `Jekyll 3.10` + `Liquid 4`, with known issue**:
 - Avoid this pattern:
-  ```liquid
-  {% capture x %}
-    {% include something.html %}
-  {% endcapture %}
-  {% include section.html content=x %}
-  ```
+    ```liquid
+    {% capture x %}
+      {% include something.html %}
+    {% endcapture %}
+    {% include section.html content=x %}
+    ```
   - It can trigger a false **“Nesting too deep”** Liquid error.
-
 - Use inline triple-quoted content instead:
-  ```liquid
-  {% include section.html content="""
-    {% include something.html %}
-  """ %}
-  ```
+    ```liquid
+    {% include section.html content="""
+      {% include something.html %}
+    """ %}
+    ```
   - This avoids the Liquid recursion bug while preserving the intended layout.
+
+**Commenting Liquid safely in templates**:
+  - HTML comments (`<!-- ... -->`) do **not** stop Liquid from executing; any `{% %}` or `{{ }}` inside them will still run.
+  - Use Liquid comments to hide Liquid syntax completely:
+    ```liquid
+    {%- comment -%}
+      Internal note that can mention {% include %} safely.
+    {%- endcomment -%}
+    ```
+  - When you want to show example Liquid code in a comment or docs without executing it, wrap it in `raw`:
+    ```liquid
+    {% raw %}
+      {% include section.html content=lead_html %}
+    {% endraw %}
+    ```
+  - General rule: keep Liquid tags out of plain HTML comments; use Liquid `{% comment %}` or `{% raw %}` whenever a comment needs to mention real Liquid code.
 
 ## Layout & CSS Responsibilities (Quick Map)
 
