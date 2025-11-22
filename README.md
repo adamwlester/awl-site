@@ -717,7 +717,9 @@ bundle exec jekyll serve --livereload --baseurl "/awl-site"
   bundle exec jekyll serve --livereload --baseurl "/awl-site"
   ```
 - Visit: `http://localhost:4000/awl-site/`
-- Make changes to layouts, includes, CSS, or Markdown content and verify in the browser as they auto-reload.
+- Make changes to layouts, includes, CSS, or Markdown content
+- Do a **hard reload** in the browser with `Ctrl + F5`
+- Verify changes in the browser as they reload.
 
 **Commit in batches:**
 - After fixing a small cluster of issues (links, layout tweaks, copy edits), commit the changes locally.
