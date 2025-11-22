@@ -5,7 +5,7 @@ description: "Adjustable aluminum projector mount for precise alignment of short
 summary: "Adjustable aluminum projector mount for precise alignment of short-throw projectors in behavioral arenas."
 hero: "images/hero.png"
 model_src: "models/adjustable-aluminum-projector-mount.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: "0deg 0deg auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

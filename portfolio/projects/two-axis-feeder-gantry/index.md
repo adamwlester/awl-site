@@ -5,7 +5,7 @@ description: "CNC-based gantry system for automated spatially targeted reward de
 summary: "CNC-based gantry system for automated spatially targeted reward delivery in rodent open-field experiments."
 hero: "images/hero.png"
 model_src: "models/two-axis-feeder-gantry.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: "0deg 0deg auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

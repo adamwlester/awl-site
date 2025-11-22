@@ -5,7 +5,7 @@ description: "To-scale 3D model of a Fischer 344 laboratory rat for design plann
 summary: "To-scale 3D model of a Fischer 344 laboratory rat for design planning, visualization, and demonstration of behavioral systems."
 hero: "images/hero.png"
 model_src: "models/fischer-344-rat-model.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: auto auto auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

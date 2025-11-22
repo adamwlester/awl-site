@@ -5,7 +5,7 @@ description: "Modular motorized gate system for autonomous control of rodent beh
 summary: "Modular motorized gate system for autonomous control of rodent behavior in maze experiments."
 hero: "images/hero.png"
 model_src: "models/nc4gate-automatable-gate-module.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: "0deg 0deg auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

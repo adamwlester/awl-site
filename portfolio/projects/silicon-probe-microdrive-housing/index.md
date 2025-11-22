@@ -5,7 +5,7 @@ description: "Implantable housing for high-density chronic silicon probe recordi
 summary: "Implantable housing for high-density chronic silicon probe recordings in freely moving rats."
 hero: "images/hero.png"
 model_src: "models/silicon-probe-microdrive-housing.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: "0deg 0deg auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

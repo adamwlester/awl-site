@@ -5,7 +5,7 @@ description: "Mobile feeder cart for controlled on-track liquid reinforcement wi
 summary: "Mobile feeder cart for controlled on-track liquid reinforcement with gated feeder access for rodent circular track experiments"
 hero: "images/hero.png"
 model_src: "models/track-mounted-feeder-cart.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: "0deg 0deg auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

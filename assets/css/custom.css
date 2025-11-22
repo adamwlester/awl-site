@@ -12,6 +12,7 @@
   --color-page_background: #f7f5f1; /* page background */
   --color-surface-light: #ffffff;   /* cards, sections, header */
   --color-surface-dark: #222222;    /* cards, sections, header */
+  --color-surface-blend: #f7f5f1;   /* cards, sections, header */
   --color-border-subtle: #e3dfd7;   /* light borders & dividers */
 
   --color-text: #222222;          /* main text */
@@ -33,7 +34,7 @@
   /* Layout */
   --max-width-content: 1280px;
   --header-height: 56px;
-  --page-banner-height: 280px;
+  --page-banner-height: 200px;
 
   /* Radii */
   --radius-sm: 4px;
@@ -327,7 +328,7 @@ code {
 
 /* Use for muted / alternate background sections if needed */
 .section--surface {
-  background-color: var(--color-surface-light);
+  background-color: var(--color-surface-blend);
 }
 
 /* =========================================================
@@ -373,7 +374,7 @@ code {
 /* Project grid container */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: var(--space-3);
   align-items: stretch;
 }

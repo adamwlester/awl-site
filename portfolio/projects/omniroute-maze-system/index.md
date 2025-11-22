@@ -5,7 +5,7 @@ description: "A dynamically reconfigurable rodent maze system that integrates au
 summary: "A dynamically reconfigurable rodent maze system that integrates automated route configurations, sensory cue control, and targeted reward delivery."
 hero: "images/hero.png"
 model_src: "models/omniroute-maze-system.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: "0deg 0deg auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

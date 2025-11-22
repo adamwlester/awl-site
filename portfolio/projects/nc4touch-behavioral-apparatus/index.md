@@ -5,7 +5,7 @@ description: "Touchscreen-based behavioral apparatus for flexible, high-throughp
 summary: "Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats."
 hero: "images/hero.png"
 model_src: "models/nc4touch-behavioral-apparatus.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: "0deg 0deg auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

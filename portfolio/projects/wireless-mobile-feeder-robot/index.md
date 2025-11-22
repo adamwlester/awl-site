@@ -5,7 +5,7 @@ description: "A mobile feeder robot for delivering liquid rewards to rats during
 summary: "A mobile feeder robot for delivering liquid rewards to rats during circular track experiments"
 hero: "images/hero.png"
 model_src: "models/wireless-mobile-feeder-robot.glb"
-model_camera_orbit: "auto auto auto"
+model_camera_orbit: "0deg 0deg auto"
 model_camera_target: "auto auto auto"
 model_fov: "auto"
 images:

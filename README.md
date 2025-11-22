@@ -607,7 +607,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
   description: "An open-source, modular behavioral apparatus for rodent cognitive experiments."
   hero: "images/hero.png"
   model_src: "models/nc4touch-behavioral-apparatus.glb"
-  model_camera_orbit: "auto auto auto"
+  model_camera_orbit: "0deg 0deg auto"
   model_camera_target: "auto auto auto"
   model_fov: "auto"
   images:
