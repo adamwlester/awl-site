@@ -79,29 +79,11 @@ layout: default
   {% endif %}
 
   <!-- ======================================== -->
-  <!-- MAIN PROJECT LAYOUT (2-COLUMN GRID)      -->
+  <!-- MAIN PROJECT LAYOUT (2-COLUMN STRUCTURE) -->
   <!-- ======================================== -->
   <div class="project-layout">
 
-    <!-- Right column: 3D model viewer panel (grid-area: model) -->
-    <div class="project-aside-column">
-      {% if page.model_src %}
-        <div class="model-viewer-panel">
-          <model-viewer
-            src="{{ site.baseurl }}{{ page.dir }}{{ page.model_src }}"
-            {% if page.model_camera_orbit %}camera-orbit="{{ page.model_camera_orbit }}"{% endif %}
-            {% if page.model_camera_target %}camera-target="{{ page.model_camera_target }}"{% endif %}
-            {% if page.model_fov %}field-of-view="{{ page.model_fov }}"{% endif %}
-            aria-label="{{ page.title | escape }} 3D model"
-            autoplay
-            camera-controls
-            interaction-prompt="auto">
-          </model-viewer>
-        </div>
-      {% endif %}
-    </div>
-
-    <!-- Left column: title, summary, and primary/secondary content groups -->
+    <!-- Left column: title, summary, and primary content group -->
     <div class="project-main-column">
 
       <!-- Project title (page H1 when no banner is present) -->
@@ -120,109 +102,30 @@ layout: default
            - Expects .content-groups wrapper with:
              .content-group-primary (primary narrative)
              .content-group-secondary (secondary narrative)
-           - CSS uses display: contents + grid-area to route
-             these groups into the left/right regions. -->
+           - JS will move .content-group-secondary into the aside column
+             so authors keep a single index.md per project. -->
       {{ content }}
+    </div>
+
+    <!-- Right column: 3D model viewer + moved secondary content -->
+    <div class="project-aside-column">
+      {% if page.model_src %}
+        <div class="model-viewer-panel">
+          <model-viewer
+            src="{{ site.baseurl }}{{ page.dir }}{{ page.model_src }}"
+            {% if page.model_camera_orbit %}camera-orbit="{{ page.model_camera_orbit }}"{% endif %}
+            {% if page.model_camera_target %}camera-target="{{ page.model_camera_target }}"{% endif %}
+            {% if page.model_fov %}field-of-view="{{ page.model_fov }}"{% endif %}
+            aria-label="{{ page.title | escape }} 3D model"
+            autoplay
+            camera-controls
+            interaction-prompt="auto">
+          </model-viewer>
+        </div>
+      {% endif %}
+      <!-- .content-group-secondary will be moved here via JS when present -->
     </div>
 
   </div>
 
 </div>
-
-<!-- ========================================== -->
-<!-- IMAGE-VIEWER BEHAVIOR (LIGHTWEIGHT JS)    -->
-<!-- ========================================== -->
-<script>
-  (function () {
-    var viewer = document.querySelector('[data-image-viewer]');
-    if (!viewer) return;
-
-    var track = viewer.querySelector('[data-image-viewer-track]');
-    if (!track) return;
-
-    var slides = Array.prototype.slice.call(
-      track.querySelectorAll('.image-slide')
-    );
-    if (!slides.length) return;
-
-    var thumbsContainer = viewer.querySelector('[data-image-viewer-thumbnails]');
-    var thumbs = thumbsContainer
-      ? Array.prototype.slice.call(
-          thumbsContainer.querySelectorAll('.image-viewer-thumb')
-        )
-      : [];
-
-    var prevButton = viewer.querySelector('.image-viewer-arrow--prev');
-    var nextButton = viewer.querySelector('.image-viewer-arrow--next');
-
-    var activeIndex = 0;
-
-    function clampIndex(index) {
-      if (index < 0) return 0;
-      if (index >= slides.length) return slides.length - 1;
-      return index;
-    }
-
-    function setActive(index, options) {
-      index = clampIndex(index);
-      if (index === activeIndex) return;
-      activeIndex = index;
-
-      var slide = slides[activeIndex];
-      if (slide && slide.scrollIntoView) {
-        try {
-          slide.scrollIntoView({
-            behavior: (options && options.behavior) || 'smooth',
-            block: 'nearest',
-            inline: 'center'
-          });
-        } catch (e) {
-          // Older browsers may not support options; fall back to default.
-          slide.scrollIntoView();
-        }
-      }
-
-      // Update active thumbnail state
-      if (thumbs.length) {
-        thumbs.forEach(function (thumb, i) {
-          if (i === activeIndex) {
-            thumb.classList.add('image-viewer-thumb--active');
-          } else {
-            thumb.classList.remove('image-viewer-thumb--active');
-          }
-        });
-      }
-    }
-
-    function handleArrow(delta) {
-      setActive(activeIndex + delta);
-    }
-
-    if (prevButton) {
-      prevButton.addEventListener('click', function () {
-        handleArrow(-1);
-      });
-    }
-
-    if (nextButton) {
-      nextButton.addEventListener('click', function () {
-        handleArrow(1);
-      });
-    }
-
-    if (thumbs.length) {
-      thumbs.forEach(function (thumb) {
-        thumb.addEventListener('click', function () {
-          var indexAttr = thumb.getAttribute('data-image-index');
-          var index = parseInt(indexAttr, 10);
-          if (!isNaN(index)) {
-            setActive(index, { behavior: 'smooth' });
-          }
-        });
-      });
-    }
-
-    // Initialize state so the first thumbnail is synced with the first slide
-    setActive(0, { behavior: 'auto' });
-  })();
-</script>

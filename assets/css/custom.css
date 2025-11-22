@@ -471,51 +471,49 @@ code {
   margin-bottom: var(--space-3);
 }
 
-/* Core grid:
-   - Desktop: 2 columns
-       main-title   | model
-       main-summary | model
-       main-body    | aside
-     → model spans the first two rows; aside sits directly below it.
-   - Mobile: stacked in logical reading order:
-       model → main-title → main-summary → main-body → aside
+/* Core layout:
+   - Desktop: simple 2-column grid
+       left column  = title, summary, primary narrative
+       right column = 3D model + secondary narrative
+   - Mobile: collapses to a single column (left then right)
 */
 .project-layout {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  grid-template-areas:
-    "main-title   model"
-    "main-summary model"
-    "main-body    aside";
   gap: var(--space-4);
   align-items: flex-start;
 }
 
-/* Legacy column wrappers:
-   - Used as semantic containers in the layout markup.
-   - We flatten them with display: contents so their children
-     can become the real grid items (title/summary + content groups).
-*/
+/* Column wrappers act as true grid items, each stacking content vertically */
 .project-main-column,
 .project-aside-column {
-  display: contents;
   min-width: 0;
 }
 
+/* Left column: title, summary, and primary content */
+.project-main-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right column: model viewer + moved secondary content */
+.project-aside-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
 /* Title and summary:
-   - Both live in the left column.
-   - Each gets its own grid-area so they stack vertically
-     above the primary content without overlapping.
+   - Stay in the left column.
+   - Natural stacking above the primary content.
 */
 .project-title {
-  grid-area: main-title;
   font-size: 1.8rem;
   margin-top: 0;
   margin-bottom: 0.35rem;
 }
 
 .project-summary {
-  grid-area: main-summary;
   font-size: 1.05rem;
   color: var(--color-text-muted);
   margin-top: 0;
@@ -524,31 +522,29 @@ code {
 
 /* Content groups inside the Markdown body:
    - .content-groups is a structural wrapper inserted by authoring.
-   - We use display: contents so its children (primary/secondary)
-     can participate directly in the grid as distinct areas.
+   - Primary/secondary groups are routed into columns by JS,
+     not by grid areas.
 */
 .content-groups {
-  display: contents;
+  /* preserve as a light structural wrapper */
 }
 
-/* Optional shared styling hook for any content-group wrapper */
 .content-group {
-  /* no layout rules here on purpose; treat as a semantic hook */
+  /* semantic hook for any future styling */
 }
 
 /* Primary narrative group:
-   - Left column under the title + summary.
+   - Lives in the main column under title + summary.
 */
 .content-group-primary {
-  grid-area: main-body;
   min-width: 0;
 }
 
 /* Secondary narrative group:
-   - Right column (aside) beneath the 3D model on desktop.
+   - Authored in the main column but moved into .project-aside-column
+     via JS so the content model stays single-file.
 */
 .content-group-secondary {
-  grid-area: aside;
   min-width: 0;
 }
 
@@ -557,24 +553,22 @@ code {
   margin-top: var(--space-3);
 }
 
-/* Small screens: stack in logical order:
-   model → title → summary → primary → aside
+/* Small screens: collapse to a single column.
+   DOM order becomes:
+     media → main column → aside column
 */
 @media (max-width: 767px) {
   .project-layout {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "model"
-      "main-title"
-      "main-summary"
-      "main-body"
-      "aside";
     gap: var(--space-3);
+  }
+
+  .project-aside-column {
+    margin-top: var(--space-3);
   }
 }
 
-/* Medium screens: allow columns with slightly different ratio
-   and a tighter gap, but keep the same area mapping */
+/* Medium screens: adjust column ratio and tighten gap */
 @media (min-width: 768px) and (max-width: 1023px) {
   .project-layout {
     grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
@@ -707,7 +701,6 @@ code {
    ========================================================= */
 
 .model-viewer-panel {
-  grid-area: model;
   background-color: var(--color-surface);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
