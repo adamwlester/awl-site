@@ -714,7 +714,7 @@ bundle exec jekyll serve --livereload --baseurl "/awl-site"
 **Develop locally:**
 - Start the server once with:  
   ```bash
-  `bundle exec jekyll serve --livereload --baseurl "/awl-site"`
+  bundle exec jekyll serve --livereload --baseurl "/awl-site"
   ```
 - Visit: `http://localhost:4000/awl-site/`
 - Make changes to layouts, includes, CSS, or Markdown content and verify in the browser as they auto-reload.
@@ -804,6 +804,3 @@ bundle exec jekyll serve --livereload --baseurl "/awl-site"
 **Current Build Status:**
 - `bundle exec jekyll serve --livereload` runs without Liquid errors  
 - Previous “Nesting too deep” issue resolved by wrapping example `{% include %}` lines in `_includes/section.html` with `{% raw %} ... {% endraw %}` so they are not executed  
-
-### To Do & Broken Shit
-
