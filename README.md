@@ -64,9 +64,11 @@ index.md                                    # homepage (**site root**) -> minima
 ├── assets/
 │   ├── css/
 │   │   └── custom.css                      # single stylesheet for colors, spacing, typography, global header, banner, layout
+│   ├── js/
+│   │   └── project-detail-page.js          # page-scoped behavior for project detail pages (image viewer + secondary-content routing)
 │   └── images/
 │       ├── home-banner.png                 # used by homepage front matter: banner_image: /assets/images/home-banner.png
-│       └── portfolio-list-banner.png       # used by portfolio/index.md front matter: banner_image: /assets/images/portfolio-list-banner.png
+│       └── portfolio-list-banner.png       # used by portfolio/...t matter: banner_image: /assets/images/portfolio-list-banner.png
 ├── docs/
 │   ├── CV.pdf                              # full academic CV (served directly via GitHub Pages)
 │   └── Resume.pdf                          # short professional resume (also served directly)
@@ -157,7 +159,9 @@ index.md                                    # homepage (**site root**) -> minima
 - `_includes/project-card.html`  
   - Renders a single project card (hero image, title, summary, link to the detail page).
 - `assets/css/custom.css`  
-  - Single stylesheet that defines base typography, colors, layout, header/banner styling, and responsive behavior across pages.
+  - Single stylesheet that defines base typography, colors, layo...ut, header/banner styling, and responsive behavior across pages.
+- `assets/js/project-detail-page.js`  
+  - Page-scoped behavior for project detail pages: image-viewer carousel controls and routing of `.content-group-secondary` into the aside column.
 
 ### Layout Inheritance & Relationships
 
@@ -220,8 +224,8 @@ This section defines the implicit global style conventions used across `assets/c
 - Additional layout tweaks apply at **480px and below** for very small screens.
 
 **Desktop vs mobile ordering:**  
-- **DOM order = mobile visual order** across all pages.  
-- Desktop layout uses CSS grid/flex positioning without content reordering.
+- **Final DOM order = mobile visual order** across all pages.  
+- Desktop layout uses CSS grid/flex positioning without content reordering, except on project detail pages where a small helper script rehomes `.content-group-secondary` into the aside column while preserving the same reading order.
 
 ### Banner & Media Conventions
 
@@ -534,7 +538,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - Renders and photos are standardized at 2000 px height (up to 5000 px width).
 - All image files are PNG.
 - These are required constraints for all images in the `images:` front matter list.
-- All JavaScript behavior for the carousel (scrolling, arrows, thumbnails) lives in a small inline `<script>` block at the bottom of `_layouts/project-detail-page.html` (no separate JS bundle is used for V1).
+- All JavaScript behavior for the carousel (scrolling, arrows, thumbnails) lives in `assets/js/project-detail-page.js`, which is included via `_layouts/default.html` on pages using the project detail layout.
 
 #### 3D Model Viewer Window
 
@@ -679,8 +683,8 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
       - Secondary content sections (from content body)
 
 **Layout Notes**
-- The DOM order matches the mobile stacking order above.
-- The desktop layout is achieved purely via CSS (grid/flex) positioning of the left and right column containers.
+- The final DOM order matches the mobile stacking order above.
+- Desktop layout uses CSS grid to create left and right columns; a small page-scoped script (`assets/js/project-detail-page.js`) moves `.content-group-secondary` into the right column while keeping the authored content in a single `index.md` per project.
 
 
 
@@ -776,7 +780,7 @@ bundle exec jekyll serve --livereload --baseurl "/awl-site"
 **Status:**
 - Global styling implemented in `assets/css/custom.css` (typography, colors, spacing, layout tokens).
 - Responsive behavior in place for header, banner, portfolio grid/cards, and project detail layout.
-- Image viewer (media carousel) styling implemented and wired to lightweight JS behavior.
+- Image viewer (media carousel) styling implemented and wired to lightweight JS behavior in `assets/js/project-detail-page.js`.
 - 3D model viewer panel styled and integrated with the global `<model-viewer>` script.
 
 ### Local Jekyll Environment Setup
