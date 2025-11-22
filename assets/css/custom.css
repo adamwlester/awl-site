@@ -9,9 +9,10 @@
   --ff-heading: var(--ff-body);
 
   /* Colors */
-  --color-bg: #f7f5f1;            /* page background */
-  --color-surface: #ffffff;       /* cards, sections, header */
-  --color-border-subtle: #e3dfd7; /* light borders & dividers */
+  --color-page_background: #f7f5f1; /* page background */
+  --color-surface-light: #ffffff;   /* cards, sections, header */
+  --color-surface-dark: #222222;    /* cards, sections, header */
+  --color-border-subtle: #e3dfd7;   /* light borders & dividers */
 
   --color-text: #222222;          /* main text */
   --color-text-muted: #666666;    /* secondary text */
@@ -63,7 +64,7 @@ body {
 
 body {
   font-family: var(--ff-body);
-  background-color: var(--color-bg);
+  background-color: var(--color-page_background);
   color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -181,7 +182,7 @@ code {
   position: sticky;
   top: 0;
   z-index: 20;
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-light);
   border-bottom: 1px solid var(--color-border-subtle);
   height: var(--header-height);
 }
@@ -326,7 +327,7 @@ code {
 
 /* Use for muted / alternate background sections if needed */
 .section--surface {
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-light);
 }
 
 /* =========================================================
@@ -381,7 +382,7 @@ code {
 .project-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-light);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
@@ -582,7 +583,10 @@ code {
 
 /* Outer container */
 .image-viewer {
-  background-color: var(--color-surface);
+  /* Slightly darker / warmer than the pure-white renders,
+     so the image reads as a card sitting on a band */
+  background-color: var(--color-page_background);
+
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
@@ -603,6 +607,8 @@ code {
   scroll-behavior: smooth;
   padding-bottom: var(--space-1);
   margin-bottom: var(--space-1);
+  /* HIDE SCROLLBAR — cross-browser */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* Hide default scrollbar (where supported) for cleaner look */
@@ -622,14 +628,20 @@ code {
   position: relative;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  aspect-ratio: 16 / 9; /* adjust if you prefer a different frame shape */
+
+  /* Treat the slide as a flexible “frame” with a fixed vertical size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 640px; /* tweak up/down; this is your “viewer height” */
 }
 
 .image-slide img {
-  width: 100%;
-  height: 100%;
+  /* Fit to the vertical dimension of the slide, keep aspect ratio */
+  max-height: 100%;
+  width: auto;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* Navigation arrows (visual style only; JS hooks will wire behavior) */
@@ -647,7 +659,11 @@ code {
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   cursor: pointer;
+
+  /* Make sure arrows sit on top of the scroll track */
+  z-index: 1;
 }
+
 
 .image-viewer-arrow--prev {
   left: var(--space-1);
@@ -666,14 +682,18 @@ code {
   display: flex;
   gap: var(--space-1);
   overflow-x: auto;
+
+  /* Center thumbs when they don’t overflow */
+  justify-content: center;
 }
 
 .image-viewer-thumb {
   width: 72px;
   height: 48px;
   border-radius: var(--radius-sm);
+  background-color: var(--color-page_background);
   overflow: hidden;
-  border: 1px solid transparent;
+  border: 3px solid transparent;
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -701,7 +721,7 @@ code {
    ========================================================= */
 
 .model-viewer-panel {
-  background-color: var(--color-surface);
+  background-color: var(--color-page_background);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
@@ -726,7 +746,7 @@ model-viewer {
   /* no max-height here so aspect-ratio fully controls height */
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background-color: #e5e5e5;
+  background-color: var(--color-page_background);
 }
 
 /* =========================================================
