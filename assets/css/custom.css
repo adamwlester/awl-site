@@ -12,7 +12,7 @@
   --color-page_background: #f7f5f1; /* page background */
   --color-surface-light: #ffffff;   /* cards, sections, header */
   --color-surface-dark: #222222;    /* cards, sections, header */
-  --color-surface-blend: #f7f5f1;   /* cards, sections, header */
+  --color-surface-blend: #faf8f4;   /* cards, sections, header */
   --color-border-subtle: #e3dfd7;   /* light borders & dividers */
 
   --color-text: #222222;          /* main text */
@@ -586,7 +586,7 @@ code {
 .image-viewer {
   /* Slightly darker / warmer than the pure-white renders,
      so the image reads as a card sitting on a band */
-  background-color: var(--color-page_background);
+  background-color: var(--color-surface-blend);
 
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
@@ -692,7 +692,7 @@ code {
   width: 72px;
   height: 48px;
   border-radius: var(--radius-sm);
-  background-color: var(--color-page_background);
+  background-color: var(--color-surface-blend);
   overflow: hidden;
   border: 3px solid transparent;
   cursor: pointer;
@@ -722,7 +722,7 @@ code {
    ========================================================= */
 
 .model-viewer-panel {
-  background-color: var(--color-page_background);
+  background-color: var(--color-surface-blend);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
@@ -747,7 +747,7 @@ model-viewer {
   /* no max-height here so aspect-ratio fully controls height */
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background-color: var(--color-page_background);
+  background-color: var(--color-surface-blend);
 }
 
 /* =========================================================
