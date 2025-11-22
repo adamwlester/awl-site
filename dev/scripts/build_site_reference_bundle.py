@@ -31,6 +31,7 @@ from pathlib import Path
 SOURCE_FILES = [
     "README.md",
     "assets/css/custom.css",
+    "assets/js/project-detail-page.js",
     "_layouts/default.html",
     "_layouts/portfolio-list-page.html",
     "_layouts/project-detail-page.html",
