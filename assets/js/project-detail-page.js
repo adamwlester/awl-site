@@ -8,97 +8,209 @@
 (function () {
   // ---------------------------------------
   // 1. IMAGE VIEWER BEHAVIOR
+  //    - Centered active slide with peeking neighbors
+  //    - Smaller, dimmer neighbors
+  //    - Arrows hidden at ends
+  //    - Scroll, arrows, and thumbs all stay in sync
   // ---------------------------------------
   var viewer = document.querySelector('[data-image-viewer]');
-  if (viewer) {
-    var track = viewer.querySelector('[data-image-viewer-track]');
-    if (!track) return;
+  if (!viewer) return;
 
-    var slides = Array.prototype.slice.call(
-      track.querySelectorAll('.image-slide')
-    );
-    if (!slides.length) return;
+  var track = viewer.querySelector('[data-image-viewer-track]');
+  if (!track) return;
 
-    var thumbsContainer = viewer.querySelector('[data-image-viewer-thumbnails]');
-    var thumbs = thumbsContainer
-      ? Array.prototype.slice.call(
-          thumbsContainer.querySelectorAll('.image-viewer-thumb')
-        )
-      : [];
+  var slides = Array.prototype.slice.call(
+    track.querySelectorAll('.image-slide')
+  );
+  if (!slides.length) return;
 
-    var prevButton = viewer.querySelector('.image-viewer-arrow--prev');
-    var nextButton = viewer.querySelector('.image-viewer-arrow--next');
+  var thumbsContainer = viewer.querySelector('[data-image-viewer-thumbnails]');
+  var thumbs = thumbsContainer
+    ? Array.prototype.slice.call(
+        thumbsContainer.querySelectorAll('.image-viewer-thumb')
+      )
+    : [];
 
-    var activeIndex = 0;
+  var prevButton = viewer.querySelector('.image-viewer-arrow--prev');
+  var nextButton = viewer.querySelector('.image-viewer-arrow--next');
 
-    function clampIndex(index) {
-      if (index < 0) return 0;
-      if (index >= slides.length) return slides.length - 1;
-      return index;
+  var activeIndex = 0;
+
+  function clampIndex(index) {
+    if (index < 0) return 0;
+    if (index >= slides.length) return slides.length - 1;
+    return index;
+  }
+
+  function scrollToSlide(index, behavior) {
+    var slide = slides[index];
+    if (!slide || !slide.scrollIntoView) return;
+
+    try {
+      slide.scrollIntoView({
+        behavior: behavior || 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    } catch (e) {
+      // Older browsers may not support options; fall back to default.
+      slide.scrollIntoView();
     }
+  }
 
-    function setActive(index, options) {
-      index = clampIndex(index);
-      if (index === activeIndex) return;
-      activeIndex = index;
-
-      var slide = slides[activeIndex];
-      if (slide && slide.scrollIntoView) {
-        try {
-          slide.scrollIntoView({
-            behavior: (options && options.behavior) || 'smooth',
-            block: 'nearest',
-            inline: 'center'
-          });
-        } catch (e) {
-          // Older browsers may not support options; fall back to default.
-          slide.scrollIntoView();
-        }
+  function updateSlideActiveClasses() {
+    slides.forEach(function (slide, i) {
+      if (i === activeIndex) {
+        slide.classList.add('image-slide--active');
+      } else {
+        slide.classList.remove('image-slide--active');
       }
+    });
+  }
 
-      // Update active thumbnail state
-      if (thumbs.length) {
-        thumbs.forEach(function (thumb, i) {
-          if (i === activeIndex) {
-            thumb.classList.add('image-viewer-thumb--active');
-          } else {
-            thumb.classList.remove('image-viewer-thumb--active');
-          }
-        });
+  function updateThumbs() {
+    if (!thumbs.length) return;
+
+    thumbs.forEach(function (thumb, i) {
+      if (i === activeIndex) {
+        thumb.classList.add('image-viewer-thumb--active');
+      } else {
+        thumb.classList.remove('image-viewer-thumb--active');
       }
-    }
+    });
+  }
 
-    function handleArrow(delta) {
-      setActive(activeIndex + delta);
-    }
+  function updateArrows() {
+    var lastIndex = slides.length - 1;
 
     if (prevButton) {
-      prevButton.addEventListener('click', function () {
-        handleArrow(-1);
-      });
+      if (activeIndex <= 0) {
+        prevButton.classList.add('image-viewer-arrow--hidden');
+        prevButton.setAttribute('aria-hidden', 'true');
+        prevButton.setAttribute('aria-disabled', 'true');
+        prevButton.setAttribute('tabindex', '-1');
+      } else {
+        prevButton.classList.remove('image-viewer-arrow--hidden');
+        prevButton.removeAttribute('aria-hidden');
+        prevButton.removeAttribute('aria-disabled');
+        prevButton.removeAttribute('tabindex');
+      }
     }
 
     if (nextButton) {
-      nextButton.addEventListener('click', function () {
-        handleArrow(1);
-      });
+      if (activeIndex >= lastIndex) {
+        nextButton.classList.add('image-viewer-arrow--hidden');
+        nextButton.setAttribute('aria-hidden', 'true');
+        nextButton.setAttribute('aria-disabled', 'true');
+        nextButton.setAttribute('tabindex', '-1');
+      } else {
+        nextButton.classList.remove('image-viewer-arrow--hidden');
+        nextButton.removeAttribute('aria-hidden');
+        nextButton.removeAttribute('aria-disabled');
+        nextButton.removeAttribute('tabindex');
+      }
     }
-
-    if (thumbs.length) {
-      thumbs.forEach(function (thumb) {
-        thumb.addEventListener('click', function () {
-          var indexAttr = thumb.getAttribute('data-image-index');
-          var index = parseInt(indexAttr, 10);
-          if (!isNaN(index)) {
-            setActive(index, { behavior: 'smooth' });
-          }
-        });
-      });
-    }
-
-    // Initialize state so the first thumbnail is synced with the first slide
-    setActive(0, { behavior: 'auto' });
   }
+
+  /**
+   * Set the active slide by index.
+   *
+   * options:
+   *   - behavior: 'smooth' | 'auto'
+   *   - fromScroll: true to avoid re-scrolling during scroll settling
+   *   - force: true to reapply state even if index hasn't changed
+   */
+  function setActive(index, options) {
+    index = clampIndex(index);
+
+    var fromScroll = options && options.fromScroll;
+    var behavior = (options && options.behavior) || 'smooth';
+    var force = options && options.force;
+
+    if (!force && index === activeIndex) {
+      // Still make sure arrows/thumbs/classes are in a good state when used defensively.
+      updateSlideActiveClasses();
+      updateThumbs();
+      updateArrows();
+      return;
+    }
+
+    activeIndex = index;
+
+    updateSlideActiveClasses();
+    updateThumbs();
+    updateArrows();
+
+    if (!fromScroll) {
+      scrollToSlide(activeIndex, behavior);
+    }
+  }
+
+  function handleArrow(delta) {
+    setActive(activeIndex + delta, { behavior: 'smooth' });
+  }
+
+  // Arrow click handlers
+  if (prevButton) {
+    prevButton.addEventListener('click', function () {
+      handleArrow(-1);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', function () {
+      handleArrow(1);
+    });
+  }
+
+  // Thumbnail click handlers
+  if (thumbs.length) {
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var indexAttr = thumb.getAttribute('data-image-index');
+        var index = parseInt(indexAttr, 10);
+        if (!isNaN(index)) {
+          setActive(index, { behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  // Scroll-driven activation: when scrolling settles, pick the slide
+  // whose center is closest to the center of the track.
+  var scrollTimeoutId = null;
+
+  track.addEventListener('scroll', function () {
+    if (scrollTimeoutId !== null) {
+      window.clearTimeout(scrollTimeoutId);
+    }
+
+    scrollTimeoutId = window.setTimeout(function () {
+      scrollTimeoutId = null;
+
+      var trackRect = track.getBoundingClientRect();
+      var trackCenterX = trackRect.left + trackRect.width / 2;
+
+      var nearestIndex = activeIndex;
+      var nearestDistance = Infinity;
+
+      slides.forEach(function (slide, index) {
+        var slideRect = slide.getBoundingClientRect();
+        var slideCenterX = slideRect.left + slideRect.width / 2;
+        var distance = Math.abs(slideCenterX - trackCenterX);
+
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      setActive(nearestIndex, { behavior: 'auto', fromScroll: true });
+    }, 80);
+  });
+
+  // Initialize state so the first slide is centered and lifted.
+  setActive(0, { behavior: 'auto', force: true });
 })();
 
 (function () {

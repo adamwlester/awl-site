@@ -614,6 +614,13 @@ code {
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
   padding: var(--space-2);
+
+  /* Local tuning knobs for the viewer */
+  --viewer-slide-width: 78%;
+  --viewer-slide-max-height: 640px;
+  --viewer-active-scale: 1;
+  --viewer-inactive-scale: 0.7;
+  --viewer-transition-duration: 220ms;
 }
 
 /* Main area: arrows + scrollable track */
@@ -630,23 +637,25 @@ code {
   scroll-behavior: smooth;
   padding-bottom: var(--space-1);
   margin-bottom: var(--space-1);
-  /* HIDE SCROLLBAR — cross-browser */
-  scrollbar-width: none;  /* Firefox */
+
+  /* Center the active slide with peeking neighbors.
+     Padding matches the “unused” width around a centered slide. */
+  padding-inline: calc((100% - var(--viewer-slide-width)) / 2);
+  scroll-padding-inline: calc((100% - var(--viewer-slide-width)) / 2);
+
+  /* Hide scrollbar (Firefox) */
+  scrollbar-width: none;
 }
 
-/* Hide default scrollbar (where supported) for cleaner look */
+/* Hide default scrollbar (WebKit/Blink) for cleaner look */
 .image-viewer-track::-webkit-scrollbar {
-  height: 6px;
+  width: 0;
+  height: 0;
 }
 
-.image-viewer-track::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.15);
-  border-radius: 999px;
-}
-
-/* Individual slides */
+/* Individual slides as lifted cards */
 .image-slide {
-  flex: 0 0 100%;
+  flex: 0 0 var(--viewer-slide-width);
   scroll-snap-align: center;
   position: relative;
   border-radius: var(--radius-sm);
@@ -656,7 +665,20 @@ code {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-height: 640px; /* tweak up/down; this is your “viewer height” */
+  max-height: var(--viewer-slide-max-height);
+
+  background-color: var(--color-surface-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  /* Neighbors start slightly smaller and dimmer; center gets “lifted” */
+  transform: scale(var(--viewer-inactive-scale));
+  transform-origin: center center;
+  filter: brightness(0.9);
+
+  transition:
+    transform var(--viewer-transition-duration) ease-out,
+    filter var(--viewer-transition-duration) ease-out,
+    box-shadow var(--viewer-transition-duration) ease-out;
 }
 
 .image-slide img {
@@ -667,13 +689,21 @@ code {
   object-fit: contain;
 }
 
+/* Active slide: full-size, brighter, and slightly more elevated */
+.image-slide--active {
+  transform: scale(var(--viewer-active-scale));
+  filter: brightness(1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+  z-index: 1;
+}
+
 /* Navigation arrows (visual style only; JS hooks will wire behavior) */
 .image-viewer-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   border: none;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.92);
   border-radius: 999px;
   width: 48px;
   height: 48px;
@@ -684,9 +714,13 @@ code {
   cursor: pointer;
 
   /* Make sure arrows sit on top of the scroll track */
-  z-index: 1;
-}
+  z-index: 2;
 
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out;
+}
 
 .image-viewer-arrow--prev {
   left: var(--space-1);
@@ -698,6 +732,21 @@ code {
 
 .image-viewer-arrow-icon {
   font-size: 1rem;
+}
+
+/* Hover state: subtle lift */
+.image-viewer-arrow:hover,
+.image-viewer-arrow:focus-visible {
+  outline: none;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Hidden/disabled arrows at the ends (toggled via JS) */
+.image-viewer-arrow--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 /* Thumbnail strip */
@@ -719,6 +768,11 @@ code {
   border: 3px solid transparent;
   cursor: pointer;
   flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition:
+    border-color 160ms ease-out,
+    box-shadow 160ms ease-out,
+    transform 160ms ease-out;
 }
 
 .image-viewer-thumb img {
@@ -730,12 +784,16 @@ code {
 /* Active thumbnail state (set via JS) */
 .image-viewer-thumb--active {
   border-color: var(--color-accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
+  transform: translateY(-1px);
 }
 
-/* Smaller screens: let slides be slightly narrower than viewport for breathing room */
+/* Smaller screens: tighten peeking + scale differences */
 @media (max-width: 767px) {
-  .image-slide {
-    flex-basis: 92%;
+  .image-viewer {
+    --viewer-slide-width: 88%;
+    --viewer-active-scale: 1;
+    --viewer-inactive-scale: 0.92;
   }
 }
 
