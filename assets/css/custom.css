@@ -11,15 +11,16 @@
   /* Colors */
   --color-page_background: #f6f7f8; /* page background */
   --color-surface-light: #ffffff;   /* cards, sections, header */
-  --color-surface-dark: #222222;    /* cards, sections, header */
-  --color-surface-blend: #f8f6f4;   /* cards, sections, header */
+  --color-surface-blend: #F6F6F6;   /* cards, sections, header */
   --color-border-subtle: #e3dfd7;   /* light borders & dividers */
 
   --color-text: #222222;          /* main text */
   --color-text-muted: #666666;    /* secondary text */
-  --color-accent-light-soft: #eef3f9;   /* soft accent background for tags/badges */
+  --color-text-light-soft: #eef3f9;   /* soft accent background for tags/badges */
+  --color-text-light: #ffffff;   /* cards, sections, header */
   --color-accent-blue-dark: #234b6c;        /* links, key highlights */
   --color-accent-blue-light: #2b5f8a;   /* button fill color, active outlines */
+  --color-accent-blue-new: #274c77;
 
   /* Shadows */
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.04);      /* default card shadow */
@@ -43,11 +44,17 @@
 
   /* Banner-specific tokens (shared by home + portfolio banners) */
   --page-banner-background: var(--color-border-subtle);
+  /* Vertical placement of the banner text block */
+  --page-banner-padding-top: 2.5rem;
+  --page-banner-padding-bottom: 1.75rem;
+  /* Title + subtitle typography */
   --banner-title-font-size: 2.6rem;
   --banner-subtitle-font-size: 1.4rem;
-  --banner-title-margin-bottom: 0.5rem;
-  --banner-title-color: var(--color-text);
-  --banner-subtitle-color: var(--color-text-muted);
+  /* Spacing between title and subtitle */
+  --banner-title-margin-bottom: 0.9rem;
+  /* Text color */
+  --banner-title-color: var(--color-text-light);
+  --banner-subtitle-color: var(--color-text-light-soft);
 
     /* Portfolio card typography */
   --project-card-title-font-size: 1.05rem;
@@ -282,8 +289,8 @@ code {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.35),
-    rgba(255, 255, 255, 0.6)
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.75)
   );
 }
 
@@ -297,23 +304,45 @@ code {
 .page-banner-inner {
   max-width: var(--max-width-content);
   margin: 0 auto;
-  padding-inline: var(--space-2);
+
+  /* Use banner-specific vertical padding to bias content slightly upward */
+  padding: var(--page-banner-padding-top) var(--space-2) var(--page-banner-padding-bottom);
+
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  /* Anchor content toward the top rather than dead-center */
+  justify-content: flex-start;
 }
+
 
 .page-banner-title {
   font-size: var(--banner-title-font-size);
   margin: 0 0 var(--banner-title-margin-bottom) 0;
   color: var(--banner-title-color);
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+
+  /* Works on both lighter + darker gradients: a bit more lift without looking “glowy” */
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.32),
+    0 0 8px rgba(0, 0, 0, 0.18);
 }
 
 .page-banner-subtitle {
   font-size: var(--banner-subtitle-font-size);
   margin: 0;
   color: var(--banner-subtitle-color);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+
+  /* Slightly softer than the title but still gives separation on both banners */
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.26),
+    0 0 6px rgba(0, 0, 0, 0.16);
 }
 
 /* =========================================================
