@@ -812,6 +812,19 @@ code {
   margin-bottom: var(--space-3);
 }
 
+/* Full-bleed wrapper for the media section:
+   - Breaks the image viewer out of the max-width content column
+   - Centers it relative to the viewport
+   - Adds inline padding so the card isn't glued to the screen edge */
+.project-media-fullbleed {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  padding-inline: var(--space-2);
+  box-sizing: border-box;
+}
+
 /* Core layout:
    - Desktop: simple 2-column grid
        left column  = title, summary, primary narrative

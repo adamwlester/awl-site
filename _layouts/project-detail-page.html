@@ -18,111 +18,114 @@ layout: default
   <!-- ======================================== -->
   {% if page.images and page.images.size > 0 %}
     <section class="project-media-section">
-      <div class="image-viewer" data-image-viewer>
-        <div class="image-viewer-main">
+      <!-- Full-bleed wrapper: lets the viewer stretch to viewport width
+           while the rest of the layout stays constrained to max-width-content. -->
+      <div class="project-media-fullbleed">
+        <div class="image-viewer" data-image-viewer>
+          <div class="image-viewer-main">
 
-          {% assign image_count = page.images | size %}
+            {% assign image_count = page.images | size %}
 
-          <!-- Navigation arrows (only if multiple images) -->
-          {% if image_count > 1 %}
-            <button
-              class="image-viewer-arrow image-viewer-arrow--prev"
-              type="button"
-              aria-label="Previous image">
-              <span class="image-viewer-arrow-icon">&#10094;</span>
-            </button>
-
-            <button
-              class="image-viewer-arrow image-viewer-arrow--next"
-              type="button"
-              aria-label="Next image">
-              <span class="image-viewer-arrow-icon">&#10095;</span>
-            </button>
-          {% endif %}
-
-          <!-- Scrollable track of main slides -->
-          <div class="image-viewer-track" data-image-viewer-track>
-
-            <!-- Leading ghost slide: invisible spacer so the first real slide can center cleanly -->
-            <div class="image-slide image-slide--ghost" aria-hidden="true"></div>
-
-            {% for image in page.images %}
-              {% assign image_src = image.src %}
-              {% assign image_alt = image.caption | default: page.title %}
-
-              <div class="image-slide" data-image-index="{{ forloop.index0 }}">
-                <img
-                  src="{{ site.baseurl }}{{ page.dir }}{{ image_src }}"
-                  alt="{{ image_alt }}"
-                  draggable="false"
-                  {% unless forloop.first %}loading="lazy"{% endunless %}>
-              </div>
-            {% endfor %}
-
-            <!-- Trailing ghost slide: invisible spacer so the last real slide can center cleanly -->
-            <div class="image-slide image-slide--ghost" aria-hidden="true"></div>
-
-          </div>
-        </div>
-
-        <!-- Image viewer fullscreen button -->
-        <button
-          class="image-viewer-button image-viewer-button--fullscreen"
-          type="button"
-          data-image-viewer-fullscreen
-          aria-label="Enter fullscreen">
-          <span class="image-viewer-button-icon" aria-hidden="true">
-            <svg
-              class="image-viewer-icon-svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              xmlns="http://www.w3.org/2000/svg">
-
-              <!-- EXPAND (arrows pointing outward) -->
-              <path
-                class="icon-expand"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9
-                  M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15
-                  M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9
-                  M20.25 20.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-
-              <!-- COLLAPSE (arrows pointing inward) -->
-              <path
-                class="icon-collapse"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75
-                  M9 15v4.5M9 15H4.5M9 15l-5.25 5.25
-                  M15 9h4.5M15 9V4.5M15 9l5.25-5.25
-                  M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
-
-            </svg>
-          </span>
-        </button>
-
-
-        <!-- Thumbnail strip (only if multiple images) -->
-        {% if image_count > 1 %}
-          <div class="image-viewer-thumbnails" data-image-viewer-thumbnails>
-            {% for image in page.images %}
-              {% assign thumb_src = image.src %}
+            <!-- Navigation arrows (only if multiple images) -->
+            {% if image_count > 1 %}
+              <button
+                class="image-viewer-arrow image-viewer-arrow--prev"
+                type="button"
+                aria-label="Previous image">
+                <span class="image-viewer-arrow-icon">&#10094;</span>
+              </button>
 
               <button
-                class="image-viewer-thumb{% if forloop.first %} image-viewer-thumb--active{% endif %}"
+                class="image-viewer-arrow image-viewer-arrow--next"
                 type="button"
-                data-image-index="{{ forloop.index0 }}"
-                aria-label="View image {{ forloop.index }} of {{ image_count }}">
-                <img
-                  src="{{ site.baseurl }}{{ page.dir }}{{ thumb_src }}"
-                  alt="">
+                aria-label="Next image">
+                <span class="image-viewer-arrow-icon">&#10095;</span>
               </button>
-            {% endfor %}
+            {% endif %}
+
+            <!-- Scrollable track of main slides -->
+            <div class="image-viewer-track" data-image-viewer-track>
+
+              <!-- Leading ghost slide: invisible spacer so the first real slide can center cleanly -->
+              <div class="image-slide image-slide--ghost" aria-hidden="true"></div>
+
+              {% for image in page.images %}
+                {% assign image_src = image.src %}
+                {% assign image_alt = image.caption | default: page.title %}
+
+                <div class="image-slide" data-image-index="{{ forloop.index0 }}">
+                  <img
+                    src="{{ site.baseurl }}{{ page.dir }}{{ image_src }}"
+                    alt="{{ image_alt }}"
+                    draggable="false"
+                    {% unless forloop.first %}loading="lazy"{% endunless %}>
+                </div>
+              {% endfor %}
+
+              <!-- Trailing ghost slide: invisible spacer so the last real slide can center cleanly -->
+              <div class="image-slide image-slide--ghost" aria-hidden="true"></div>
+
+            </div>
           </div>
-        {% endif %}
+
+          <!-- Image viewer fullscreen button -->
+          <button
+            class="image-viewer-button image-viewer-button--fullscreen"
+            type="button"
+            data-image-viewer-fullscreen
+            aria-label="Enter fullscreen">
+            <span class="image-viewer-button-icon" aria-hidden="true">
+              <svg
+                class="image-viewer-icon-svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                xmlns="http://www.w3.org/2000/svg">
+
+                <!-- EXPAND (arrows pointing outward) -->
+                <path
+                  class="icon-expand"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9
+                    M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15
+                    M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9
+                    M20.25 20.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+
+                <!-- COLLAPSE (arrows pointing inward) -->
+                <path
+                  class="icon-collapse"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75
+                    M9 15v4.5M9 15H4.5M9 15l-5.25 5.25
+                    M15 9h4.5M15 9V4.5M15 9l5.25-5.25
+                    M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
+
+              </svg>
+            </span>
+          </button>
+
+          <!-- Thumbnail strip (only if multiple images) -->
+          {% if image_count > 1 %}
+            <div class="image-viewer-thumbnails" data-image-viewer-thumbnails>
+              {% for image in page.images %}
+                {% assign thumb_src = image.src %}
+
+                <button
+                  class="image-viewer-thumb{% if forloop.first %} image-viewer-thumb--active{% endif %}"
+                  type="button"
+                  data-image-index="{{ forloop.index0 }}"
+                  aria-label="View image {{ forloop.index }} of {{ image_count }}">
+                  <img
+                    src="{{ site.baseurl }}{{ page.dir }}{{ thumb_src }}"
+                    alt="">
+                </button>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
       </div>
     </section>
   {% endif %}
