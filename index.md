@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 title: Home
 description: "Professional site and portfolio for Adam W. Lester."
 banner_image: /assets/images/home-banner.png

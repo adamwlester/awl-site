@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<!--
+  HOME LAYOUT
+  Wraps the page content in a 2-column layout:
+  - Left: profile sidebar (global site.profile data)
+  - Right: main home content (Markdown body from index.md)
+  This layout is reusable for other pages by setting layout: home.
+-->
+
+<div class="home-layout">
+  <aside class="home-sidebar" aria-label="Profile sidebar">
+    {% include profile-sidebar.html %}
+  </aside>
+
+  <div class="home-main">
+    {{ content }}
+  </div>
+</div>

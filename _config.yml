@@ -8,6 +8,38 @@ description: "Professional site and portfolio for Adam W. Lester."
 url: "https://adamwlester.github.io"     # GitHub Pages user domain
 baseurl: "/awl-site"          # Repo name (required for correct link resolution)
 
+# Global profile data used by home layout + sidebar card
+profile:
+  name: "Adam W. Lester"
+  title: "Neuroscientist & Open Hardware Developer"
+  avatar: "/assets/images/awl_headshot.png"
+  email: "adamwardlester@gmail.com"
+  orcid: "https://orcid.org/0000-0002-4598-7908"
+  links:
+    - label: "GitHub"
+      kind: "github"
+      url: "https://github.com/adamwlester"
+
+    - label: "Google Scholar"
+      kind: "scholar"
+      url: "https://scholar.google.com/citations?user=hBawUaYAAAAJ"
+
+    - label: "Portfolio (CadCrowd)"
+      kind: "portfolio"
+      url: "https://www.cadcrowd.com/profile/167901-adam-ward-lester/models"
+
+    - label: "LinkedIn"
+      kind: "linkedin"
+      url: "https://www.linkedin.com/in/adam-w-lester-34b97215"
+
+    - label: "OSF – NC4gate design files"
+      kind: "osf"
+      url: "https://osf.io/uy7ez"
+
+    - label: "OSF – NC4touch design files"
+      kind: "osf"
+      url: "https://osf.io/8q9tk"
+
 # Markdown + HTML rendering
 markdown: kramdown
 highlighter: rouge
