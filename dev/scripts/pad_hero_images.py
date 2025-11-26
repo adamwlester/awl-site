@@ -20,7 +20,7 @@ Requirements:
 Usage (from repo root):
 
   # Single project
-  python dev/scripts/pad_hero_images.py --project nc4gate-automatable-gate-module
+  python dev/scripts/pad_hero_images.py --project nc4touch-behavioral-apparatus
 
   # All projects
   python dev/scripts/pad_hero_images.py --all
@@ -45,7 +45,7 @@ except ImportError:
 # ---------------------------------------------------------
 # Hardcoded defaults (you can adjust these)
 # ---------------------------------------------------------
-DEFAULT_PADDING = 100  # px on each side
+DEFAULT_PADDING = 250  # px on each side
 
 
 def find_projects_root() -> Path:
