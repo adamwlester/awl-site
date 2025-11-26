@@ -16,10 +16,12 @@
   Internal developer notes:
 
   Inputs:
-    - include.projects : array of project slugs in display order
+    - include.projects  : array of project slugs in display order
+    - include.card_size : optional size hint for cards in this grid
+                          (e.g., "large", "default", "compact")
 
   Output structure:
-    <div class="project-grid">
+    <div class="project-grid project-grid--card-size-<size>">
       <!-- multiple project-card includes -->
     </div>
 
@@ -32,11 +34,13 @@
 
 {%- if include.projects and include.projects.size > 0 -%}
 
+  {%- assign grid_size = include.card_size | default: 'default' -%}
+
   <!-- ======================================== -->
   <!-- PROJECT GRID WRAPPER                     -->
   <!-- Container for all project cards          -->
   <!-- ======================================== -->
-  <div class="project-grid">
+  <div class="project-grid project-grid--card-size-{{ grid_size }}">
 
     {%- for slug in include.projects -%}
 

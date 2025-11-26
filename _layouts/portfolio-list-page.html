@@ -63,7 +63,7 @@ layout: default
           </header>
 
           {% if section.projects and section.projects.size > 0 %}
-            {% include project-grid.html projects=section.projects %}
+            {% include project-grid.html projects=section.projects card_size=section.card_size %}
           {% endif %}
         </div>
       {% endfor %}

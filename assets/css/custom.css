@@ -13,6 +13,7 @@
   --color-surface-light: #ffffff;   /* cards, sections, header */
   --color-surface-blend: #F6F6F6;   /* cards, sections, header */
   --color-border-subtle: #e3dfd7;   /* light borders & dividers */
+  --color-border-bold: #cc9933;   /* light borders & dividers */
 
   --color-text: #222222;          /* main text */
   --color-text-muted: #666666;    /* secondary text */
@@ -463,16 +464,16 @@ code {
 /* Outer lines of the divider */
 .portfolio-section-divider-line {
   flex: 1;
-  height: 1px;
+  height: 2px;
   background-color: var(--color-border-subtle);
 }
 
 /* Center accent segment of the divider */
 .portfolio-section-divider-core {
   width: 40px;
-  height: 2px;
+  height: 3px;
   border-radius: 999px;
-  background-color: var(--color-accent-blue-dark);
+  background-color: var(--color-border-bold);
 }
 
 /* Optional blurb under the divider */
@@ -483,12 +484,29 @@ code {
   color: var(--color-text-muted);
 }
 
-/* Project grid container */
+/* Project grid container (flex-based, card width via CSS variable) */
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;      /* center rows with 1–2 cards */
   gap: var(--space-3);
   align-items: stretch;
+
+  /* Default card width; overridden by modifier classes */
+  --project-card-width: 320px;
+}
+
+/* Size modifiers control card width per section */
+.project-grid--card-size-large {
+  --project-card-width: 360px;
+}
+
+.project-grid--card-size-default {
+  --project-card-width: 320px;
+}
+
+.project-grid--card-size-compact {
+  --project-card-width: 280px;
 }
 
 /* Individual project card (outer wrapper, currently an <a>) */
@@ -503,6 +521,10 @@ code {
   text-decoration: none; /* ensure the outer link has no underline by default */
   color: inherit;
   transform-origin: center;
+
+  /* Flex-based sizing: fixed-ish width, wrapping as needed */
+  flex: 0 1 var(--project-card-width);
+
   transition:
     transform 140ms ease-out,
     box-shadow 140ms ease-out,
@@ -543,7 +565,7 @@ code {
   /* Place a subtle rule under the title, aligned with body padding */
   padding-bottom: 0.35rem;
   margin: 0 0 var(--space-1) 0;
-  border-bottom: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-bold);
 }
 
 /* Card summary copy */
@@ -1241,7 +1263,6 @@ model-viewer {
   margin-top: var(--space-2);
 }
 
-/* On very small screens, reduce padding slightly */
 @media (max-width: 480px) {
   .site-wrapper,
   .section-inner {
@@ -1251,6 +1272,15 @@ model-viewer {
   .site-main {
     padding-top: var(--space-3);
     padding-bottom: var(--space-4);
+  }
+
+  /* On very small screens, let cards span most of the width */
+  .project-grid {
+    justify-content: center;
+  }
+
+  .project-card {
+    flex: 1 1 100%;
   }
 }
 

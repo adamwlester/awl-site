@@ -8,37 +8,41 @@ banner_subtitle: Open-source hardware and experimental systems for neuroscience 
 page_lead: "A curated collection of open-source instruments, behavioral platforms, and experimental systems developed for high-precision neuroscience and biomedical research."
 
 sections:
-  - id: behavioral-platforms
-    heading: Behavioral Platforms
-    blurb: "Integrated hardware–software systems for high-precision rodent navigation, cues, and automated tasks."
-    projects:
-      - nc4touch-behavioral-apparatus
-      - omniroute-maze-system
-      - instantaneous-cue-rotation-arena
-      - track-mounted-feeder-cart
-      - wireless-mobile-feeder-robot
+- id: behavioral-platforms
+  heading: Behavioral Platforms
+  card_size: large
+  blurb: "Integrated hardware–software systems for high-precision rodent navigation, cues, and automated tasks."
+  projects:
+    - nc4touch-behavioral-apparatus
+    - omniroute-maze-system
+    - instantaneous-cue-rotation-arena
 
-  - id: recording-implants
-    heading: Recording Implants
-    blurb: "Chronic implant designs for multi-site electrophysiology with precise targeting and robust, reusable mechanics."
-    projects:
-      - dual-bundle-electrode-drive
-      - silicon-probe-microdrive-housing
+- id: integrated-subsystems
+  heading: Integrated Subsystems
+  card_size: default
+  blurb: "Electromechanical and embedded modules that extend major platforms through automation, control, and specialized function."
+  projects:
+    - nc4gate-automatable-gate-module
+    - two-axis-feeder-gantry
+    - track-mounted-feeder-cart
+    - wireless-mobile-feeder-robot
+    
+- id: recording-implants
+  heading: Recording Implants
+  card_size: large
+  blurb: "Chronic implant systems for multi-site electrophysiology with precise targeting, stability, and reusable mechanics."
+  projects:
+    - dual-bundle-electrode-drive
+    - silicon-probe-microdrive-housing
 
-  - id: subsystems-and-modules
-    heading: Subsystems & Modules
-    blurb: "Modular mechanical and electronic subsystems that extend, automate, or harden larger research platforms."
-    projects:
-      - nc4gate-automatable-gate-module
-      - two-axis-feeder-gantry
-      - adjustable-aluminum-projector-mount
-      - roller-bearing-cable-guide
-
-  - id: standalone-models
-    heading: Standalone Models
-    blurb: "To-scale 3D animal and system models used for design planning, visualization, and prototyping."
-    projects:
-      - fischer-344-rat-model
+- id: support-hardware-and-models
+  heading: Support Hardware & Models
+  card_size: compact
+  blurb: "Auxiliary hardware, mounts, guides, and models used for system integration, design planning, and experimental workflows."
+  projects:
+    - adjustable-aluminum-projector-mount
+    - roller-bearing-cable-guide
+    - fischer-344-rat-model
 
 published: true
 ---
