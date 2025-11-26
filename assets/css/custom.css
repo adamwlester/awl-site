@@ -379,7 +379,7 @@ code {
   align-items: stretch;
 }
 
-/* Individual project card (wrapper) */
+/* Individual project card (outer wrapper, currently an <a>) */
 .project-card {
   display: flex;
   flex-direction: column;
@@ -388,7 +388,7 @@ code {
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
   overflow: hidden;
-  text-decoration: none; /* in case card is an <a> */
+  text-decoration: none; /* ensure the outer link has no underline by default */
   color: inherit;
   transform-origin: center;
   transition:
@@ -402,8 +402,13 @@ code {
 .project-card-image {
   position: relative;
   overflow: hidden;
+
+  /* Light divider between image and card body */
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
+/* Hero image rendering + hover transform */
 .project-card-image img {
   width: 100%;
   height: auto;
@@ -418,40 +423,56 @@ code {
   padding: var(--space-2);
 }
 
+/* Card title text + inner divider */
 .project-card-title {
   font-size: 1.05rem;
   font-weight: 600;
-  margin: 0 0 0.35rem 0;
   color: var(--color-text);
+
+  /* Place a subtle rule under the title, aligned with body padding */
+  padding-bottom: 0.35rem;
+  margin: 0 0 var(--space-1) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
+/* Card summary copy */
 .project-card-summary {
   font-size: 0.95rem;
   margin: 0;
   color: var(--color-text-muted);
 }
 
-/* Hover state: lift, slight scale, stronger shadow, image focus */
+/* Hover state: lift card + suppress global underline on the outer link */
 .project-card:hover,
 .project-card:focus-within {
+  text-decoration: none; /* override global a:hover underline for the card link */
+
   transform: translateY(-2px) scale(1.01);
   box-shadow: var(--shadow-card-hover);
   border-color: rgba(0, 0, 0, 0.06);
   background-color: #ffffff;
 }
 
+/* Hover state: gently zoom and brighten the hero image */
 .project-card:hover .project-card-image img,
 .project-card:focus-within .project-card-image img {
   transform: scale(1.02);
   filter: brightness(1.05);
 }
 
-/* Ensure title link (if used) doesn't add underline on hover */
-.project-card-title a {
-  color: inherit;
-  text-decoration: none;
+/* On card hover/focus, only the title text should underline */
+.project-card:hover .project-card-title,
+.project-card:focus-within .project-card-title {
+  text-decoration: underline;
 }
 
+/* Optional: if the title is ever wrapped in its own <a>, normalize it */
+.project-card-title a {
+  color: inherit;          /* match surrounding title color */
+  text-decoration: none;   /* no underline by default */
+}
+
+/* Optional: inner title link underline on direct hover/focus (future-proof) */
 .project-card-title a:hover,
 .project-card-title a:focus {
   text-decoration: underline;
