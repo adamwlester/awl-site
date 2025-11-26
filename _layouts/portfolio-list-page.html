@@ -29,13 +29,46 @@ layout: default
 {% endif %}
 
 <!-- ========================================= -->
-<!-- PROJECT GRID SECTION                      -->
-<!-- Main portfolio listing area               -->
+<!-- PROJECT SECTIONS                          -->
+<!-- Grouped portfolio listing by category     -->
 <!-- ========================================= -->
-{% if page.projects and page.projects.size > 0 %}
-<section class="section section--surface">
+{% if page.sections and page.sections.size > 0 %}
+<section class="section section--surface section--flush-top">
   <div class="section-inner">
-    {% include project-grid.html projects=page.projects %}
+
+    <div class="portfolio-sections">
+      {% for section in page.sections %}
+        <div
+          class="portfolio-section"
+          {% if section.id %}id="{{ section.id }}"{% endif %}
+        >
+          <header class="portfolio-section-header">
+            {% if section.heading %}
+              <h2 class="portfolio-section-title">
+                {{ section.heading }}
+              </h2>
+            {% endif %}
+
+            <div class="portfolio-section-divider" aria-hidden="true">
+              <span class="portfolio-section-divider-line"></span>
+              <span class="portfolio-section-divider-core"></span>
+              <span class="portfolio-section-divider-line"></span>
+            </div>
+
+            {% if section.blurb %}
+              <p class="portfolio-section-blurb">
+                {{ section.blurb }}
+              </p>
+            {% endif %}
+          </header>
+
+          {% if section.projects and section.projects.size > 0 %}
+            {% include project-grid.html projects=section.projects %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
   </div>
 </section>
 {% endif %}
