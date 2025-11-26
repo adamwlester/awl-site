@@ -19,8 +19,11 @@
   var track = viewer.querySelector('[data-image-viewer-track]');
   if (!track) return;
 
+  // Only treat slides with a data-image-index as real slides.
+  // Ghost spacers at the ends (.image-slide--ghost) do not get this attribute
+  // and are therefore ignored by all viewer logic.
   var slides = Array.prototype.slice.call(
-    track.querySelectorAll('.image-slide')
+    track.querySelectorAll('.image-slide[data-image-index]')
   );
   if (!slides.length) return;
 

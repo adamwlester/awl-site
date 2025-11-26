@@ -42,6 +42,10 @@ layout: default
 
           <!-- Scrollable track of main slides -->
           <div class="image-viewer-track" data-image-viewer-track>
+
+            <!-- Leading ghost slide: invisible spacer so the first real slide can center cleanly -->
+            <div class="image-slide image-slide--ghost" aria-hidden="true"></div>
+
             {% for image in page.images %}
               {% assign image_src = image.src %}
               {% assign image_alt = image.caption | default: page.title %}
@@ -54,6 +58,10 @@ layout: default
                   {% unless forloop.first %}loading="lazy"{% endunless %}>
               </div>
             {% endfor %}
+
+            <!-- Trailing ghost slide: invisible spacer so the last real slide can center cleanly -->
+            <div class="image-slide image-slide--ghost" aria-hidden="true"></div>
+
           </div>
         </div>
 

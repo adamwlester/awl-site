@@ -742,7 +742,6 @@ code {
   /* Slightly darker / warmer than the pure-white renders,
      so the image reads as a card sitting on a band */
   background-color: var(--color-surface-blend);
-
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
@@ -751,12 +750,12 @@ code {
   /* Allow absolutely positioned controls (fullscreen button) */
   position: relative;
 
-  /* Local tuning knobs for the viewer */
-  --viewer-slide-width: 78%;
-  --viewer-slide-max-height: 640px;
-  --viewer-active-scale: 1;
-  --viewer-inactive-scale: 0.7;
-  --viewer-transition-duration: 220ms;
+  /* Smaller neighbors + more visible peeking */
+  --viewer-slide-width: 72%;        /* width of each slide card in the track */
+  --viewer-slide-max-height: 640px; /* max height for main image (pixels) */
+  --viewer-active-scale: 1;         /* scale factor for the active (center) slide */
+  --viewer-inactive-scale: 0.75;    /* scale factor for inactive neighbor slides */
+  --viewer-transition-duration: 220ms; /* duration for slide scale/brightness transitions */
 }
 
 /* Prevent selection anywhere in the viewer (main image + thumbs) */
@@ -832,6 +831,18 @@ code {
     transform var(--viewer-transition-duration) ease-out,
     filter var(--viewer-transition-duration) ease-out,
     box-shadow var(--viewer-transition-duration) ease-out;
+}
+
+/* Ghost slides: invisible spacers at the ends of the track.
+   They occupy the same width as a real slide but have no
+   background, shadow, or transforms, so they don't appear
+   as actual images. */
+.image-slide--ghost {
+  background-color: transparent;
+  box-shadow: none;
+  transform: none;
+  filter: none;
+  pointer-events: none;
 }
 
 .image-slide img {
@@ -1083,9 +1094,10 @@ code {
 /* Smaller screens: tighten peeking + scale differences */
 @media (max-width: 767px) {
   .image-viewer {
-    --viewer-slide-width: 88%;
+    /* Slightly more peeking on mobile too */
+    --viewer-slide-width: 84%;
     --viewer-active-scale: 1;
-    --viewer-inactive-scale: 0.92;
+    --viewer-inactive-scale: 0.80;
   }
 }
 
