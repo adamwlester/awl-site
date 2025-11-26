@@ -26,7 +26,7 @@ Requirements:
 Usage (from repo root):
 
   # Single project
-  python dev/scripts/build_hero_images.py --project nc4gate-automatable-gate-module
+  python dev/scripts/build_hero_images.py --project omniroute-maze-system
 
   # All projects
   python dev/scripts/build_hero_images.py --all
