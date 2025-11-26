@@ -20,7 +20,7 @@ Requirements:
 Usage (from repo root):
 
   # Single project
-  python dev/scripts/pad_hero_images.py --project nc4touch-behavioral-apparatus
+  python dev/scripts/pad_hero_images.py --project instantaneous-cue-rotation-arena
 
   # All projects
   python dev/scripts/pad_hero_images.py --all
