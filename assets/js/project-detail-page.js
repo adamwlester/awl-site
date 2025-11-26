@@ -576,3 +576,86 @@
   });
 })();
 
+(function () {
+  // ---------------------------------------
+  // 4. IMAGE VIEWER FULLSCREEN TOGGLE
+  //    - Fullscreen on the entire .image-viewer panel
+  //    - Reuses the same visual affordance as the 3D viewer
+  // ---------------------------------------
+  var viewer = document.querySelector('[data-image-viewer]');
+  if (!viewer) return;
+
+  var fullscreenButton = viewer.querySelector('[data-image-viewer-fullscreen]');
+  if (!fullscreenButton) return;
+
+  // Helper: feature-detect fullscreen for a given panel
+  function isPanelFullscreen(panel) {
+    return (
+      document.fullscreenElement === panel ||
+      document.webkitFullscreenElement === panel ||
+      document.mozFullScreenElement === panel ||
+      document.msFullscreenElement === panel
+    );
+  }
+
+  function requestPanelFullscreen(panel) {
+    if (panel.requestFullscreen) {
+      panel.requestFullscreen();
+    } else if (panel.webkitRequestFullscreen) {
+      panel.webkitRequestFullscreen();
+    } else if (panel.mozRequestFullScreen) {
+      panel.mozRequestFullScreen();
+    } else if (panel.msRequestFullscreen) {
+      panel.msRequestFullscreen();
+    }
+  }
+
+  function exitFullscreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+
+  function updateFullscreenButtonState() {
+    var active = isPanelFullscreen(viewer);
+
+    fullscreenButton.setAttribute(
+      'aria-label',
+      active ? 'Exit fullscreen' : 'Enter fullscreen'
+    );
+
+    if (active) {
+      fullscreenButton.classList.add('image-viewer-button--active');
+    } else {
+      fullscreenButton.classList.remove('image-viewer-button--active');
+    }
+  }
+
+  fullscreenButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    if (isPanelFullscreen(viewer) || document.fullscreenElement) {
+      exitFullscreen();
+    } else {
+      requestPanelFullscreen(viewer);
+    }
+
+    // Remove focus ring after activation
+    fullscreenButton.blur();
+  });
+
+  // Keep button state in sync for user-initiated fullscreen changes
+  document.addEventListener('fullscreenchange', updateFullscreenButtonState);
+  document.addEventListener('webkitfullscreenchange', updateFullscreenButtonState);
+  document.addEventListener('mozfullscreenchange', updateFullscreenButtonState);
+  document.addEventListener('MSFullscreenChange', updateFullscreenButtonState);
+
+  // Initialize state on load
+  updateFullscreenButtonState();
+})();

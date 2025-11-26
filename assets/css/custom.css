@@ -12,13 +12,14 @@
   --color-page_background: #f6f7f8; /* page background */
   --color-surface-light: #ffffff;   /* cards, sections, header */
   --color-surface-dark: #222222;    /* cards, sections, header */
-  --color-surface-blend: #f9fafa;   /* cards, sections, header */
+  --color-surface-blend: #f8f6f4;   /* cards, sections, header */
   --color-border-subtle: #e3dfd7;   /* light borders & dividers */
 
   --color-text: #222222;          /* main text */
   --color-text-muted: #666666;    /* secondary text */
-  --color-accent: #2b5f8a;        /* links, key highlights */
-  --color-accent-soft: #eef3f9;   /* soft accent background for tags/badges */
+  --color-accent-light-soft: #eef3f9;   /* soft accent background for tags/badges */
+  --color-accent-blue-dark: #234b6c;        /* links, key highlights */
+  --color-accent-blue-light: #2b5f8a;   /* button fill color, active outlines */
 
   /* Shadows */
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.04);      /* default card shadow */
@@ -36,6 +37,10 @@
   --header-height: 56px;
   --page-banner-height: 200px;
 
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
   /* Banner-specific tokens (shared by home + portfolio banners) */
   --page-banner-background: var(--color-border-subtle);
   --banner-title-font-size: 2.6rem;
@@ -44,10 +49,11 @@
   --banner-title-color: var(--color-text);
   --banner-subtitle-color: var(--color-text-muted);
 
-  /* Radii */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-}
+    /* Portfolio card typography */
+  --project-card-title-font-size: 1.05rem;
+  --project-card-title-color: var(--color-accent-blue-dark);
+  --project-card-summary-font-size: 0.95rem;
+  --project-card-summary-color: var(--color-text-muted);
 }
 
 /* Breakpoints (for reference in comments)
@@ -135,7 +141,7 @@ li + li {
 
 /* Links */
 a {
-  color: var(--color-accent);
+  color: var(--color-accent-blue-dark);
   text-decoration: none;
 }
 
@@ -211,7 +217,7 @@ code {
 .site-title {
   font-weight: 600;
   font-size: 1.25rem;
-  color: var(--color-accent);
+  color: var(--color-accent-blue-dark);
 }
 
 /* Right: nav links */
@@ -223,12 +229,12 @@ code {
 
 .site-nav a {
   font-size: 1.2rem;
-  color: var(--color-accent);
+  color: var(--color-accent-blue-dark);
 }
 
 .site-nav a:hover,
 .site-nav a:focus {
-  color: var(--color-accent);
+  color: var(--color-accent-blue-dark);
   text-decoration: none;
 }
 
@@ -338,7 +344,7 @@ code {
 
 /* Use for muted / alternate background sections if needed */
 .section--surface {
-  background-color: var(--color-surface-blend);
+  background-color: var(--color-page_background);
 }
 
 /* =========================================================
@@ -360,7 +366,7 @@ code {
   font-size: 1rem;
   font-weight: 500;
   border-radius: var(--radius-sm);
-  background-color: var(--color-accent);
+  background-color: var(--color-accent-blue-dark);
   color: #ffffff;
   text-decoration: none;
   border: 1px solid transparent;
@@ -369,7 +375,7 @@ code {
 .button-link:hover,
 .button-link:focus {
   text-decoration: none;
-  background-color: #234b6c; /* slightly darker accent */
+  background-color: var(--color-accent-blue-light); /* slightly darker accent */
 }
 
 /* =========================================================
@@ -379,7 +385,7 @@ code {
 /* Lead text on portfolio list page */
 .portfolio-lead {
   margin-bottom: var(--space-3);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--color-text-muted);
 }
 
@@ -395,7 +401,7 @@ code {
 .project-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface-light);
+  background-color: var(--color-surface-blend);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
@@ -415,8 +421,7 @@ code {
   position: relative;
   overflow: hidden;
 
-  /* Light divider between image and card body */
-  padding-bottom: 0.5rem;
+  /* Light divider that hugs the bottom edge of the image */
   border-bottom: 1px solid var(--color-border-subtle);
 }
 
@@ -437,9 +442,9 @@ code {
 
 /* Card title text + inner divider */
 .project-card-title {
-  font-size: 1.05rem;
+  font-size: var(--project-card-title-font-size);
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--project-card-title-color);
 
   /* Place a subtle rule under the title, aligned with body padding */
   padding-bottom: 0.35rem;
@@ -449,9 +454,9 @@ code {
 
 /* Card summary copy */
 .project-card-summary {
-  font-size: 0.95rem;
+  font-size: var(--project-card-summary-font-size);
   margin: 0;
-  color: var(--color-text-muted);
+  color: var(--project-card-summary-color);
 }
 
 /* Hover state: lift card + suppress global underline on the outer link */
@@ -462,7 +467,8 @@ code {
   transform: translateY(-2px) scale(1.01);
   box-shadow: var(--shadow-card-hover);
   border-color: rgba(0, 0, 0, 0.06);
-  background-color: #ffffff;
+  /* Slightly brighter version of --color-surface-blend using color-mix */
+  background-color: color-mix(in srgb, var(--color-surface-blend) 88%, white 12%);
 }
 
 /* Hover state: gently zoom and brighten the hero image */
@@ -626,6 +632,9 @@ code {
   box-shadow: var(--shadow-card);
   padding: var(--space-2);
 
+  /* Allow absolutely positioned controls (fullscreen button) */
+  position: relative;
+
   /* Local tuning knobs for the viewer */
   --viewer-slide-width: 78%;
   --viewer-slide-max-height: 640px;
@@ -728,24 +737,151 @@ code {
   z-index: 1;
 }
 
-/* Navigation arrows (visual style only; JS hooks will wire behavior) */
+/* Image viewer fullscreen button (matches 3D viewer style) */
+.image-viewer-button {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  z-index: 3;
+
+  height: 32px;
+  width: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: var(--color-accent-blue-light);
+
+  color: #ffffff;
+  cursor: pointer;
+
+  opacity: 0.55;
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out;
+  padding: 0; /* keep the button square */
+}
+
+.image-viewer-button-icon {
+  line-height: 0;
+}
+
+.image-viewer-icon-svg {
+  width: 28px;
+  height: 28px;
+}
+
+.image-viewer-button:hover,
+.image-viewer-button:focus-visible {
+  opacity: 1;
+  transform: scale(1.04);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+.image-viewer-button--active {
+  opacity: 1;
+}
+
+/* Fullscreen state for the image viewer panel */
+.image-viewer:fullscreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: var(--space-3);
+  box-sizing: border-box;
+  background-color: var(--color-page_background);
+
+  /* In fullscreen, allow the central slide to scale up
+     with the viewport instead of staying at card size. */
+  --viewer-slide-width: 80vw;
+  --viewer-slide-max-height: 80vh;
+}
+
+/* Keep arrows visible and correctly positioned in fullscreen */
+.image-viewer:fullscreen .image-viewer-arrow {
+  position: fixed;              /* anchor to the fullscreen viewport */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;                /* above everything */
+
+  /* Square button styling + stronger halo */
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-blue-light);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 0 16px rgba(255, 255, 255, 0.50),   /* stronger white glow */
+    0 5px 16px rgba(0, 0, 0, 0.28);       /* depth shadow */
+
+  opacity: 0.9;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out;
+}
+
+/* Left arrow in fullscreen */
+.image-viewer:fullscreen .image-viewer-arrow--prev {
+  left: 32px; /* pull outward from the content */
+}
+
+/* Right arrow in fullscreen */
+.image-viewer:fullscreen .image-viewer-arrow--next {
+  right: 32px;
+}
+
+/* Hover behavior in fullscreen */
+.image-viewer:fullscreen .image-viewer-arrow:hover,
+.image-viewer:fullscreen .image-viewer-arrow:focus-visible {
+  outline: none;
+  opacity: 1;
+  transform: translateY(-50%) scale(1.06);
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.60),
+    0 8px 22px rgba(0, 0, 0, 0.32);
+}
+
+/* Navigation arrows (normal card view; JS wires behavior) */
 .image-viewer-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  border: none;
-  background-color: rgba(255, 255, 255, 0.92);
-  border-radius: 999px;
-  width: 48px;
-  height: 48px;
+  z-index: 2;
+
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-sm);
+
+  background-color: var(--color-accent-blue-light);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  color: #ffffff;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
 
-  /* Make sure arrows sit on top of the scroll track */
-  z-index: 2;
+  /* Subtle halo + depth shadow */
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.45),
+    0 3px 12px rgba(0, 0, 0, 0.22);
+
+  cursor: pointer;
 
   transition:
     opacity 160ms ease-out,
@@ -762,18 +898,20 @@ code {
 }
 
 .image-viewer-arrow-icon {
-  font-size: 1rem;
+  font-size: 1.35rem; /* scaled up for 1.5× button size */
 }
 
-/* Hover state: subtle lift */
+/* Hover state: subtle lift while remaining centered */
 .image-viewer-arrow:hover,
 .image-viewer-arrow:focus-visible {
   outline: none;
-  transform: translateY(-50%) scale(1.05);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%) scale(1.06);
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.55),
+    0 6px 18px rgba(0, 0, 0, 0.26);
 }
 
-/* Hidden/disabled arrows at the ends (toggled via JS) */
+/* Hidden/disabled arrows at the ends (toggled by JS) */
 .image-viewer-arrow--hidden {
   opacity: 0;
   visibility: hidden;
@@ -796,12 +934,16 @@ code {
   border-radius: var(--radius-sm);
   background-color: var(--color-surface-blend);
   overflow: hidden;
-  border: 3px solid transparent;
+
+  /* Light outline for all thumbnails using the dark accent hue */
+  border: 2px solid color-mix(in srgb, var(--color-accent-blue-light) 40%, transparent);
+
   cursor: pointer;
   flex-shrink: 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   transition:
     border-color 160ms ease-out,
+    border-width 160ms ease-out,
     box-shadow 160ms ease-out,
     transform 160ms ease-out;
 }
@@ -814,7 +956,10 @@ code {
 
 /* Active thumbnail state (set via JS) */
 .image-viewer-thumb--active {
-  border-color: var(--color-accent);
+  /* Stronger, thicker outline in the same dark accent color */
+  border-color: var(--color-accent-blue-light);
+  border-width: 3px;
+
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
   transform: translateY(-1px);
 }
@@ -877,7 +1022,7 @@ model-viewer {
 
   border-radius: var(--radius-sm);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: var(--color-accent-blue-light);
 
   color: #ffffff;
   cursor: pointer;

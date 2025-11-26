@@ -57,6 +57,29 @@ layout: default
           </div>
         </div>
 
+        <!-- Image viewer fullscreen button (top-right, matches 3D viewer) -->
+        <button
+          class="image-viewer-button image-viewer-button--fullscreen"
+          type="button"
+          data-image-viewer-fullscreen
+          aria-label="Enter fullscreen">
+          <span class="image-viewer-button-icon" aria-hidden="true">
+            <svg
+              class="image-viewer-icon-svg"
+              viewBox="0 0 24 24"
+              focusable="false">
+              <!-- Four-corner fullscreen icon (geometric, no rounded corners) -->
+              <path
+                d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="square"
+                stroke-linejoin="miter" />
+            </svg>
+          </span>
+        </button>
+
         <!-- Thumbnail strip (only if multiple images) -->
         {% if image_count > 1 %}
           <div class="image-viewer-thumbnails" data-image-viewer-thumbnails>
