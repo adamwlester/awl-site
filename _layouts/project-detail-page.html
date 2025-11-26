@@ -122,6 +122,58 @@ layout: default
             camera-controls
             interaction-prompt="auto">
           </model-viewer>
+
+          <!-- 3D viewer controls: fullscreen (top-right) + reset view (bottom-right) -->
+          <button
+            class="model-viewer-button model-viewer-button--fullscreen"
+            type="button"
+            data-model-viewer-fullscreen
+            aria-label="Enter fullscreen">
+            <span class="model-viewer-button-icon" aria-hidden="true">
+              <svg
+                class="model-viewer-icon-svg"
+                viewBox="0 0 24 24"
+                focusable="false">
+                <!-- Four-corner fullscreen icon (geometric, no rounded corners) -->
+                <path
+                  d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="square"
+                  stroke-linejoin="miter"/>
+              </svg>
+            </span>
+          </button>
+
+          <button
+            class="model-viewer-button model-viewer-button--reset"
+            type="button"
+            data-model-viewer-reset
+            aria-label="Reset 3D view">
+            <span class="model-viewer-button-icon" aria-hidden="true">
+              <svg
+                class="model-viewer-icon-svg"
+                viewBox="0 0 24 24"
+                focusable="false">
+                <!-- Circular arrow reset icon -->
+                <path
+                  d="M12 5v4l3-3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M12 5a7 7 0 1 0 5 2"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
         </div>
       {% endif %}
       <!-- .content-group-secondary will be moved here via JS when present -->

@@ -137,3 +137,216 @@
     asideColumn.appendChild(secondary);
   }
 })();
+
+(function () {
+  // ---------------------------------------
+  // 3. 3D MODEL VIEWER CONTROLS
+  //    - Fullscreen toggle on the panel
+  //    - Reset camera to initial on-load view
+  // ---------------------------------------
+  var panels = Array.prototype.slice.call(
+    document.querySelectorAll('.model-viewer-panel')
+  );
+  if (!panels.length) return;
+
+  // Helper: feature-detect fullscreen
+  function isPanelFullscreen(panel) {
+    return (
+      document.fullscreenElement === panel ||
+      document.webkitFullscreenElement === panel ||
+      document.mozFullScreenElement === panel ||
+      document.msFullscreenElement === panel
+    );
+  }
+
+  function requestPanelFullscreen(panel) {
+    if (panel.requestFullscreen) {
+      panel.requestFullscreen();
+    } else if (panel.webkitRequestFullscreen) {
+      panel.webkitRequestFullscreen();
+    } else if (panel.mozRequestFullScreen) {
+      panel.mozRequestFullScreen();
+    } else if (panel.msRequestFullscreen) {
+      panel.msRequestFullscreen();
+    }
+  }
+
+  function exitFullscreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+  }
+
+  panels.forEach(function (panel) {
+    var model = panel.querySelector('model-viewer');
+    if (!model) return;
+
+    var fullscreenButton = panel.querySelector('[data-model-viewer-fullscreen]');
+    var resetButton = panel.querySelector('[data-model-viewer-reset]');
+
+    if (!fullscreenButton && !resetButton) return;
+
+    // -----------------------------
+    // Capture initial camera state
+    // -----------------------------
+    var initialCameraState = null;
+
+    function captureInitialCameraState() {
+      if (initialCameraState) return;
+
+      var orbitString = null;
+      var targetString = null;
+      var fovString = null;
+
+      // Prefer JS properties (include defaults), fall back to attributes.
+      try {
+        if (model.cameraOrbit && typeof model.cameraOrbit.toString === 'function') {
+          orbitString = model.cameraOrbit.toString();
+        }
+      } catch (e) {
+        // Ignore, fall back to attribute.
+      }
+      if (!orbitString) {
+        orbitString = model.getAttribute('camera-orbit');
+      }
+
+      try {
+        if (model.cameraTarget && typeof model.cameraTarget.toString === 'function') {
+          targetString = model.cameraTarget.toString();
+        }
+      } catch (e2) {
+        // Ignore, fall back to attribute.
+      }
+      if (!targetString) {
+        targetString = model.getAttribute('camera-target');
+      }
+
+      try {
+        if (model.fieldOfView && typeof model.fieldOfView.toString === 'function') {
+          fovString = model.fieldOfView.toString();
+        }
+      } catch (e3) {
+        // Ignore, fall back to attribute.
+      }
+      if (!fovString) {
+        fovString = model.getAttribute('field-of-view');
+      }
+
+      initialCameraState = {
+        orbit: orbitString,
+        target: targetString,
+        fov: fovString
+      };
+    }
+
+    // Capture as early as possible and again on load to pick up defaults.
+    captureInitialCameraState();
+    model.addEventListener('load', function handleModelLoad() {
+      captureInitialCameraState();
+      model.removeEventListener('load', handleModelLoad);
+    });
+
+    // -----------------------------
+    // Reset button behavior
+    // -----------------------------
+    function resetCameraToInitial() {
+      if (!initialCameraState) {
+        captureInitialCameraState();
+      }
+      if (!initialCameraState) return;
+
+      var state = initialCameraState;
+
+      // Reset orbit
+      if (state.orbit) {
+        try {
+          model.cameraOrbit = state.orbit;
+        } catch (e) {
+          model.setAttribute('camera-orbit', state.orbit);
+        }
+      } else {
+        model.removeAttribute('camera-orbit');
+      }
+
+      // Reset target
+      if (state.target) {
+        try {
+          model.cameraTarget = state.target;
+        } catch (e2) {
+          model.setAttribute('camera-target', state.target);
+        }
+      } else {
+        model.removeAttribute('camera-target');
+      }
+
+      // Reset field of view (zoom)
+      if (state.fov) {
+        try {
+          model.fieldOfView = state.fov;
+        } catch (e3) {
+          model.setAttribute('field-of-view', state.fov);
+        }
+      } else {
+        model.removeAttribute('field-of-view');
+      }
+    }
+
+    if (resetButton) {
+      resetButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        resetCameraToInitial();
+        // Remove focus ring after activation
+        resetButton.blur();
+      });
+    }
+
+    // -----------------------------
+    // Fullscreen button behavior
+    // -----------------------------
+    function updateFullscreenButtonState() {
+      if (!fullscreenButton) return;
+
+      var active = isPanelFullscreen(panel);
+      fullscreenButton.setAttribute(
+        'aria-label',
+        active ? 'Exit fullscreen' : 'Enter fullscreen'
+      );
+
+      if (active) {
+        fullscreenButton.classList.add('model-viewer-button--active');
+      } else {
+        fullscreenButton.classList.remove('model-viewer-button--active');
+      }
+    }
+
+    if (fullscreenButton) {
+      fullscreenButton.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        if (isPanelFullscreen(panel) || document.fullscreenElement) {
+          exitFullscreen();
+        } else {
+          requestPanelFullscreen(panel);
+        }
+
+        fullscreenButton.blur();
+      });
+
+      // React to user-initiated or ESC-based exits.
+      document.addEventListener('fullscreenchange', updateFullscreenButtonState);
+      document.addEventListener('webkitfullscreenchange', updateFullscreenButtonState);
+      document.addEventListener('mozfullscreenchange', updateFullscreenButtonState);
+      document.addEventListener('MSFullscreenChange', updateFullscreenButtonState);
+
+      // Initialize button state.
+      updateFullscreenButtonState();
+    }
+  });
+})();
+

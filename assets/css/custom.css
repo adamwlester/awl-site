@@ -653,8 +653,8 @@ code {
   border: none;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 999px;
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -722,6 +722,7 @@ code {
    ========================================================= */
 
 .model-viewer-panel {
+  position: relative; /* allow absolutely positioned controls inside */
   background-color: var(--color-surface-blend);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
@@ -748,6 +749,80 @@ model-viewer {
   border-radius: var(--radius-sm);
   overflow: hidden;
   background-color: var(--color-surface-blend);
+}
+
+/* 3D viewer control buttons (fullscreen + reset) */
+.model-viewer-button {
+  position: absolute;
+  right: var(--space-2);
+  z-index: 2;
+
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.35);
+
+  color: #ffffff;
+  cursor: pointer;
+
+  opacity: 0.55;
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out;
+  padding: 0;
+}
+
+/* Top-right: fullscreen */
+.model-viewer-button--fullscreen {
+  top: var(--space-2);
+}
+
+/* Bottom-right: reset */
+.model-viewer-button--reset {
+  bottom: var(--space-2);
+}
+
+.model-viewer-button-icon {
+  line-height: 0;
+}
+
+/* Ensure SVG scales crisply inside button */
+.model-viewer-icon-svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Hover / focus state: brighten and slightly scale up */
+.model-viewer-button:hover,
+.model-viewer-button:focus-visible {
+  opacity: 1;
+  transform: scale(1.04);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+/* Active state (e.g., when panel is fullscreen) */
+.model-viewer-button--active {
+  opacity: 1;
+}
+
+/* Reduced motion: avoid transforms */
+@media (prefers-reduced-motion: reduce) {
+  .model-viewer-button {
+    transition: opacity 0.001ms linear;
+  }
+
+  .model-viewer-button:hover,
+  .model-viewer-button:focus-visible {
+    transform: none;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
 }
 
 /* =========================================================
