@@ -845,6 +845,33 @@ model-viewer {
   opacity: 1;
 }
 
+/* When the model viewer panel itself is fullscreen,
+   treat it as a centered square viewport so the 3D view
+   scales up without cropping top/bottom. */
+.model-viewer-panel:fullscreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Give the content a bit of breathing room at the edges */
+  padding: var(--space-3);
+  box-sizing: border-box;
+}
+
+/* Square viewer sized to the smaller viewport dimension.
+   This keeps the framing consistent between normal and
+   fullscreen states instead of stretching the canvas. */
+.model-viewer-panel:fullscreen model-viewer {
+  width: 100vmin;           /* square: min(viewport width, height) */
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  border-radius: var(--radius-sm);
+}
+
 /* Reduced motion: avoid transforms */
 @media (prefers-reduced-motion: reduce) {
   .model-viewer-button {
