@@ -1174,6 +1174,24 @@ model-viewer {
   height: 28px;
 }
 
+/* Shared fullscreen icon behavior (model + image viewers):
+   - By default show the expand icon and hide the collapse icon.
+   - When the button is active (panel is fullscreen), swap them. */
+.model-viewer-button-icon .icon-collapse,
+.image-viewer-button-icon .icon-collapse {
+  display: none;
+}
+
+.model-viewer-button--active .icon-expand,
+.image-viewer-button--active .icon-expand {
+  display: none;
+}
+
+.model-viewer-button--active .icon-collapse,
+.image-viewer-button--active .icon-collapse {
+  display: inline;
+}
+
 /* Text label for the reset button */
 .model-viewer-button-label {
   font-size: 0.75rem;

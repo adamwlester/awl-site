@@ -57,7 +57,7 @@ layout: default
           </div>
         </div>
 
-        <!-- Image viewer fullscreen button (top-right, matches 3D viewer) -->
+        <!-- Image viewer fullscreen button -->
         <button
           class="image-viewer-button image-viewer-button--fullscreen"
           type="button"
@@ -67,18 +67,35 @@ layout: default
             <svg
               class="image-viewer-icon-svg"
               viewBox="0 0 24 24"
-              focusable="false">
-              <!-- Four-corner fullscreen icon (geometric, no rounded corners) -->
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              xmlns="http://www.w3.org/2000/svg">
+
+              <!-- EXPAND (arrows pointing outward) -->
               <path
-                d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="square"
-                stroke-linejoin="miter" />
+                class="icon-expand"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9
+                  M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15
+                  M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9
+                  M20.25 20.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+
+              <!-- COLLAPSE (arrows pointing inward) -->
+              <path
+                class="icon-collapse"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75
+                  M9 15v4.5M9 15H4.5M9 15l-5.25 5.25
+                  M15 9h4.5M15 9V4.5M15 9l5.25-5.25
+                  M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
+
             </svg>
           </span>
         </button>
+
 
         <!-- Thumbnail strip (only if multiple images) -->
         {% if image_count > 1 %}
@@ -149,7 +166,7 @@ layout: default
             interaction-prompt-style="basic">
           </model-viewer>
 
-          <!-- 3D viewer controls: fullscreen (top-right) + reset view (bottom-right) -->
+          <!-- 3D viewer fullscreen button -->
           <button
             class="model-viewer-button model-viewer-button--fullscreen"
             type="button"
@@ -159,15 +176,31 @@ layout: default
               <svg
                 class="model-viewer-icon-svg"
                 viewBox="0 0 24 24"
-                focusable="false">
-                <!-- Four-corner fullscreen icon (geometric, no rounded corners) -->
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                xmlns="http://www.w3.org/2000/svg">
+
+                <!-- EXPAND (arrows pointing outward) -->
                 <path
-                  d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="square"
-                  stroke-linejoin="miter"/>
+                  class="icon-expand"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9
+                    M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15
+                    M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9
+                    M20.25 20.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+
+                <!-- COLLAPSE (arrows pointing inward) -->
+                <path
+                  class="icon-collapse"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75
+                    M9 15v4.5M9 15H4.5M9 15l-5.25 5.25
+                    M15 9h4.5M15 9V4.5M15 9l5.25-5.25
+                    M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
+
               </svg>
             </span>
           </button>
