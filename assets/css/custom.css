@@ -856,11 +856,16 @@ model-viewer {
   /* Give the content a bit of breathing room at the edges */
   padding: var(--space-3);
   box-sizing: border-box;
+
+  /* Let the outer band blend with the page while the
+     inner square (model-viewer) shows the visible frame */
+  background-color: var(--color-page_background);
 }
 
 /* Square viewer sized to the smaller viewport dimension.
    This keeps the framing consistent between normal and
-   fullscreen states instead of stretching the canvas. */
+   fullscreen states instead of stretching the canvas.
+   Only in fullscreen do we show a visible frame. */
 .model-viewer-panel:fullscreen model-viewer {
   width: 100vmin;           /* square: min(viewport width, height) */
   height: auto !important;
@@ -868,8 +873,11 @@ model-viewer {
 
   max-width: 100%;
   max-height: 100%;
-
   border-radius: var(--radius-sm);
+
+  /* Fullscreen-only visible bounding box */
+  background-color: var(--color-surface-light);
+  border: 1px solid var(--color-border-subtle);
 }
 
 /* Reduced motion: avoid transforms */
