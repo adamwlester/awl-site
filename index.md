@@ -4,7 +4,7 @@ title: Home
 description: "Professional site and portfolio for Adam W. Lester."
 banner_image: /assets/images/home-banner.png
 banner_title: Adam W. Lester
-banner_subtitle: Neuroscience PhD | UBC SBME Postdoc | Experimentation & Open Development | Instrumentation • CAD • Code
+banner_subtitle: Neuroscience PhD | UBC SBME Postdoc | Research & Open Hardware Development
 published: true
 ---
 ### I’m a systems neuroscientist with a thing for messy systems and clean instruments.

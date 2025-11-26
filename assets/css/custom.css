@@ -9,10 +9,10 @@
   --ff-heading: var(--ff-body);
 
   /* Colors */
-  --color-page_background: #f7f5f1; /* page background */
+  --color-page_background: #f6f7f8; /* page background */
   --color-surface-light: #ffffff;   /* cards, sections, header */
   --color-surface-dark: #222222;    /* cards, sections, header */
-  --color-surface-blend: #faf8f4;   /* cards, sections, header */
+  --color-surface-blend: #f9fafa;   /* cards, sections, header */
   --color-border-subtle: #e3dfd7;   /* light borders & dividers */
 
   --color-text: #222222;          /* main text */
@@ -38,9 +38,9 @@
 
   /* Banner-specific tokens (shared by home + portfolio banners) */
   --page-banner-background: var(--color-border-subtle);
-  --banner-title-font-size: 1.8rem;
-  --banner-subtitle-font-size: 1rem;
-  --banner-title-margin-bottom: 0.25rem;
+  --banner-title-font-size: 2.6rem;
+  --banner-subtitle-font-size: 1.4rem;
+  --banner-title-margin-bottom: 0.5rem;
   --banner-title-color: var(--color-text);
   --banner-subtitle-color: var(--color-text-muted);
 
@@ -192,7 +192,7 @@ code {
   position: sticky;
   top: 0;
   z-index: 20;
-  background-color: var(--color-surface-light);
+  background-color: var(--color-surface-blend);
   border-bottom: 1px solid var(--color-border-subtle);
   height: var(--header-height);
 }
@@ -210,8 +210,8 @@ code {
 /* Left: site title (name) */
 .site-title {
   font-weight: 600;
-  font-size: 1rem;
-  color: var(--color-text);
+  font-size: 1.25rem;
+  color: var(--color-accent);
 }
 
 /* Right: nav links */
@@ -222,8 +222,8 @@ code {
 }
 
 .site-nav a {
-  font-size: 0.95rem;
-  color: var(--color-text);
+  font-size: 1.2rem;
+  color: var(--color-accent);
 }
 
 .site-nav a:hover,
@@ -345,7 +345,7 @@ code {
    7. Home / generic content
    ========================================================= */
 
-.page-lead {
+.home-lead {
   font-size: 1.05rem;
   color: var(--color-text-muted);
   max-width: 40rem;
@@ -379,6 +379,7 @@ code {
 /* Lead text on portfolio list page */
 .portfolio-lead {
   margin-bottom: var(--space-3);
+  font-size: 1.2rem;
   color: var(--color-text-muted);
 }
 
