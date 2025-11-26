@@ -11,7 +11,7 @@
   //    - Centered active slide with peeking neighbors
   //    - Smaller, dimmer neighbors
   //    - Arrows hidden at ends
-  //    - Scroll, arrows, and thumbs all stay in sync
+  //    - Scroll, arrows, thumbs, and drag all stay in sync
   // ---------------------------------------
   var viewer = document.querySelector('[data-image-viewer]');
   if (!viewer) return;
@@ -36,25 +36,50 @@
 
   var activeIndex = 0;
 
+  // Drag-to-scroll state (desktop)
+  var isDragging = false;
+  var dragStartX = 0;
+  var dragStartScrollLeft = 0;
+  var DRAG_MOVE_THRESHOLD = 4;
+
   function clampIndex(index) {
     if (index < 0) return 0;
     if (index >= slides.length) return slides.length - 1;
     return index;
   }
 
+  // Center a slide using its offset inside the track.
+  // This is more stable than rect math and guarantees that
+  // the first and last slides can land perfectly centered.
   function scrollToSlide(index, behavior) {
     var slide = slides[index];
-    if (!slide || !slide.scrollIntoView) return;
+    if (!slide) return;
 
-    try {
-      slide.scrollIntoView({
-        behavior: behavior || 'smooth',
-        block: 'nearest',
-        inline: 'center'
+    // Position of the slide inside the scrollable track
+    var slideLeft = slide.offsetLeft;
+    var slideWidth = slide.offsetWidth;
+    var trackWidth = track.clientWidth;
+
+    // Ideal scrollLeft so the slide's center aligns with track center
+    var targetScroll =
+      slideLeft - (trackWidth - slideWidth) / 2;
+
+    // Clamp into the valid scroll range
+    var maxScroll = track.scrollWidth - trackWidth;
+    if (maxScroll < 0) maxScroll = 0;
+
+    if (targetScroll < 0) targetScroll = 0;
+    if (targetScroll > maxScroll) targetScroll = maxScroll;
+
+    var mode = behavior || 'smooth';
+
+    if (!track.scrollTo || mode === 'auto') {
+      track.scrollLeft = targetScroll;
+    } else {
+      track.scrollTo({
+        left: targetScroll,
+        behavior: mode
       });
-    } catch (e) {
-      // Older browsers may not support options; fall back to default.
-      slide.scrollIntoView();
     }
   }
 
@@ -117,18 +142,16 @@
    *
    * options:
    *   - behavior: 'smooth' | 'auto'
-   *   - fromScroll: true to avoid re-scrolling during scroll settling
    *   - force: true to reapply state even if index hasn't changed
    */
   function setActive(index, options) {
     index = clampIndex(index);
 
-    var fromScroll = options && options.fromScroll;
     var behavior = (options && options.behavior) || 'smooth';
     var force = options && options.force;
 
     if (!force && index === activeIndex) {
-      // Still make sure arrows/thumbs/classes are in a good state when used defensively.
+      // Keep state consistent when called defensively.
       updateSlideActiveClasses();
       updateThumbs();
       updateArrows();
@@ -141,9 +164,7 @@
     updateThumbs();
     updateArrows();
 
-    if (!fromScroll) {
-      scrollToSlide(activeIndex, behavior);
-    }
+    scrollToSlide(activeIndex, behavior);
   }
 
   function handleArrow(delta) {
@@ -176,41 +197,134 @@
     });
   }
 
-  // Scroll-driven activation: when scrolling settles, pick the slide
-  // whose center is closest to the center of the track.
+  // Find the slide nearest to the visual center of the track.
+  function snapToNearest() {
+    if (!slides.length) return;
+
+    var trackRect = track.getBoundingClientRect();
+    var trackCenterX = trackRect.left + trackRect.width / 2;
+
+    var nearestIndex = activeIndex;
+    var nearestDistance = Infinity;
+
+    slides.forEach(function (slide, index) {
+      var slideRect = slide.getBoundingClientRect();
+      var slideCenterX = slideRect.left + slideRect.width / 2;
+      var distance = Math.abs(slideCenterX - trackCenterX);
+
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+
+    setActive(nearestIndex, { behavior: 'smooth' });
+  }
+
+  // Desktop drag-to-scroll on the main track
+  track.addEventListener('mousedown', function (event) {
+    // Left button only
+    if (event.button !== 0) return;
+
+    isDragging = true;
+    dragStartX = event.clientX;
+    dragStartScrollLeft = track.scrollLeft;
+
+    track.classList.add('image-viewer-track--dragging');
+  });
+
+  window.addEventListener('mousemove', function (event) {
+    if (!isDragging) return;
+
+    var deltaX = event.clientX - dragStartX;
+
+    // Treat as a drag once we move a bit; prevent text selection.
+    if (Math.abs(deltaX) >= DRAG_MOVE_THRESHOLD) {
+      event.preventDefault();
+    }
+
+    track.scrollLeft = dragStartScrollLeft - deltaX;
+  });
+
+  function endDrag() {
+    if (!isDragging) return;
+
+    isDragging = false;
+    track.classList.remove('image-viewer-track--dragging');
+
+    // After a drag, snap once to the nearest slide.
+    snapToNearest();
+  }
+
+  window.addEventListener('mouseup', endDrag);
+  window.addEventListener('mouseleave', endDrag);
+
+  // Scroll-driven activation (wheel / touch / keyboard):
+  // when scrolling settles and we're not actively dragging,
+  // snap the nearest slide into center.
   var scrollTimeoutId = null;
 
   track.addEventListener('scroll', function () {
+    if (isDragging) {
+      // During drag we let the strip move freely; snapping happens on mouseup.
+      return;
+    }
+
     if (scrollTimeoutId !== null) {
       window.clearTimeout(scrollTimeoutId);
     }
 
     scrollTimeoutId = window.setTimeout(function () {
       scrollTimeoutId = null;
-
-      var trackRect = track.getBoundingClientRect();
-      var trackCenterX = trackRect.left + trackRect.width / 2;
-
-      var nearestIndex = activeIndex;
-      var nearestDistance = Infinity;
-
-      slides.forEach(function (slide, index) {
-        var slideRect = slide.getBoundingClientRect();
-        var slideCenterX = slideRect.left + slideRect.width / 2;
-        var distance = Math.abs(slideCenterX - trackCenterX);
-
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearestIndex = index;
-        }
-      });
-
-      setActive(nearestIndex, { behavior: 'auto', fromScroll: true });
+      snapToNearest();
     }, 80);
   });
 
   // Initialize state so the first slide is centered and lifted.
   setActive(0, { behavior: 'auto', force: true });
+
+  // ---------------------------------------
+  // Ensure centering after images load and on resize
+  // ---------------------------------------
+
+  function recenterActiveSlide() {
+    // Reapply current index with fresh geometry
+    setActive(activeIndex, { behavior: 'auto', force: true });
+  }
+
+  // When images finish loading, recenter once.
+  var viewerImages = Array.prototype.slice.call(
+    track.querySelectorAll('img')
+  );
+
+  var pending = 0;
+  viewerImages.forEach(function (img) {
+    if (img.complete && img.naturalWidth !== 0) {
+      return;
+    }
+    pending += 1;
+    img.addEventListener(
+      'load',
+      function handleImgLoad() {
+        pending -= 1;
+        if (pending <= 0) {
+          recenterActiveSlide();
+        }
+      },
+      { once: true }
+    );
+  });
+
+  // If all images were already loaded from cache,
+  // still do one recenter pass.
+  if (pending === 0) {
+    recenterActiveSlide();
+  }
+
+  // Recenter on window resize as well to handle width changes.
+  window.addEventListener('resize', function () {
+    recenterActiveSlide();
+  });
 })();
 
 (function () {

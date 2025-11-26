@@ -50,6 +50,7 @@ layout: default
                 <img
                   src="{{ site.baseurl }}{{ page.dir }}{{ image_src }}"
                   alt="{{ image_alt }}"
+                  draggable="false"
                   {% unless forloop.first %}loading="lazy"{% endunless %}>
               </div>
             {% endfor %}
@@ -121,7 +122,8 @@ layout: default
             autoplay
             camera-controls
             interaction-prompt="auto"
-            interaction-prompt-threshold="10000">
+            interaction-prompt-threshold="5000"
+            interaction-prompt-style="basic">
           </model-viewer>
 
           <!-- 3D viewer controls: fullscreen (top-right) + reset view (bottom-right) -->

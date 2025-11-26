@@ -36,9 +36,18 @@
   --header-height: 56px;
   --page-banner-height: 200px;
 
+  /* Banner-specific tokens (shared by home + portfolio banners) */
+  --page-banner-background: var(--color-border-subtle);
+  --banner-title-font-size: 1.8rem;
+  --banner-subtitle-font-size: 1rem;
+  --banner-title-margin-bottom: 0.25rem;
+  --banner-title-color: var(--color-text);
+  --banner-subtitle-color: var(--color-text-muted);
+
   /* Radii */
   --radius-sm: 4px;
   --radius-md: 8px;
+}
 }
 
 /* Breakpoints (for reference in comments)
@@ -245,8 +254,8 @@ code {
 .page-banner {
   position: relative;
   height: var(--page-banner-height);
-  background-color: var(--color-border-subtle);
-  color: var(--color-text);
+  background-color: var(--page-banner-background);
+  color: var(--banner-title-color);
   overflow: hidden;
 }
 
@@ -267,8 +276,8 @@ code {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.85),
-    rgba(255, 255, 255, 0.95)
+    rgba(255, 255, 255, 0.35),
+    rgba(255, 255, 255, 0.6)
   );
 }
 
@@ -290,14 +299,15 @@ code {
 }
 
 .page-banner-title {
-  font-size: 1.8rem;
-  margin: 0 0 0.25rem 0;
+  font-size: var(--banner-title-font-size);
+  margin: 0 0 var(--banner-title-margin-bottom) 0;
+  color: var(--banner-title-color);
 }
 
 .page-banner-subtitle {
-  font-size: 1rem;
+  font-size: var(--banner-subtitle-font-size);
   margin: 0;
-  color: var(--color-text-muted);
+  color: var(--banner-subtitle-color);
 }
 
 /* =========================================================
@@ -623,6 +633,15 @@ code {
   --viewer-transition-duration: 220ms;
 }
 
+/* Prevent selection anywhere in the viewer (main image + thumbs) */
+.image-viewer,
+.image-viewer * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 /* Main area: arrows + scrollable track */
 .image-viewer-main {
   position: relative;
@@ -633,18 +652,23 @@ code {
   display: flex;
   gap: var(--space-1);
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   padding-bottom: var(--space-1);
   margin-bottom: var(--space-1);
 
-  /* Center the active slide with peeking neighbors.
-     Padding matches the “unused” width around a centered slide. */
+  /* Padding gives room for first/last slide to sit visually
+     in the center when JS centers them, while still allowing
+     neighbors to peek on larger sets. */
   padding-inline: calc((100% - var(--viewer-slide-width)) / 2);
-  scroll-padding-inline: calc((100% - var(--viewer-slide-width)) / 2);
+
+  /* Each slide sizes itself to its own image height. */
+  align-items: flex-start;
 
   /* Hide scrollbar (Firefox) */
   scrollbar-width: none;
+
+  /* Desktop: support grab-to-scroll interaction */
+  cursor: grab;
 }
 
 /* Hide default scrollbar (WebKit/Blink) for cleaner look */
@@ -653,19 +677,22 @@ code {
   height: 0;
 }
 
+/* While actively dragging with the mouse, show a grabbing cursor */
+.image-viewer-track--dragging {
+  cursor: grabbing;
+}
+
 /* Individual slides as lifted cards */
 .image-slide {
   flex: 0 0 var(--viewer-slide-width);
-  scroll-snap-align: center;
   position: relative;
   border-radius: var(--radius-sm);
   overflow: hidden;
 
-  /* Treat the slide as a flexible “frame” with a fixed vertical size */
+  /* Card that hugs its image; height driven by image itself */
   display: flex;
   align-items: center;
   justify-content: center;
-  max-height: var(--viewer-slide-max-height);
 
   background-color: var(--color-surface-light);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
@@ -682,9 +709,12 @@ code {
 }
 
 .image-slide img {
-  /* Fit to the vertical dimension of the slide, keep aspect ratio */
-  max-height: 100%;
+  /* Height-driven layout: scale images by height, preserve aspect,
+     no cropping and no distortion. Width varies per aspect ratio. */
+  max-height: var(--viewer-slide-max-height);
+  max-width: 100%;
   width: auto;
+  height: auto;
   display: block;
   object-fit: contain;
 }
