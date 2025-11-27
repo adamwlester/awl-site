@@ -216,12 +216,6 @@
     });
   }
 
-  if (nextButton) {
-    nextButton.addEventListener('click', function () {
-      handleArrow(1);
-    });
-  }
-
   // Thumbnail click handlers
   if (thumbs.length) {
     thumbs.forEach(function (thumb) {
