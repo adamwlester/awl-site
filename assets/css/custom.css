@@ -485,7 +485,7 @@ code {
   position: absolute;
   inset: 0;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.25); /* adjust opacity for more/less haze */
+  background: rgba(255, 255, 255, 0.3); /* adjust opacity for more/less haze */
   pointer-events: none;
   transition: background 150ms ease-out;
 }
@@ -585,17 +585,20 @@ code {
 }
 
 .profile-card-link-icon {
-  width: var(--profile-card-icon-size);
-  height: var(--profile-card-icon-size);
+  /* Font Awesome icons size off font-size */
+  font-size: var(--profile-card-icon-size);
+  line-height: 1;
+
+  /* Keep the flex centering you already had */
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Let each SVG control its own fill/stroke; just size it */
+/* If any inline SVGs show up here, keep them tidy */
 .profile-card-link-icon svg {
-  width: 100%;
-  height: 100%;
+  width: 1em;
+  height: 1em;
   display: block;
 }
 
@@ -1091,7 +1094,7 @@ code {
 
   /* Inactive images: slightly smaller and noticeably dimmer */
   transform: scale(var(--viewer-inactive-scale));
-  filter: brightness(0.5);
+  filter: brightness(0.85);
   box-shadow: none;
 
   transition:
