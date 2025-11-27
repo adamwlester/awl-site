@@ -19,7 +19,7 @@ sections:
 
 - id: integrated-subsystems
   heading: Integrated Subsystems
-  card_size: compact
+  card_size: large
   blurb: "Electromechanical and embedded modules that extend major platforms through automation, control, and specialized function."
   projects:
     - nc4gate-automatable-gate-module
@@ -37,7 +37,7 @@ sections:
 
 - id: support-hardware-and-models
   heading: Support Hardware & Models
-  card_size: compact
+  card_size: large
   blurb: "Auxiliary hardware, mounts, guides, and models used for system integration, design planning, and experimental workflows."
   projects:
     - adjustable-aluminum-projector-mount

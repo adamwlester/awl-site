@@ -103,6 +103,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-size: 1.125rem;
 }
 
 /* Make images responsive by default */
@@ -439,13 +440,15 @@ code {
   }
 }
 
-/* Profile card */
 .profile-card {
-  background-color: var(--color-surface-light);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: var(--shadow-card);
-  padding: 25px;   /* 25pt framing all around */
+  /* visually remove the sidebar panel */
+  background: none;
+  border: none;
+  box-shadow: none;
+
+  /* keep the spacing so layout doesn’t collapse */
+  padding: 25px;
+
   font-size: 0.95rem;
   color: var(--color-text);
 }
@@ -504,13 +507,14 @@ code {
 .profile-card-summary {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  /* Slightly tighter stack for name + role block */
+  gap: 0.2rem;
   align-items: flex-start; /* ensures left alignment for name + role */
 }
 
 .profile-card-name {
   font-size: 1.35rem;    /* slightly larger name */
-  font-weight: 600;     /* heavier weight */
+  font-weight: 600;      /* heavier weight */
   text-align: left;
 }
 
@@ -539,12 +543,14 @@ code {
   color: var(--color-text-gray-muted);
 }
 
-/* Title line (e.g., Postdoctoral Research Fellow) */
+/* Title line (e.g., Postdoctoral Research Fellow)
+   - Use a small margin so spacing to the NC4 lab line roughly matches
+     the spacing between name and title. */
 .profile-card-role .profile-card-role-line--title {
   font-size: 0.95rem;              /* larger than other role lines */
   line-height: 1.35;
   color: var(--color-text-gray-muted);     /* use main text color */
-  margin-bottom: var(--space-3);  /* spacing down to NC4 Lab */
+  margin-bottom: 0.2rem;           /* was var(--space-3); much tighter now */
 }
 
 /* NC4 Lab link inside role */
@@ -562,23 +568,24 @@ code {
 /* Links list */
 .profile-card-links {
   list-style: none;
-  margin: var(--space-3) 0 0 0; /* space after Vancouver */
+  /* Slightly less gap above the first link and between links */
+  margin: var(--space-2) 0 0 0; /* was var(--space-3) */
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.18rem;                 /* was 0.25rem */
 }
 
 .profile-card-link {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.3rem 0.2rem;
+  padding: 0.26rem 0.2rem;      /* tiny reduction in vertical padding */
   border-radius: var(--radius-sm);
   color: var(--color-accent-blue-light);
   text-decoration: none;
   font-size: 0.95rem;
-  font-weight: 450;  /* slightly heavier, still clean */
+  font-weight: 450;             /* slightly heavier, still clean */
 }
 
 .profile-card-link:hover {
@@ -708,8 +715,7 @@ code {
 
 /* Optional blurb under the divider */
 .portfolio-section-blurb {
-  max-width: 48rem;
-  margin: 0 auto;
+  /* Allow blurb to use full section width (up to 1280px via .site-wrapper) */
   font-size: 1.02rem;
   color: var(--color-text-gray-muted);
 }
@@ -719,7 +725,7 @@ code {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;      /* center rows with 1–2 cards */
-  gap: var(--space-3);
+  gap: var(--space-5);
   align-items: stretch;
 
   /* Default card width; overridden by modifier classes */
