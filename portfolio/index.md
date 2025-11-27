@@ -30,7 +30,7 @@ sections:
 - id: recording-implants
   heading: Recording Implants
   card_size: large
-  blurb: "Chronic implant systems for multi-site electrophysiology with precise targeting, stability, and reusable mechanics."
+  blurb: "Chronic implant systems for multi-site electrophysiology with freely behaving rodents."
   projects:
     - dual-bundle-electrode-drive
     - silicon-probe-microdrive-housing

@@ -12,6 +12,7 @@
   --color-page_background: #f6f7f8; /* page background */
   --color-surface-light: #ffffff;   /* cards, sections, header */
   --color-surface-blend: #F6F6F6;   /* cards, sections, header */
+  --color-surface-dark: #222222;
   --color-border-subtle: #e3dfd7;   /* light borders & dividers */
   --color-border-bold: #cc9933;   /* light borders & dividers */
 
@@ -425,8 +426,8 @@ code {
 }
 
 .home-sidebar {
-  flex: 0 0 250px;
-  max-width: 250px;
+  flex: 0 0 300px;
+  max-width: 300px;
 }
 
 .home-main {
@@ -446,8 +447,11 @@ code {
   border: none;
   box-shadow: none;
 
-  /* keep the spacing so layout doesn’t collapse */
-  padding: 25px;
+  /* Standard card padding, plus a small top offset so the
+     headshot top stays aligned with the first line of the
+     home-page body text. (9px + 16px ≈ original 25px) */
+  padding: var(--space-2);
+  margin-top: 9px;
 
   font-size: 0.95rem;
   color: var(--color-text);
@@ -456,7 +460,8 @@ code {
 .profile-card-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* Left-align avatar + text to the card content edge */
+  align-items: flex-start;
   gap: var(--space-2);
   margin-bottom: var(--space-2);
 }
@@ -476,8 +481,8 @@ code {
 }
 
 .profile-card-avatar img {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: var(--radius-md);
   object-fit: cover;
   display: block;
@@ -538,7 +543,7 @@ code {
 
 /* smaller font for role lines (department, university, location) */
 .profile-card-role-line {
-  font-size: 0.8rem;
+  font-size: 1.05rem;
   line-height: 1.5;
   color: var(--color-text-gray-muted);
 }
@@ -547,7 +552,7 @@ code {
    - Use a small margin so spacing to the NC4 lab line roughly matches
      the spacing between name and title. */
 .profile-card-role .profile-card-role-line--title {
-  font-size: 0.95rem;              /* larger than other role lines */
+  font-size: 1.25rem;              /* larger than other role lines */
   line-height: 1.35;
   color: var(--color-text-gray-muted);     /* use main text color */
   margin-bottom: 0.2rem;           /* was var(--space-3); much tighter now */
@@ -557,7 +562,7 @@ code {
 .profile-card-role-lab-link {
   color: var(--color-accent-blue-light);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 450;  /* match sidebar link weight */
 }
 
@@ -584,7 +589,7 @@ code {
   border-radius: var(--radius-sm);
   color: var(--color-accent-blue-light);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
   font-weight: 450;             /* slightly heavier, still clean */
 }
 
@@ -664,7 +669,7 @@ code {
 
 /* Individual portfolio section (e.g., Behavioral Platforms) */
 .portfolio-section {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 /* Add extra breathing room between successive sections */
@@ -716,7 +721,7 @@ code {
 /* Optional blurb under the divider */
 .portfolio-section-blurb {
   /* Allow blurb to use full section width (up to 1280px via .site-wrapper) */
-  font-size: 1.02rem;
+  font-size: 1.25rem;
   color: var(--color-text-gray-muted);
 }
 
@@ -861,7 +866,7 @@ code {
 
 /* Media section (image viewer full-width above the grid) */
 .project-media-section {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-5);
 }
 
 /* Full-bleed wrapper for the media section:
@@ -1000,12 +1005,12 @@ code {
 
   /* Core sizing + animation tokens (non-fullscreen) */
   --viewer-slide-width: var(--viewer-slide-width-desktop); /* fixed slide width on desktop */
-  --viewer-slide-max-height: 675px;                        /* max height for main image (pixels) */
+  --viewer-slide-max-height: 750px;                        /* max height for main image (pixels) */
 
   /* Slight lift on the active image; neighbors are closer to full size
      so they sit visually nearer to the center image. */
-  --viewer-active-scale: 1.05;                             /* scale factor for active (center) image */
-  --viewer-inactive-scale: 0.85;                           /* scale factor for inactive neighbor images */
+  --viewer-active-scale: 0.95;                             /* scale factor for active (center) image */
+  --viewer-inactive-scale: 0.75;                           /* scale factor for inactive neighbor images */
 
   --viewer-transition-duration: 220ms;                     /* duration for image scale/brightness transitions */
 }
@@ -1062,7 +1067,10 @@ code {
   /* Fixed-width layout unit; width defined by viewer tokens */
   flex: 0 0 var(--viewer-slide-width);
   position: relative;
-  overflow: hidden;
+
+  /* Allow the active image's box-shadow to extend past the slide bounds.
+     Track overflow is already managed on the parent (.image-viewer-track). */
+  overflow: visible;
 
   /* Center the image within the slide footprint */
   display: flex;
@@ -1118,7 +1126,9 @@ code {
 .image-slide--active img {
   transform: scale(var(--viewer-active-scale));
   filter: brightness(1);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  box-shadow:
+  0 10px 24px rgba(0,0,0,0.18),
+  0 3px 8px rgba(0,0,0,0.28);
 }
 
 /* Image viewer fullscreen button (matches 3D viewer style) */

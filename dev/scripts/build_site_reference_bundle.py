@@ -33,11 +33,13 @@ SOURCE_FILES = [
     "assets/css/custom.css",
     "assets/js/project-detail-page.js",
     "_layouts/default.html",
+    "_layouts/home.html",    
     "_layouts/portfolio-list-page.html",
     "_layouts/project-detail-page.html",
     "_includes/section.html",
     "_includes/project-grid.html",
     "_includes/project-card.html",
+    "_includes/profile-sidebar.html",
 ]
 
 # Name of the output Markdown file (inside dev/scripts/output/)
