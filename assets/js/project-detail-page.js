@@ -187,6 +187,41 @@
     });
   }
 
+  // Keyboard arrow key navigation:
+  // Left arrow → previous slide, Right arrow → next slide.
+  // Prevents the tiny native scroll "eek" and makes each key press
+  // cleanly step between slides instead.
+  window.addEventListener('keydown', function (event) {
+    if (!slides.length) return;
+
+    if (event.key === 'ArrowLeft') {
+      handleArrow(-1);
+      event.preventDefault();
+    } else if (event.key === 'ArrowRight') {
+      handleArrow(1);
+      event.preventDefault();
+    }
+  });
+
+  // Thumbnail click handlers
+  if (thumbs.length) {
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var indexAttr = thumb.getAttribute('data-image-index');
+        var index = parseInt(indexAttr, 10);
+        if (!isNaN(index)) {
+          setActive(index, { behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', function () {
+      handleArrow(1);
+    });
+  }
+
   // Thumbnail click handlers
   if (thumbs.length) {
     thumbs.forEach(function (thumb) {

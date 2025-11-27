@@ -16,18 +16,19 @@
   --color-border-bold: #cc9933;   /* light borders & dividers */
 
   --color-text: #222222;          /* main text */
-  --color-text-muted: #666666;    /* secondary text */
+  --color-text-gray-muted: #666666;    /* secondary text */
   --color-text-light-soft: #eef3f9;   /* soft accent background for tags/badges */
   --color-text-light: #ffffff;   /* cards, sections, header */
   --color-accent-blue-dark: #234b6c;        /* links, key highlights */
   --color-accent-blue-light: #2b5f8a;   /* button fill color, active outlines */
-  --color-accent-blue-new: #274c77;
+  --color-accent-blue-muted: #6E8699;
 
   /* Shadows */
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.04);      /* default card shadow */
   --shadow-card-hover: 0 10px 28px rgba(0, 0, 0, 0.10);
 
   /* Spacing scale */
+  --space-0: 0.25rem;
   --space-1: 0.5rem;
   --space-2: 1rem;
   --space-3: 1.5rem;
@@ -38,6 +39,11 @@
   --max-width-content: 1280px;
   --header-height: 56px;
   --page-banner-height: 200px;
+
+  /* Image viewer layout tokens */
+  --viewer-slide-width-desktop: 880px; /* fixed slide width on desktop (slightly narrower) */
+  --viewer-slide-width-mobile: 88vw;   /* slide width on small screens */
+  --viewer-slide-gap: 0.35rem;         /* tighter horizontal gap between slides */
 
   /* Radii */
   --radius-sm: 4px;
@@ -55,13 +61,16 @@
   --banner-title-margin-bottom: 0.9rem;
   /* Text color */
   --banner-title-color: var(--color-text-light);
-  --banner-subtitle-color: var(--color-text-light-soft);
+  --banner-subtitle-color: var(--color-text-light);
+
+  /* Profile card icon sizing */
+  --profile-card-icon-size: 1.35rem;
 
     /* Portfolio card typography */
   --project-card-title-font-size: 1.05rem;
   --project-card-title-color: var(--color-accent-blue-dark);
   --project-card-summary-font-size: 0.95rem;
-  --project-card-summary-color: var(--color-text-muted);
+  --project-card-summary-color: var(--color-text-gray-muted);
 }
 
 /* Breakpoints (for reference in comments)
@@ -195,7 +204,7 @@ code {
   padding: var(--space-3) var(--space-2);
   border-top: 1px solid var(--color-border-subtle);
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-gray-muted);
 }
 
 /* =========================================================
@@ -224,7 +233,7 @@ code {
 /* Left: site title (name) */
 .site-title {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: var(--color-accent-blue-dark);
 }
 
@@ -336,7 +345,7 @@ code {
   font-size: var(--banner-subtitle-font-size);
   margin: 0;
   color: var(--banner-subtitle-color);
-  font-weight: 400;
+  font-weight: 450;
   letter-spacing: 0.01em;
   line-height: 1.3;
 
@@ -381,14 +390,12 @@ code {
    7. Home / generic content
    ========================================================= */
 
-/* Intro copy on the home page */
 .home-lead {
   font-size: 1.05rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-gray-muted);
   max-width: 40rem;
 }
 
-/* Simple primary link-like button (e.g., "View Portfolio") */
 .button-link {
   display: inline-flex;
   align-items: center;
@@ -405,164 +412,196 @@ code {
 
 .button-link:hover,
 .button-link:focus {
-  text-decoration: none;
-  background-color: var(--color-accent-blue-light); /* slightly darker accent */
+  background-color: var(--color-accent-blue-light);
 }
 
-/* -----------------------------------------
-   Home layout: profile sidebar + main copy
-   ----------------------------------------- */
-
-/* Wraps the profile sidebar and the main home content.
-   Rendered by _layouts/home.html inside .site-wrapper. */
+/* Layout */
 .home-layout {
   display: flex;
   align-items: flex-start;
   gap: var(--space-4);
 }
 
-/* Left column: profile sidebar.
-   Fixed-ish width with a max of ~25% of the content width. */
 .home-sidebar {
-  flex: 0 0 280px;
-  max-width: 25%;
+  flex: 0 0 250px;
+  max-width: 250px;
 }
 
-/* Right column: normal home content (Markdown body). */
 .home-main {
   flex: 1 1 auto;
   min-width: 0;
 }
 
-/* Medium / small screens: stack sidebar above main content. */
 @media (max-width: 900px) {
   .home-layout {
     flex-direction: column;
   }
-
-  .home-sidebar {
-    max-width: 100%;
-    flex-basis: auto;
-  }
 }
 
-/* -----------------------------------------
-   Profile card (sidebar content)
-   ----------------------------------------- */
-
+/* Profile card */
 .profile-card {
   background-color: var(--color-surface-light);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
   box-shadow: var(--shadow-card);
-  padding: var(--space-2);
+  padding: 25px;   /* 25pt framing all around */
   font-size: 0.95rem;
   color: var(--color-text);
 }
 
-/* Name + avatar row */
 .profile-card-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: var(--space-2);
   margin-bottom: var(--space-2);
 }
 
-/* Circular avatar image */
-.profile-card-avatar {
-  flex-shrink: 0;
+.profile-card-avatar-link {
+  position: relative;
+  display: inline-block;
+  border-radius: var(--radius-md);
+  padding: 0; /* ensures even top/side spacing */
+  background: radial-gradient(circle at 30% 0%,
+              rgba(255, 255, 255, 0.9),
+              rgba(255, 255, 255, 0.3));
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  overflow: hidden; /* clip image + overlay to rounded shape */
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out;
 }
 
 .profile-card-avatar img {
-  width: 96px;
-  height: 96px;
-  border-radius: 999px;
+  width: 200px;
+  height: 200px;
+  border-radius: var(--radius-md);
   object-fit: cover;
-  box-shadow: var(--shadow-card);
+  display: block;
 }
 
-/* Name + title / tagline block */
+/* Soft white-film overlay on the avatar */
+.profile-card-avatar-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.25); /* adjust opacity for more/less haze */
+  pointer-events: none;
+  transition: background 150ms ease-out;
+}
+
+.profile-card-avatar-link:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+}
+
+/* On hover, slightly reduce the white film so the image feels a bit more present */
+.profile-card-avatar-link:hover::after {
+  background: rgba(255, 255, 255, 0.12);
+}
+
 .profile-card-summary {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.3rem;
+  align-items: flex-start; /* ensures left alignment for name + role */
 }
 
 .profile-card-name {
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.35rem;    /* slightly larger name */
+  font-weight: 600;     /* heavier weight */
+  text-align: left;
+}
+
+.profile-card-name-link {
   color: var(--color-accent-blue-dark);
+  text-decoration: none;
 }
 
-.profile-card-title {
+.profile-card-name-link:hover {
+  text-decoration: underline;
+}
+
+/* Role block – left aligned */
+.profile-card-role {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* smaller font for role lines (department, university, location) */
+.profile-card-role-line {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-text-gray-muted);
+}
+
+/* Title line (e.g., Postdoctoral Research Fellow) */
+.profile-card-role .profile-card-role-line--title {
+  font-size: 0.95rem;              /* larger than other role lines */
+  line-height: 1.35;
+  color: var(--color-text-gray-muted);     /* use main text color */
+  margin-bottom: var(--space-3);  /* spacing down to NC4 Lab */
+}
+
+/* NC4 Lab link inside role */
+.profile-card-role-lab-link {
+  color: var(--color-accent-blue-light);
+  text-decoration: none;
   font-size: 0.95rem;
-  color: var(--color-text-muted);
+  font-weight: 450;  /* match sidebar link weight */
 }
 
-.profile-card-tagline {
-  font-size: 0.9rem;
-  color: var(--color-text-muted);
+.profile-card-role-lab-link:hover {
+  text-decoration: underline;
 }
 
-/* Link list (email, GitHub, LinkedIn, etc.) */
+/* Links list */
 .profile-card-links {
   list-style: none;
-  margin: 0;
-  margin-top: var(--space-2);
+  margin: var(--space-3) 0 0 0; /* space after Vancouver */
   padding: 0;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-/* Individual link item */
-.profile-card-link-item {
-  margin: 0;
-}
-
-/* Link styling with icon + label */
 .profile-card-link {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
   padding: 0.3rem 0.2rem;
   border-radius: var(--radius-sm);
-  color: var(--color-accent-blue-dark);
+  color: var(--color-accent-blue-light);
   text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 450;  /* slightly heavier, still clean */
 }
 
-.profile-card-link:hover,
-.profile-card-link:focus-visible {
-  background-color: color-mix(in srgb, var(--color-text-light-soft) 40%, white 60%);
-  text-decoration: none;
-  outline: none;
+.profile-card-link:hover {
+  background-color: color-mix(in srgb, var(--color-text-light-soft) 60%, white 40%);
 }
 
-/* Icon wrapper */
 .profile-card-link-icon {
-  width: 1.1rem;
-  height: 1.1rem;
+  width: var(--profile-card-icon-size);
+  height: var(--profile-card-icon-size);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
 
+/* Let each SVG control its own fill/stroke; just size it */
 .profile-card-link-icon svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-/* Label text next to icon */
-.profile-card-link-label {
-  font-size: 0.95rem;
-}
-
-/* Mobile: compact, icon-focused layout.
-   - Sidebar stacks on top via .home-layout rules.
-   - Links collapse into a row of icons with hidden labels. */
+/* Mobile */
 @media (max-width: 640px) {
+
   .profile-card {
     padding: var(--space-2);
   }
@@ -571,9 +610,12 @@ code {
     margin-bottom: var(--space-1);
   }
 
+  /* Mobile image size only — no filter/border overrides */
   .profile-card-avatar img {
-    width: 80px;
-    height: 80px;
+    width: 196px;
+    height: 196px;
+    border-radius: var(--radius-md);
+    object-fit: cover;
   }
 
   .profile-card-links {
@@ -600,7 +642,7 @@ code {
 .portfolio-lead {
   margin-bottom: var(--space-3);
   font-size: 1.25rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-gray-muted);
 }
 
 /* Wrapper for all portfolio sections on the list page */
@@ -665,7 +707,7 @@ code {
   max-width: 48rem;
   margin: 0 auto;
   font-size: 1.02rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-gray-muted);
 }
 
 /* Project grid container (flex-based, card width via CSS variable) */
@@ -869,7 +911,7 @@ code {
 
 .project-summary {
   font-size: 1.05rem;
-  color: var(--color-text-muted);
+  color: var(--color-text-gray-muted);
   margin-top: 0;
   margin-bottom: var(--space-3);
 }
@@ -936,8 +978,7 @@ code {
 
 /* Outer container */
 .image-viewer {
-  /* Slightly darker / warmer than the pure-white renders,
-     so the image reads as a card sitting on a band */
+  /* Band background behind the images */
   background-color: var(--color-surface-blend);
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
@@ -947,12 +988,16 @@ code {
   /* Allow absolutely positioned controls (fullscreen button) */
   position: relative;
 
-  /* Smaller neighbors + more visible peeking */
-  --viewer-slide-width: 72%;        /* width of each slide card in the track */
-  --viewer-slide-max-height: 640px; /* max height for main image (pixels) */
-  --viewer-active-scale: 1;         /* scale factor for the active (center) slide */
-  --viewer-inactive-scale: 0.75;    /* scale factor for inactive neighbor slides */
-  --viewer-transition-duration: 220ms; /* duration for slide scale/brightness transitions */
+  /* Core sizing + animation tokens (non-fullscreen) */
+  --viewer-slide-width: var(--viewer-slide-width-desktop); /* fixed slide width on desktop */
+  --viewer-slide-max-height: 675px;                        /* max height for main image (pixels) */
+
+  /* Slight lift on the active image; neighbors are closer to full size
+     so they sit visually nearer to the center image. */
+  --viewer-active-scale: 1.05;                             /* scale factor for active (center) image */
+  --viewer-inactive-scale: 0.85;                           /* scale factor for inactive neighbor images */
+
+  --viewer-transition-duration: 220ms;                     /* duration for image scale/brightness transitions */
 }
 
 /* Prevent selection anywhere in the viewer (main image + thumbs) */
@@ -972,16 +1017,14 @@ code {
 /* Scrollable horizontal track */
 .image-viewer-track {
   display: flex;
-  gap: var(--space-1);
+  gap: var(--viewer-slide-gap);
   overflow-x: auto;
   scroll-behavior: smooth;
   padding-bottom: var(--space-1);
   margin-bottom: var(--space-1);
 
-  /* Padding gives room for first/last slide to sit visually
-     in the center when JS centers them, while still allowing
-     neighbors to peek on larger sets. */
-  padding-inline: calc((100% - var(--viewer-slide-width)) / 2);
+  /* Simple symmetric padding; centering is handled by ghost slides + JS */
+  padding-inline: var(--viewer-slide-gap);
 
   /* Each slide sizes itself to its own image height. */
   align-items: flex-start;
@@ -1006,28 +1049,22 @@ code {
 
 /* Individual slides as lifted cards */
 .image-slide {
+  /* Fixed-width layout unit; width defined by viewer tokens */
   flex: 0 0 var(--viewer-slide-width);
   position: relative;
-  border-radius: var(--radius-sm);
   overflow: hidden;
 
-  /* Card that hugs its image; height driven by image itself */
+  /* Center the image within the slide footprint */
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: var(--color-surface-light);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-
-  /* Neighbors start slightly smaller and dimmer; center gets “lifted” */
-  transform: scale(var(--viewer-inactive-scale));
-  transform-origin: center center;
-  filter: brightness(0.9);
-
-  transition:
-    transform var(--viewer-transition-duration) ease-out,
-    filter var(--viewer-transition-duration) ease-out,
-    box-shadow var(--viewer-transition-duration) ease-out;
+  /* Visually invisible slide:
+     - no background, no shadow, no transforms
+     - all “pop / dim” effects live on the image itself */
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 /* Ghost slides: invisible spacers at the ends of the track.
@@ -1051,14 +1088,27 @@ code {
   height: auto;
   display: block;
   object-fit: contain;
+
+  /* Inactive images: slightly smaller and noticeably dimmer */
+  transform: scale(var(--viewer-inactive-scale));
+  filter: brightness(0.5);
+  box-shadow: none;
+
+  transition:
+    transform var(--viewer-transition-duration) ease-out,
+    filter var(--viewer-transition-duration) ease-out,
+    box-shadow var(--viewer-transition-duration) ease-out;
 }
 
-/* Active slide: full-size, brighter, and slightly more elevated */
+/* Active slide: full-size, bright, and lifted via shadow */
 .image-slide--active {
+  z-index: 1;
+}
+
+.image-slide--active img {
   transform: scale(var(--viewer-active-scale));
   filter: brightness(1);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
-  z-index: 1;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 /* Image viewer fullscreen button (matches 3D viewer style) */
@@ -1110,7 +1160,8 @@ code {
   opacity: 1;
 }
 
-/* Fullscreen state for the image viewer panel */
+/* Fullscreen mode: show only the active image,
+   hide all other controls except the exit button. */
 .image-viewer:fullscreen {
   display: flex;
   flex-direction: column;
@@ -1119,12 +1170,46 @@ code {
 
   padding: var(--space-3);
   box-sizing: border-box;
-  background-color: var(--color-page_background);
 
-  /* In fullscreen, allow the central slide to scale up
-     with the viewport instead of staying at card size. */
+  /* Darken the backdrop so the image reads like a lightbox */
+  background-color: #111111;
+
+  /* In fullscreen, allow the active image to grow with the viewport */
   --viewer-slide-width: 80vw;
   --viewer-slide-max-height: 80vh;
+}
+
+/* Track in fullscreen: no horizontal scroll, just center the active slide */
+.image-viewer:fullscreen .image-viewer-track {
+  justify-content: center;
+  padding-inline: 0;
+  overflow: hidden;
+}
+
+/* Hide all slides in fullscreen… */
+.image-viewer:fullscreen .image-slide {
+  display: none;
+}
+
+/* …except the active one */
+.image-viewer:fullscreen .image-slide--active {
+  display: flex;
+}
+
+/* Hide arrows and thumbnails in fullscreen */
+.image-viewer:fullscreen .image-viewer-arrow,
+.image-viewer:fullscreen .image-viewer-thumbnails {
+  display: none !important;
+}
+
+/* Keep the fullscreen button as an "exit" control in the top-right.
+   Because the slide background is invisible, this effectively feels
+   like it's sitting on the image corner, not a card boundary. */
+.image-viewer:fullscreen .image-viewer-button--fullscreen {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 10;
 }
 
 /* Keep arrows visible and correctly positioned in fullscreen */
@@ -1291,10 +1376,10 @@ code {
 /* Smaller screens: tighten peeking + scale differences */
 @media (max-width: 767px) {
   .image-viewer {
-    /* Slightly more peeking on mobile too */
-    --viewer-slide-width: 84%;
+    /* Use mobile-specific width while keeping the same scale behavior */
+    --viewer-slide-width: var(--viewer-slide-width-mobile);
     --viewer-active-scale: 1;
-    --viewer-inactive-scale: 0.80;
+    --viewer-inactive-scale: 0.6;
   }
 }
 
@@ -1477,7 +1562,7 @@ model-viewer {
 
 /* Utility for muted text */
 .text-muted {
-  color: var(--color-text-muted);
+  color: var(--color-text-gray-muted);
 }
 
 /* Utility for slightly smaller text */

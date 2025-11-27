@@ -6,16 +6,30 @@
 title: "Adam W. Lester"
 description: "Professional site and portfolio for Adam W. Lester."
 url: "https://adamwlester.github.io"     # GitHub Pages user domain
-baseurl: "/awl-site"          # Repo name (required for correct link resolution)
+baseurl: "/awl-site"                     # Repo name (required for correct link resolution)
 
 # Global profile data used by home layout + sidebar card
 profile:
   name: "Adam W. Lester"
-  title: "Neuroscientist & Open Hardware Developer"
   avatar: "/assets/images/awl_headshot.png"
   email: "adamwardlester@gmail.com"
   orcid: "https://orcid.org/0000-0002-4598-7908"
+
+  # Role block
+  role_title: "Postdoctoral Research Fellow"
+  lab_label: "NC4 Lab"
+  lab_url: "https://www.nc4.sbme.ubc.ca/"
+  role_lines:
+    - "School of Biomedical Engineering"
+    - "University of British Columbia"
+    - "Vancouver, BC, Canada"
+
+  # Sidebar links (NC4 Lab handled in role block)
   links:
+    - label: "LinkedIn"
+      kind: "linkedin"
+      url: "https://www.linkedin.com/in/adam-w-lester-34b97215"
+
     - label: "GitHub"
       kind: "github"
       url: "https://github.com/adamwlester"
@@ -24,21 +38,13 @@ profile:
       kind: "scholar"
       url: "https://scholar.google.com/citations?user=hBawUaYAAAAJ"
 
-    - label: "Portfolio (CadCrowd)"
-      kind: "portfolio"
-      url: "https://www.cadcrowd.com/profile/167901-adam-ward-lester/models"
+    - label: "ResearchGate"
+      kind: "researchgate"
+      url: "https://www.researchgate.net"  # dummy link for now
 
-    - label: "LinkedIn"
-      kind: "linkedin"
-      url: "https://www.linkedin.com/in/adam-w-lester-34b97215"
-
-    - label: "OSF – NC4gate design files"
-      kind: "osf"
-      url: "https://osf.io/uy7ez"
-
-    - label: "OSF – NC4touch design files"
-      kind: "osf"
-      url: "https://osf.io/8q9tk"
+    - label: "ORCID"
+      kind: "orcid"
+      url: "https://orcid.org/0000-0002-4598-7908"
 
 # Markdown + HTML rendering
 markdown: kramdown

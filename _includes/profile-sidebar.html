@@ -1,178 +1,202 @@
 {% assign profile = site.profile %}
+{% assign links = profile.links | default: empty %}
 
 {% if profile %}
-  <section class="profile-card" aria-label="About {{ profile.name | escape }}">
-    <header class="profile-card-header">
-      <div class="profile-card-avatar">
+<section class="profile-card" aria-label="About {{ profile.name | escape }}">
+
+  <!-- Avatar -->
+  <header class="profile-card-header">
+    <div class="profile-card-avatar">
+      <a
+        class="profile-card-avatar-link"
+        href="{{ site.baseurl }}/"
+        aria-label="Back to home">
         <img
           src="{{ site.baseurl }}{{ profile.avatar | default: '/assets/images/awl_headshot.png' }}"
           alt="{{ profile.name | escape }}">
+      </a>
+    </div>
+
+    <!-- Summary block: name + role -->
+    <div class="profile-card-summary">
+
+      <!-- Name -->
+      <div class="profile-card-name">
+        <a href="{{ site.baseurl }}/" class="profile-card-name-link">
+          {{ profile.name }}
+        </a>
       </div>
-      <div class="profile-card-summary">
-        {% if profile.name %}
-          <div class="profile-card-name">{{ profile.name }}</div>
+
+      <!-- Role block -->
+      <div class="profile-card-role">
+
+        {% if profile.role_title %}
+          <div class="profile-card-role-line profile-card-role-line--title">
+            {{ profile.role_title }}
+          </div>
         {% endif %}
 
-        {% if profile.title %}
-          <div class="profile-card-title">{{ profile.title }}</div>
+        {% if profile.lab_url %}
+          <div class="profile-card-role-line profile-card-role-line--lab">
+            <a  href="{{ profile.lab_url }}"
+                class="profile-card-role-lab-link"
+                target="_blank"
+                rel="noopener noreferrer">
+              {{ profile.lab_label }}
+            </a>
+          </div>
         {% endif %}
 
-        {% if profile.tagline %}
-          <div class="profile-card-tagline">{{ profile.tagline }}</div>
+        {% if profile.role_lines %}
+          {% for line in profile.role_lines %}
+            <div class="profile-card-role-line">{{ line }}</div>
+          {% endfor %}
         {% endif %}
       </div>
-    </header>
+    </div>
+  </header>
 
-    {% assign has_email = profile.email %}
-    {% assign has_orcid = profile.orcid %}
-    {% assign links = profile.links | default: empty %}
 
-    {% if has_email or has_orcid or links %}
-      <ul class="profile-card-links">
+  <!-- Contact + Links -->
+  <ul class="profile-card-links">
 
-        {%- if has_email -%}
-          <li class="profile-card-link-item">
-            <a href="mailto:{{ profile.email }}" class="profile-card-link">
-              <span class="profile-card-link-icon" aria-hidden="true">
-                <!-- Email icon: envelope -->
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <rect x="3.5" y="6.5" width="17" height="11" rx="1.8" ry="1.8"
+    <!-- EMAIL -->
+    <li class="profile-card-link-item">
+      <a href="mailto:{{ profile.email | strip }}" class="profile-card-link">
+        <span class="profile-card-link-icon">
+          <!-- Email: simple envelope outline -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="6" width="14" height="12" rx="2"
+                  fill="none" stroke="currentColor" stroke-width="1.7" />
+            <path d="M5 8l7 5 7-5"
+                  fill="none" stroke="currentColor" stroke-width="1.7"
+                  stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="profile-card-link-label">Email</span>
+      </a>
+    </li>
+
+
+    <!-- LOOPED LINKS -->
+    {% for link in links %}
+      {% assign kind = link.kind | downcase %}
+
+      <li class="profile-card-link-item">
+        <a href="{{ link.url }}" class="profile-card-link"
+           target="_blank" rel="noopener noreferrer">
+
+          <span class="profile-card-link-icon">
+            {% case kind %}
+
+              {% when "linkedin" %}
+                <!-- LinkedIn: "in" monogram in rounded square -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <!-- outer rounded square -->
+                  <rect x="3" y="3" width="18" height="18" rx="2.6"
                         fill="none" stroke="currentColor" stroke-width="1.6" />
-                  <path d="M4 8l8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6"
+                  <!-- dot of the "i" -->
+                  <circle cx="9" cy="8.3" r="1" fill="currentColor" />
+                  <!-- stem of the "i" -->
+                  <rect x="8.35" y="9.7" width="1.3" height="5.1" rx="0.6"
+                        fill="currentColor" />
+                  <!-- "n" -->
+                  <path d="M12.4 15v-2.4c0-1.1.7-1.9 1.8-1.9 1.2 0 1.9.8 1.9 2v2.3"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
                         stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </span>
-              <span class="profile-card-link-label">Email</span>
-            </a>
-          </li>
-        {%- endif -%}
 
-        {%- for link in links -%}
-          {% assign kind = link.kind | downcase %}
-          <li class="profile-card-link-item">
-            <a href="{{ link.url }}" class="profile-card-link" target="_blank" rel="noopener noreferrer">
-              <span class="profile-card-link-icon" aria-hidden="true">
-                {% case kind %}
-                  {% when "github" %}
-                    <!-- GitHub-ish icon: code braces -->
-                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                      <path d="M8 5c-2.3 2-3.5 4.2-3.5 7s1.2 5 3.5 7"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M16 5c2.3 2 3.5 4.2 3.5 7s-1.2 5-3.5 7"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M11 4l-2 2 2 2M13 16l2 2-2 2"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+              {% when "github" %}
+                <!-- GitHub: minimal cat head in a circle -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <!-- outer circle -->
+                  <circle cx="12" cy="12" r="8.2"
+                          fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <!-- head -->
+                  <path d="M8.5 14.4c.6-1.1 2-1.9 3.5-1.9s2.9.8 3.5 1.9c-.6 1.4-1.9 2.4-3.5 2.4s-2.9-1-3.5-2.4z"
+                        fill="currentColor" />
+                  <!-- ears -->
+                  <path d="M9.7 11.2l-1.4-.8V8.4l2 1.1"
+                        fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M14.3 11.2l1.4-.8V8.4l-2 1.1"
+                        fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
 
-                  {% when "linkedin" %}
-                    <!-- LinkedIn-style icon: in-wordmark in a rounded square -->
-                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                      <rect x="3.2" y="3.2" width="17.6" height="17.6" rx="2.4"
-                            ry="2.4" fill="none" stroke="currentColor" stroke-width="1.6" />
-                      <circle cx="8" cy="9" r="1.3" fill="currentColor" />
-                      <path d="M7.2 17v-4.4" fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" />
-                      <path d="M11.4 17v-2.9c0-1.3.7-2.1 1.9-2.1 1.1 0 1.8.7 1.8 2V17"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                  {% when "scholar" %}
-                    <!-- Scholar icon: open book -->
-                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                      <path d="M5 6.5h6.5v11H6.7A1.7 1.7 0 0 1 5 15.8V6.5z"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linejoin="round" />
-                      <path d="M19 6.5h-6.5v11h4.8A1.7 1.7 0 0 0 19 15.8V6.5z"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linejoin="round" />
-                      <path d="M11.5 9.2c-.8-.5-1.7-.7-2.7-.7H7.2"
-                            fill="none" stroke="currentColor" stroke-width="1.4"
-                            stroke-linecap="round" />
-                      <path d="M12.5 9.2c.8-.5 1.7-.7 2.7-.7h1.6"
-                            fill="none" stroke="currentColor" stroke-width="1.4"
-                            stroke-linecap="round" />
-                    </svg>
-
-                  {% when "portfolio" %}
-                    <!-- Portfolio icon: briefcase -->
-                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                      <rect x="3.5" y="8" width="17" height="10" rx="1.5" ry="1.5"
-                            fill="none" stroke="currentColor" stroke-width="1.6" />
-                      <path d="M9 8V6.7A1.7 1.7 0 0 1 10.7 5h2.6A1.7 1.7 0 0 1 15 6.7V8"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" />
-                      <path d="M4 12.2h5.3M14.7 12.2H20"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" />
-                    </svg>
-
-                  {% when "osf" %}
-                    <!-- OSF icon: orbit-like network -->
-                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                      <circle cx="12" cy="12" r="7.5" fill="none"
-                              stroke="currentColor" stroke-width="1.6" />
-                      <circle cx="12" cy="7.5" r="1.3" fill="currentColor" />
-                      <circle cx="8" cy="14.5" r="1.3" fill="currentColor" />
-                      <circle cx="16" cy="14.5" r="1.3" fill="currentColor" />
-                      <path d="M12 8.8v2.4M9 13.4l2.2-1.4M15 13.4l-2.2-1.4"
-                            fill="none" stroke="currentColor" stroke-width="1.4"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-
-                  {% when "orcid" %}
-                    <!-- ORCID icon: inner dot in a ring -->
-                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                      <circle cx="12" cy="12" r="7.5" fill="none"
-                              stroke="currentColor" stroke-width="1.6" />
-                      <circle cx="10" cy="10" r="1.3" fill="currentColor" />
-                      <path d="M13.4 10v5"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" />
-                    </svg>
-
-                  {% else %}
-                    <!-- Fallback: generic link icon -->
-                    <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                      <path d="M9.5 14.5L8 16a3 3 0 0 0 4.2 4.2l2.3-2.3A3 3 0 0 0 13.5 13"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M14.5 9.5L16 8a3 3 0 1 0-4.2-4.2L9.5 6.1A3 3 0 0 0 10.5 11"
-                            fill="none" stroke="currentColor" stroke-width="1.6"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                {% endcase %}
-              </span>
-              <span class="profile-card-link-label">
-                {{ link.label }}
-              </span>
-            </a>
-          </li>
-        {%- endfor -%}
-
-        {%- if has_orcid -%}
-          <li class="profile-card-link-item">
-            <a href="{{ profile.orcid }}" class="profile-card-link" target="_blank" rel="noopener noreferrer">
-              <span class="profile-card-link-icon" aria-hidden="true">
-                <!-- ORCID icon reused for explicit ORCID entry -->
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <circle cx="12" cy="12" r="7.5" fill="none"
-                          stroke="currentColor" stroke-width="1.6" />
-                  <circle cx="10" cy="10" r="1.3" fill="currentColor" />
-                  <path d="M13.4 10v5"
+              {% when "scholar" %}
+                <!-- Google Scholar: graduation cap -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <!-- cap top -->
+                  <path d="M4 10l8-3 8 3-8 3-8-3z"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linejoin="round" />
+                  <!-- cap base -->
+                  <path d="M7.5 12.3v3c0 .7 2 1.6 4.5 1.6s4.5-.9 4.5-1.6v-3"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linejoin="round" />
+                  <!-- tassel -->
+                  <path d="M12 7v2.3"
                         fill="none" stroke="currentColor" stroke-width="1.6"
                         stroke-linecap="round" />
+                  <circle cx="12" cy="10" r="0.6" fill="currentColor" />
                 </svg>
-              </span>
-              <span class="profile-card-link-label">ORCID</span>
-            </a>
-          </li>
-        {%- endif -%}
 
-      </ul>
-    {% endif %}
-  </section>
+              {% when "researchgate" %}
+                <!-- ResearchGate: stylized R in a circle -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <!-- outer circle -->
+                  <circle cx="12" cy="12" r="8.2"
+                          fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <!-- R -->
+                  <path d="M9 15.5v-7h2.5a2 2 0 0 1 0 4H9"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                  <!-- leg / tail hint -->
+                  <path d="M11.2 12.4L13.2 15"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+              {% when "orcid" %}
+                <!-- ORCID: iD in a circle -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <!-- outer circle -->
+                  <circle cx="12" cy="12" r="8.2"
+                          fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <!-- i -->
+                  <circle cx="9.4" cy="9.1" r="1" fill="currentColor" />
+                  <path d="M9.4 11v4.1"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" />
+                  <!-- D -->
+                  <path d="M13.1 9.3v5.7h1.7a2.2 2.2 0 0 0 0-5.7h-1.7z"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linejoin="round" />
+                </svg>
+
+              {% else %}
+                <!-- Fallback: simple link icon -->
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9.5 14.5L8 16a3 3 0 0 0 4.2 4.2l2.3-2.3A3 3 0 0 0 13.5 13"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M14.5 9.5L16 8a3 3 0 1 0-4.2-4.2L9.5 6.1A3 3 0 0 0 10.5 11"
+                        fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            {% endcase %}
+          </span>
+
+          <span class="profile-card-link-label">
+            {{ link.label }}
+          </span>
+        </a>
+      </li>
+
+    {% endfor %}
+  </ul>
+
+</section>
 {% endif %}
