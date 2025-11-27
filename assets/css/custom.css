@@ -743,11 +743,11 @@ code {
 }
 
 .project-grid--card-size-default {
-  --project-card-width: 320px;
+  --project-card-width: 330px;
 }
 
 .project-grid--card-size-compact {
-  --project-card-width: 280px;
+  --project-card-width: 290px;
 }
 
 /* Individual project card (outer wrapper, currently an <a>) */
