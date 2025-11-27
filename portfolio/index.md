@@ -11,7 +11,7 @@ sections:
 - id: behavioral-platforms
   heading: Behavioral Platforms
   card_size: large
-  blurb: "Integrated hardware–software systems for high-precision rodent navigation, cues, and automated tasks."
+  blurb: "Integrated hardware–software systems for high-precision automated rodent behavioral studies."
   projects:
     - nc4touch-behavioral-apparatus
     - omniroute-maze-system
@@ -38,9 +38,9 @@ sections:
 - id: support-hardware-and-models
   heading: Support Hardware & Models
   card_size: large
-  blurb: "Auxiliary hardware, mounts, guides, and models used for system integration, design planning, and experimental workflows."
+  blurb: "Auxiliary hardware assemblies and models used for system integration, design planning, and experimental workflows."
   projects:
-    - adjustable-aluminum-projector-mount
+    - adjustable-projector-mount
     - roller-bearing-cable-guide
     - fischer-344-rat-model
 

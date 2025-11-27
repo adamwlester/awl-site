@@ -405,10 +405,10 @@ For additional details, see the published methods manuscript featuring this syst
 ### 3D Model Files
 - **feeder_robot_TOP_ASSY.step:** top-level feeder robot assembly
 
-# Adjustable Aluminum Projector Mount
+# Adjustable Projector Mount
 
 ## Summary
-Adjustable aluminum projector mount for precise alignment of short-throw projectors in behavioral arenas.
+Adjustable Projector Mount for precise alignment of short-throw projectors in behavioral arenas.
 
 ## Description
 This mount was designed for use with another portfolio project: the [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system).
@@ -460,7 +460,7 @@ For additional details, see the preprint methods article for the Omniroute syste
 - **photo_2.png:** in-rig photo of four installed projector mounts in NC4 Lab Omniroute system
 
 ### 3D Model Files
-- **projector_mount_TOP_ASSY.step:** top-level assembly of adjustable aluminum projector mount for 1020 rail
+- **projector_mount_TOP_ASSY.step:** top-level assembly of Adjustable Projector Mount for 1020 rail
 - **projector_mount_SUB_pivot.step:** pivot subassembly with yaw plate and slotted clamp hardware
 
 # Two-Axis Feeder Gantry
@@ -839,7 +839,7 @@ The system is controlled via the Robot Operating System (ROS) with custom nodes 
     - Design files (CAD, PCB, documentation): [https://osf.io/uy7ez](https://osf.io/uy7ez)
     - See portfolio entry: ["NC4gate Automatable Gate Module"](https://www.cadcrowd.com/3d-models/modular-gate-mechanism)
   - Feeder gantry: see portfolio entry ["Two-Axis Maze Feeder Gantry"](https://www.cadcrowd.com/3d-models/feeder-gantry)
-  - Projector mounts: see portfolio entry ["Adjustable Aluminum Projector Mount"](https://www.cadcrowd.com/3d-models/projector-mount)
+  - Projector mounts: see portfolio entry ["Adjustable Projector Mount"](https://www.cadcrowd.com/3d-models/projector-mount)
 - **Software:**
   - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
   - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)

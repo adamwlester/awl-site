@@ -86,7 +86,7 @@ The system is controlled via the Robot Operating System (ROS) with custom nodes 
     - Design files (CAD, PCB, documentation): [https://osf.io/uy7ez](https://osf.io/uy7ez)
     - See portfolio entry: ["NC4gate Automatable Gate Module"](https://www.cadcrowd.com/3d-models/modular-gate-mechanism)
   - Feeder gantry: see portfolio entry ["Two-Axis Maze Feeder Gantry"](https://www.cadcrowd.com/3d-models/feeder-gantry)
-  - Projector mounts: see portfolio entry ["Adjustable Aluminum Projector Mount"](https://www.cadcrowd.com/3d-models/projector-mount)
+  - Projector mounts: see portfolio entry ["Adjustable Projector Mount"](https://www.cadcrowd.com/3d-models/projector-mount)
 - **Software:**
   - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
   - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)

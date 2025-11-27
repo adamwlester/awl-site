@@ -69,8 +69,8 @@
   --profile-card-icon-size: 1.35rem;
 
     /* Portfolio card typography */
-  --project-card-title-font-size: 1.05rem;
-  --project-card-title-color: var(--color-accent-blue-dark);
+  --project-card-title-font-size: 1.25rem;
+  --project-card-title-color: var(--color-accent-blue-light);
   --project-card-summary-font-size: 0.95rem;
   --project-card-summary-color: var(--color-text-gray-muted);
 }
@@ -739,7 +739,7 @@ code {
 
 /* Size modifiers control card width per section */
 .project-grid--card-size-large {
-  --project-card-width: 360px;
+  --project-card-width: 370px;
 }
 
 .project-grid--card-size-default {

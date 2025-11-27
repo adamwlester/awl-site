@@ -11,7 +11,7 @@ instantaneous-cue-rotation-arena
 track-mounted-feeder-cart
 nc4gate-automatable-gate-module
 two-axis-feeder-gantry
-adjustable-aluminum-projector-mount
+adjustable-projector-mount
 wireless-mobile-feeder-robot
 silicon-probe-microdrive-housing
 dual-bundle-electrode-drive

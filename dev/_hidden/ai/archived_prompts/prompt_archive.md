@@ -10,7 +10,7 @@ Inside the existing folder `portfolio/projects/`, create one folder for each of 
 - silicon-probe-microdrive-housing
 - fischer-344-rat-model
 - wireless-mobile-feeder-robot
-- adjustable-aluminum-projector-mount
+- adjustable-projector-mount
 - two-axis-feeder-gantry
 - nc4gate-automatable-gate-module
 - track-mounted-feeder-cart
