@@ -19,7 +19,7 @@ sections:
 
 - id: integrated-subsystems
   heading: Integrated Subsystems
-  card_size: default
+  card_size: compact
   blurb: "Electromechanical and embedded modules that extend major platforms through automation, control, and specialized function."
   projects:
     - nc4gate-automatable-gate-module

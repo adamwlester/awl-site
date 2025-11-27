@@ -18,7 +18,7 @@ Requirements:
 Example usage:
 
   # Process a single project by slug
-  python dev/scripts/resize_hero_images.py --project wireless-mobile-feeder-robot
+  python dev/scripts/resize_hero_images.py --project fischer-344-rat-model
 
   # Process all projects under portfolio/projects
   python dev/scripts/resize_hero_images.py --all
