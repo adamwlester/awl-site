@@ -16,9 +16,9 @@ We will build in stages and are focusing on V1 elements now:
 /
   ├─ Home                                       # site root (/index.md) -> landing page + link to portfolio
   ├─ Portfolio                                  # /portfolio/index.md -> section intro + project grid
-  │   ├─ Project: nc4touch-behavioral-apparatus # /portfolio/projects/nc4touch-behavioral-apparatus -> project page
-  │   ├─ Project: omniroute-maze-system         # /portfolio/projects/omniroute-maze-system -> project page
-  │   └─ Project: <slug>                        # /portfolio/projects/<slug> -> project page
+  │   ├─ Project: nc4touch-behavioral-apparatus # public URL: /portfolio/nc4touch-behavioral-apparatus/
+  │   ├─ Project: omniroute-maze-system         # public URL: /portfolio/omniroute-maze-system/
+  │   └─ Project: <slug>                        # public URL: /portfolio/<slug>/
   └─ Future V2 Top-Level Pages                  # placeholders for site expansion
       ├─ About                                  # bio/overview
       └─ Contact                                # email/links/form
@@ -37,14 +37,19 @@ We will build in stages and are focusing on V1 elements now:
 - **image-viewer (media carousel):** Custom CSS scroll-snap carousel with lightweight vanilla-JS arrows + thumbnails.
 
 > **URL note:**  
-> In production, public URLs are constructed as  
-> `{{ site.baseurl }}` + the paths shown in the Site Map above  
-> (for example:  
-> `{{ site.baseurl }}/portfolio/` and  
-> `{{ site.baseurl }}/portfolio/projects/<slug>/`).  
+> Repo structure and public URLs are intentionally different.  
 >  
-> Internal links in templates should always prepend `{{ site.baseurl }}`,  
-> as described in the Jekyll Config Conventions section.
+> **Repository folders:**  
+> `portfolio/projects/<slug>/index.md`  
+>  
+> **Public URLs:**  
+> `{{ site.baseurl }}/portfolio/<slug>/`  
+>  
+> Project pages now resolve to `/portfolio/<slug>/` using either folder naming
+> or page-level `permalink:` fields.  
+>  
+> Internal links in templates must still prepend `{{ site.baseurl }}` so they
+> work correctly in local development and on GitHub Pages.
 
 
 
