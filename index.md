@@ -7,7 +7,7 @@ banner_title: Adam W. Lester
 banner_subtitle: Neuroscience · Experimental Design · Open Hardware Development
 published: true
 ---
-## I’m a systems neuroscientist with a thing for messy systems and clean instruments.
+## I’m a systems neuroscientist with a thing for complex systems and clean design.
 
 PhD neuroscientist and biomedical engineering postdoc at UBC’s School of Biomedical Engineering. I lead the end-to-end design and delivery of research instruments and hardware–software platforms, from concept through deployment in active studies.
 
