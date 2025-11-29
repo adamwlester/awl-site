@@ -4,14 +4,14 @@ title: Portfolio
 description: "A curated collection of research instrument design projects featuring mechanical, electronic, and behavioral assay systems."
 banner_image: /assets/images/portfolio-list-banner.png
 banner_title: Research Instrumentation Portfolio
-banner_subtitle: Open-source hardware and experimental systems for neuroscience and behavioral research
-page_lead: "A curated collection of open-source instruments, behavioral platforms, and experimental systems developed for high-precision neuroscience and biomedical research."
+banner_subtitle: Hardware and experimental systems for neuroscience and behavioral research
+page_lead: "A collection of open-source instruments and real-world behavioral and electrophysiology systems, spanning end-to-end design from hardware to control software and deployed across active rodent neuroscience research."
 
 sections:
 - id: behavioral-platforms
   heading: Behavioral Platforms
   card_size: large
-  blurb: "Integrated hardware–software systems for high-precision automated rodent behavioral studies."
+  blurb: "Integrated closed-loop hardware–software systems for high-precision automated rodent behavioral studies."
   projects:
     - nc4touch-behavioral-apparatus
     - omniroute-maze-system

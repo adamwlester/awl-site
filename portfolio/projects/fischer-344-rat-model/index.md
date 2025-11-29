@@ -22,46 +22,8 @@ published: true
 <div class="content-groups">
 <div class="content-group content-group-primary" markdown="1">
 
-## Description
-
-- (content not provided)
-
-## Validation & Performance
-
-- (content not provided)
-
-## Materials & Fabrication
-
-- (content not provided)
-
-## Release
-
-- **CAD:** STEP file available in portfolio (see 3D Model Files)
-
-## References
-
-- (content not provided)
-
-
 </div>
 <div class="content-group content-group-secondary" markdown="1">
-
-## Role & Contributions
-
-- Designed in SolidWorks
-
-## Highlights & Key Specs
-
-- (content not provided)
-
-## Deployment & Status
-
-- (content not provided)
-
-## Licensing
-
-- **Design files:** CC-BY-4.0
-
 
 </div>
 </div>

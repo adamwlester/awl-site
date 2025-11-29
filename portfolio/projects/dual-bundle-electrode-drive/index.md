@@ -68,10 +68,6 @@ Standard hardware including #0-80 and M1 fasteners, washers, springs, neodymium 
 - Select additional files (i.e., drive body) withheld due to third-party IP
 - **On request:** assembly notes
 
-## References
-
-- (content not provided)
-
 
 </div>
 <div class="content-group content-group-secondary" markdown="1">

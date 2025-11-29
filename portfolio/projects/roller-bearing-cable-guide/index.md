@@ -52,9 +52,6 @@ SLA-printed resin two-part housing and two-part collet
 - **CAD:** STEP files available in portfolio (see 3D Model Files)
 - **On request:** additional design files
 
-## References
-- (content not provided)
-
 
 </div>
 <div class="content-group content-group-secondary" markdown="1">

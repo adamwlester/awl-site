@@ -57,10 +57,6 @@ SLA-printed resin body
 - **CAD:** STEP files available in portfolio (see 3D Model Files)
 - **On request:** assembly notes
 
-## References
-
-- (content not provided)
-
 
 </div>
 <div class="content-group content-group-secondary" markdown="1">
