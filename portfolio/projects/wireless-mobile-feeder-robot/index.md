@@ -94,10 +94,11 @@ Deployed in-rig and in vivo across 2 experiments
 
 ## Release
 
-- **CAD:** full assembly STEP available in portfolio (see 3D Model Files)
-- **Software:** 
-  - Firmware repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
-- **Related portfolio entry:** [Instantaneous Cue Rotation Arena](https://www.cadcrowd.com/3d-models/instantaneous-cue-rotation-arena)
+**Downloadable CAD Models:**
+- [**feeder_robot_TOP_ASSY.step**]({{ site.baseurl }}/portfolio/projects/wireless-mobile-feeder-robot/release/feeder_robot_TOP_ASSY.STEP): top-level feeder robot assembly
+
+**Software:** 
+- Firmware repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
 
 ## References
 

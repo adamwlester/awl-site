@@ -92,12 +92,12 @@ The gantry provides spatially targeted liquid reward by tracking animal movement
 
 ## Release
 
-- **CAD:** select STEP files available in portfolio (see 3D Model Files)
-- **Software:**
-- ROS workspace (Ubuntu): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
-- ROS workspace (Windows): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
-- **On request:** additional design files
-- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
+**CAD:**
+- Design files (CAD, documentation): [https://osf.io/uy7ez](https://osf.io/uy7ez)  
+
+**Software:**
+- ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
+- ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
 
 ## References
 

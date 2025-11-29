@@ -59,6 +59,8 @@ SLA-printed resin body
 - [**probe_housing_PART_housing_body_b.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_b.STEP): part model of housing body B
 - [**probe_housing_PART_housing_base.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_base.STEP): part model of housing base
 
+**On request:**
+- Assembly notes and additional design files  
 
 
 </div>

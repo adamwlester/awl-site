@@ -49,9 +49,13 @@ SLA-printed resin two-part housing and two-part collet
 
 ## Release
 
-- **CAD:** STEP files available in portfolio (see 3D Model Files)
-- **On request:** additional design files
+**Downloadable CAD Models:**
+- [**cable_guide_PART_housing_a.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_a.STEP): first housing half
+- [**cable_guide_PART_housing_b.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_b.STEP): second housing half
+- [**cable_guide_PART_split_collet.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_split_collet.STEP): two-part split collet for 3/16 in cable
 
+**On request:**
+- Assembly notes and additional design files  
 
 </div>
 <div class="content-group content-group-secondary" markdown="1">

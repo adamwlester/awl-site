@@ -70,14 +70,14 @@ Standard fasteners, spacers, rollers; cable ties and strain relief provisions
 
 ## Release
 
-- **CAD:** 
-  - Design files including SolidWorks assemblies and parts, PCBs, jigs, cutting templates, and documentation: [https://osf.io/uy7ez](https://osf.io/uy7ez)
-- **Software:**
-  - Standalone NC4gate firmware and software repo: [https://github.com/NC4Lab/NC4gate](https://github.com/NC4Lab/NC4gate)
-  - Omniroute system firmware and software repo:
-    - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
-    - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
-- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
+**CAD:** 
+- Design files including SolidWorks assemblies and parts, PCBs, jigs, cutting templates, and documentation: [https://osf.io/uy7ez](https://osf.io/uy7ez)  
+
+**Software:**
+- Standalone NC4gate firmware and software repo: [https://github.com/NC4Lab/NC4gate](https://github.com/NC4Lab/NC4gate)
+- Omniroute system firmware and software repo:
+  - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
+  - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
 
 ## References
 

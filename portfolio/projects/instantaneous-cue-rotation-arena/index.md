@@ -67,11 +67,8 @@ In-rig and in vivo use across 2 experiments
 
 ## Release
 
-- **CAD:**
-  - ICR: full assembly STEP available in portfolio (see 3D Model Files)
-  - Mobile feeder robot: see portfolio entry “[Wireless Mobile Feeder Robot](https://www.cadcrowd.com/3d-models/feeder-robot)”
-- **Software:**
-  - Firmware and software repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
+**Software:**
+- Firmware and software repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
 
 ## References
 
@@ -134,7 +131,6 @@ Active, May 2017–present, Barnes Lab
 
 ## Licensing
 
-- **Hardware:** CERN-OHL-W-2.0
 - **Software:** MIT
 - **Documentation:** CC-BY-4.0
 

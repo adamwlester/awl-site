@@ -44,7 +44,6 @@ During recording, a headstage cover secures the NeuraLynx FreeLynx wireless head
 
 ## Validation & Performance
 
-**Stable use:**  
 In-rig and in vivo use with stable recordings for 2 studies and 9 implants total.
 
 ## Materials & Fabrication
@@ -63,10 +62,20 @@ Standard hardware including #0-80 and M1 fasteners, washers, springs, neodymium 
 
 ## Release
 
-**CAD:** 
-- STEP files available in portfolio (see 3D Model Files)
-- Select additional files (i.e., drive body) withheld due to third-party IP
-- **On request:** assembly notes
+**Select additional files (i.e., drive body) withheld due to third-party IP**
+
+**Downloadable CAD Models:**
+- [**electrode_drive_SUB_core.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_core.STEP): drive core assembly, including drive core, shuttles, and cannulae 
+- [**electrode_drive_SUB_bundle_guide.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_bundle_guide.STEP): bundle guide component for split-bundle routing
+- [**electrode_drive_SUB_cover.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_cover.STEP): headstage cover with LED diffuser interfaces
+- [**electrode_drive_SUB_cap.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_cap.STEP): cap with weight attachment  
+
+**On request:**
+- Assembly notes and additional design files  
+
+**Attribution:**
+- Inspired by the NeuraLynx Halo-18; Halo-18-compatible geometry; independent, non-affiliated design. NeuraLynx and FreeLynx are trademarks of their owner; names used for identification only.
+- Special thanks and acknowledgement to Anders Lundberg, designer of the Halo-18, for informal guidance during scoping; all engineering decisions and CAD were produced independently.
 
 
 </div>
@@ -114,12 +123,6 @@ Active, Jun 2020–present, Barnes Lab
 
 - **Hardware:** CERN-OHL-W-2.0
 - **Documentation:** CC-BY-4.0
-
-### Attribution
-
-- Inspired by the NeuraLynx Halo-18; Halo-18-compatible geometry; independent, non-affiliated design. NeuraLynx and FreeLynx are trademarks of their owner; names used for identification only.
-- Special thanks and acknowledgement to Anders Lundberg, designer of the Halo-18, for informal guidance during scoping; all engineering decisions and CAD were produced independently.
-
 
 </div>
 </div>

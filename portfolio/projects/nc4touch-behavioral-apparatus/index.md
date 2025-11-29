@@ -105,9 +105,6 @@ Design files including SolidWorks assemblies and parts, cutting templates, and d
 **Software:**   
 Firmware and software repo: [https://github.com/NC4Lab/TouchscreenApparatus](https://github.com/NC4Lab/TouchscreenApparatus)
 
-**On request:**  
-Additional design files; assembly notes  
-
 ## References
 
 For additional details, see:  

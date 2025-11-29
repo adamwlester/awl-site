@@ -72,8 +72,13 @@ Central pillar assembly, two 0.25 in coupling rods, sealed ball bearings, thread
 
 ## Release
 
-- **CAD:** STEP files available in portfolio (see 3D Model Files)
-- **On request:** assembly notes; additional design files
+**Downloadable CAD Models:**
+- [**feeder_cart_TOP_ASSY.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_TOP_ASSY.STEP): top-level assembly of track-mounted feeder cart
+- [**feeder_cart_SUB_gated_port.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_gated_port.STEP): gated feeder port subassembly with servo, gate, and IR sensors
+- [**feeder_cart_SUB_tether_guide.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_tether_guide.STEP): tether guide clamp subassembly for overhead rail  
+
+**On request:**
+- Assembly notes and additional design files
 
 ## References
 
