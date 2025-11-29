@@ -27,6 +27,7 @@
 {%- assign project = include.project -%}
 
 {%- if project -%}
+  {%- assign asset_dir = '/' | append: project.path | remove: 'index.md' -%}
 
   <!-- ======================================== -->
   <!-- PROJECT CARD                              -->
@@ -41,7 +42,7 @@
     {%- if project.hero -%}
       <div class="project-card-image">
         <img
-          src="{{ site.baseurl }}{{ project.dir }}{{ project.hero }}"
+          src="{{ site.baseurl }}{{ asset_dir }}{{ project.hero }}"
           alt=""
         >
       </div>

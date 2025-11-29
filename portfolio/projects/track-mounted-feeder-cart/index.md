@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "Track-Mounted Feeder Cart"
+permalink: /portfolio/track-mounted-feeder-cart/
 description: "Mobile feeder cart for controlled on-track liquid reinforcement with gated feeder access for rodent circular track experiments"
 summary: "Mobile feeder cart for controlled on-track liquid reinforcement with gated feeder access for rodent circular track experiments"
 hero: "images/hero.png"

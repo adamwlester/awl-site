@@ -45,8 +45,8 @@ We will build in stages and are focusing on V1 elements now:
 > **Public URLs:**  
 > `{{ site.baseurl }}/portfolio/<slug>/`  
 >  
-> Project pages now resolve to `/portfolio/<slug>/` using either folder naming
-> or page-level `permalink:` fields.  
+Project pages now resolve to `/portfolio/<slug>/` using page-level
+`permalink:` fields on each project.  
 >  
 > Internal links in templates must still prepend `{{ site.baseurl }}` so they
 > work correctly in local development and on GitHub Pages.
@@ -467,7 +467,7 @@ Each card pulls content from its project `portfolio/projects/<slug>/index.md` fr
 - Generates one card per slug listed in the `projects:` array in `portfolio/index.md`.  
 - The order of slugs in this list (each entry is a project slug matching `portfolio/projects/<slug>/`) determines the order of cards in the grid from top-left to bottom-right.
 - Each card displays its hero image, title, and summary in a consistent layout.  
-- The **entire card is clickable**, linking to `{{ site.baseurl }}/portfolio/projects/<slug>/`.  
+- The **entire card is clickable**, linking to `{{ site.baseurl }}/portfolio/<slug>/`.  
 - Subtle hover and active states provide visual feedback (gentle lift or shadow change on hover; slight depress on click).
 
 **Constraints / Notes:**  
@@ -764,7 +764,7 @@ bundle exec jekyll serve --livereload --baseurl "/awl-site"
 
 **Status:**
 - Jekyll site scaffolded with `index.md` as the home page.
-- Portfolio section routes match the Site Map (`/portfolio/` and `/portfolio/projects/<slug>/`).
+- Portfolio section routes match the Site Map (`/portfolio/` and `/portfolio/<slug>/`).
 - Standardized project folder pattern (`images/`, `models/`, `index.md`) applied across all projects.
 - All project folders include full image sets, model files, and `index.md` content.
 - Portfolio index front matter lists project slugs in the intended display order.

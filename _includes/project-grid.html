@@ -27,7 +27,7 @@
 
   Resolution logic:
     - Construct expected project URL:
-        /portfolio/projects/<slug>/
+        /portfolio/<slug>/
     - Jekyll page.url never includes site.baseurl.
     - Filter site.pages by that .url value.
 {%- endcomment -%}
@@ -45,7 +45,7 @@
     {%- for slug in include.projects -%}
 
       <!-- Resolve project page for slug: "{{ slug }}" -->
-      {%- assign project_path = '/portfolio/projects/' | append: slug | append: '/' -%}
+      {%- assign project_path = '/portfolio/' | append: slug | append: '/' -%}
       {%- assign project = site.pages | where: 'url', project_path | first -%}
 
       {%- if project -%}

@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "Instantaneous Cue Rotation Arena"
+permalink: /portfolio/instantaneous-cue-rotation-arena/
 description: "An augmented reality behavioral arena for studying cue-based navigation in freely moving rats."
 summary: "An augmented reality behavioral arena for studying cue-based navigation in freely moving rats."
 hero: "images/hero.png"

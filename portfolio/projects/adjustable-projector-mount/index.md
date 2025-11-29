@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "Adjustable Projector Mount"
+permalink: /portfolio/adjustable-projector-mount/
 description: "Adjustable Projector Mount for precise alignment of short-throw projectors in behavioral arenas."
 summary: "Adjustable Projector Mount for precise alignment of short-throw projectors in behavioral arenas."
 hero: "images/hero.png"

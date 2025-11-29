@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "NC4touch Behavioral Apparatus"
+permalink: /portfolio/nc4touch-behavioral-apparatus/
 description: "Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats."
 summary: "Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats."
 hero: "images/hero.png"

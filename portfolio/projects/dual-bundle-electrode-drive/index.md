@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "Dual-Bundle Electrode Drive"
+permalink: /portfolio/dual-bundle-electrode-drive/
 description: "Split-bundle implant for dual-region tetrode recordings in freely moving rats."
 summary: "Split-bundle implant for dual-region tetrode recordings in freely moving rats."
 hero: "images/hero.png"

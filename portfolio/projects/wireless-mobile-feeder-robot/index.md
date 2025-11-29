@@ -1,6 +1,7 @@
 ---
 layout: project-detail-page
 title: "Wireless Mobile Feeder Robot"
+permalink: /portfolio/wireless-mobile-feeder-robot/
 description: "A mobile feeder robot for delivering liquid rewards to rats during circular track experiments"
 summary: "A mobile feeder robot for delivering liquid rewards to rats during circular track experiments"
 hero: "images/hero.png"
