@@ -295,7 +295,7 @@ p + ul {
 /* Banner wrapper rendered by layouts when banner_image is present */
 .page-banner {
   position: relative;
-  height: var(--page-banner-height);
+  min-height: var(--page-banner-height);
   background-color: var(--page-banner-background);
   color: var(--banner-title-color);
   overflow: hidden;
