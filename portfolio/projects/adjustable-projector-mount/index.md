@@ -53,9 +53,9 @@ At the projector end, a waterjet-cut three-plate yaw assembly provides ±30° ro
 
 ## Release
 
-- **CAD:** select STEP files available in portfolio (see 3D Model Files)
-- **On request:** additional design files
-- **Related portfolio entry:** [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system)
+**Downloadable CAD Models:**
+- [**projector_mount_TOP_ASSY.step**]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_TOP_ASSY.STEP): top-level assembly of Adjustable Projector Mount for 1020 rail
+- [**projector_mount_SUB_pivot.step**]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_SUB_pivot.STEP): pivot subassembly with yaw plate and slotted clamp hardware
 
 ## References
 
