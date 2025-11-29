@@ -38,7 +38,7 @@ sections:
 - id: support-hardware-and-models
   heading: Support Hardware & Models
   card_size: large
-  blurb: "Auxiliary hardware assemblies and models used for system integration, design planning, and experimental workflows."
+  blurb: "Auxiliary hardware assemblies and models used for system integration and design planning."
   projects:
     - adjustable-projector-mount
     - roller-bearing-cable-guide
