@@ -52,46 +52,46 @@ Mechanical and electrical design emphasize maintainability and replication. Pane
 
 ## Validation & Performance
 
-**Bench validation:** 
+### Bench validation: 
 - End-to-end verification across touch detection, cue delivery, pump dosing, synchronized video, and CSV logging
 - Validation performed on single- and multi-chamber setups using the browser UI and PoE
 
-**Timing and data integrity:**
+### Timing and data integrity:
 - Frame-aligned MP4 confirmed millisecond event–video alignment
 - Chambers wrote synchronized session logs to shared storage
 
-**Networked operation:**
+### Networked operation:
 - Multi-chamber control over Ethernet with shared code, firmware, and image directories
 - No desynchronization observed during concurrent runs
 
-**Behavioral performance:** 
+### Behavioral performance: 
 - 3/3 tested rats completed an eight-stage visual discrimination task with stage-wise performance gains, meeting the ≥77 percent correct advancement criterion at each stage
 
 ## Materials & Fabrication
 
-**Frame:**
+### Frame:
 - Miniature T-slotted aluminum extrusion; associated T-nuts and fasteners
 - Custom SLA-printed frame-to-panel joining brackets
 
-**Enclosure and electronics bays:**
+### Enclosure and electronics bays:
 - Laser-cut POM-C (acetal) sidewalls and electronics panels
 - Laser-cut clear acrylic top, floor, and grounding panel
 - SLA-printed brackets for panel registration and service access
 - SLA-printed clips and cable mounts
 
-**Displays and controllers:** 
+### Displays and controllers: 
 - Three capacitive touchscreens (DFRobot Fermion DFR0669)
 - Three FireBeetle 2 M0 (DFR0652) development board controllers
 
-**Cue delivery:** 
+### Cue delivery: 
 - Four Dialight 8 mm RGB panel indicators (6201121317F)
 - Gravity digital buzzer (DFR0032)
 
-**Camera:** 
+### Camera: 
 - DFRobot 8 MP USB camera (FIT0729)
 - Dedicated SLA-printed camera mount assembly
 
-**Feeder system:**
+### Feeder system:
 - SLA-printed feeder port assembly
 - Adafruit IR break-beam sensor (2167)
 - TFS RP-CIII ring pump
@@ -99,10 +99,10 @@ Mechanical and electrical design emphasize maintainability and replication. Pane
 
 ## Release
 
-**CAD:**  
+### CAD:  
 Design files including SolidWorks assemblies and parts, cutting templates, and documentation: [https://osf.io/8q9tk](https://osf.io/8q9tk)
 
-**Software:**   
+### Software:  
 Firmware and software repo: [https://github.com/NC4Lab/TouchscreenApparatus](https://github.com/NC4Lab/TouchscreenApparatus)
 
 ## References
@@ -124,45 +124,45 @@ For additional details, see:
 
 ## Highlights & Key Specs
 
-**Workspace:**
+### Workspace:
 - Trapezoidal chamber with isolated electronics bays
 - Removable clear acrylic lid and floor for wipe-down cleaning
 
-**Displays:**
+### Displays:
 - Three 3.5 in 320 × 480 capacitive touchscreens
 - Three screen-dedicated microcontrollers
 - GDI ribbon cable for display, USB for command and data
 
-**Control:**
+### Control:
 - Raspberry Pi 4 with PoE
 - Single or multi-chamber orchestration via browser UI
 - Unified I/O and logging
 
-**Cue delivery:** 
+### Cue delivery: 
 - Front and rear interior panel RGB indicators
 - Front interior panel buzzer
 
-**Tracking:** 
+### Tracking: 
 - 8 MP USB overhead camera covering the full field of view
 
-**Reward:** 
+### Reward: 
 - IR break-beam for reward timing and logging
 - Peristaltic pump for precise, repeatable food dosing
 
-**Data:** 
+### Data: 
 - CSV logging
 - Optional synchronized MP4 with millisecond event timestamps
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 Completed, Sep 2023–Nov 2024  
 
-**Deployment:**  
+### Deployment:  
 - NC4 Lab, University of British Columbia (2 studies, 4 rigs)  
 - Snyder Lab, University of British Columbia (1 study, 2 rigs)  
 
-**Status:**  
+### Status:  
 Active, Nov 2024–present, NC4 Lab
 
 ## Licensing

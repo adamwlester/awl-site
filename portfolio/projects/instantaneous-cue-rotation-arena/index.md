@@ -44,20 +44,20 @@ This design cleanly dissociates external cues from self-motion feedback, while a
 
 ## Validation & Performance
 
-**Behavioral performance:**  
+### Behavioral performance:  
 Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)  
 
-**Stable use:**  
+### Stable use:  
 In-rig and in vivo use across 2 experiments  
 
 ## Materials & Fabrication
 
-**Structure:**  
+### Structure:  
 - 80/20 aluminum extrusion frame  
 - Acrylic and PVC foam board  
 - FlexGlass projection surface for rear projection  
 
-**Electronics:**  
+### Electronics:  
 - Arduino Due microcontrollers  
 - NeuraLynx Digital Lynx SX  
 - Phototransistors  
@@ -67,7 +67,7 @@ In-rig and in vivo use across 2 experiments
 
 ## Release
 
-**Software:**
+### Software:
 - Firmware and software repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
 
 ## References
@@ -92,41 +92,41 @@ For additional details, see the published methods manuscript, which features thi
 
 ## Highlights & Key Specs
 
-**Arena:**  
+### Arena:  
 - 1.4 m diameter circular track  
 - 68 cm projection walls  
 - Track can be accessed from underneath for training or lowered via gas springs and pulleys to allow easy access to the base for cleaning  
 
-**Visual stimulus system:**  
+### Visual stimulus system:  
 Four short-throw projectors (BenQ MW621ST) with instantaneous remote cue rotations  
 
-**Synchronization and I/O:**  
+### Synchronization and I/O:  
 - Arduino Due controllers  
 - NeuraLynx Digital Lynx SX integration  
 - Phototransistor-triggered TTL, millisecond-precision timestamps for cue-change alignment  
 
-**Reward and tracking:**  
+### Reward and tracking:  
 - Mobile feeder robot with XBee-PRO wireless and LiPo power  
 - Retractable liquid-reward dish  
 - Fused overhead camera and Pixy-based position tracking  
 
-**Software stack:**  
+### Software stack:  
 - MCU firmware in C/C++  
 - C# wireless data interface  
 - MATLAB control and analysis frontend and GUI  
 
-**Acoustic control:**  
+### Acoustic control:  
 Continuous white noise to mask orienting auditory cues and optional sound cues  
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 Completed, Aug 2013–May 2017  
 
-**Deployment:**  
+### Deployment:  
 Barnes Lab, University of Arizona (2 studies)  
 
-**Status:**  
+### Status:  
 Active, May 2017–present, Barnes Lab  
 
 ## Licensing

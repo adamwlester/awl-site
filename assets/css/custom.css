@@ -20,7 +20,8 @@
   --color-text-gray-muted: #666666;    /* secondary text */
   --color-text-light-soft: #eef3f9;   /* soft accent background for tags/badges */
   --color-text-light: #ffffff;   /* cards, sections, header */
-  --color-accent-blue-dark: #234b6c;        /* links, key highlights */
+  --color-text-links: #1d6eb3;    /* link color */
+  --color-accent-blue-dark: #234b6c;        /* key highlights */
   --color-accent-blue-light: #2b5f8a;   /* button fill color, active outlines */
   --color-accent-blue-muted: #6E8699;
 
@@ -133,10 +134,11 @@ h1 {
 
 h2 {
   font-size: 1.6rem;
+  color: var(--color-accent-blue-dark);
 }
 
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 
 h4 {
@@ -161,7 +163,7 @@ li + li {
 
 /* Links */
 a {
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-links);
   text-decoration: none;
 }
 
@@ -175,6 +177,19 @@ code {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   font-size: 0.95em;
+}
+
+/* Bullets */
+ul {
+  list-style-type: square;
+}
+
+ul li::marker {
+  color: var(--color-border-bold);
+}
+
+p + ul {
+  margin-top: 0;
 }
 
 /* =========================================================

@@ -48,32 +48,32 @@ In-rig and in vivo use with stable recordings for 2 studies and 9 implants total
 
 ## Materials & Fabrication
 
-**Structure:**  
+### Structure:  
 SLA-printed resin body, bundle guide, cap, and cover components
 
-**Shuttles:**  
+### Shuttles:  
 Machined M1 screws and UHMW polyethylene shuttle plates
 
-**Electronics:**  
+### Electronics:  
 Surface-mount LEDs integrated in headstage cover
 
-**Hardware:**  
+### Hardware:  
 Standard hardware including #0-80 and M1 fasteners, washers, springs, neodymium magnets, center post
 
 ## Release
 
 **Select additional files (i.e., drive body) withheld due to third-party IP**
 
-**Downloadable CAD Models:**
+### Downloadable CAD Models:
 - [**electrode_drive_SUB_core.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_core.STEP): drive core assembly, including drive core, shuttles, and cannulae 
 - [**electrode_drive_SUB_bundle_guide.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_bundle_guide.STEP): bundle guide component for split-bundle routing
 - [**electrode_drive_SUB_cover.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_cover.STEP): headstage cover with LED diffuser interfaces
 - [**electrode_drive_SUB_cap.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_cap.STEP): cap with weight attachment  
 
-**On request:**
+### On request:
 - Assembly notes and additional design files  
 
-**Attribution:**
+### Attribution:
 - Inspired by the NeuraLynx Halo-18; Halo-18-compatible geometry; independent, non-affiliated design. NeuraLynx and FreeLynx are trademarks of their owner; names used for identification only.
 - Special thanks and acknowledgement to Anders Lundberg, designer of the Halo-18, for informal guidance during scoping; all engineering decisions and CAD were produced independently.
 
@@ -93,30 +93,30 @@ Core drive elements (body, core, shuttle) derived from NeuraLynx Halo-18 with su
 
 ## Highlights & Key Specs
 
-**Mass:**  
+### Mass:  
 ~24 g for drive body, core, bundle guide, shuttles, and guide cannulae
 
-**Shuttles:**  
+### Shuttles:  
 M1 × 0.20 screws; ~9 mm total dorsal–ventral travel
 
-**Bundles:**  
+### Bundles:  
 Two independently adjustable 9-tetrode bundles
 
-**Cover:**  
+### Cover:  
 Magnetically aligned cover for NeuraLynx FreeLynx with integrated LED tracking diffuser and thumb screw
 
-**Cap:**  
+### Cap:  
 Magnetically aligned cap with thumb screw retention and adjustable weights for acclimation
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 Completed, Aug 2019–Jun 2020
 
-**Deployment:**  
+### Deployment:  
 Barnes Lab, University of Arizona (2 studies)
 
-**Status:**  
+### Status:  
 Active, Jun 2020–present, Barnes Lab
 
 ## Licensing

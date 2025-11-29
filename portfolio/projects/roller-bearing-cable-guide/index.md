@@ -29,32 +29,32 @@ Designed for linear-track experiments, this guide prevents torsion on the headst
 
 ## Validation & Performance
 
-**Stable use:**  
+### Stable use:  
 In-rig and in vivo use with stable recordings for 2 experiments and 3 rigs.
 
 ## Materials & Fabrication
 
-**Housing and collet:**  
+### Housing and collet:  
 SLA-printed resin two-part housing and two-part collet
 
-**Rails:**  
+### Rails:  
 1/2 in diameter stainless-steel rails, 4 ft length
 
-**Bearings:**  
+### Bearings:  
 - Plastic races with 316 stainless balls
 - 3/4 in ID × 1.625 in OD and 1/8 in ID × 0.375 in OD
 
-**Hardware:**  
+### Hardware:  
 #4-40 stainless bolts with nylon-insert lock nuts and #4 washers for roller assemblies
 
 ## Release
 
-**Downloadable CAD Models:**
+### Downloadable CAD Models:
 - [**cable_guide_PART_housing_a.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_a.STEP): first housing half
 - [**cable_guide_PART_housing_b.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_b.STEP): second housing half
 - [**cable_guide_PART_split_collet.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_split_collet.STEP): two-part split collet for 3/16 in cable
 
-**On request:**
+### On request:
 - Assembly notes and additional design files  
 
 </div>
@@ -66,29 +66,29 @@ SLA-printed resin two-part housing and two-part collet
 
 ## Highlights & Key Specs
 
-**Cable interface:**  
+### Cable interface:  
 - Collet accommodates 3/16 in cable
 - Twist isolation via roller bearing
 - Intended for use downstream of a commutator to minimize cable torsion
 
-**Bearings:**  
+### Bearings:  
 - Plastic roller bearings on rails
 - Internal roller bearing at collet
 - Guide travels along two 4 ft, 1/2 in diameter stainless-steel rails
 
-**Serviceability:**  
+### Serviceability:  
 - Field-adjustable preload on roller bearings
 - Standard hand tools
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 Completed, Jan 2018–Feb 2018
 
-**Deployment:**  
+### Deployment:  
 Barnes Lab, University of Arizona (2 studies; 3 rigs)
 
-**Status:**  
+### Status:  
 Active, Feb 2018–present, Barnes Lab
 
 ## Licensing

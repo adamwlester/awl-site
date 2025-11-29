@@ -40,44 +40,44 @@ This reward delivery system was designed for use with another portfolio project:
 
 The gantry provides spatially targeted liquid reward by tracking animal movement within the Omniroute maze while simultaneously carrying a ceiling panel that prevents rats from climbing maze walls and houses a retractable feeder arm that can be rotated down to the maze floor for reward delivery. Motion control is handled by an OpenBuilds BlackBox X32 running GRBL and integrated with the Omniroute ROS stack for command, coordination, and tracking.
 
-**Frame and motion platform:** The translation stage follows the OpenBuilds ACRO architecture with V-slot extrusion (20 × 40 mm profile), Delrin V-wheels, GT2 belts, and NEMA 17 steppers. The assembled stage has a footprint of 2.2 × 1.4 m (X, Y) and provides 1.6 × 0.8 m of usable travel. Enclosed cable carriers on the X and Y axes route wiring. Custom laser-cut motor and guide plates in 1/4 in high-impact acrylic provide stiff mounting for motors, idlers, and cable-chain anchors, and create direct interfaces to the cover carriage frame. The design leverages the ACRO stage format and select OpenBuilds components for the linear motion subsystem, while the mechanical interfaces, controller integration, platework, and fixtures are all customized to meet Omniroute’s geometry and the additional cover carriage and feeder arm functionality.
+### Frame and motion platform: The translation stage follows the OpenBuilds ACRO architecture with V-slot extrusion (20 × 40 mm profile), Delrin V-wheels, GT2 belts, and NEMA 17 steppers. The assembled stage has a footprint of 2.2 × 1.4 m (X, Y) and provides 1.6 × 0.8 m of usable travel. Enclosed cable carriers on the X and Y axes route wiring. Custom laser-cut motor and guide plates in 1/4 in high-impact acrylic provide stiff mounting for motors, idlers, and cable-chain anchors, and create direct interfaces to the cover carriage frame. The design leverages the ACRO stage format and select OpenBuilds components for the linear motion subsystem, while the mechanical interfaces, controller integration, platework, and fixtures are all customized to meet Omniroute’s geometry and the additional cover carriage and feeder arm functionality.
 
-**Gantry cover carriage:** An approximately 60 × 60 cm carriage built from 10 × 10 mm lightweight aluminum extrusions carries a clear acrylic panel that acts as a moving ceiling to block climbing. The carriage includes printed brackets for the cover panel and support plates for guide wheels, plus integrated mounts for the liquid food reward vial, peristaltic pump, and feeder arm assembly (including the Z-axis motor, pulley posts, and limit-switch hardware). The frame geometry and component placement are tuned to maintain maze-wall clearance, keep high-visibility hardware away from the center of the animal’s sightlines, and avoid occlusion of the projected wall and floor stimuli used in the Omniroute maze.
+### Gantry cover carriage: An approximately 60 × 60 cm carriage built from 10 × 10 mm lightweight aluminum extrusions carries a clear acrylic panel that acts as a moving ceiling to block climbing. The carriage includes printed brackets for the cover panel and support plates for guide wheels, plus integrated mounts for the liquid food reward vial, peristaltic pump, and feeder arm assembly (including the Z-axis motor, pulley posts, and limit-switch hardware). The frame geometry and component placement are tuned to maintain maze-wall clearance, keep high-visibility hardware away from the center of the animal’s sightlines, and avoid occlusion of the projected wall and floor stimuli used in the Omniroute maze.
 
-**Feeder arm:** A retractable feeder arm assembly is mounted on the carriage and operates as a Z-axis accessory that rotates down to deliver liquid reward at a commanded XY location, then retracts to a parked position above the cover panel. Z motion is driven by a fourth NEMA 17 stepper on the motion controller Z channel through a timing-belt train with custom SLA-printed pulleys that couple the motor to the feeder arm. A small pulley-mounted cam actuates a lever-style limit switch at the fully retracted position, enabling reliable homing and interlocks. The dispensing arm uses a 1/4 in stainless-steel tube with a custom SLA angle connector joined to a flexible extension spring forming the short leg of the L-arm. A continuous silicone line runs from the pump through the tube and connector to the arm terminus. This linkage uses a doubled effective gear ratio to provide sufficient force margin to retract even if a rat hangs on it. The flexible arm end is designed to protect animals and maze walls if the arm contacts a rat during lowering or the gantry resumes movement before retracting.
+### Feeder arm: A retractable feeder arm assembly is mounted on the carriage and operates as a Z-axis accessory that rotates down to deliver liquid reward at a commanded XY location, then retracts to a parked position above the cover panel. Z motion is driven by a fourth NEMA 17 stepper on the motion controller Z channel through a timing-belt train with custom SLA-printed pulleys that couple the motor to the feeder arm. A small pulley-mounted cam actuates a lever-style limit switch at the fully retracted position, enabling reliable homing and interlocks. The dispensing arm uses a 1/4 in stainless-steel tube with a custom SLA angle connector joined to a flexible extension spring forming the short leg of the L-arm. A continuous silicone line runs from the pump through the tube and connector to the arm terminus. This linkage uses a doubled effective gear ratio to provide sufficient force margin to retract even if a rat hangs on it. The flexible arm end is designed to protect animals and maze walls if the arm contacts a rat during lowering or the gantry resumes movement before retracting.
 
-**Design revision:** Upgraded to a stepper-driven actuator with integrated limit switch detection, replacing the original servo. The design is complete and being integrated into the assembly. The revised arm has stiffer components and a flexible end.
+### Design revision: Upgraded to a stepper-driven actuator with integrated limit switch detection, replacing the original servo. The design is complete and being integrated into the assembly. The revised arm has stiffer components and a flexible end.
 
 ## Validation & Performance
 
-**Traverse speed:**  
+### Traverse speed:  
 - Peak 0.47 m/s  
 - Mean 0.21 m/s  
 
-**Arrival latency:**  
+### Arrival latency:  
 1.5 s to within 2 cm over a 0.43 m move  
 
-**Positional accuracy:**  
+### Positional accuracy:  
 0.7 cm final error at stop  
 
-**Acoustic profile:**  
+### Acoustic profile:  
 +20 dB SPL during motion vs idle  
 
 ## Materials & Fabrication
 
-**Frame and motion platform:**  
+### Frame and motion platform:  
 - V-slot 20 × 40 mm extrusion  
 - Laser-cut 1/4 in high-impact acrylic motor and guide plates  
 - GT2 belts and idlers  
 - NEMA 17 steppers  
 - OpenBuilds BlackBox X32 motion controller and Xtension Limit Switches  
 
-**Gantry cover assembly:**  
+### Gantry cover assembly:  
 - Laser-cut 1/16 in clear acrylic panel  
 - Laser-cut 1/4 in high-impact acrylic motor, guide, and mounting plates  
 - 10 × 10 mm aluminum T-slot extrusion frame  
 
-**Feeder arm:**  
+### Feeder arm:  
 - NEMA 17 stepper  
 - SLA-printed timing pulleys  
 - GT2 belt  
@@ -85,17 +85,17 @@ The gantry provides spatially targeted liquid reward by tracking animal movement
 - 1/4 in stainless-steel tube  
 - 1/4 in extension spring  
 
-**Pump and lines:**  
+### Pump and lines:  
 - Gravity Digital Peristaltic Pump (DFRobot DFR0523)  
 - Food-grade silicone tubing  
 - Glass vial reservoir  
 
 ## Release
 
-**CAD:**
+### CAD:
 - Design files (CAD, documentation): [https://osf.io/uy7ez](https://osf.io/uy7ez)  
 
-**Software:**
+### Software:
 - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
 - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
 
@@ -119,28 +119,28 @@ For additional details, including system performance tests, see the preprint met
 
 ## Highlights & Key Specs
 
-**Footprint:**  
+### Footprint:  
 2.2 × 1.4 m (X, Y) frame envelope  
 
-**Travel:**  
+### Travel:  
 1.6 × 0.8 m (X, Y) commanded range  
 
-**Carriage capacity:**  
+### Carriage capacity:  
 60 × 60 cm cover area  
 
-**Motion performance:**  
+### Motion performance:  
 peak traverse speed: 0.47 m/s  
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 - V1 developed, Jan 2023–Sep 2023  
 - Feeder arm v2 integration, Jun 2025–present  
 
-**Deployment:**  
+### Deployment:  
 NC4 Lab, University of British Columbia (3 studies)  
 
-**Status:**  
+### Status:  
 active, Sep 2023–present, NC4 Lab  
 
 ## Licensing

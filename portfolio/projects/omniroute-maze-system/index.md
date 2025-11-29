@@ -44,48 +44,48 @@ The system is controlled via the Robot Operating System (ROS) with custom nodes 
 
 ## Validation & Performance
 
-**System latency:**  
+### System latency:  
 - Sub-second gate actuation, projection updates, and audio playback  
 
-**Gantry accuracy:**  
+### Gantry accuracy:  
 - Reliable centimeter-scale arrival to commanded targets in gantry tests  
 
-**Electrophysiology compatibility:**  
+### Electrophysiology compatibility:  
 - No movement-locked electrical artifacts during gate or gantry actuation  
 
-**Behavioral performance:**  
+### Behavioral performance:  
 - Above-chance task accuracy with projected cues and wall configurations  
 
 ## Materials & Fabrication
 
-**Frame:**  
+### Frame:  
 - 80/20 aluminum T-slot extrusion  
 
-**Platform:**  
+### Platform:  
 - CNC-milled foam PVC with integrated module slots and inserts  
 
-**Gates:**  
+### Gates:  
 - Laser-cut POM-C acetal modules with 12 V DC gearmotors, pin-in-slot linkage, and top/bottom limit switches  
 
-**Electronics:**  
+### Electronics:  
 - Custom DRV8870 motor driver PCBs  
 - Cypress I/O expanders on I²C  
 - Arduino Mega control  
 
-**Projector mounts:**  
+### Projector mounts:  
 - Waterjet-cut aluminum brackets with yaw and height adjustment  
 
-**Gantry:**  
+### Gantry:  
 - OpenBuilds-style V-slot rails, NEMA 17 steppers, GT2 belts  
 - Laser-cut acrylic roller plates, motor plates, and overhead panel  
 - SLA-printed resin brackets and reward feeder assembly  
 
 ## Release
 
-**CAD:**
+### CAD:
 - Design files (CAD, PCB, documentation): [https://osf.io/uy7ez](https://osf.io/uy7ez)  
 
-**Software:**
+### Software:
 - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
 - ROS workspace (Windows host): [https://github.com/NC4Lab/omniroute_windows_ws](https://github.com/NC4Lab/omniroute_windows_ws)
 
@@ -112,36 +112,36 @@ For additional details, including system performance tests, rodent behavior, and
 
 ## Highlights & Key Specs
 
-**Platform:**  
+### Platform:  
 - 90 × 90 cm with 3 × 3 chamber grid  
 - 60 independently motorized gates  
 
-**Cues:**  
+### Cues:  
 - Four short-throw projectors with integrated speakers for dynamic visual and auditory stimuli  
 
-**Reward:**  
+### Reward:  
 - XY gantry for spatially targeted liquid reward anywhere on the platform  
 
-**Tracking:**  
+### Tracking:  
 - Real-time 3D pose of animal and gantry  
 - Closed-loop task control  
 
-**System timing:**  
+### System timing:  
 - Sub-second round-trip latencies for gates, projection, and audio as characterized in the preprint  
 
-**Gantry performance:**  
+### Gantry performance:  
 - Centimeter-scale targeting accuracy with smooth velocity profiles  
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 - v1 developed, Dec 2021–Sep 2023  
 - Feeder-gantry subsystem enhancements, Jun 2025–present  
 
-**Deployment:**  
+### Deployment:  
 - NC4 Lab, University of British Columbia (3 studies)  
 
-**Status:**  
+### Status:  
 Active, Sep 2023–present, NC4 Lab  
 
 ## Licensing

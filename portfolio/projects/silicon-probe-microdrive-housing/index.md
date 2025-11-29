@@ -40,26 +40,26 @@ The housing is compatible with the 128-channel SpikeGadgets Horizontal Headstage
 
 ## Validation & Performance
 
-**Stable use:**  
+### Stable use:  
 In-rig and in vivo use with stable recordings across 5 implants.
 
 ## Materials & Fabrication
 
-**Structure:**  
+### Structure:  
 SLA-printed resin body  
 
-**Hardware:**  
+### Hardware:  
 - #0-80 fasteners and nuts  
 - Stainless-steel tube segment for lead screw access
 
 ## Release
 
-**Downloadable CAD Models:**
+### Downloadable CAD Models:
 - [**probe_housing_PART_housing_body_a.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_a.STEP): part model of housing body A
 - [**probe_housing_PART_housing_body_b.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_b.STEP): part model of housing body B
 - [**probe_housing_PART_housing_base.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_base.STEP): part model of housing base
 
-**On request:**
+### On request:
 - Assembly notes and additional design files  
 
 
@@ -74,29 +74,29 @@ SLA-printed resin body
 
 ## Highlights & Key Specs
 
-**Drive:**  
+### Drive:  
 - Adjustment resolution ~250 µm per turn  
 - Rated travel up to 7.5 mm (implemented ~6 mm)
 
-**Mass:**  
+### Mass:  
 ~5 g with housing, hardware, NanoDrive, and probe
 
-**Assembly:**  
+### Assembly:  
 Straightforward three-part assembly with standard #0-80 fasteners and nuts
 
-**Compatibility:**  
+### Compatibility:  
 - Cambridge Neurotech 64-channel probes (ASSY-236 F) and SpikeGadgets 128-channel Horizontal Headstage  
 - Custom probe interface PCB for electrical interconnect and alignment
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 Completed, Feb 2023–Oct 2023  
 
-**Deployment:**  
+### Deployment:  
 NC4 Lab, University of British Columbia  
 
-**Status:**  
+### Status:  
 Active, Oct 2023–present, NC4 Lab
 
 ## Licensing

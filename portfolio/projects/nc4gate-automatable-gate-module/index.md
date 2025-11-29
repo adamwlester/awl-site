@@ -44,36 +44,36 @@ Electronics include a custom motor driver board (based on the TI DRV8870 chip) f
 
 ## Validation & Performance
 
-**Actuation latency:**  
+### Actuation latency:  
 Tests on N=5 modules across 50 cycles each show consistent latencies: upward ~578 ms and downward ~531 ms, suitable for behavioral control
 
-**Stress testing:**  
+### Stress testing:  
 - Long operational life up to 100,000 cycles, with field-repairable failure modes (motor wear, linkage retention, wiring)  
 - 60-module system running near-daily for over one year  
 
 ## Materials & Fabrication
 
-**Structure:**  
+### Structure:  
 Laser-cut POM-C acetal (3.175 mm) with snap-fit features and minimal fasteners
 
-**Actuation:**  
+### Actuation:  
 12 V 50 RPM DC gear motor (37 mm can) driving pin-in-slot linkage
 
-**Linkage:**  
+### Linkage:  
 Waterjet-cut aluminum arm for durability under repeated cycling
 
-**Sensing:**  
+### Sensing:  
 Upper and lower limit switches for hard-stop detection
 
-**Hardware:**  
+### Hardware:  
 Standard fasteners, spacers, rollers; cable ties and strain relief provisions
 
 ## Release
 
-**CAD:** 
+### CAD: 
 - Design files including SolidWorks assemblies and parts, PCBs, jigs, cutting templates, and documentation: [https://osf.io/uy7ez](https://osf.io/uy7ez)  
 
-**Software:**
+### Software:
 - Standalone NC4gate firmware and software repo: [https://github.com/NC4Lab/NC4gate](https://github.com/NC4Lab/NC4gate)
 - Omniroute system firmware and software repo:
   - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
@@ -100,34 +100,34 @@ For additional details, including system performance tests and detailed schemati
 
 ## Highlights & Key Specs
 
-**Envelope:**  
+### Envelope:  
 117 × 86 × 290 mm (gate lowered)
 
-**Gate travel:**  
+### Gate travel:  
 180 mm total
 
-**Typical actuation time:**  
+### Typical actuation time:  
 ~578 ms up, ~531 ms down
 
-**Endurance:**  
+### Endurance:  
 - Thousands of cycles  
 - Individual modules tested up to 100,000 cycles  
 
-**Control scale:**  
+### Control scale:  
 Up to 512 gates from a single PC and microcontroller
 
-**Interfaces:**  
+### Interfaces:  
 Qt-based GUI for manual operation; Python API for programmatic control
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 Completed, Dec 2021–Sep 2023
 
-**Deployment:**  
+### Deployment:  
 NC4 Lab, University of British Columbia (3 studies)
 
-**Status:**  
+### Status:  
 Active, Sep 2023–present, NC4 Lab	
 
 ## Licensing

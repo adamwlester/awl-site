@@ -40,20 +40,20 @@ At the projector end, a waterjet-cut three-plate yaw assembly provides ±30° ro
 
 ## Materials & Fabrication
 
-**Plates:**  
+### Plates:  
 - Waterjet-cut 1/4 in 6061 aluminum with tapped holes  
 
-**Rails:**  
+### Rails:  
 - 80/20 1020 T-slot extrusion (upright and boom)  
 
-**Hardware:**  
+### Hardware:  
 - 1/4-20 stainless fasteners with roll-in T-nuts  
 - Two 80/20 angle plates (4151)  
 - Three 1/4-20 wing-head thumb screws  
 
 ## Release
 
-**Downloadable CAD Models:**
+### Downloadable CAD Models:
 - [**projector_mount_TOP_ASSY.step**]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_TOP_ASSY.STEP): top-level assembly of Adjustable Projector Mount for 1020 rail
 - [**projector_mount_SUB_pivot.step**]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_SUB_pivot.STEP): pivot subassembly with yaw plate and slotted clamp hardware
 
@@ -73,28 +73,28 @@ For additional details, see the preprint methods article for the Omniroute syste
 
 ## Highlights & Key Specs
 
-**Adjustments:**  
+### Adjustments:  
 - Independent yaw via 1/4-20 wing-head thumb screws over ±30°  
 - Vertical adjustment along an 80/20 1020 T-slot rail  
 
-**Mounting interface:**  
+### Mounting interface:  
 - Projector-interface plate drilled for Mi 4K Laser Projector  
 - Can be re-patterned for other models  
 
-**Installation:**  
+### Installation:  
 - Standard hand tools  
 - Toolless yaw  
 - Secure, repeatable adjustment  
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 Completed, May 2022–Oct 2023  
 
-**Deployment:**  
+### Deployment:  
 NC4 Lab, University of British Columbia (3 studies)  
 
-**Status:**  
+### Status:  
 Active, Oct 2023–present, NC4 Lab  
 
 ## Licensing

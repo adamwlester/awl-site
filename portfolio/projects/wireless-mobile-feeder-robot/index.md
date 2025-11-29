@@ -52,24 +52,24 @@ To minimize odor and visual cues, a rear-mounted cleaning module continuously cl
 
 ## Validation & Performance
 
-**Behavioral performance:**  
+### Behavioral performance:  
 Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)  
 
-**Stable use:**  
+### Stable use:  
 Deployed in-rig and in vivo across 2 experiments  
 
 ## Materials & Fabrication
 
-**Body and mechanical structures:**  
+### Body and mechanical structures:  
 - Hand-machined acrylic panels  
 - CNC-milled UHMW polyethylene arm  
 - Hand-machined aluminum mounts and brackets  
 
-**Drive and motion:**  
+### Drive and motion:  
 - Front NEMA 14 and rear dual-shaft NEMA 17 stepper motors with pulley drive  
 - Hand-lathed UHMW polyethylene inner guide rollers with 1/2 in bearings running in the wall groove  
 
-**Actuation and fluidics:**  
+### Actuation and fluidics:  
 - Two Parker Series 3 miniature 2-way valves for reward delivery and ethanol dosing  
 - Food-grade silicone tubing  
 - 3/16 and 3/8 in steel conduit  
@@ -77,27 +77,27 @@ Deployed in-rig and in vivo across 2 experiments
 - Hand-machined UHMW polyethylene feeder dish  
 - FDM-printed polycarbonate elliptical timing pulley on the dual-shaft NEMA 17 rear shaft for flapper drive with GT2 belt  
 
-**Sensing and control electronics:**  
+### Sensing and control electronics:  
 - Arduino Due main controller  
 - STMicroelectronics L6470 AutoDriver stepper driver  
 - XBee-PRO Series 1 wireless modules  
 - Pixy (CMUcam5) vision module  
 - Sharp GP2Y0D810Z0F IR proximity sensors  
 
-**Power and switching:**  
+### Power and switching:  
 - 11.1 V LiPo battery (3S, ~6400 mAh class)  
 - Omron G3SD-Z01P-PD-US solid-state relay for solenoid activation  
 
-**Fasteners and hardware:**  
+### Fasteners and hardware:  
 - Standard metric fasteners, washers, springs, magnets, and aluminum posts  
 - Thread-lock on vibration-prone joints  
 
 ## Release
 
-**Downloadable CAD Models:**
+### Downloadable CAD Models:
 - [**feeder_robot_TOP_ASSY.step**]({{ site.baseurl }}/portfolio/projects/wireless-mobile-feeder-robot/release/feeder_robot_TOP_ASSY.STEP): top-level feeder robot assembly
 
-**Software:** 
+### Software: 
 - Firmware repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)
 
 ## References
@@ -119,31 +119,31 @@ For additional details, see the published methods manuscript featuring this syst
 
 ## Highlights & Key Specs
 
-**Drive and motion:**  
+### Drive and motion:  
 - Stepper-motor-driven robot with wireless control and onboard microcontroller and 11.1 V power  
 - Commutator-free operation  
 - Embedded Arduino Due microcontroller and motor driver  
 
-**Tracking:**  
+### Tracking:  
 Dual-source tracking fused with an extended Kalman filter using overhead-camera and Pixy (CMUcam5) inputs for smooth position/velocity tracking  
 
-**Reward delivery:**  
+### Reward delivery:  
 - Retractable feeder arm extends ~60 cm and pivots for access during reward  
 - Hydraulic solenoid valve dispenses liquid reward  
 - Synchronized event timestamps  
 
-**Track cleaning:**  
+### Track cleaning:  
 Integrated track-cleaning module with neoprene flap and ethanol wiper to minimize odor and visual cues  
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 Completed, Aug 2015–May 2017  
 
-**Deployment:**  
+### Deployment:  
 Barnes Lab, University of Arizona (2 studies)  
 
-**Status:**  
+### Status:  
 Retired, May 2017–Aug 2021, Barnes Lab  
 
 ## Licensing

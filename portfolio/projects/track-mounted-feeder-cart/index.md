@@ -50,34 +50,34 @@ This feeder cart was designed for use with the Dome system, a rodent augmented-r
 
 ## Validation & Performance
 
-**Stable use:**  
+### Stable use:  
 In-rig and in vivo use with stable operation for 2 experiments  
 
 ## Materials & Fabrication
 
-**Frame and panels:**  
+### Frame and panels:  
 Waterjet-cut 1/16 in clear polycarbonate side walls and end plates, and 1/8 in 6061 aluminum frame members  
 
-**Drive and motion:**  
+### Drive and motion:  
 Central pillar assembly, two 0.25 in coupling rods, sealed ball bearings, threaded track roller  
 
-**Feeder and gate:**  
+### Feeder and gate:  
 - SLA-printed feeder port and gate arm, bottle holder and mount  
 - Takasago RP-CIII series peristaltic pump, 9 g micro servo, Adafruit IR break-beam sensor 2167, 1/16 in ID food-grade silicone tubing  
 
-**Tether guide:**  
+### Tether guide:  
 - SLA-printed tether-roller housing  
 - Waterjet-cut 1/8 in 6061 aluminum curved guide components  
 - Five 1/4 in roller bearings  
 
 ## Release
 
-**Downloadable CAD Models:**
+### Downloadable CAD Models:
 - [**feeder_cart_TOP_ASSY.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_TOP_ASSY.STEP): top-level assembly of track-mounted feeder cart
 - [**feeder_cart_SUB_gated_port.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_gated_port.STEP): gated feeder port subassembly with servo, gate, and IR sensors
 - [**feeder_cart_SUB_tether_guide.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_tether_guide.STEP): tether guide clamp subassembly for overhead rail  
 
-**On request:**
+### On request:
 - Assembly notes and additional design files
 
 ## References
@@ -97,31 +97,31 @@ The original Dome system and cart design that this version was adapted from are 
 
 ## Highlights & Key Specs
 
-**Drive and motion:**  
+### Drive and motion:  
 Central pillar drive with two 0.25 in coupling rods for smooth rotation and fixed-offset tracking  
 
-**Access control:**  
+### Access control:  
 Micro-servo-actuated vertical gate with repeatable full block/expose states  
 
-**Reward delivery:**  
+### Reward delivery:  
 - Peristaltic pump with food-grade silicone lines  
 - Quick-disconnect forward/rear drop ports  
 
-**Detection and timing:**  
+### Detection and timing:  
 IR break-beam at port for nose-in timestamping and precise dosing  
 
-**Ephys support:**  
+### Ephys support:  
 Overhead tether guide with low-friction trolley and commutator integration  
 
 ## Deployment & Status
 
-**Development:**  
+### Development:  
 completed, Feb 2024–Mar 2024  
 
-**Deployment:**  
+### Deployment:  
 NC4 Lab, University of British Columbia (2 studies)  
 
-**Status:**  
+### Status:  
 active, Mar 2024–present, NC4 Lab  
 
 ## Licensing
