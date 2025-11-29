@@ -54,8 +54,9 @@ SLA-printed resin body
 
 ## Release
 
-- **CAD:** STEP files available in portfolio (see 3D Model Files)
-- **On request:** assembly notes
+- [**probe_housing_PART_housing_body_a.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/cad/probe_housing_PART_housing_body_a.STEP): part model of housing body A
+- **probe_housing_PART_housing_body_b.step:** part model of housing body B
+- **probe_housing_PART_housing_base.step:** part model of housing base
 
 
 </div>
