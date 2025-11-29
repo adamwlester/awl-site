@@ -36,7 +36,7 @@ published: true
 
 ## Description
 
-This mobile feeder robot was designed for use with another portfolio project: the [Instantaneous Cue Rotation Arena](https://www.cadcrowd.com/3d-models/instantaneous-cue-rotation-arena).
+This mobile feeder robot was designed for use with another portfolio project: the [Instantaneous Cue Rotation Arena]({{ site.baseurl }}/portfolio/instantaneous-cue-rotation-arena/).
 
 As part of the ICR Arena, the feeder robot tracks rats on a circular track and delivers precisely timed, spatially targeted liquid food rewards. Drive is provided by dual stepper motors, with an inner set of rollers riding in a groove along the inner track wall for guided motion.
 

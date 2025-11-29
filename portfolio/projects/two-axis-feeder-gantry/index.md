@@ -36,7 +36,7 @@ published: true
 
 ## Description
 
-This reward delivery system was designed for use with another portfolio project: the [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system).
+This reward delivery system was designed for use with another portfolio project: the [Omniroute Maze System]({{ site.baseurl }}/portfolio/omniroute-maze-system/).
 
 The gantry provides spatially targeted liquid reward by tracking animal movement within the Omniroute maze while simultaneously carrying a ceiling panel that prevents rats from climbing maze walls and houses a retractable feeder arm that can be rotated down to the maze floor for reward delivery. Motion control is handled by an OpenBuilds BlackBox X32 running GRBL and integrated with the Omniroute ROS stack for command, coordination, and tracking.
 

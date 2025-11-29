@@ -36,7 +36,7 @@ published: true
 
 ## Description
 
-These gate modules, termed the NC4gate, were designed for use with another portfolio project: the [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system). 
+These gate modules, termed the NC4gate, were designed for use with another portfolio project: the [Omniroute Maze System]({{ site.baseurl }}/portfolio/omniroute-maze-system/). 
 
 Each module is constructed from laser-cut POM-C acetal panels joined with snap-fits and minimal fasteners, with a waterjet-cut aluminum pin-in-slot linkage driven by a compact 12 V DC gearmotor. Limit switches at the top and bottom of travel register position and ensure safe, reliable operation. The design provides 180 mm of gate travel in a compact 117 × 86 × 290 mm footprint, allowing modules to be densely packed in multi-gate maze systems. Standard hardware and drilling jigs streamline fabrication and assembly.  
 
