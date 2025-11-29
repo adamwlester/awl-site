@@ -2,8 +2,8 @@
 layout: project-detail-page
 title: "Dual-Bundle Electrode Drive"
 permalink: /portfolio/dual-bundle-electrode-drive/
-description: "Split-bundle implant for dual-region tetrode recordings in freely moving rats."
-summary: "Split-bundle implant for dual-region tetrode recordings in freely moving rats."
+description: "18-shuttle implantable drive with independent depth control and bundle positioning for dual-site tetrode recordings in freely moving rats"
+summary: "18-shuttle implantable drive with independent depth control and bundle positioning for dual-site tetrode recordings in freely moving rats."
 hero: "images/hero.png"
 model_src: "models/dual-bundle-electrode-drive.glb"
 model_camera_orbit: "0deg 0deg auto"

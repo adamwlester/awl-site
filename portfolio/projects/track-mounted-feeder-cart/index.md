@@ -2,8 +2,8 @@
 layout: project-detail-page
 title: "Track-Mounted Feeder Cart"
 permalink: /portfolio/track-mounted-feeder-cart/
-description: "Mobile feeder cart for controlled on-track liquid reinforcement with gated feeder access for rodent circular track experiments"
-summary: "Mobile feeder cart for controlled on-track liquid reinforcement with gated feeder access for rodent circular track experiments"
+description: "Servo-gated mobile feeder cart with IR sensing for automated liquid reward delivery on circular-track experiments"
+summary: "Servo-gated mobile feeder with IR sensing for automated liquid reward delivery on circular-track experiments, developed for the NC4 Lab rodent VR Dome apparatus."
 hero: "images/hero.png"
 model_src: "models/track-mounted-feeder-cart.glb"
 model_camera_orbit: "0deg 0deg auto"

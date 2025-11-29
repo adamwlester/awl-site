@@ -2,8 +2,8 @@
 layout: project-detail-page
 title: "NC4touch Behavioral Apparatus"
 permalink: /portfolio/nc4touch-behavioral-apparatus/
-description: "Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats."
-summary: "Touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats."
+description: "Modular touchscreen-based behavioral apparatus for flexible, high-throughput cognitive testing with mice and rats"
+summary: "Three-screen touchscreen behavioral chamber with automated liquid reward, overhead video tracking, and single- and multi-chamber Raspberry Pi–based real-time control."
 hero: "images/hero.png"
 model_src: "models/nc4touch-behavioral-apparatus.glb"
 model_camera_orbit: "0deg 0deg auto"

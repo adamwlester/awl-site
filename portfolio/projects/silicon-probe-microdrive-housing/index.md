@@ -2,8 +2,8 @@
 layout: project-detail-page
 title: "Silicon Probe Microdrive Housing"
 permalink: /portfolio/silicon-probe-microdrive-housing/
-description: "Implantable housing for high-density chronic silicon probe recordings in freely moving rats."
-summary: "Implantable housing for high-density chronic silicon probe recordings in freely moving rats."
+description: "Lightweight implantable housing with integrated Cambridge Neurotech NanoDrive adjustment for chronic silicon-probe recordings"
+summary: "Lightweight 3D-printed implantable housing with integrated Cambridge Neurotech NanoDrive adjustment for stable, high-density chronic silicon probe recordings."
 hero: "images/hero.png"
 model_src: "models/silicon-probe-microdrive-housing.glb"
 model_camera_orbit: "0deg 0deg auto"

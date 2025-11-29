@@ -2,8 +2,8 @@
 layout: project-detail-page
 title: "NC4gate Automatable Gate Module"
 permalink: /portfolio/nc4gate-automatable-gate-module/
-description: "Modular motorized gate system for autonomous control of rodent behavior in maze experiments."
-summary: "Modular motorized gate system for autonomous control of rodent behavior in maze experiments."
+description: "Modular gate system for autonomous rodent maze route control, supporting up to 512 addressable gates"
+summary: "Open-source modular gate system for autonomous rodent maze route control, supporting up to 512 addressable gates with robust hardware, firmware, and a Python/Qt control interface."
 hero: "images/hero.png"
 model_src: "models/nc4gate-automatable-gate-module.glb"
 model_camera_orbit: "0deg 0deg auto"
