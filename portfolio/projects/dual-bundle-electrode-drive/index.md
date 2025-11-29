@@ -62,7 +62,7 @@ Standard hardware including #0-80 and M1 fasteners, washers, springs, neodymium 
 
 ## Release
 
-**Select additional files (i.e., drive body) withheld due to third-party IP**
+*Select additional files (i.e., drive body) withheld due to third-party IP*
 
 ### Downloadable CAD Models:
 - [electrode_drive_SUB_core.step]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_core.STEP): drive core assembly, including drive core, shuttles, and cannulae 
