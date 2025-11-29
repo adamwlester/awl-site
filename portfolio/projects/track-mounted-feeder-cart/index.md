@@ -50,7 +50,6 @@ This feeder cart was designed for use with the Dome system, a rodent augmented-r
 
 ## Validation & Performance
 
-### Stable use:  
 In-rig and in vivo use with stable operation for 2 experiments  
 
 ## Materials & Fabrication
@@ -73,9 +72,9 @@ Central pillar assembly, two 0.25 in coupling rods, sealed ball bearings, thread
 ## Release
 
 ### Downloadable CAD Models:
-- [**feeder_cart_TOP_ASSY.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_TOP_ASSY.STEP): top-level assembly of track-mounted feeder cart
-- [**feeder_cart_SUB_gated_port.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_gated_port.STEP): gated feeder port subassembly with servo, gate, and IR sensors
-- [**feeder_cart_SUB_tether_guide.step**]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_tether_guide.STEP): tether guide clamp subassembly for overhead rail  
+- [feeder_cart_TOP_ASSY.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_TOP_ASSY.STEP): top-level assembly of track-mounted feeder cart
+- [feeder_cart_SUB_gated_port.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_gated_port.STEP): gated feeder port subassembly with servo, gate, and IR sensors
+- [feeder_cart_SUB_tether_guide.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_tether_guide.STEP): tether guide clamp subassembly for overhead rail  
 
 ### On request:
 - Assembly notes and additional design files

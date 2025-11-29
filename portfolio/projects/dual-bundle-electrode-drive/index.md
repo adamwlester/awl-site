@@ -65,10 +65,10 @@ Standard hardware including #0-80 and M1 fasteners, washers, springs, neodymium 
 **Select additional files (i.e., drive body) withheld due to third-party IP**
 
 ### Downloadable CAD Models:
-- [**electrode_drive_SUB_core.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_core.STEP): drive core assembly, including drive core, shuttles, and cannulae 
-- [**electrode_drive_SUB_bundle_guide.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_bundle_guide.STEP): bundle guide component for split-bundle routing
-- [**electrode_drive_SUB_cover.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_cover.STEP): headstage cover with LED diffuser interfaces
-- [**electrode_drive_SUB_cap.step**]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_cap.STEP): cap with weight attachment  
+- [electrode_drive_SUB_core.step]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_core.STEP): drive core assembly, including drive core, shuttles, and cannulae 
+- [electrode_drive_SUB_bundle_guide.step]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_bundle_guide.STEP): bundle guide component for split-bundle routing
+- [electrode_drive_SUB_cover.step]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_cover.STEP): headstage cover with LED diffuser interfaces
+- [electrode_drive_SUB_cap.step]({{ site.baseurl }}/portfolio/projects/dual-bundle-electrode-drive/release/electrode_drive_SUB_cap.STEP): cap with weight attachment  
 
 ### On request:
 - Assembly notes and additional design files  

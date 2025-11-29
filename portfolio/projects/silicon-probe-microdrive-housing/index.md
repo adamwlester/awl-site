@@ -40,7 +40,6 @@ The housing is compatible with the 128-channel SpikeGadgets Horizontal Headstage
 
 ## Validation & Performance
 
-### Stable use:  
 In-rig and in vivo use with stable recordings across 5 implants.
 
 ## Materials & Fabrication
@@ -55,9 +54,9 @@ SLA-printed resin body
 ## Release
 
 ### Downloadable CAD Models:
-- [**probe_housing_PART_housing_body_a.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_a.STEP): part model of housing body A
-- [**probe_housing_PART_housing_body_b.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_b.STEP): part model of housing body B
-- [**probe_housing_PART_housing_base.step**]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_base.STEP): part model of housing base
+- [probe_housing_PART_housing_body_a.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_a.STEP): part model of housing body A
+- [probe_housing_PART_housing_body_b.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_b.STEP): part model of housing body B
+- [probe_housing_PART_housing_base.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_base.STEP): part model of housing base
 
 ### On request:
 - Assembly notes and additional design files  

@@ -2,7 +2,7 @@
 layout: project-detail-page
 title: "Instantaneous Cue Rotation Arena"
 permalink: /portfolio/instantaneous-cue-rotation-arena/
-description: "An augmented reality closed-loop behavioral arena for studying cue-based navigation in freely moving rats"
+description: "An augmented reality behavioral arena for studying real-time visual cue-based navigation in freely moving rats"
 summary: "An augmented-reality rodent arena enabling instantaneous rotation of a 360° panorama of visual cues during ongoing circular track navigation, integrating projection control, a wireless mobile feeder robot, and synchronized electrophysiology."
 hero: "images/hero.png"
 model_src: "models/instantaneous-cue-rotation-arena.glb"

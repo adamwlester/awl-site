@@ -27,8 +27,8 @@ sections:
     - track-mounted-feeder-cart
     - wireless-mobile-feeder-robot
     
-- id: recording-implants
-  heading: Recording Implants
+- id: neural-recording-implants
+  heading: Neural Recording Implants
   card_size: large
   blurb: "Chronic implant systems for multi-site electrophysiology with freely behaving rodents."
   projects:

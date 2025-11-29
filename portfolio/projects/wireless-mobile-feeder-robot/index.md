@@ -95,7 +95,7 @@ Deployed in-rig and in vivo across 2 experiments
 ## Release
 
 ### Downloadable CAD Models:
-- [**feeder_robot_TOP_ASSY.step**]({{ site.baseurl }}/portfolio/projects/wireless-mobile-feeder-robot/release/feeder_robot_TOP_ASSY.STEP): top-level feeder robot assembly
+- [feeder_robot_TOP_ASSY.step]({{ site.baseurl }}/portfolio/projects/wireless-mobile-feeder-robot/release/feeder_robot_TOP_ASSY.STEP): top-level feeder robot assembly
 
 ### Software: 
 - Firmware repo: [https://github.com/adamwlester/icr-system](https://github.com/adamwlester/icr-system)

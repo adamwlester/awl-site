@@ -139,10 +139,11 @@ h2 {
 
 h3 {
   font-size: 1.3rem;
+  color: var(--color-text-gray-muted);
 }
 
 h4 {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
 }
 
 p {
@@ -185,7 +186,7 @@ ul {
 }
 
 ul li::marker {
-  color: var(--color-border-bold);
+  color: var(--color-accent-blue-dark);
 }
 
 p + ul {
@@ -940,7 +941,7 @@ p + ul {
 }
 
 .project-summary {
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   color: var(--color-text-gray-muted);
   margin-top: 0;
   margin-bottom: var(--space-3);

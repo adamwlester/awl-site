@@ -25,7 +25,7 @@ published: true
 ## Release
 
 ### Downloadable CAD Models:
-- [**3d_rat_PART.step**]({{ site.baseurl }}/portfolio/projects/fischer-344-rat-model/release/3d_rat_PART.STEP): single-part rat model
+- [3d_rat_PART.step]({{ site.baseurl }}/portfolio/projects/fischer-344-rat-model/release/3d_rat_PART.STEP): single-part rat model
 
 </div>
 <div class="content-group content-group-secondary" markdown="1">

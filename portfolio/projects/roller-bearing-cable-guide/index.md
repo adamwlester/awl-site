@@ -29,7 +29,6 @@ Designed for linear-track experiments, this guide prevents torsion on the headst
 
 ## Validation & Performance
 
-### Stable use:  
 In-rig and in vivo use with stable recordings for 2 experiments and 3 rigs.
 
 ## Materials & Fabrication
@@ -50,9 +49,9 @@ SLA-printed resin two-part housing and two-part collet
 ## Release
 
 ### Downloadable CAD Models:
-- [**cable_guide_PART_housing_a.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_a.STEP): first housing half
-- [**cable_guide_PART_housing_b.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_b.STEP): second housing half
-- [**cable_guide_PART_split_collet.step**]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_split_collet.STEP): two-part split collet for 3/16 in cable
+- [cable_guide_PART_housing_a.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_a.STEP): first housing half
+- [cable_guide_PART_housing_b.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_b.STEP): second housing half
+- [cable_guide_PART_split_collet.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_split_collet.STEP): two-part split collet for 3/16 in cable
 
 ### On request:
 - Assembly notes and additional design files  
