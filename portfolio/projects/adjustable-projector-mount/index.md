@@ -28,7 +28,7 @@ published: true
 
 ## Description
 
-This mount was designed for use with another portfolio project: the [Omniroute Maze System](https://www.cadcrowd.com/3d-models/omniroute-maze-system).
+This mount was designed for use with another portfolio project: the [Omniroute Maze System]({{ site.baseurl }}/portfolio/projects/omniroute-maze-system/).
 
 The mount provides independent height and yaw adjustment to align a short-throw projector for visual cue delivery on the Omniroute maze. A horizontal 80/20 1020 boom, attached to ceiling strut channels, connects to a vertical 80/20 1020 upright via a pair of 80/20 angle plates. Height is set by loosening the angle-plate fasteners, sliding the upright along the boom, then retightening.
 
