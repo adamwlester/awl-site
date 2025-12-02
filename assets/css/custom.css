@@ -9,20 +9,27 @@
   --ff-heading: var(--ff-body);
 
   /* Colors */
-  --color-page_background: #f6f7f8; /* page background */
-  --color-surface-light: #ffffff;   /* cards, sections, header */
-  --color-surface-blend: #F6F6F6;   /* cards, sections, header */
+  --color-page_background: #f6f7f8;
+  --color-surface-default: #f6f6f6;
+  --color-surface-viewers:
+  linear-gradient(
+    to bottom,
+    #f6f6f6 0%,
+    #f2f4f6 45%,
+    #dee3e8 100%
+  );
   --color-surface-dark: #222222;
-  --color-border-subtle: #e3dfd7;   /* light borders & dividers */
-  --color-border-bold: #cc9933;   /* light borders & dividers */
+  --color-border-muted: #e3dfd7;
+  --color-border-subtle: #EBD6AD;
+  --color-border-bold: #cc9933;
 
-  --color-text: #222222;          /* main text */
-  --color-text-gray-muted: #666666;    /* secondary text */
-  --color-text-light-soft: #eef3f9;   /* soft accent background for tags/badges */
-  --color-text-light: #ffffff;   /* cards, sections, header */
-  --color-text-links: #1d6eb3;    /* link color */
-  --color-accent-blue-dark: #234b6c;        /* key highlights */
-  --color-accent-blue-light: #2b5f8a;   /* button fill color, active outlines */
+  --color-text-default: #222222;
+  --color-text-gray-muted: #666666;
+  --color-text-light-soft: #eef3f9;
+  --color-text-light: #ffffff;
+  --color-text-links: #1d6eb3;
+  --color-accent-blue-dark: #234b6c;
+  --color-accent-blue-light: #2b5f8a;
   --color-accent-blue-muted: #6E8699;
 
   /* Shadows */
@@ -53,7 +60,7 @@
   --radius-md: 8px;
 
   /* Banner-specific tokens (shared by home + portfolio banners) */
-  --page-banner-background: var(--color-border-subtle);
+  --page-banner-background: var(--color-border-muted);
   /* Vertical placement of the banner text block */
   --page-banner-padding-top: 2.5rem;
   --page-banner-padding-bottom: 1.75rem;
@@ -65,15 +72,6 @@
   /* Text color */
   --banner-title-color: var(--color-text-light);
   --banner-subtitle-color: var(--color-text-light);
-
-  /* Profile card icon sizing */
-  --profile-card-icon-size: 1.35rem;
-
-    /* Portfolio card typography */
-  --project-card-title-font-size: 1.25rem;
-  --project-card-title-color: var(--color-accent-blue-light);
-  --project-card-summary-font-size: 0.95rem;
-  --project-card-summary-color: var(--color-text-gray-muted);
 }
 
 /* Breakpoints (for reference in comments)
@@ -101,7 +99,7 @@ body {
 body {
   font-family: var(--ff-body);
   background-color: var(--color-page_background);
-  color: var(--color-text);
+  color: var(--color-text-default);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -122,7 +120,7 @@ h3,
 h4 {
   font-family: var(--ff-heading);
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-text-default);
   margin-top: var(--space-3);
   margin-bottom: var(--space-2);
   line-height: 1.2;
@@ -221,7 +219,7 @@ p + ul {
 .site-footer {
   flex-shrink: 0;
   padding: var(--space-3) var(--space-2);
-  border-top: 1px solid var(--color-border-subtle);
+  border-top: 1px solid var(--color-border-muted);
   font-size: 0.9rem;
   color: var(--color-text-gray-muted);
 }
@@ -234,8 +232,8 @@ p + ul {
   position: sticky;
   top: 0;
   z-index: 20;
-  background-color: var(--color-surface-blend);
-  border-bottom: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-default);
+  border-bottom: 1px solid var(--color-border-muted);
   height: var(--header-height);
 }
 
@@ -470,7 +468,7 @@ p + ul {
   margin-top: 9px;
 
   font-size: 0.95rem;
-  color: var(--color-text);
+  color: var(--color-text-default);
 }
 
 .profile-card-header {
@@ -615,7 +613,7 @@ p + ul {
 
 .profile-card-link-icon {
   /* Font Awesome icons size off font-size */
-  font-size: var(--profile-card-icon-size);
+  font-size: 1.35rem;
   line-height: 1;
 
   /* Keep the flex centering you already had */
@@ -722,8 +720,8 @@ p + ul {
 /* Outer lines of the divider */
 .portfolio-section-divider-line {
   flex: 1;
-  height: 2px;
-  background-color: var(--color-border-subtle);
+  height: 0; 
+  border-top: 2px solid var(--color-border-muted);
 }
 
 /* Center accent segment of the divider */
@@ -736,7 +734,6 @@ p + ul {
 
 /* Optional blurb under the divider */
 .portfolio-section-blurb {
-  /* Allow blurb to use full section width (up to 1280px via .site-wrapper) */
   font-size: 1.25rem;
   color: var(--color-text-gray-muted);
 }
@@ -745,7 +742,7 @@ p + ul {
 .project-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;      /* center rows with 1–2 cards */
+  justify-content: center;
   gap: var(--space-5);
   align-items: stretch;
 
@@ -770,12 +767,12 @@ p + ul {
 .project-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-surface-blend);
+  background-color: var(--color-surface-default);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border-muted);
   box-shadow: var(--shadow-card);
   overflow: hidden;
-  text-decoration: none; /* ensure the outer link has no underline by default */
+  text-decoration: none;
   color: inherit;
   transform-origin: center;
 
@@ -795,7 +792,7 @@ p + ul {
   overflow: hidden;
 
   /* Light divider that hugs the bottom edge of the image */
-  border-bottom: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-muted);
 }
 
 /* Hero image rendering + hover transform */
@@ -815,21 +812,20 @@ p + ul {
 
 /* Card title text + inner divider */
 .project-card-title {
-  font-size: var(--project-card-title-font-size);
+  font-size: 1.25rem;
   font-weight: 600;
-  color: var(--project-card-title-color);
+  color: var(--color-accent-blue-light);
 
-  /* Place a subtle rule under the title, aligned with body padding */
   padding-bottom: 0.35rem;
   margin: 0 0 var(--space-1) 0;
-  border-bottom: 1px solid var(--color-border-bold);
+  border-bottom: 2px solid var(--color-border-subtle);
 }
 
 /* Card summary copy */
 .project-card-summary {
-  font-size: var(--project-card-summary-font-size);
+  font-size: 0.95rem;
   margin: 0;
-  color: var(--project-card-summary-color);
+  color: var(--color-text-gray-muted);
 }
 
 /* Hover state: lift card + suppress global underline on the outer link */
@@ -841,7 +837,7 @@ p + ul {
   box-shadow: var(--shadow-card-hover);
   border-color: rgba(0, 0, 0, 0.06);
   /* Slightly brighter version of --color-surface-blend using color-mix */
-  background-color: color-mix(in srgb, var(--color-surface-blend) 88%, white 12%);
+  background-color: color-mix(in srgb, var(--color-surface-default) 88%, white 12%);
 }
 
 /* Hover state: gently zoom and brighten the hero image */
@@ -851,10 +847,10 @@ p + ul {
   filter: brightness(1.05);
 }
 
-/* On card hover/focus, only the title text should underline */
+/* On card hover/focus, no underline */
 .project-card:hover .project-card-title,
 .project-card:focus-within .project-card-title {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* Optional: if the title is ever wrapped in its own <a>, normalize it */
@@ -936,14 +932,26 @@ p + ul {
 */
 .project-title {
   font-size: 1.8rem;
-  margin-top: 0;
-  margin-bottom: 0.35rem;
+  color: var(--color-text-default);
+  margin-top: 0;          /* keeps top perfectly aligned */
+  margin-bottom: 0.35rem; /* same spacing you already have */
+  position: relative;     /* required for ::after absolute positioning */
+}
+
+.project-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;       /* adjust as needed, does NOT move the text */
+  width: 100%;
+  height: 2px;            /* underline thickness */
+  background-color: var(--color-border-subtle);
 }
 
 .project-summary {
   font-size: 1.25rem;
   color: var(--color-text-gray-muted);
-  margin-top: 0;
+  margin-top: var(--space-2);
   margin-bottom: var(--space-3);
 }
 
@@ -1010,9 +1018,9 @@ p + ul {
 /* Outer container */
 .image-viewer {
   /* Band background behind the images */
-  background-color: var(--color-surface-blend);
+  background: var(--color-surface-viewers);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border-muted);
   box-shadow: var(--shadow-card);
   padding: var(--space-2);
 
@@ -1207,9 +1215,6 @@ p + ul {
   padding: var(--space-3);
   box-sizing: border-box;
 
-  /* Darken the backdrop so the image reads like a lightbox */
-  background-color: #111111;
-
   /* In fullscreen, allow the active image to grow with the viewport */
   --viewer-slide-width: 80vw;
   --viewer-slide-max-height: 80vh;
@@ -1377,7 +1382,7 @@ p + ul {
   width: 72px;
   height: 48px;
   border-radius: var(--radius-sm);
-  background-color: var(--color-surface-blend);
+  background-color: var(--color-surface-default);
   overflow: hidden;
 
   /* Light outline for all thumbnails using the dark accent hue */
@@ -1425,9 +1430,9 @@ p + ul {
 
 .model-viewer-panel {
   position: relative; /* allow absolutely positioned controls inside */
-  background-color: var(--color-surface-blend);
+  background: var(--color-surface-viewers);
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border-muted);
   box-shadow: var(--shadow-card);
   padding: var(--space-2);
 }
@@ -1450,7 +1455,7 @@ model-viewer {
   /* no max-height here so aspect-ratio fully controls height */
   border-radius: var(--radius-sm);
   overflow: hidden;
-  background-color: var(--color-surface-blend);
+  background: transparent !important;
 }
 
 /* 3D viewer control buttons (fullscreen + reset) */
@@ -1555,10 +1560,6 @@ model-viewer {
   /* Give the content a bit of breathing room at the edges */
   padding: var(--space-3);
   box-sizing: border-box;
-
-  /* Let the outer band blend with the page while the
-     inner square (model-viewer) shows the visible frame */
-  background-color: var(--color-page_background);
 }
 
 /* Square viewer sized to the smaller viewport dimension.
@@ -1574,9 +1575,10 @@ model-viewer {
   max-height: 100%;
   border-radius: var(--radius-sm);
 
-  /* Fullscreen-only visible bounding box */
-  background-color: var(--color-surface-light);
-  border: 1px solid var(--color-border-subtle);
+  /* Fullscreen-only shadow (matches active image slide) */
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18),
+    0 3px 8px rgba(0, 0, 0, 0.28);
 }
 
 /* Reduced motion: avoid transforms */
