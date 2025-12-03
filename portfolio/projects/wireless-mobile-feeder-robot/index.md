@@ -106,7 +106,7 @@ To minimize odor and visual cues, a rear-mounted cleaning module continuously cl
 ## References
 
 For additional details, see the published methods manuscript featuring this system and performance comparisons with an earlier fixed-feeder variant:
-- **Lester, A. W.**, Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). *Journal of Neuroscience Method*, 338, 108667.
+- **Lester, A. W.**, Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). *Journal of Neuroscience Methods*, 338, 108667.
 
 
 </div>

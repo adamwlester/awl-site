@@ -38,7 +38,7 @@ published: true
 
 These gate modules, termed the NC4gate, were designed for use with another portfolio project: the [Omniroute Maze System]({{ site.baseurl }}/portfolio/omniroute-maze-system/). 
 
-Each module is constructed from laser-cut POM-C acetal panels joined with snap-fits and minimal fasteners, with a waterjet-cut aluminum pin-in-slot linkage driven by a compact 12 V DC gearmotor. Limit switches at the top and bottom of travel register position and ensure safe, reliable operation. The design provides 180 mm of gate travel in a compact 117 × 86 × 290 mm footprint, allowing modules to be densely packed in multi-gate maze systems. Standard hardware and drilling jigs streamline fabrication and assembly.  
+Each module is constructed from laser-cut POM-C acetal panels joined with snap-fits and minimal fasteners, with a waterjet-cut aluminum pin-in-slot linkage driven by a compact 12 V DC gearmotor. Limit switches at the top and bottom of travel register position and ensure safe, reliable operation. The design provides 180 mm of gate travel in a compact 117 × 86 mm footprint with a total height of 290 mm, allowing modules to be densely packed in multi-gate maze systems. Standard hardware and drilling jigs streamline fabrication and assembly.  
 
 Electronics include a custom motor driver board (based on the TI DRV8870 chip) for PWM motor control and limit switch monitoring. For large-scale setups, modules connect via I²C to Cypress expansion boards, enabling a single Arduino Mega to control up to 512 gates.
 

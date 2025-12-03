@@ -19,8 +19,6 @@ images:
 published: true
 ---
 
-# Roller-Bearing Cable Guide
-
 <div class="content-groups">
 <div class="content-group content-group-primary" markdown="1">
 
@@ -29,22 +27,22 @@ Designed for linear-track experiments, this guide prevents torsion on the headst
 
 ## Validation & Performance
 
-In-rig and in vivo use with stable recordings for 2 experiments and 3 rigs.
+- In-rig and in vivo use with stable recordings for 2 experiments and 3 rigs.
 
 ## Materials & Fabrication
 
-### Housing and collet:  
-SLA-printed resin two-part housing and two-part collet
+### Housing and collet:
+- SLA-printed resin two-part housing and two-part collet
 
-### Rails:  
-1/2 in diameter stainless-steel rails, 4 ft length
+### Rails:
+- 1/2 in diameter stainless-steel rails, 4 ft length
 
 ### Bearings:  
 - Plastic races with 316 stainless balls
 - 3/4 in ID × 1.625 in OD and 1/8 in ID × 0.375 in OD
 
 ### Hardware:  
-#4-40 stainless bolts with nylon-insert lock nuts and #4 washers for roller assemblies
+- #4-40 stainless bolts with nylon-insert lock nuts and #4 washers for roller assemblies
 
 ## Release
 

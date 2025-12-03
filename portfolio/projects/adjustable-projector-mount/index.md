@@ -36,7 +36,7 @@ At the projector end, a waterjet-cut three-plate yaw assembly provides ±30° ro
 
 ## Validation & Performance
 
-- 4 mounts in use without near-daily for over one year  
+- 4 mounts in use with near-daily operation for over one year  
 
 ## Materials & Fabrication
 
