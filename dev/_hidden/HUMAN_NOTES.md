@@ -25,6 +25,13 @@ adjustable-tv-easel-stand
 foldable-adjustable-painting-easel
 
 
+#### Personal projects
+rolling-tool-wall
+hidden-base-nightstand
+easel-tv-stand
+collapsible-painting-easel
+
+
 ### 3D Model Conversion
 
 **SolidWorks SLDPRT/SLDASM → STEP AP214 using SolidWorks Assistant**
