@@ -1422,8 +1422,8 @@ p + ul {
 }
 
 .image-viewer-thumb {
-  width: 72px;
-  height: 48px;
+  width: 100px;
+  height: 80px;
   border-radius: var(--radius-sm);
   background-color: var(--color-surface-default);
   overflow: hidden;
@@ -1442,9 +1442,13 @@ p + ul {
 }
 
 .image-viewer-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: 100%;       /* fill the thumbnail height */
+  width: auto;        /* scale proportionally from height */
+  max-width: none;    /* allow it to be wider than the thumb if needed */
+  display: block;
+  margin-left: auto;  /* center horizontally inside the frame */
+  margin-right: auto;
+  /* no object-fit needed */
 }
 
 /* Active thumbnail state (set via JS) */
