@@ -1,12 +1,12 @@
 # Modular Rolling Tool Wall
 Mobile tool wall for dense, modular storage of hand scripts, hardware, and jigs; every surface is used for fast access.
 
-## Highlights
+## Highlights & Key Specs
 - **Construction:** plywood carcass with modular panels and cleats
 - **Mobility:** locking casters; stable under load
 - **Organization:** high-density tool layout 
 
-## Year and Status
+## Deployment & Status
 - 2019, in use
 
 ## Included files
@@ -35,12 +35,12 @@ workshop-organization
 # Hidden-Drawer Nightstand
 Custom nightstand in birch plywood with copper accents, featuring a primary drawer plus a concealed baseboard drawer.
 
-## Highlights
+## Highlights & Key Specs
 - **Mechanism:** concealed drawer integrated into base molding
 - **Finish:** durable clear coat
 - **Materials:** birch plywood, copper pipe pulls and trim
 
-## Year and Status
+## Deployment & Status
 - 2021, in use
 
 ## Included files
@@ -57,18 +57,18 @@ Custom nightstand in birch plywood with copper accents, featuring a primary draw
 ### 3D Model Files
 - **night_stand_TOP_ASSY.step:** top-level assembly of the nightstand
 
-# 3 Adjustable TV Easel Stand
+# Adjustable TV Easel Stand
 Easel-style TV stand in white pine with aluminum accents and a height-adjustable TV base for flexible viewing.
 
 ## Role & Contributions
 - Designed and built
 
-## Highlights
+## Highlights & Key Specs
 - **Structure:** tripod easel geometry for stability
 - **Adjustability:** sliding mount supports multiple VESA patterns
 - **Materials:** white pine frame, aluminum hardware
 
-## Year and Status
+## Deployment & Status
 - 2020, in use
 
 ## Included files
@@ -83,16 +83,16 @@ Easel-style TV stand in white pine with aluminum accents and a height-adjustable
 ### 3D Model Files
 - **tv_easel_TOP_ASSY.step:** top-level assembly of the TV easel stand
 
-# Foldable Adjustable Painting Easel
+# Collapsible Painting Easel
 Foldable painting easel in white pine with aluminum hardware, with quick height adjustment and compact storage.
 
-## Highlights
+## Highlights & Key Specs
 - **Mechanism:** quick-fold hinge set with locking pins
 - **Adjustability:** sliding canvas shelf and mast clamp
 - **Transport:** folds flat for storage
 - **Materials:** white pine frame
 
-## Year and Status
+## Deployment & Status
 - 2020, in use
 
 ## Included files

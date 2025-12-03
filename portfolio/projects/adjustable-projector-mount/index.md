@@ -60,7 +60,6 @@ At the projector end, a waterjet-cut three-plate yaw assembly provides ±30° ro
 | [projector_mount_TOP_ASSY.step]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_TOP_ASSY.STEP) | Top-level assembly of Adjustable Projector Mount for 1020 rail |
 | [projector_mount_SUB_pivot.step]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_SUB_pivot.STEP) | Pivot subassembly with yaw plate and slotted clamp hardware |
 
-
 ## References
 
 For additional details, see the preprint methods article for the Omniroute system, which featured this component:

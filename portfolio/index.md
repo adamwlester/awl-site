@@ -5,7 +5,7 @@ description: "A curated collection of research instrument design projects featur
 banner_image: /assets/images/portfolio-list-banner.png
 banner_title: Research Instrumentation Portfolio
 banner_subtitle: Hardware and experimental systems for neuroscience and behavioral research
-page_lead: "A collection of open-source instruments and real-world behavioral and electrophysiology systems, spanning end-to-end design from hardware to control software and deployed across active rodent neuroscience research."
+page_lead: "A curated collection of open-source instruments and real-world behavioral and electrophysiology systems, spanning end-to-end design from hardware to control software and deployed across active neuroscience research labs."
 
 sections:
 - id: behavioral-platforms
@@ -43,6 +43,16 @@ sections:
     - adjustable-projector-mount
     - roller-bearing-cable-guide
     - fischer-344-rat-model
+
+- id: personal-projects
+  heading: Personal Projects
+  card_size: compact
+  blurb: "Furniture and shop builds with functional designs demonstrating practical engineering."
+  projects:
+    - easel-tv-stand
+    - collapsible-painting-easel
+    - hidden-base-nightstand
+    - rolling-tool-wall
 
 published: true
 ---

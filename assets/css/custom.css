@@ -778,7 +778,7 @@ p + ul {
 }
 
 .project-grid--card-size-compact {
-  --project-card-width: 290px;
+  --project-card-width: 265px;
 }
 
 /* Individual project card (outer wrapper, currently an <a>) */
@@ -834,6 +834,7 @@ p + ul {
   font-weight: 600;
   color: var(--color-accent-blue-light);
 
+  text-align: center;
   padding-bottom: 0.35rem;
   margin: 0 0 var(--space-1) 0;
   border-bottom: 2px solid var(--color-border-subtle);
