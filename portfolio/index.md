@@ -11,7 +11,7 @@ sections:
 - id: behavioral-platforms
   heading: Behavioral Platforms
   card_size: large
-  blurb: "Integrated closed-loop hardware–software systems for high-precision automated rodent behavioral studies."
+  blurb: "Integrated closed-loop hardware–software systems for high-precision automated rodent behavioral studies"
   projects:
     - nc4touch-behavioral-apparatus
     - omniroute-maze-system
@@ -20,7 +20,7 @@ sections:
 - id: integrated-subsystems
   heading: Integrated Subsystems
   card_size: large
-  blurb: "Electromechanical and embedded modules that extend major platforms through automation, control, and specialized function."
+  blurb: "Electromechanical and embedded modules that extend major platforms through automation, control, and specialized function"
   projects:
     - nc4gate-automatable-gate-module
     - two-axis-feeder-gantry
@@ -30,7 +30,7 @@ sections:
 - id: neural-recording-implants
   heading: Neural Recording Implants
   card_size: large
-  blurb: "Chronic implant systems for multi-site electrophysiology with freely behaving rodents."
+  blurb: "Chronic implant systems for multi-site electrophysiology with freely behaving rodents"
   projects:
     - dual-bundle-electrode-drive
     - silicon-probe-microdrive-housing
@@ -38,7 +38,7 @@ sections:
 - id: support-hardware-and-models
   heading: Support Hardware & Models
   card_size: large
-  blurb: "Auxiliary hardware assemblies and models used for system integration and design planning."
+  blurb: "Auxiliary hardware assemblies and models used for system integration and design planning"
   projects:
     - adjustable-projector-mount
     - roller-bearing-cable-guide
@@ -47,7 +47,7 @@ sections:
 - id: personal-projects
   heading: Personal Projects
   card_size: compact
-  blurb: "Furniture and shop builds with functional designs demonstrating practical engineering."
+  blurb: "Furniture and shop builds with functional designs demonstrating practical engineering"
   projects:
     - easel-tv-stand
     - collapsible-painting-easel

@@ -62,19 +62,38 @@
   --radius-sm: 4px;
   --radius-md: 8px;
 
-  /* Banner-specific tokens (shared by home + portfolio banners) */
-  --page-banner-background: var(--color-border-muted);
-  /* Vertical placement of the banner text block */
-  --page-banner-padding-top: 2.5rem;
-  --page-banner-padding-bottom: 1.75rem;
-  /* Title + subtitle typography */
+  /* Major font sizes */
+  --body-font-size: 1.125rem;
+  --h1-font-size: 2.1rem;
+  --h2-font-size: 1.6rem;
+  --h3-font-size: 1.3rem;
+  --h4-font-size: 1.25rem;
+  --code-font-size: 0.95rem;
   --banner-title-font-size: 2.6rem;
-  --banner-subtitle-font-size: 1.4rem;
-  /* Spacing between title and subtitle */
-  --banner-title-margin-bottom: 0.9rem;
-  /* Text color */
-  --banner-title-color: var(--color-text-light);
-  --banner-subtitle-color: var(--color-text-light);
+  --banner-subtitle-font-size: 1.3rem;
+  --nav-name-font-size: 1.3rem;
+  --nav-links-font-size: 1.25rem;
+  --footer-font-size: 0.95rem;
+  --page-leads-font-size: 1.25rem;
+  /* Button font sizes */
+  --button-small-font-size: 0.95rem;
+  --button-large-font-size: 1.35rem;
+  /* Profile sidebar font sizes */
+  --profile-card-default-font-size: 0.95rem;
+  --profile-card-name-font-size: 1.35rem;
+  --profile-card-role-font-size: 1.05rem;
+  --profile-card-role-title-font-size: 1.25rem;
+  --profile-card-link-font-size: 1.05rem;
+  --profile-card-icon-font-size: 1.25rem;
+  /* Project card font sizes */
+  --project-card-title-font-size: 1.25rem;
+  --project-card-summary-font-size: 0.95rem;
+  /* Project details page font sizes */
+  --project-page-title-font-size: 2.1rem;
+  --project-page-summary-font-size: 1.25rem;
+  --project-page-image-caption-font-size: 0.95rem;
+  --project-page-table-font-size: 0.95rem;
+
 }
 
 /* Breakpoints (for reference in comments)
@@ -106,7 +125,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-size: 1.125rem;
+  font-size: var(--body-font-size);
 }
 
 /* Make images responsive by default */
@@ -130,21 +149,21 @@ h4 {
 }
 
 h1 {
-  font-size: 2.1rem;
+  font-size: var(--h1-font-size);
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: var(--h2-font-size);
   color: var(--color-accent-blue-dark);
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: var(--h3-font-size);
   color: var(--color-text-blue-muted);
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: var(--h4-font-size);
 }
 
 p {
@@ -193,7 +212,7 @@ a:focus {
 code {
   font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
-  font-size: 0.95em;
+  font-size: var(--code-font-size);
 }
 
 /* Bullets */
@@ -238,7 +257,7 @@ p + ul {
   flex-shrink: 0;
   padding: var(--space-3) var(--space-2);
   border-top: 1px solid var(--color-border-muted);
-  font-size: 0.9rem;
+  font-size: var(--footer-font-size);
   color: var(--color-text-gray-muted);
 }
 
@@ -268,7 +287,7 @@ p + ul {
 /* Left: site title (name) */
 .site-title {
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: var(--nav-name-font-size);
   color: var(--color-accent-blue-dark);
 }
 
@@ -280,7 +299,7 @@ p + ul {
 }
 
 .site-nav a {
-  font-size: 1.2rem;
+  font-size: var(--nav-links-font-size);
   color: var(--color-accent-blue-dark);
 }
 
@@ -312,8 +331,8 @@ p + ul {
 .page-banner {
   position: relative;
   min-height: var(--page-banner-height);
-  background-color: var(--page-banner-background);
-  color: var(--banner-title-color);
+  background-color: var(--color-border-muted);
+  color: var(--color-text-light);
   overflow: hidden;
 }
 
@@ -351,7 +370,7 @@ p + ul {
   margin: 0 auto;
 
   /* Use banner-specific vertical padding to bias content slightly upward */
-  padding: var(--page-banner-padding-top) var(--space-2) var(--page-banner-padding-bottom);
+  padding: 2.5rem var(--space-2) 1.75rem;
 
   height: 100%;
   display: flex;
@@ -364,8 +383,8 @@ p + ul {
 
 .page-banner-title {
   font-size: var(--banner-title-font-size);
-  margin: 0 0 var(--banner-title-margin-bottom) 0;
-  color: var(--banner-title-color);
+  margin: 0 0 0.9rem 0;
+  color: var(--color-text-light);
   font-weight: 650;
   letter-spacing: 0.01em;
   line-height: 1.1;
@@ -379,7 +398,7 @@ p + ul {
 .page-banner-subtitle {
   font-size: var(--banner-subtitle-font-size);
   margin: 0;
-  color: var(--banner-subtitle-color);
+  color: var(--color-text-light);
   font-weight: 450;
   letter-spacing: 0.01em;
   line-height: 1.3;
@@ -426,7 +445,7 @@ p + ul {
    ========================================================= */
 
 .home-lead {
-  font-size: 1.05rem;
+  font-size: var(--page-leads-font-size);
   color: var(--color-text-gray-muted);
   max-width: 40rem;
 }
@@ -436,7 +455,7 @@ p + ul {
   align-items: center;
   gap: 0.35rem;
   padding: 0.55rem 1.2rem;
-  font-size: 1rem;
+  font-size: var(--button-small-font-size);
   font-weight: 500;
   border-radius: var(--radius-sm);
   background-color: var(--color-accent-blue-dark);
@@ -485,7 +504,7 @@ p + ul {
   padding: var(--space-2);
   margin-top: 9px;
 
-  font-size: 0.95rem;
+  font-size: var(--profile-card-default-font-size);
   color: var(--color-text-default);
 }
 
@@ -550,7 +569,7 @@ p + ul {
 }
 
 .profile-card-name {
-  font-size: 1.35rem;    /* slightly larger name */
+  font-size: var(--profile-card-name-font-size);    /* slightly larger name */
   font-weight: 600;      /* heavier weight */
   text-align: left;
 }
@@ -575,7 +594,7 @@ p + ul {
 
 /* smaller font for role lines (department, university, location) */
 .profile-card-role-line {
-  font-size: 1.05rem;
+  font-size: var(--profile-card-role-font-size);
   line-height: 1.5;
   color: var(--color-text-gray-muted);
 }
@@ -584,7 +603,7 @@ p + ul {
    - Use a small margin so spacing to the NC4 lab line roughly matches
      the spacing between name and title. */
 .profile-card-role .profile-card-role-line--title {
-  font-size: 1.25rem;              /* larger than other role lines */
+  font-size: var(--profile-card-role-title-font-size);              /* larger than other role lines */
   line-height: 1.35;
   color: var(--color-text-gray-muted);     /* use main text color */
   margin-bottom: 0.2rem;           /* was var(--space-3); much tighter now */
@@ -594,7 +613,7 @@ p + ul {
 .profile-card-role-lab-link {
   color: var(--color-accent-blue-light);
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: var(--profile-card-link-font-size);
   font-weight: 450;  /* match sidebar link weight */
 }
 
@@ -621,7 +640,7 @@ p + ul {
   border-radius: var(--radius-sm);
   color: var(--color-accent-blue-light);
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: var(--profile-card-link-font-size);
   font-weight: 450;             /* slightly heavier, still clean */
 }
 
@@ -631,7 +650,7 @@ p + ul {
 
 .profile-card-link-icon {
   /* Font Awesome icons size off font-size */
-  font-size: 1.35rem;
+  font-size: var(--profile-card-icon-font-size);
   line-height: 1;
 
   /* Keep the flex centering you already had */
@@ -689,7 +708,7 @@ p + ul {
 /* Lead text on portfolio list page */
 .portfolio-lead {
   margin-bottom: var(--space-3);
-  font-size: 1.25rem;
+  font-size: var(--page-leads-font-size);
   color: var(--color-text-gray-muted);
 }
 
@@ -718,7 +737,7 @@ p + ul {
 /* Section title (e.g., BEHAVIORAL PLATFORMS) */
 .portfolio-section-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: var(--h2-font-size);
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -752,7 +771,7 @@ p + ul {
 
 /* Optional blurb under the divider */
 .portfolio-section-blurb {
-  font-size: 1.25rem;
+  font-size: var(--project-card-title-font-size);
   color: var(--color-text-gray-muted);
 }
 
@@ -830,7 +849,7 @@ p + ul {
 
 /* Card title text + inner divider */
 .project-card-title {
-  font-size: 1.25rem;
+  font-size: var(--project-card-title-font-size);
   font-weight: 600;
   color: var(--color-accent-blue-light);
 
@@ -842,7 +861,7 @@ p + ul {
 
 /* Card summary copy */
 .project-card-summary {
-  font-size: 0.95rem;
+  font-size: var(--project-card-summary-font-size);
   margin: 0;
   color: var(--color-text-gray-muted);
 }
@@ -950,7 +969,7 @@ p + ul {
    - Natural stacking above the primary content.
 */
 .project-title {
-  font-size: 2.1rem;
+  font-size: var(--project-page-title-font-size);
   color: var(--color-accent-blue-dark);
   margin-top: 0;          /* keeps top perfectly aligned */
   margin-bottom: 0.35rem; /* spacing below the title */
@@ -958,7 +977,7 @@ p + ul {
 }
 
 .project-summary {
-  font-size: 1.25rem;
+  font-size: var(--project-page-summary-font-size);
   color: var(--color-text-gray-muted);
   margin-top: var(--space-2);
   margin-bottom: var(--space-3);
@@ -1000,7 +1019,7 @@ p + ul {
 /* Project Detail — H2 with continuation line */
 .project-main-column h2,
 .project-aside-column h2 {
-  font-size: 1.6rem;
+  font-size: var(--h2-font-size);
   color: var(--color-accent-blue-dark);
   position: relative;
   display: flex;
@@ -1109,7 +1128,7 @@ p + ul {
 .image-viewer-caption {
   margin: var(--space-2) 0 0;      /* more space above caption */
   text-align: center;
-  font-size: 0.95rem;
+  font-size: var(--project-page-image-caption-font-size);
   font-style: italic;
   color: var(--color-text-subtle);
 }
@@ -1392,7 +1411,7 @@ p + ul {
 }
 
 .image-viewer-arrow-icon {
-  font-size: 1.35rem; /* scaled up for 1.5× button size */
+  font-size: var(--button-large-font-size);
 }
 
 /* Hover state: subtle lift while remaining centered */
@@ -1485,14 +1504,6 @@ p + ul {
   padding: var(--space-2);
 }
 
-/* Title above the 3D viewer, if used */
-.model-viewer-title {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-top: 0;
-  margin-bottom: var(--space-2);
-}
-
 /* Make the <model-viewer> element a responsive box */
 model-viewer {
   display: block;              /* ensure it behaves like a normal block box */
@@ -1577,7 +1588,7 @@ model-viewer {
 
 /* Text label for the reset button */
 .model-viewer-button-label {
-  font-size: 0.75rem;
+  font-size: var(--button-small-font-size);
   font-weight: 500;
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -1650,7 +1661,7 @@ model-viewer {
   width: 100%;
   border-collapse: collapse;
   margin: 0.75rem 0 var(--space-2);
-  font-size: 0.98rem;
+  font-size: var(--project-page-table-font-size);
   background: var(--color-surface-default); /* main background */
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -1674,21 +1685,6 @@ model-viewer {
 /* =========================================================
    13. Utility classes & responsive tweaks
    ========================================================= */
-
-/* Utility for muted text */
-.text-muted {
-  color: var(--color-text-gray-muted);
-}
-
-/* Utility for slightly smaller text */
-.text-small {
-  font-size: 0.9rem;
-}
-
-/* Stack vertical spacing in generic content blocks */
-.stack > * + * {
-  margin-top: var(--space-2);
-}
 
 @media (max-width: 480px) {
   .site-wrapper,
