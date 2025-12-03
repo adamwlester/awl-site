@@ -136,7 +136,7 @@ For additional details, including system performance tests, rodent behavior, and
 
 ### Development:  
 - v1 developed, Dec 2021–Sep 2023  
-- Feeder-gantry subsystem enhancements, Jun 2025–present  
+- V2 feeder gantry integration underway, Jun 2025–present  
 
 ### Deployment:  
 - NC4 Lab, University of British Columbia (3 studies)  
