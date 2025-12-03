@@ -33,6 +33,7 @@
   --color-accent-blue-dark: #234b6c;
   --color-accent-blue-light: #2b5f8a;
   --color-accent-blue-muted: #6E8699;
+  --color-accent-orange-dark: #8f6b24;
 
   /* Shadows */
   --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.04);      /* default card shadow */
@@ -201,7 +202,7 @@ ul {
 }
 
 ul li::marker {
-  color: var(--color-accent-blue-dark);
+  color: var(--color-accent-orange-dark);
 }
 
 p + ul {
@@ -1057,12 +1058,12 @@ p + ul {
 
   /* Core sizing + animation tokens (non-fullscreen) */
   --viewer-slide-width: var(--viewer-slide-width-desktop); /* fixed slide width on desktop */
-  --viewer-slide-max-height: 750px;                        /* max height for main image (pixels) */
+  --viewer-slide-max-height: 775px;                        /* max height for main image (pixels) */
 
   /* Slight lift on the active image; neighbors are closer to full size
      so they sit visually nearer to the center image. */
-  --viewer-active-scale: 0.95;                             /* scale factor for active (center) image */
-  --viewer-inactive-scale: 0.75;                           /* scale factor for inactive neighbor images */
+  --viewer-active-scale: 0.9;                             /* scale factor for active (center) image */
+  --viewer-inactive-scale: 0.7;                           /* scale factor for inactive neighbor images */
 
   --viewer-transition-duration: 220ms;                     /* duration for image scale/brightness transitions */
 }
@@ -1101,6 +1102,20 @@ p + ul {
 
   /* Desktop: support grab-to-scroll interaction */
   cursor: grab;
+}
+
+/* Caption below the thumbnail strip */
+.image-viewer-caption {
+  margin: var(--space-2) 0 0;      /* more space above caption */
+  text-align: center;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--color-text-subtle);
+}
+
+/* Slightly more breathing room in fullscreen */
+.image-viewer:fullscreen .image-viewer-caption {
+  margin-top: calc(1.5 * var(--space-2));
 }
 
 /* Hide default scrollbar (WebKit/Blink) for cleaner look */

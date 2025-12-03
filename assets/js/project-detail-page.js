@@ -37,6 +37,14 @@
   var prevButton = viewer.querySelector('.image-viewer-arrow--prev');
   var nextButton = viewer.querySelector('.image-viewer-arrow--next');
 
+  // Caption element and per-slide captions (derived from <img alt>)
+  var captionEl = viewer.querySelector('[data-image-viewer-caption]');
+  var captions = slides.map(function (slide) {
+    var img = slide.querySelector('img');
+    if (!img) return '';
+    return img.getAttribute('alt') || '';
+  });
+
   var activeIndex = 0;
 
   // Drag-to-scroll state (desktop)
@@ -140,6 +148,13 @@
     }
   }
 
+  // Update the visible caption below the active image
+  function updateCaption() {
+    if (!captionEl) return;
+    var text = captions[activeIndex] || '';
+    captionEl.textContent = text;
+  }
+
   /**
    * Set the active slide by index.
    *
@@ -158,6 +173,7 @@
       updateSlideActiveClasses();
       updateThumbs();
       updateArrows();
+      updateCaption();
       return;
     }
 
@@ -166,6 +182,7 @@
     updateSlideActiveClasses();
     updateThumbs();
     updateArrows();
+    updateCaption();
 
     scrollToSlide(activeIndex, behavior);
   }
