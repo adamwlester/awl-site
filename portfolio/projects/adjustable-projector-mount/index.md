@@ -53,14 +53,18 @@ At the projector end, a waterjet-cut three-plate yaw assembly provides ±30° ro
 
 ## Release
 
-### Downloadable CAD Models:
-- [projector_mount_TOP_ASSY.step]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_TOP_ASSY.STEP): top-level assembly of Adjustable Projector Mount for 1020 rail
-- [projector_mount_SUB_pivot.step]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_SUB_pivot.STEP): pivot subassembly with yaw plate and slotted clamp hardware
+### CAD downloads
+
+| Download Link | Description |
+|---------------|-------------|
+| [projector_mount_TOP_ASSY.step]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_TOP_ASSY.STEP) | Top-level assembly of Adjustable Projector Mount for 1020 rail |
+| [projector_mount_SUB_pivot.step]({{ site.baseurl }}/portfolio/projects/adjustable-projector-mount/release/projector_mount_SUB_pivot.STEP) | Pivot subassembly with yaw plate and slotted clamp hardware |
+
 
 ## References
 
 For additional details, see the preprint methods article for the Omniroute system, which featured this component:
-- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
+- **Lester, A. W.**, Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). *bioRxiv*.
 
 
 </div>
@@ -89,13 +93,13 @@ For additional details, see the preprint methods article for the Omniroute syste
 ## Deployment & Status
 
 ### Development:  
-Completed, May 2022–Oct 2023  
+- Completed, May 2022–Oct 2023  
 
 ### Deployment:  
-NC4 Lab, University of British Columbia (3 studies)  
+- NC4 Lab, University of British Columbia (3 studies)  
 
 ### Status:  
-Active, Oct 2023–present, NC4 Lab  
+- Active, Oct 2023–present, NC4 Lab  
 
 ## Licensing
 

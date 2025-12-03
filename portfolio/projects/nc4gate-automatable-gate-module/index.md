@@ -45,7 +45,7 @@ Electronics include a custom motor driver board (based on the TI DRV8870 chip) f
 ## Validation & Performance
 
 ### Actuation latency:  
-Tests on N=5 modules across 50 cycles each show consistent latencies: upward ~578 ms and downward ~531 ms, suitable for behavioral control
+- Tests on N=5 modules across 50 cycles each show consistent latencies: upward ~578 ms and downward ~531 ms, suitable for behavioral control
 
 ### Stress testing:  
 - Long operational life up to 100,000 cycles, with field-repairable failure modes (motor wear, linkage retention, wiring)  
@@ -54,24 +54,24 @@ Tests on N=5 modules across 50 cycles each show consistent latencies: upward ~57
 ## Materials & Fabrication
 
 ### Structure:  
-Laser-cut POM-C acetal (3.175 mm) with snap-fit features and minimal fasteners
+- Laser-cut POM-C acetal (3.175 mm) with snap-fit features and minimal fasteners
 
 ### Actuation:  
-12 V 50 RPM DC gear motor (37 mm can) driving pin-in-slot linkage
+- 12 V 50 RPM DC gear motor (37 mm can) driving pin-in-slot linkage
 
 ### Linkage:  
-Waterjet-cut aluminum arm for durability under repeated cycling
+- Waterjet-cut aluminum arm for durability under repeated cycling
 
 ### Sensing:  
-Upper and lower limit switches for hard-stop detection
+- Upper and lower limit switches for hard-stop detection
 
 ### Hardware:  
-Standard fasteners, spacers, rollers; cable ties and strain relief provisions
+- Standard fasteners, spacers, rollers; cable ties and strain relief provisions
 
 ## Release
 
 ### CAD: 
-- Design files including SolidWorks assemblies and parts, PCBs, jigs, cutting templates, and documentation: [https://osf.io/uy7ez](https://osf.io/uy7ez)  
+- Design files and documentation: [https://osf.io/uy7ez](https://osf.io/uy7ez)  
 
 ### Software:
 - Standalone NC4gate firmware and software repo: [https://github.com/NC4Lab/NC4gate](https://github.com/NC4Lab/NC4gate)
@@ -82,8 +82,8 @@ Standard fasteners, spacers, rollers; cable ties and strain relief provisions
 ## References
 
 For additional details, including system performance tests and detailed schematics, see the preprint methods manuscripts for the NC4gate system and associated Omniroute maze:
-- Lester, A. W., Kaur, G., Djafri, N., & Madhav, M. S. (2024). [A modular gate system for autonomous control of rodent behavior](https://www.biorxiv.org/content/10.1101/2024.11.22.624912v1). bioRxiv.
-- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
+- **Lester, A. W.**, Kaur, G., Djafri, N., & Madhav, M. S. (2024). [A modular gate system for autonomous control of rodent behavior](https://www.biorxiv.org/content/10.1101/2024.11.22.624912v1). *bioRxiv*.
+- **Lester, A. W.**, Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). *bioRxiv*.
 
 
 </div>
@@ -101,34 +101,36 @@ For additional details, including system performance tests and detailed schemati
 ## Highlights & Key Specs
 
 ### Envelope:  
-117 × 86 × 290 mm (gate lowered)
+- 117 × 86 × 290 mm (gate lowered)
 
 ### Gate travel:  
-180 mm total
+- 180 mm total up/down travel
 
 ### Typical actuation time:  
-~578 ms up, ~531 ms down
+- ~578 ms up
+- ~531 ms down
+- Modifiable via PWM settings
 
 ### Endurance:  
 - Thousands of cycles  
 - Individual modules tested up to 100,000 cycles  
 
 ### Control scale:  
-Up to 512 gates from a single PC and microcontroller
+- Up to 512 gates from a single PC and microcontroller
 
 ### Interfaces:  
-Qt-based GUI for manual operation; Python API for programmatic control
+- Qt-based GUI for manual operation; Python API for programmatic control
 
 ## Deployment & Status
 
 ### Development:  
-Completed, Dec 2021–Sep 2023
+- Completed, Dec 2021–Sep 2023
 
 ### Deployment:  
-NC4 Lab, University of British Columbia (3 studies)
+- NC4 Lab, University of British Columbia (3 studies)
 
 ### Status:  
-Active, Sep 2023–present, NC4 Lab	
+- Active, Sep 2023–present, NC4 Lab	
 
 ## Licensing
 

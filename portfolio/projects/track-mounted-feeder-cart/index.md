@@ -71,10 +71,14 @@ Central pillar assembly, two 0.25 in coupling rods, sealed ball bearings, thread
 
 ## Release
 
-### Downloadable CAD Models:
-- [feeder_cart_TOP_ASSY.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_TOP_ASSY.STEP): top-level assembly of track-mounted feeder cart
-- [feeder_cart_SUB_gated_port.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_gated_port.STEP): gated feeder port subassembly with servo, gate, and IR sensors
-- [feeder_cart_SUB_tether_guide.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_tether_guide.STEP): tether guide clamp subassembly for overhead rail  
+### CAD downloads
+
+| Download Link | Description |
+|---------------|-------------|
+| [feeder_cart_TOP_ASSY.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_TOP_ASSY.STEP) | Top-level assembly of track-mounted feeder cart |
+| [feeder_cart_SUB_gated_port.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_gated_port.STEP) | Gated feeder port subassembly with servo, gate, and IR sensors |
+| [feeder_cart_SUB_tether_guide.step]({{ site.baseurl }}/portfolio/projects/track-mounted-feeder-cart/release/feeder_cart_SUB_tether_guide.STEP) | Tether guide clamp subassembly for overhead rail |
+
 
 ### On request:
 - Assembly notes and additional design files
@@ -82,8 +86,7 @@ Central pillar assembly, two 0.25 in coupling rods, sealed ball bearings, thread
 ## References
 
 The original Dome system and cart design that this version was adapted from are described in detail in the following methods article:
-- Madhav, M. S., Jayakumar, R. P., Lashkari, S. G., Savelli, F., Blair, H. T., Knierim, J. J., & Cowan, N. J. (2022). The Dome: a virtual reality apparatus for freely locomoting rodents. Journal of Neuroscience Methods, 368, 109336.
-
+- Madhav, M. S., Jayakumar, R. P., Lashkari, S. G., Savelli, F., Blair, H. T., Knierim, J. J., & Cowan, N. J. (2022). [The Dome: a virtual reality apparatus for freely locomoting rodents](https://doi.org/10.1016/j.jneumeth.2021.109336). *Journal of Neuroscience Methods*, 368, 109336.
 
 </div>
 <div class="content-group content-group-secondary" markdown="1">
@@ -97,31 +100,31 @@ The original Dome system and cart design that this version was adapted from are 
 ## Highlights & Key Specs
 
 ### Drive and motion:  
-Central pillar drive with two 0.25 in coupling rods for smooth rotation and fixed-offset tracking  
+- Central pillar drive with two 0.25 in coupling rods for smooth rotation and fixed-offset tracking  
 
 ### Access control:  
-Micro-servo-actuated vertical gate with repeatable full block/expose states  
+- Micro-servo-actuated vertical gate with repeatable full block/expose states  
 
 ### Reward delivery:  
 - Peristaltic pump with food-grade silicone lines  
 - Quick-disconnect forward/rear drop ports  
 
 ### Detection and timing:  
-IR break-beam at port for nose-in timestamping and precise dosing  
+- IR break-beam at port for nose-in timestamping and precise dosing  
 
 ### Ephys support:  
-Overhead tether guide with low-friction trolley and commutator integration  
+- Overhead tether guide with low-friction trolley and commutator integration  
 
 ## Deployment & Status
 
 ### Development:  
-completed, Feb 2024–Mar 2024  
+- Completed, Feb 2024–Mar 2024  
 
 ### Deployment:  
-NC4 Lab, University of British Columbia (2 studies)  
+- NC4 Lab, University of British Columbia (2 studies)  
 
 ### Status:  
-active, Mar 2024–present, NC4 Lab  
+- Active, Mar 2024–present, NC4 Lab  
 
 ## Licensing
 

@@ -16,15 +16,17 @@
     to bottom,
     #f6f6f6 0%,
     #f2f4f6 45%,
-    #dee3e8 100%
+    #e1e5ea 100%
   );
   --color-surface-dark: #222222;
   --color-border-muted: #e3dfd7;
-  --color-border-subtle: #EBD6AD;
+  --color-border-subtle: #ebd6ad;
   --color-border-bold: #cc9933;
 
   --color-text-default: #222222;
+  --color-text-subtle: #444444;
   --color-text-gray-muted: #666666;
+  --color-text-blue-muted: #6E8699;
   --color-text-light-soft: #eef3f9;
   --color-text-light: #ffffff;
   --color-text-links: #1d6eb3;
@@ -137,7 +139,7 @@ h2 {
 
 h3 {
   font-size: 1.3rem;
-  color: var(--color-text-gray-muted);
+  color: var(--color-text-blue-muted);
 }
 
 h4 {
@@ -149,6 +151,21 @@ p {
   margin-bottom: var(--space-2);
 }
 
+/* Bolding */
+strong,
+b {
+  font-weight: 600;
+  color: var(--color-text-subtle);
+}
+
+/* Emphasis / italics */
+em,
+i {
+  font-style: italic;
+  color: var(--color-text-gray-muted);
+}
+
+/* Global List Layout */
 ul,
 ol {
   margin-top: 0;
@@ -931,21 +948,11 @@ p + ul {
    - Natural stacking above the primary content.
 */
 .project-title {
-  font-size: 1.8rem;
-  color: var(--color-text-default);
+  font-size: 2.1rem;
+  color: var(--color-accent-blue-dark);
   margin-top: 0;          /* keeps top perfectly aligned */
-  margin-bottom: 0.35rem; /* same spacing you already have */
-  position: relative;     /* required for ::after absolute positioning */
-}
-
-.project-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.25rem;       /* adjust as needed, does NOT move the text */
-  width: 100%;
-  height: 2px;            /* underline thickness */
-  background-color: var(--color-border-subtle);
+  margin-bottom: 0.35rem; /* spacing below the title */
+  /* no underline, no positioning needed */
 }
 
 .project-summary {
@@ -986,6 +993,27 @@ p + ul {
 /* Generic spacing between narrative sections inside each group */
 .project-content-section + .project-content-section {
   margin-top: var(--space-3);
+}
+
+/* Project Detail — H2 with continuation line */
+.project-main-column h2,
+.project-aside-column h2 {
+  font-size: 1.6rem;
+  color: var(--color-accent-blue-dark);
+  position: relative;
+  display: flex;
+  align-items: center;  /* center vertically: line through mid-height */
+  gap: 0.6rem;          /* space between text and line */
+}
+
+.project-main-column h2::after,
+.project-aside-column h2::after {
+  content: "";
+  flex-grow: 1;         /* line fills remaining row width */
+  height: 2px;
+  background-color: var(--color-border-subtle);
+  opacity: 0.5;
+  border-radius: 999px;
 }
 
 /* Small screens: collapse to a single column.
@@ -1594,8 +1622,37 @@ model-viewer {
   }
 }
 
+/* ---------------------------------------------------------
+   12. Project Detail — Table Styles
+   --------------------------------------------------------- */
+
+.project-detail table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0 var(--space-2);
+  font-size: 0.98rem;
+  background: var(--color-surface-default); /* main background */
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+/* Table cells */
+.project-detail th,
+.project-detail td {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-border-muted);
+  text-align: left;
+}
+
+/* Header background */
+.project-detail th {
+  background: var(--color-surface-viewers); 
+  color: var(--color-text-default);
+  font-weight: 600;
+}
+
 /* =========================================================
-   12. Utility classes & responsive tweaks
+   13. Utility classes & responsive tweaks
    ========================================================= */
 
 /* Utility for muted text */

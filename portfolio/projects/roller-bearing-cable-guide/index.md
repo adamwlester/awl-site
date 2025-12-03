@@ -48,10 +48,13 @@ SLA-printed resin two-part housing and two-part collet
 
 ## Release
 
-### Downloadable CAD Models:
-- [cable_guide_PART_housing_a.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_a.STEP): first housing half
-- [cable_guide_PART_housing_b.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_b.STEP): second housing half
-- [cable_guide_PART_split_collet.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_split_collet.STEP): two-part split collet for 3/16 in cable
+### CAD downloads
+
+| Download Link | Description |
+|---------------|-------------|
+| [cable_guide_PART_housing_a.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_a.STEP) | First housing half |
+| [cable_guide_PART_housing_b.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_housing_b.STEP) | Second housing half |
+| [cable_guide_PART_split_collet.step]({{ site.baseurl }}/portfolio/projects/roller-bearing-cable-guide/release/cable_guide_PART_split_collet.STEP) | Two-part split collet for 3/16 in cable |
 
 ### On request:
 - Assembly notes and additional design files  
@@ -82,13 +85,13 @@ SLA-printed resin two-part housing and two-part collet
 ## Deployment & Status
 
 ### Development:  
-Completed, Jan 2018–Feb 2018
+- Completed, Jan 2018–Feb 2018
 
 ### Deployment:  
-Barnes Lab, University of Arizona (2 studies; 3 rigs)
+- Barnes Lab, University of Arizona (2 studies; 3 rigs)
 
 ### Status:  
-Active, Feb 2018–present, Barnes Lab
+- Active, Feb 2018–present, Barnes Lab
 
 ## Licensing
 

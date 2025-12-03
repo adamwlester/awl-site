@@ -32,23 +32,28 @@ published: true
 
 ## Description
 
-The Instantaneous Cue Rotation Arena is an augmented-reality rodent behavioral arena enabling instantaneous rotation of all orienting visual cues during ongoing navigation with extracellular electrophysiology recordings. The 1.4 m diameter circular track is enclosed by 68 cm tall rear-projection panels that form a seamless 360° panorama of visual cues. Four short-throw projectors render these cues and can rotate them remotely and instantaneously without removing the animal from the track to assess their effect on navigation accuracy. A mobile feeder robot tracks the rat to deliver food-based reinforcement, which is featured as a separate portfolio entry ([Wireless Mobile Feeder Robot]({{ site.baseurl }}/portfolio/wireless-mobile-feeder-robot/)). All static elements within the behavioral space are repeated every 10° to eliminate symmetry-breaking spatial cues. The structure uses 80/20 aluminum extrusion with ESD-coated acrylic and PVC foam board for durability and electrophysiology compatibility. The assembly is suspended from ceiling strut channels to keep the interior clear and allow access from below. An overhead speaker, recessed into the ceiling, delivers auditory cues and continuous white noise to mask potential orienting sounds that could conflict with the cue manipulation. Below this, a centrally mounted commutator with a drop-down boom arm keeps the tether aligned directly above the circular track for wired electrophysiology. Two overhead color cameras are offset to either side of the commutator to maintain coverage when either camera’s line of sight is occluded by the boom arm and provide continuous tracking data for the rat and feeder robot. The floor of the arena can be lowered via gas springs and pulleys to allow easy access to the base for cleaning and maintenance.
+The Instantaneous Cue Rotation Arena is an augmented-reality rodent behavioral arena enabling instantaneous rotation of all orienting visual cues during ongoing navigation with extracellular electrophysiology recordings. The 1.4 m diameter circular track is enclosed by 68 cm tall rear-projection panels that form a seamless 360° panorama of visual cues. Four short-throw projectors render these cues and can rotate them remotely and instantaneously without removing the animal from the track to assess their effect on navigation accuracy. A mobile feeder robot tracks the rat to deliver food-based reinforcement, which is featured as a separate portfolio entry ([Wireless Mobile Feeder Robot]({{ site.baseurl }}/portfolio/wireless-mobile-feeder-robot/)).
 
-The system integrates with a NeuraLynx Digital Lynx SX acquisition system that records real-time position and stores synchronous timestamps for cue rotations and reward events. Two Arduino Due microcontrollers, one housed in the feeder robot, handle reward delivery, manage positional tracking and wireless serial communications, and actuate DC relays for projection and sound events, while sending accompanying TTL pulses to the acquisition system. Phototransistor sensors detect image changes on each projector and output TTL pulses that, together with TTLs for sound events, enable precise alignment of neural, behavioral, and stimulus data.
+**Structural design & materials:** All static elements within the behavioral space are repeated every 10° to eliminate symmetry-breaking spatial cues. The structure uses 80/20 aluminum extrusion with ESD-coated acrylic and PVC foam board for durability and electrophysiology compatibility. The assembly is suspended from ceiling strut channels to keep the interior clear and allow access from below.
 
-The mobile feeder robot tracks the rat to deliver precisely timed, spatially targeted liquid food reward without providing a static spatial cue that would interfere with the cue manipulation. The robot is wirelessly controlled via XBee-PRO Series 1 radios and powered by a LiPo battery, eliminating the need for a dedicated commutator. A retractable dish delivers liquid rewards. Onboard sensors track rat position using fused data from an overhead camera and a Pixy vision module. A cleaning module continuously clears debris and applies ethanol to minimize odor contamination.
+**Overhead systems, tracking & access:** An overhead speaker, recessed into the ceiling, delivers auditory cues and continuous white noise to mask potential orienting sounds that could conflict with the cue manipulation. Below this, a centrally mounted commutator with a drop-down boom arm keeps the tether aligned directly above the circular track for wired electrophysiology. Two overhead color cameras are offset to either side of the commutator to maintain coverage when either camera’s line of sight is occluded by the boom arm and provide continuous tracking data for the rat and feeder robot. The floor of the arena can be lowered via gas springs and pulleys to allow easy access to the base for cleaning and maintenance.
 
-A custom codebase coordinates all hardware components: C and C++ firmware on the microcontrollers for wireless communication, motor control, and timing; a C# application for wireless data streaming and interface tasks; and MATLAB scripts that provide the experimenter frontend, process tracking data, control visual cues, and synchronize peripheral systems.
+**Neural recording & control hardware:** The system integrates with a NeuraLynx Digital Lynx SX acquisition system that records real-time position and stores synchronous timestamps for cue rotations and reward events. Two Arduino Due microcontrollers, one housed in the feeder robot, handle reward delivery, manage positional tracking and wireless serial communications, and actuate DC relays for projection and sound events, while sending accompanying TTL pulses to the acquisition system. Phototransistor sensors detect image changes on each projector and output TTL pulses that, together with TTLs for sound events, enable precise alignment of neural, behavioral, and stimulus data.
+
+**Mobile feeder robot:** The mobile feeder robot tracks the rat to deliver precisely timed, spatially targeted liquid food reward without providing a static spatial cue that would interfere with the cue manipulation. The robot is wirelessly controlled via XBee-PRO Series 1 radios and powered by a LiPo battery, eliminating the need for a dedicated commutator. A retractable dish delivers liquid rewards. Onboard sensors track rat position using fused data from an overhead camera and a Pixy vision module. A cleaning module continuously clears debris and applies ethanol to minimize odor contamination.
+
+**Control software & experiment interface:** A custom codebase coordinates all hardware components: C and C++ firmware on the microcontrollers for wireless communication, motor control, and timing; a C# application for wireless data streaming and interface tasks; and MATLAB scripts that provide the experimenter frontend, process tracking data, control visual cues, and synchronize peripheral systems.
 
 This design cleanly dissociates external cues from self-motion feedback, while also restricting any olfactory or auditory orienting cues, in order to assess real-time visual cue use during uninterrupted navigation with full neural and behavioral synchronization.
+
 
 ## Validation & Performance
 
 ### Behavioral performance:  
-Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)  
+- Peer-reviewed methods paper documents apparatus and behavioral outcomes (see References)  
 
 ### Stable use:  
-In-rig and in vivo use across 2 experiments  
+- In-rig and in vivo use across 2 experiments  
 
 ## Materials & Fabrication
 
@@ -73,8 +78,8 @@ In-rig and in vivo use across 2 experiments
 ## References
 
 For additional details, see the published methods manuscript, which features this system, and the subsequent study:
-- Lester, A. W., Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). Journal of Neuroscience Methods, 338, 108667.
-- Lester, A. W., Jordan, G. A., Blum, C. J., Philpot, Z. P., & Barnes, C. A. (2022). [Differential effects in young and aged rats’ navigational accuracy following instantaneous rotation of environmental cues](https://pubmed.ncbi.nlm.nih.gov/36395015/). Behavioral Neuroscience, 136, 561–574.
+- **Lester, A. W.**, Kapellusch, A. J., & Barnes, C. A. (2020). [A novel apparatus for assessing visual cue-based navigation in rodents](https://doi.org/10.1016/j.jneumeth.2020.108667). *Journal of Neuroscience Methods*, 338, 108667.
+- **Lester, A. W.**, Jordan, G. A., Blum, C. J., Philpot, Z. P., & Barnes, C. A. (2022). [Differential effects in young and aged rats’ navigational accuracy following instantaneous rotation of environmental cues](https://pubmed.ncbi.nlm.nih.gov/36395015/). *Behavioral Neuroscience*, 136, 561–574.
 
 
 </div>
@@ -116,18 +121,18 @@ Four short-throw projectors (BenQ MW621ST) with instantaneous remote cue rotatio
 - MATLAB control and analysis frontend and GUI  
 
 ### Acoustic control:  
-Continuous white noise to mask orienting auditory cues and optional sound cues  
+- Continuous white noise to mask orienting auditory cues and optional sound cues  
 
 ## Deployment & Status
 
 ### Development:  
-Completed, Aug 2013–May 2017  
+- Completed, Aug 2013–May 2017  
 
 ### Deployment:  
-Barnes Lab, University of Arizona (2 studies)  
+- Barnes Lab, University of Arizona (2 studies)  
 
 ### Status:  
-Active, May 2017–present, Barnes Lab  
+- Active, May 2017–present, Barnes Lab  
 
 ## Licensing
 

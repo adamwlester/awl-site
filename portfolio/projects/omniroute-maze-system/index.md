@@ -83,7 +83,7 @@ The system is controlled via the Robot Operating System (ROS) with custom nodes 
 ## Release
 
 ### CAD:
-- Design files (CAD, PCB, documentation): [https://osf.io/uy7ez](https://osf.io/uy7ez)  
+- Design files and documentation: [https://osf.io/uy7ez](https://osf.io/uy7ez)  
 
 ### Software:
 - ROS workspace (Ubuntu host): [https://github.com/NC4Lab/omniroute_ubuntu_ws](https://github.com/NC4Lab/omniroute_ubuntu_ws)
@@ -92,8 +92,8 @@ The system is controlled via the Robot Operating System (ROS) with custom nodes 
 ## References
 
 For additional details, including system performance tests, rodent behavior, and detailed schematics, see the preprint methods manuscripts for the Omniroute and the associated NC4gate system:
-- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
-- Lester, A. W., Kaur, G., Djafri, N., & Madhav, M. S. (2024). [A modular gate system for autonomous control of rodent behavior](https://www.biorxiv.org/content/10.1101/2024.11.22.624912v1). bioRxiv.
+- **Lester, A. W.**, Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
+- **Lester, A. W.**, Kaur, G., Djafri, N., & Madhav, M. S. (2024). [A modular gate system for autonomous control of rodent behavior](https://www.biorxiv.org/content/10.1101/2024.11.22.624912v1). *bioRxiv*.
 
 
 </div>

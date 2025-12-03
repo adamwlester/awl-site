@@ -46,7 +46,7 @@ The gantry provides spatially targeted liquid reward by tracking animal movement
 
 **Feeder arm:** A retractable feeder arm assembly is mounted on the carriage and operates as a Z-axis accessory that rotates down to deliver liquid reward at a commanded XY location, then retracts to a parked position above the cover panel. Z motion is driven by a fourth NEMA 17 stepper on the motion controller Z channel through a timing-belt train with custom SLA-printed pulleys that couple the motor to the feeder arm. A small pulley-mounted cam actuates a lever-style limit switch at the fully retracted position, enabling reliable homing and interlocks. The dispensing arm uses a 1/4 in stainless-steel tube with a custom SLA angle connector joined to a flexible extension spring forming the short leg of the L-arm. A continuous silicone line runs from the pump through the tube and connector to the arm terminus. This linkage uses a doubled effective gear ratio to provide sufficient force margin to retract even if a rat hangs on it. The flexible arm end is designed to protect animals and maze walls if the arm contacts a rat during lowering or the gantry resumes movement before retracting.
 
-**Design revision:** Upgraded to a stepper-driven actuator with integrated limit switch detection, replacing the original servo. The design is complete and being integrated into the assembly. The revised arm has stiffer components and a flexible end.
+**Design revision:** The system has been upgraded to a stepper-driven actuator with integrated limit switch detection, replacing the original servo. The design is complete and being integrated into the assembly. The revised arm also has stiffer components and a flexible feeder arm end.
 
 ## Validation & Performance
 
@@ -55,13 +55,13 @@ The gantry provides spatially targeted liquid reward by tracking animal movement
 - Mean 0.21 m/s  
 
 ### Arrival latency:  
-1.5 s to within 2 cm over a 0.43 m move  
+- 1.5 s to within 2 cm over a 0.43 m move  
 
 ### Positional accuracy:  
-0.7 cm final error at stop  
+- 0.7 cm final error at stop  
 
 ### Acoustic profile:  
-+20 dB SPL during motion vs idle  
+- +20 dB SPL during motion vs idle  
 
 ## Materials & Fabrication
 
@@ -102,7 +102,7 @@ The gantry provides spatially targeted liquid reward by tracking animal movement
 ## References
 
 For additional details, including system performance tests, see the preprint methods manuscript for the Omniroute maze, which features this subsystem:
-- Lester, A. W., Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). bioRxiv.
+- **Lester, A. W.**, Mombeini, A. G., & Madhav, M. S. (2025). [The Omniroute maze: a novel rodent navigation apparatus that integrates dynamically configurable routes, sensory cues, and automated reward delivery](https://www.biorxiv.org/content/10.1101/2025.09.01.672969v1). *bioRxiv*.
 
 
 </div>
@@ -120,16 +120,16 @@ For additional details, including system performance tests, see the preprint met
 ## Highlights & Key Specs
 
 ### Footprint:  
-2.2 × 1.4 m (X, Y) frame envelope  
+- 2.2 × 1.4 m (X, Y) frame envelope  
 
 ### Travel:  
-1.6 × 0.8 m (X, Y) commanded range  
+- 1.6 × 0.8 m (X, Y) commanded range  
 
 ### Carriage capacity:  
-60 × 60 cm cover area  
+- 60 × 60 cm cover area  
 
 ### Motion performance:  
-peak traverse speed: 0.47 m/s  
+- Peak traverse speed: 0.47 m/s  
 
 ## Deployment & Status
 
@@ -138,10 +138,10 @@ peak traverse speed: 0.47 m/s
 - Feeder arm v2 integration, Jun 2025–present  
 
 ### Deployment:  
-NC4 Lab, University of British Columbia (3 studies)  
+- NC4 Lab, University of British Columbia (3 studies)  
 
 ### Status:  
-active, Sep 2023–present, NC4 Lab  
+- Active, Sep 2023–present, NC4 Lab  
 
 ## Licensing
 

@@ -36,19 +36,20 @@ published: true
 
 NC4touch is a three-screen, Raspberry Pi-controlled chamber with calibrated liquid-reward delivery, overhead video tracking, sensory cue delivery, and modular device I/O for flexible, high-throughput cognitive testing in mice and rats.
 
-The enclosure consists of a trapezoidal workspace with three touchscreens at the front and a food-reward dispensing system in the rear. The frame uses 10 × 10 mm aluminum T-slot extrusion with SLA-printed brackets and mounts, and laser-cut acetal panels for the enclosure and electronics bays, keeping the electronics fully separated from the behavioral space.
+**Enclosure & frame:** The enclosure consists of a trapezoidal workspace with three touchscreens at the front and a food-reward dispensing system in the rear. The frame uses 10 × 10 mm aluminum T-slot extrusion with SLA-printed brackets and mounts, and laser-cut acetal panels for the enclosure and electronics bays, keeping the electronics fully separated from the behavioral space.
 
-A USB camera mounted above the system captures the full field of view, and removable, laser-cut, 3/16 in clear acrylic lid and floor panels provide visibility and can be easily removed to aid wipe-down cleaning.
+**Overhead imaging & access:** A USB camera mounted above the system captures the full field of view, and removable, laser-cut, 3/16 in clear acrylic lid and floor panels provide visibility and can be easily removed to aid wipe-down cleaning.
 
-The front panel includes three capacitive touchscreens, each with a cue RGB LED and a buzzer for trial timing and feedback. Each screen is driven by a dedicated FireBeetle 2 M0 microcontroller over a single GDI ribbon cable, with USB used for command and data. Using a dedicated controller per display lets the screens load and render images in parallel, so updates do not block each other and refresh times stay fast under load. Because rodents can behave like a floating ground, a thin copper-foil-laminated floor panel beneath the screens nests into the removable acrylic floor but stays attached to the frame to keep the ground path intact.
+**Touchscreens & feedback hardware:** The front panel includes three capacitive touchscreens, each with a cue RGB LED and a buzzer for trial timing and feedback. Each screen is driven by a dedicated FireBeetle 2 M0 microcontroller over a single GDI ribbon cable, with USB used for command and data. Using a dedicated controller per display lets the screens load and render images in parallel, so updates do not block each other and refresh times stay fast under load. Because rodents can behave like a floating ground, a thin copper-foil-laminated floor panel beneath the screens nests into the removable acrylic floor but stays attached to the frame to keep the ground path intact.
 
-The rear panel integrates a 3D-printed feeder port assembly with IR sensors, a stainless-steel lick spout, and a panel-mount cue RGB LED. A peristaltic pump with a dual-motor controller provides calibrated liquid rewards via food-grade silicone tubing. The IR break-beam detects nose-in and feeder occupancy for precise dosing and event logging. All tubing, port components, and the spout are quick to remove for cleaning, with standard fittings and clear service access.
+**Reward delivery:** The rear panel integrates a 3D-printed feeder port assembly with IR sensors, a stainless-steel lick spout, and a panel-mount cue RGB LED. A peristaltic pump with a dual-motor controller provides calibrated liquid rewards via food-grade silicone tubing. The IR break-beam detects nose-in and feeder occupancy for precise dosing and event logging. All tubing, port components, and the spout are quick to remove for cleaning, with standard fittings and clear service access.
 
-A Raspberry Pi manages task state, device I/O, and logging. It sends display updates to each screen via its dedicated microcontroller, controls the cue LEDs and buzzer, and triggers pump dosing. It receives touch events from all three screens and feeder IR signals, and timestamps these alongside the video stream from the overhead camera. Data are written to disk as compact CSV logs plus an optional frame-synchronized MP4 file to support reproducible analysis.
+**Raspberry Pi control & data logging:** A Raspberry Pi manages task state, device I/O, and logging. It sends display updates to each screen via its dedicated microcontroller, controls the cue LEDs and buzzer, and triggers pump dosing. It receives touch events from all three screens and feeder IR signals, and timestamps these alongside the video stream from the overhead camera. Data are written to disk as compact CSV logs plus an optional frame-synchronized MP4 file to support reproducible analysis.
 
-Single- or multi-chamber operation is supported. A single Raspberry Pi can run one or multiple daisy-chained chambers. Multi-chamber setups can be networked over Ethernet with a lightweight browser UI for monitoring and control. Optional PoE provides single-cable power and data to reduce clutter and simplify installation.
+**Single- and multi-chamber setups:** Single- or multi-chamber operation is supported. A single Raspberry Pi can run one or multiple daisy-chained chambers. Multi-chamber setups can be networked over Ethernet with a lightweight browser UI for monitoring and control. Optional PoE provides single-cable power and data to reduce clutter and simplify installation.
 
-Mechanical and electrical design emphasize maintainability and replication. Panels are flat-pattern, laser-cut parts with captive fasteners where appropriate. 3D-printed brackets localize loads and register panel geometry. All external connectors are panel-mount for strain relief and quick replacement. Front and rear electronics bays are isolated from the behavioral space to protect components and simplify wipe-down.
+**Maintainability & replication:** Mechanical and electrical design emphasize maintainability and replication. Panels are flat-pattern, laser-cut parts with captive fasteners where appropriate. 3D-printed brackets localize loads and register panel geometry. All external connectors are panel-mount for strain relief and quick replacement. Front and rear electronics bays are isolated from the behavioral space to protect components and simplify wipe-down.
+
 
 ## Validation & Performance
 
@@ -100,15 +101,15 @@ Mechanical and electrical design emphasize maintainability and replication. Pane
 ## Release
 
 ### CAD:  
-Design files including SolidWorks assemblies and parts, cutting templates, and documentation: [https://osf.io/8q9tk](https://osf.io/8q9tk)
+- Design files and documentation: [https://osf.io/8q9tk](https://osf.io/8q9tk)
 
 ### Software:  
-Firmware and software repo: [https://github.com/NC4Lab/TouchscreenApparatus](https://github.com/NC4Lab/TouchscreenApparatus)
+- Firmware and software repo: [https://github.com/NC4Lab/NC4touch](https://github.com/NC4Lab/NC4touch)
 
 ## References
 
 For additional details, see:  
-- Modara, G., Lester, A. W., Schwein, I., & Madhav, M. S. (2025). NC4touch: An open-source modular touchscreen apparatus for rodent behavioral testing. bioRxiv. [link pending]
+- Modara, G., **Lester, A. W.**, Schwein, I., & Madhav, M. S. (2025). [NC4touch: An open-source modular touchscreen apparatus for rodent behavioral testing.](LINK PENDING) *bioRxiv*. [LINK PENDING]
 
 
 </div>
@@ -156,20 +157,20 @@ For additional details, see:
 ## Deployment & Status
 
 ### Development:  
-Completed, Sep 2023–Nov 2024  
+- Completed, Sep 2023–Nov 2024  
 
 ### Deployment:  
 - NC4 Lab, University of British Columbia (2 studies, 4 rigs)  
 - Snyder Lab, University of British Columbia (1 study, 2 rigs)  
 
 ### Status:  
-Active, Nov 2024–present, NC4 Lab
+- Active, Nov 2024–present, NC4 Lab
 
 ## Licensing
 
-**Hardware:** CERN-OHL-W-2.0  
-**Software:** MIT  
-**Documentation:** CC-BY-4.0
+- **Hardware:** CERN-OHL-W-2.0  
+- **Software:** MIT  
+- **Documentation:** CC-BY-4.0
 
 
 </div>

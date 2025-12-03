@@ -53,10 +53,13 @@ SLA-printed resin body
 
 ## Release
 
-### Downloadable CAD Models:
-- [probe_housing_PART_housing_body_a.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_a.STEP): part model of housing body A
-- [probe_housing_PART_housing_body_b.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_b.STEP): part model of housing body B
-- [probe_housing_PART_housing_base.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_base.STEP): part model of housing base
+### CAD downloads
+
+| Download Link | Description |
+|---------------|-------------|
+| [probe_housing_PART_housing_body_a.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_a.STEP) | Part model of housing body A |
+| [probe_housing_PART_housing_body_b.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_body_b.STEP) | Part model of housing body B |
+| [probe_housing_PART_housing_base.step]({{ site.baseurl }}/portfolio/projects/silicon-probe-microdrive-housing/release/probe_housing_PART_housing_base.STEP) | Part model of housing base |
 
 ### On request:
 - Assembly notes and additional design files  
@@ -78,10 +81,10 @@ SLA-printed resin body
 - Rated travel up to 7.5 mm (implemented ~6 mm)
 
 ### Mass:  
-~5 g with housing, hardware, NanoDrive, and probe
+- ~5 g with housing, PCB, hardware, and NanoDrive
 
 ### Assembly:  
-Straightforward three-part assembly with standard #0-80 fasteners and nuts
+- Straightforward three-part assembly with standard #0-80 fasteners and nuts
 
 ### Compatibility:  
 - Cambridge Neurotech 64-channel probes (ASSY-236 F) and SpikeGadgets 128-channel Horizontal Headstage  
@@ -90,13 +93,13 @@ Straightforward three-part assembly with standard #0-80 fasteners and nuts
 ## Deployment & Status
 
 ### Development:  
-Completed, Feb 2023–Oct 2023  
+- Completed, Feb 2023–Oct 2023  
 
 ### Deployment:  
-NC4 Lab, University of British Columbia  
+- NC4 Lab, University of British Columbia  
 
 ### Status:  
-Active, Oct 2023–present, NC4 Lab
+- Active, Oct 2023–present, NC4 Lab
 
 ## Licensing
 
