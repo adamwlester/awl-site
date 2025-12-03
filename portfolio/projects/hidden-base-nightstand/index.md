@@ -2,7 +2,7 @@
 layout: project-detail-page
 title: "Hidden Base Nightstand"
 permalink: /portfolio/hidden-base-nightstand/
-description: "Custom nightstand in birch plywood with copper accents and a concealed baseboard drawer."
+description: "Custom nightstand in birch plywood with copper accents and a concealed baseboard drawer"
 summary: "Custom nightstand in birch plywood with copper accents, featuring a primary drawer plus a concealed baseboard drawer integrated into the lower molding. The design hides the secondary storage in the toe-kick profile while keeping the main drawer and copper hardware visually simple."
 hero: "images/hero.png"
 model_src: "models/hidden-base-nightstand.glb"

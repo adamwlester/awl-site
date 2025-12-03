@@ -2,7 +2,7 @@
 layout: project-detail-page
 title: "Collapsible Painting Easel"
 permalink: /portfolio/collapsible-painting-easel/
-description: "Foldable painting easel with hardware for quick height adjustment and compact storage."
+description: "Foldable painting easel with hardware for quick height adjustment and compact storage"
 summary: "Foldable painting easel in white pine with aluminum hardware, designed for quick height adjustment and compact storage. A quick-fold hinge set with locking pins and a sliding canvas shelf support fast setup, breakdown, and transport while maintaining a stable painting platform."
 hero: "images/hero.png"
 model_src: "models/collapsible-painting-easel.glb"

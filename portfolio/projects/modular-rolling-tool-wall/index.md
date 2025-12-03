@@ -2,7 +2,7 @@
 layout: project-detail-page
 title: "Rolling Tool Wall"
 permalink: /portfolio/rolling-tool-wall/
-description: "Mobile tool wall for dense, modular storage of hand tools, hardware, and jigs."
+description: "Mobile tool wall for dense, modular storage of hand tools, hardware, and jigs"
 summary: "Modular rolling tool wall for dense, mobile storage of hand tools, hardware, and jigs. The carcass and panel system use every available surface for high-density, fast-access storage in a compact footprint."
 hero: "images/hero.png"
 model_src: "models/rolling-tool-wall.glb"

@@ -2,7 +2,7 @@
 layout: project-detail-page
 title: "Easel TV Stand"
 permalink: /portfolio/easel-tv-stand/
-description: "Easel-style TV stand in white pine with aluminum accents and an adjustable TV mount."
+description: "Easel-style TV stand in white pine with aluminum accents and an adjustable TV mount"
 summary: "Easel-style TV stand in white pine with aluminum accents and a height-adjustable TV base for flexible viewing. The tripod geometry increases stability while the sliding mount supports a range of VESA patterns."
 hero: "images/hero.png"
 model_src: "models/easel-tv-stand.glb"
