@@ -708,3 +708,40 @@
   // Initialize state on load
   updateFullscreenButtonState();
 })();
+
+(function () {
+  // ---------------------------------------
+  // 5. 3D MODEL VIEWER ROTATE HINT
+  //    - Static rotate badge fades out after first *user* interaction
+  //      (not on initial camera setup)
+  // ---------------------------------------
+  var panels = Array.prototype.slice.call(
+    document.querySelectorAll('.model-viewer-panel')
+  );
+  if (!panels.length) return;
+
+  panels.forEach(function (panel) {
+    var model = panel.querySelector('model-viewer');
+    var hint = panel.querySelector('.model-viewer-rotate-hint');
+    if (!model || !hint) return;
+
+    var HIDDEN_CLASS = 'model-viewer-rotate-hint--hidden';
+    var hasHidden = false;
+
+    function hideHintOnce() {
+      if (hasHidden || !hint) return;
+      hasHidden = true;
+      hint.classList.add(HIDDEN_CLASS);
+    }
+
+    // Pointer interaction: mouse, pen, touch
+    model.addEventListener('pointerdown', hideHintOnce);
+    model.addEventListener('mousedown', hideHintOnce);
+    model.addEventListener('touchstart', hideHintOnce, { passive: true });
+
+    // NOTE: we intentionally do *not* listen for "camera-change" here,
+    // because model-viewer fires that during initial load, which was
+    // causing the hint to disappear before the user could see it.
+  });
+})();
+

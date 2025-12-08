@@ -11,7 +11,7 @@ baseurl: "/awl-site"                     # Repo name (required for correct link 
 # Global profile data used by home layout + sidebar card
 profile:
   name: "Adam W. Lester"
-  avatar: "/assets/images/awl_headshot.png"
+  avatar: "/assets/images/profile/awl-headshot.png"
   email: "adamwardlester@gmail.com"
   orcid: "https://orcid.org/0000-0002-4598-7908"
 

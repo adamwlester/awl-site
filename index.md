@@ -2,7 +2,7 @@
 layout: home
 title: Home
 description: "Professional site and portfolio for Adam W. Lester."
-banner_image: /assets/images/home-banner.png
+banner_image: /assets/images/banners/home-banner.png
 banner_title: "Neuroscience Research & Instrumentation"
 banner_subtitle: "Systems Neuroscience · Experimental Design · Open Hardware Development"
 published: true

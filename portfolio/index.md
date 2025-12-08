@@ -2,7 +2,7 @@
 layout: portfolio-list-page
 title: Portfolio
 description: "A curated collection of research instrument design projects featuring mechanical, electronic, and behavioral assay systems."
-banner_image: /assets/images/portfolio-list-banner.png
+banner_image: /assets/images/banners/portfolio-list-banner.png
 banner_title: Research Instrumentation Portfolio
 banner_subtitle: Hardware and experimental systems for neuroscience and behavioral research
 page_lead: "A curated collection of open-source instruments and real-world behavioral and electrophysiology systems, spanning end-to-end design from hardware to control software and deployed across active neuroscience research labs."

@@ -69,11 +69,16 @@ index.md                                    # homepage (**site root**) -> minima
 ├── assets/
 │   ├── css/
 │   │   └── custom.css                      # single stylesheet for colors, spacing, typography, global header, banner, layout
-│   ├── js/
-│   │   └── project-detail-page.js          # page-scoped behavior for project detail pages (image viewer + secondary-content routing)
-│   └── images/
-│       ├── home-banner.png                 # used by homepage front matter: banner_image: /assets/images/home-banner.png
-│       └── portfolio-list-banner.png       # used by portfolio/...t matter: banner_image: /assets/images/portfolio-list-banner.png
+│   ├── images/
+│   │   ├── banners/
+│   │   │   ├── home-banner.png             # used by homepage front matter: banner_image: /assets/images/banners/home-banner.png
+│   │   │   └── portfolio-list-banner.png   # used by portfolio/... front matter: banner_image: /assets/images/banners/portfolio-list-banner.png
+│   │   ├── icons/
+│   │   │   └── <icon>.svg                  # reusable SVG UI icons (3D viewer controls, etc.)
+│   │   └── profile/
+│   │       └── awl-headshot.png           # profile headshot used in the sidebar profile card
+│   └── js/
+│       └── project-detail-page.js          # page-scoped behavior for project detail pages (image viewer + secondary-content routing)
 ├── docs/
 │   ├── CV.pdf                              # full academic CV (served directly via GitHub Pages)
 │   └── Resume.pdf                          # short professional resume (also served directly)
@@ -107,7 +112,7 @@ index.md                                    # homepage (**site root**) -> minima
 - All templates **must** use `{{ site.baseurl }}` when building internal links so they resolve correctly on GitHub Pages:
   - Example: `href="{{ site.baseurl }}/portfolio/"`
   - Example: `href="{{ site.baseurl }}/docs/CV.pdf"`
-- Front matter paths for images and models remain repo-relative strings (e.g., `images/render_1.png`, `/assets/images/home-banner.png`).
+- Front matter paths for images and models remain repo-relative strings (e.g., `images/render_1.png`, `/assets/images/banners/home-banner.png`).
   - Layouts prepend `{{ site.baseurl }}` when generating final URLs.
 
 ### Liquid Limitation in GitHub Pages (Jekyll 3)
@@ -301,7 +306,7 @@ A small set of global utility classes exist (`.stack`, `.text-muted`, `.text-sma
 
 **Data source:**  
 - Front matter fields defined in each page’s `index.md`:
-  - `banner_image`: Path to the banner image file, always a root-relative path (e.g., `/assets/images/home-banner.png`).
+  - `banner_image`: Path to the banner image file, always a root-relative path (e.g., `/assets/images/banners/home-banner.png`).
   - `banner_title`: Short title rendered over or adjacent to the banner image.  
   - `banner_subtitle`: One- or two-line subtitle providing additional context.
 
@@ -423,7 +428,7 @@ A small set of global utility classes exist (`.stack`, `.text-muted`, `.text-sma
   ---
   layout: portfolio-list-page
   title: "Portfolio"
-  banner_image: /assets/images/portfolio-list-banner.png
+  banner_image: /assets/images/banners/portfolio-list-banner.png
   banner_title: "Portfolio"
   banner_subtitle: "Open-source research instruments, behavioral platforms, and supporting hardware"
   page_lead: "A collection of open-source research instruments, behavioral platforms, and supporting hardware developed across neuroscience and biomedical engineering projects. Each entry links to a detailed project page with full narrative, images, and a 3D model."

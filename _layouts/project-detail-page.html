@@ -34,14 +34,18 @@ layout: default
                 class="image-viewer-arrow image-viewer-arrow--prev"
                 type="button"
                 aria-label="Previous image">
-                <span class="image-viewer-arrow-icon">&#10094;</span>
+                <span class="image-viewer-arrow-icon" aria-hidden="true">
+                  <span class="image-viewer-icon image-viewer-icon--arrow-back"></span>
+                </span>
               </button>
 
               <button
                 class="image-viewer-arrow image-viewer-arrow--next"
                 type="button"
                 aria-label="Next image">
-                <span class="image-viewer-arrow-icon">&#10095;</span>
+                <span class="image-viewer-arrow-icon" aria-hidden="true">
+                  <span class="image-viewer-icon image-viewer-icon--arrow-forward"></span>
+                </span>
               </button>
             {% endif %}
 
@@ -78,35 +82,8 @@ layout: default
             data-image-viewer-fullscreen
             aria-label="Enter fullscreen">
             <span class="image-viewer-button-icon" aria-hidden="true">
-              <svg
-                class="image-viewer-icon-svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                xmlns="http://www.w3.org/2000/svg">
-
-                <!-- EXPAND (arrows pointing outward) -->
-                <path
-                  class="icon-expand"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9
-                    M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15
-                    M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9
-                    M20.25 20.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-
-                <!-- COLLAPSE (arrows pointing inward) -->
-                <path
-                  class="icon-collapse"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75
-                    M9 15v4.5M9 15H4.5M9 15l-5.25 5.25
-                    M15 9h4.5M15 9V4.5M15 9l5.25-5.25
-                    M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
-
-              </svg>
+              <span class="image-viewer-icon image-viewer-icon--expand"></span>
+              <span class="image-viewer-icon image-viewer-icon--collapse"></span>
             </span>
           </button>
 
@@ -179,10 +156,13 @@ layout: default
             aria-label="{{ page.title | escape }} 3D model"
             autoplay
             camera-controls
-            interaction-prompt="auto"
-            interaction-prompt-threshold="5000"
-            interaction-prompt-style="basic">
+            interaction-prompt="none">
           </model-viewer>
+
+          <!-- Static rotate hint overlay (hidden after first interaction via JS) -->
+          <div class="model-viewer-rotate-hint" aria-hidden="true">
+            <span class="model-viewer-rotate-hint-icon"></span>
+          </div>
 
           <!-- 3D viewer fullscreen button -->
           <button
@@ -191,45 +171,18 @@ layout: default
             data-model-viewer-fullscreen
             aria-label="Enter fullscreen">
             <span class="model-viewer-button-icon" aria-hidden="true">
-              <svg
-                class="model-viewer-icon-svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                xmlns="http://www.w3.org/2000/svg">
-
-                <!-- EXPAND (arrows pointing outward) -->
-                <path
-                  class="icon-expand"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9
-                    M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15
-                    M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9
-                    M20.25 20.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
-
-                <!-- COLLAPSE (arrows pointing inward) -->
-                <path
-                  class="icon-collapse"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75
-                    M9 15v4.5M9 15H4.5M9 15l-5.25 5.25
-                    M15 9h4.5M15 9V4.5M15 9l5.25-5.25
-                    M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
-
-              </svg>
+              <span class="model-viewer-icon model-viewer-icon--expand"></span>
+              <span class="model-viewer-icon model-viewer-icon--collapse"></span>
             </span>
           </button>
-
+          <!-- 3D viewer view reset button -->
           <button
             class="model-viewer-button model-viewer-button--reset"
             type="button"
             data-model-viewer-reset
-            aria-label="Reset 3D view">
-            <span class="model-viewer-button-label">
-              Reset 3D View
+            aria-label="Reset view">
+            <span class="model-viewer-button-icon" aria-hidden="true">
+              <span class="model-viewer-icon model-viewer-icon--reset"></span>
             </span>
           </button>
         </div>

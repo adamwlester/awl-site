@@ -47,7 +47,6 @@
   --space-4: 2rem;    /* 2rem    = 32px ≈ 24pt */
   --space-5: 3rem;    /* 3rem    = 48px ≈ 36pt */
 
-
   /* Layout */
   --max-width-content: 1280px;
   --header-height: 56px;
@@ -1245,13 +1244,71 @@ p + ul {
   padding: 0; /* keep the button square */
 }
 
+/* Icon wrapper for image viewer buttons */
 .image-viewer-button-icon {
   line-height: 0;
 }
 
-.image-viewer-icon-svg {
-  width: 28px;
-  height: 28px;
+/* ==================================================================
+   Shared SVG icon base (image viewer + 3D viewer)
+   - Uses the SVGs as alpha masks.
+   - Apparent “fill” color is controlled via background-color.
+   ================================================================== */
+.image-viewer-icon,
+.model-viewer-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+
+  /* Default icon color – override per button/instance as needed */
+  background-color: #ffffff;
+
+  /* Treat the SVG as an alpha mask */
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* Image viewer arrows */
+.image-viewer-icon--arrow-back {
+  -webkit-mask-image: url("../images/icons/icon-arrow-back.svg");
+  mask-image: url("../images/icons/icon-arrow-back.svg");
+}
+
+.image-viewer-icon--arrow-forward {
+  -webkit-mask-image: url("../images/icons/icon-arrow-forward.svg");
+  mask-image: url("../images/icons/icon-arrow-forward.svg");
+}
+
+/* Fullscreen icons (shared between image + model viewers) */
+.image-viewer-icon--expand,
+.model-viewer-icon--expand {
+  -webkit-mask-image: url("../images/icons/icon-expand.svg");
+  mask-image: url("../images/icons/icon-expand.svg");
+}
+
+.image-viewer-icon--collapse,
+.model-viewer-icon--collapse {
+  -webkit-mask-image: url("../images/icons/icon-shrink.svg");
+  mask-image: url("../images/icons/icon-shrink.svg");
+}
+
+/* 3D viewer reset icon */
+.model-viewer-icon--reset {
+  -webkit-mask-image: url("../images/icons/icon-reset-view.svg");
+  mask-image: url("../images/icons/icon-reset-view.svg");
+}
+
+/* Context-specific color overrides.
+   For now everything is white, but this is where you can diverge:
+   e.g., different colors for arrows vs fullscreen vs reset. */
+.image-viewer-arrow .image-viewer-icon,
+.image-viewer-button--fullscreen .image-viewer-icon,
+.model-viewer-button .model-viewer-icon {
+  background-color: #ffffff;
 }
 
 .image-viewer-button:hover,
@@ -1376,8 +1433,8 @@ p + ul {
   transform: translateY(-50%);
   z-index: 2;
 
-  width: 54px;
-  height: 54px;
+  width: 64px;
+  height: 64px;
   border-radius: var(--radius-sm);
 
   background-color: var(--color-accent-blue-light);
@@ -1410,7 +1467,13 @@ p + ul {
 }
 
 .image-viewer-arrow-icon {
-  font-size: var(--button-large-font-size);
+  line-height: 0;
+}
+
+/* Arrow icons reuse the same base sizing */
+.image-viewer-arrow-icon .image-viewer-icon {
+  width: 24px;
+  height: 24px;
 }
 
 /* Hover state: subtle lift while remaining centered */
@@ -1516,6 +1579,75 @@ model-viewer {
   background: transparent !important;
 }
 
+/* Static rotate hint overlay inside the 3D viewer panel */
+.model-viewer-rotate-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1; /* below the control buttons (z-index: 2), above the model */
+
+  width: 100px;
+  height: 100px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Soft white chip with semi-transparency */
+  background-color: rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.9);
+
+  /* Blur what’s behind the chip where supported (graceful fallback elsewhere) */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  color: var(--color-accent-blue-light);
+
+  /* Let pointer events pass through to <model-viewer> */
+  pointer-events: none;
+
+  opacity: 0.94;
+  transform: translate(-50%, -50%);
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out,
+    visibility 160ms ease-out;
+}
+
+.model-viewer-rotate-hint-icon {
+  width: 64px;
+  height: 64px;
+  display: block;
+
+  /* Use the rotate-hint SVG as an alpha mask */
+  -webkit-mask-image: url("../images/icons/icon-rotate-3d.svg");
+  mask-image: url("../images/icons/icon-rotate-3d.svg");
+
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  -webkit-mask-position: center;
+  mask-position: center;
+
+  -webkit-mask-size: contain;
+  mask-size: contain;
+
+  /* Icon “fill” color */
+  background-color: var(--color-accent-blue-dark);
+}
+/* END REPLACE: rotate hint icon */
+
+
+/* Hidden state after first interaction */
+.model-viewer-rotate-hint--hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+}
+
 /* 3D viewer control buttons (fullscreen + reset) */
 .model-viewer-button {
   position: absolute;
@@ -1524,6 +1656,7 @@ model-viewer {
 
   /* Shared button dimensions/feel */
   height: 32px;
+  width: 32px;
   min-width: 32px;
   display: inline-flex;
   align-items: center;
@@ -1541,56 +1674,48 @@ model-viewer {
     opacity 160ms ease-out,
     transform 160ms ease-out,
     box-shadow 160ms ease-out;
-  padding: 0 0.6rem; /* gives the text button some breathing room */
+  padding: 0; /* icon-only buttons stay square */
 }
 
-/* Top-right: fullscreen – square icon-only, matches original look */
+/* Top-right: fullscreen – square icon-only */
 .model-viewer-button--fullscreen {
   top: var(--space-2);
-  width: 32px;
-  padding: 0; /* override shared padding so it stays 32x32 */
 }
 
-/* Bottom-right: reset – same height, slightly wider for text */
+/* Bottom-right: reset – same square style, lower-right corner */
 .model-viewer-button--reset {
   bottom: var(--space-2);
+  left: var(--space-2);
+  right: auto; /* remove inherited right-side positioning */
 }
 
-/* Icon wrapper for the fullscreen button */
+/* Icon wrapper for model viewer buttons
+   (actual icon base is shared with image viewer in Section 10) */
 .model-viewer-button-icon {
   line-height: 0;
 }
 
-/* Ensure SVG scales crisply inside button */
-.model-viewer-icon-svg {
-  width: 28px;
-  height: 28px;
-}
-
 /* Shared fullscreen icon behavior (model + image viewers):
-   - By default show the expand icon and hide the collapse icon.
-   - When the button is active (panel is fullscreen), swap them. */
-.model-viewer-button-icon .icon-collapse,
-.image-viewer-button-icon .icon-collapse {
+   - Default: show expand icon, hide collapse icon.
+   - When button is active, swap them.
+*/
+.image-viewer-icon--collapse,
+.model-viewer-icon--collapse {
   display: none;
 }
 
-.model-viewer-button--active .icon-expand,
-.image-viewer-button--active .icon-expand {
+.image-viewer-button--active .image-viewer-icon--expand {
   display: none;
 }
-
-.model-viewer-button--active .icon-collapse,
-.image-viewer-button--active .icon-collapse {
-  display: inline;
+.image-viewer-button--active .image-viewer-icon--collapse {
+  display: block;
 }
 
-/* Text label for the reset button */
-.model-viewer-button-label {
-  font-size: var(--button-small-font-size);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+.model-viewer-button--active .model-viewer-icon--expand {
+  display: none;
+}
+.model-viewer-button--active .model-viewer-icon--collapse {
+  display: block;
 }
 
 /* Hover / focus state: brighten and slightly scale up */
