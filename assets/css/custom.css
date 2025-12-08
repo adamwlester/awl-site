@@ -26,13 +26,14 @@
   --color-text-default: #222222;
   --color-text-subtle: #444444;
   --color-text-gray-muted: #666666;
+  --color-text-blue-dark: #234b6c;
+  --color-text-blue-light: #2b5f8a;
   --color-text-blue-muted: #6E8699;
   --color-text-light-soft: #eef3f9;
   --color-text-light: #ffffff;
   --color-text-links: #1d6eb3;
   --color-accent-blue-dark: #234b6c;
   --color-accent-blue-light: #2b5f8a;
-  --color-accent-blue-muted: #6E8699;
   --color-accent-orange-dark: #8f6b24;
 
   /* Shadows */
@@ -56,6 +57,14 @@
   --viewer-slide-width-desktop: 880px; /* fixed slide width on desktop (slightly narrower) */
   --viewer-slide-width-mobile: 88vw;   /* slide width on small screens */
   --viewer-slide-gap: 0.35rem;         /* tighter horizontal gap between slides */
+
+    /* Button control sizing */
+  --control-button-size-sm: 32px; /* icon-only controls (fullscreen, reset) */
+  --control-button-size-md: 40px; /* reserved for future medium controls */
+  --control-button-size-lg: 64px; /* navigation arrows */
+  --control-icon-size-sm: 24px;
+  --control-icon-size-md: 30px;
+  --control-icon-size-lg: 48px;
 
   /* Radii */
   --radius-sm: 4px;
@@ -152,7 +161,7 @@ h1 {
 
 h2 {
   font-size: var(--h2-font-size);
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-blue-dark);
 }
 
 h3 {
@@ -286,7 +295,7 @@ p + ul {
 .site-title {
   font-weight: 600;
   font-size: var(--nav-name-font-size);
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-blue-dark);
 }
 
 /* Right: nav links */
@@ -298,12 +307,12 @@ p + ul {
 
 .site-nav a {
   font-size: var(--nav-links-font-size);
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-blue-dark);
 }
 
 .site-nav a:hover,
 .site-nav a:focus {
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-blue-dark);
   text-decoration: none;
 }
 
@@ -573,7 +582,7 @@ p + ul {
 }
 
 .profile-card-name-link {
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-blue-dark);
   text-decoration: none;
 }
 
@@ -609,7 +618,7 @@ p + ul {
 
 /* NC4 Lab link inside role */
 .profile-card-role-lab-link {
-  color: var(--color-accent-blue-light);
+  color: var(--color-text-blue-light);
   text-decoration: none;
   font-size: var(--profile-card-link-font-size);
   font-weight: 450;  /* match sidebar link weight */
@@ -636,7 +645,7 @@ p + ul {
   gap: 0.55rem;
   padding: 0.26rem 0.2rem;      /* tiny reduction in vertical padding */
   border-radius: var(--radius-sm);
-  color: var(--color-accent-blue-light);
+  color: var(--color-text-blue-light);
   text-decoration: none;
   font-size: var(--profile-card-link-font-size);
   font-weight: 450;             /* slightly heavier, still clean */
@@ -739,7 +748,7 @@ p + ul {
   font-weight: 650;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-blue-dark);
 }
 
 /* Decorative divider under the section title */
@@ -849,7 +858,7 @@ p + ul {
 .project-card-title {
   font-size: var(--project-card-title-font-size);
   font-weight: 600;
-  color: var(--color-accent-blue-light);
+  color: var(--color-text-blue-light);
 
   text-align: center;
   padding-bottom: 0.35rem;
@@ -968,7 +977,7 @@ p + ul {
 */
 .project-title {
   font-size: var(--project-page-title-font-size);
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-blue-dark);
   margin-top: 0;          /* keeps top perfectly aligned */
   margin-bottom: 0.35rem; /* spacing below the title */
   /* no underline, no positioning needed */
@@ -1018,7 +1027,7 @@ p + ul {
 .project-main-column h2,
 .project-aside-column h2 {
   font-size: var(--h2-font-size);
-  color: var(--color-accent-blue-dark);
+  color: var(--color-text-blue-dark);
   position: relative;
   display: flex;
   align-items: center;  /* center vertically: line through mid-height */
@@ -1059,7 +1068,132 @@ p + ul {
 }
 
 /* =========================================================
-   10. Image viewer (banner carousel on project detail)
+   10. Viewer controls (shared icons + buttons)
+   ========================================================= */
+
+/* Shared SVG icon base (image viewer + 3D viewer)
+   - Uses the SVGs as alpha masks.
+   - Apparent “fill” color is controlled via background-color.
+   - Physical sizes are controlled via control-icon-size tokens.
+*/
+.image-viewer-icon,
+.model-viewer-icon {
+  width: var(--control-icon-size-sm);
+  height: var(--control-icon-size-sm);
+  display: block;
+
+  /* Default icon color – override per button/instance as needed */
+  background-color: #ffffff;
+
+  /* Treat the SVG as an alpha mask */
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* Fullscreen icons (shared between image + model viewers) */
+.image-viewer-icon--expand,
+.model-viewer-icon--expand {
+  -webkit-mask-image: url("../images/icons/icon-expand.svg");
+  mask-image: url("../images/icons/icon-expand.svg");
+}
+
+.image-viewer-icon--collapse,
+.model-viewer-icon--collapse {
+  -webkit-mask-image: url("../images/icons/icon-shrink.svg");
+  mask-image: url("../images/icons/icon-shrink.svg");
+}
+
+/* 3D viewer reset icon */
+.model-viewer-icon--reset {
+  -webkit-mask-image: url("../images/icons/icon-reset-view.svg");
+  mask-image: url("../images/icons/icon-reset-view.svg");
+}
+
+/* Context-specific icon color overrides.
+   For now everything is white, but this is where you can diverge:
+   e.g., different colors for arrows vs fullscreen vs reset. */
+.image-viewer-arrow .image-viewer-icon,
+.image-viewer-button--fullscreen .image-viewer-icon,
+.model-viewer-button .model-viewer-icon {
+  background-color: #ffffff;
+}
+
+/* Shared icon toggle behavior for fullscreen buttons:
+   - Default: show expand icon, hide collapse icon.
+   - When button is active, swap them. */
+.image-viewer-icon--collapse,
+.model-viewer-icon--collapse {
+  display: none;
+}
+
+.image-viewer-button--active .image-viewer-icon--expand,
+.model-viewer-button--active .model-viewer-icon--expand {
+  display: none;
+}
+
+.image-viewer-button--active .image-viewer-icon--collapse,
+.model-viewer-button--active .model-viewer-icon--collapse {
+  display: block;
+}
+
+/* Shared viewer control buttons (fullscreen + reset)
+   - Square icon-only buttons; positioning is scoped per viewer. */
+.image-viewer-button,
+.model-viewer-button {
+  /* Base square dimensions from tokens */
+  height: var(--control-button-size-sm);
+  width: var(--control-button-size-sm);
+  min-width: var(--control-button-size-sm);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background-color: var(--color-accent-blue-light);
+
+  color: #ffffff;
+  cursor: pointer;
+
+  opacity: 0.75;
+  padding: 0; /* icon-only buttons stay square */
+
+  transition:
+    opacity 160ms ease-out,
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out;
+}
+
+/* Hover / focus state: brighten and slightly scale up */
+.image-viewer-button:hover,
+.image-viewer-button:focus-visible,
+.model-viewer-button:hover,
+.model-viewer-button:focus-visible {
+  opacity: 1;
+  transform: scale(1.04);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  outline: none;
+}
+
+/* Active state (e.g., when panel is fullscreen) */
+.image-viewer-button--active,
+.model-viewer-button--active {
+  opacity: 1;
+}
+
+/* Icon wrappers for viewer control buttons */
+.image-viewer-button-icon,
+.model-viewer-button-icon {
+  line-height: 0;
+}
+
+/* =========================================================
+   11. Image viewer (banner carousel on project detail)
    ========================================================= */
 
 /* Outer container */
@@ -1212,67 +1346,19 @@ p + ul {
   transform: scale(var(--viewer-active-scale));
   filter: brightness(1);
   box-shadow:
-  0 10px 24px rgba(0,0,0,0.18),
-  0 3px 8px rgba(0,0,0,0.28);
+    0 10px 24px rgba(0,0,0,0.18),
+    0 3px 8px rgba(0,0,0,0.28);
 }
 
-/* Image viewer fullscreen button (matches 3D viewer style) */
+/* Image viewer fullscreen button positioning (uses shared button styles) */
 .image-viewer-button {
   position: absolute;
   top: var(--space-2);
   right: var(--space-2);
   z-index: 3;
-
-  height: 32px;
-  width: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  background-color: var(--color-accent-blue-light);
-
-  color: #ffffff;
-  cursor: pointer;
-
-  opacity: 0.55;
-  transition:
-    opacity 160ms ease-out,
-    transform 160ms ease-out,
-    box-shadow 160ms ease-out;
-  padding: 0; /* keep the button square */
 }
 
-/* Icon wrapper for image viewer buttons */
-.image-viewer-button-icon {
-  line-height: 0;
-}
-
-/* ==================================================================
-   Shared SVG icon base (image viewer + 3D viewer)
-   - Uses the SVGs as alpha masks.
-   - Apparent “fill” color is controlled via background-color.
-   ================================================================== */
-.image-viewer-icon,
-.model-viewer-icon {
-  width: 24px;
-  height: 24px;
-  display: block;
-
-  /* Default icon color – override per button/instance as needed */
-  background-color: #ffffff;
-
-  /* Treat the SVG as an alpha mask */
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-}
-
-/* Image viewer arrows */
+/* Image viewer arrows: icon glyphs */
 .image-viewer-icon--arrow-back {
   -webkit-mask-image: url("../images/icons/icon-arrow-back.svg");
   mask-image: url("../images/icons/icon-arrow-back.svg");
@@ -1281,46 +1367,6 @@ p + ul {
 .image-viewer-icon--arrow-forward {
   -webkit-mask-image: url("../images/icons/icon-arrow-forward.svg");
   mask-image: url("../images/icons/icon-arrow-forward.svg");
-}
-
-/* Fullscreen icons (shared between image + model viewers) */
-.image-viewer-icon--expand,
-.model-viewer-icon--expand {
-  -webkit-mask-image: url("../images/icons/icon-expand.svg");
-  mask-image: url("../images/icons/icon-expand.svg");
-}
-
-.image-viewer-icon--collapse,
-.model-viewer-icon--collapse {
-  -webkit-mask-image: url("../images/icons/icon-shrink.svg");
-  mask-image: url("../images/icons/icon-shrink.svg");
-}
-
-/* 3D viewer reset icon */
-.model-viewer-icon--reset {
-  -webkit-mask-image: url("../images/icons/icon-reset-view.svg");
-  mask-image: url("../images/icons/icon-reset-view.svg");
-}
-
-/* Context-specific color overrides.
-   For now everything is white, but this is where you can diverge:
-   e.g., different colors for arrows vs fullscreen vs reset. */
-.image-viewer-arrow .image-viewer-icon,
-.image-viewer-button--fullscreen .image-viewer-icon,
-.model-viewer-button .model-viewer-icon {
-  background-color: #ffffff;
-}
-
-.image-viewer-button:hover,
-.image-viewer-button:focus-visible {
-  opacity: 1;
-  transform: scale(1.04);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-  outline: none;
-}
-
-.image-viewer-button--active {
-  opacity: 1;
 }
 
 /* Fullscreen mode: show only the active image,
@@ -1362,9 +1408,7 @@ p + ul {
   display: none !important;
 }
 
-/* Keep the fullscreen button as an "exit" control in the top-right.
-   Because the slide background is invisible, this effectively feels
-   like it's sitting on the image corner, not a card boundary. */
+/* Keep the fullscreen button as an "exit" control in the top-right. */
 .image-viewer:fullscreen .image-viewer-button--fullscreen {
   position: absolute;
   top: var(--space-3);
@@ -1380,8 +1424,8 @@ p + ul {
   z-index: 9999;                /* above everything */
 
   /* Square button styling + stronger halo */
-  width: 60px;
-  height: 60px;
+  width: var(--control-button-size-lg);
+  height: var(--control-button-size-lg);
   border-radius: var(--radius-sm);
   background-color: var(--color-accent-blue-light);
   border: 2px solid rgba(255, 255, 255, 0.95);
@@ -1433,8 +1477,8 @@ p + ul {
   transform: translateY(-50%);
   z-index: 2;
 
-  width: 64px;
-  height: 64px;
+  width: var(--control-button-size-md);
+  height: var(--control-button-size-md);
   border-radius: var(--radius-sm);
 
   background-color: var(--color-accent-blue-light);
@@ -1472,8 +1516,8 @@ p + ul {
 
 /* Arrow icons reuse the same base sizing */
 .image-viewer-arrow-icon .image-viewer-icon {
-  width: 24px;
-  height: 24px;
+  width: var(--control-icon-size-md);
+  height: var(--control-icon-size-md);
 }
 
 /* Hover state: subtle lift while remaining centered */
@@ -1530,7 +1574,6 @@ p + ul {
   display: block;
   margin-left: auto;  /* center horizontally inside the frame */
   margin-right: auto;
-  /* no object-fit needed */
 }
 
 /* Active thumbnail state (set via JS) */
@@ -1554,7 +1597,7 @@ p + ul {
 }
 
 /* =========================================================
-   11. 3D viewer panel (<model-viewer>)
+   12. 3D viewer panel (<model-viewer>)
    ========================================================= */
 
 .model-viewer-panel {
@@ -1586,8 +1629,8 @@ model-viewer {
   left: 50%;
   z-index: 1; /* below the control buttons (z-index: 2), above the model */
 
-  width: 100px;
-  height: 100px;
+  width: var(--control-button-size-lg);
+  height: var(--control-button-size-lg);
   border-radius: 999px;
 
   display: inline-flex;
@@ -1609,7 +1652,7 @@ model-viewer {
   /* Let pointer events pass through to <model-viewer> */
   pointer-events: none;
 
-  opacity: 0.94;
+  opacity: 0.54;
   transform: translate(-50%, -50%);
   transition:
     opacity 160ms ease-out,
@@ -1618,8 +1661,8 @@ model-viewer {
 }
 
 .model-viewer-rotate-hint-icon {
-  width: 64px;
-  height: 64px;
+  width: var(--control-icon-size-lg);
+  height: var(--control-icon-size-lg);
   display: block;
 
   /* Use the rotate-hint SVG as an alpha mask */
@@ -1640,7 +1683,6 @@ model-viewer {
 }
 /* END REPLACE: rotate hint icon */
 
-
 /* Hidden state after first interaction */
 .model-viewer-rotate-hint--hidden {
   opacity: 0;
@@ -1648,33 +1690,12 @@ model-viewer {
   transform: translate(-50%, -50%);
 }
 
-/* 3D viewer control buttons (fullscreen + reset) */
+/* 3D viewer control buttons (fullscreen + reset)
+   - Base style comes from shared viewer controls; this is positioning only. */
 .model-viewer-button {
   position: absolute;
   right: var(--space-2);
   z-index: 2;
-
-  /* Shared button dimensions/feel */
-  height: 32px;
-  width: 32px;
-  min-width: 32px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: var(--radius-sm);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  background-color: var(--color-accent-blue-light);
-
-  color: #ffffff;
-  cursor: pointer;
-
-  opacity: 0.55;
-  transition:
-    opacity 160ms ease-out,
-    transform 160ms ease-out,
-    box-shadow 160ms ease-out;
-  padding: 0; /* icon-only buttons stay square */
 }
 
 /* Top-right: fullscreen – square icon-only */
@@ -1682,54 +1703,11 @@ model-viewer {
   top: var(--space-2);
 }
 
-/* Bottom-right: reset – same square style, lower-right corner */
+/* Bottom-left: reset – same square style, lower-left corner */
 .model-viewer-button--reset {
   bottom: var(--space-2);
   left: var(--space-2);
   right: auto; /* remove inherited right-side positioning */
-}
-
-/* Icon wrapper for model viewer buttons
-   (actual icon base is shared with image viewer in Section 10) */
-.model-viewer-button-icon {
-  line-height: 0;
-}
-
-/* Shared fullscreen icon behavior (model + image viewers):
-   - Default: show expand icon, hide collapse icon.
-   - When button is active, swap them.
-*/
-.image-viewer-icon--collapse,
-.model-viewer-icon--collapse {
-  display: none;
-}
-
-.image-viewer-button--active .image-viewer-icon--expand {
-  display: none;
-}
-.image-viewer-button--active .image-viewer-icon--collapse {
-  display: block;
-}
-
-.model-viewer-button--active .model-viewer-icon--expand {
-  display: none;
-}
-.model-viewer-button--active .model-viewer-icon--collapse {
-  display: block;
-}
-
-/* Hover / focus state: brighten and slightly scale up */
-.model-viewer-button:hover,
-.model-viewer-button:focus-visible {
-  opacity: 1;
-  transform: scale(1.04);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-  outline: none;
-}
-
-/* Active state (e.g., when panel is fullscreen) */
-.model-viewer-button--active {
-  opacity: 1;
 }
 
 /* When the model viewer panel itself is fullscreen,
@@ -1778,7 +1756,7 @@ model-viewer {
 }
 
 /* ---------------------------------------------------------
-   12. Project Detail — Table Styles
+   13. Project Detail — Table Styles
    --------------------------------------------------------- */
 
 .project-detail table {
@@ -1807,7 +1785,7 @@ model-viewer {
 }
 
 /* =========================================================
-   13. Utility classes & responsive tweaks
+   14. Utility classes & responsive tweaks
    ========================================================= */
 
 @media (max-width: 480px) {
@@ -1832,7 +1810,7 @@ model-viewer {
 }
 
 /* =========================================================
-   13. Reduced motion preferences
+   15. Reduced motion preferences
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
