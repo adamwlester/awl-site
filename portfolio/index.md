@@ -37,7 +37,7 @@ sections:
 
 - id: support-hardware-and-models
   heading: Support Hardware & Models
-  card_size: large
+  card_size: default
   blurb: "Auxiliary hardware assemblies and models used for system integration and design planning"
   projects:
     - adjustable-projector-mount

@@ -800,11 +800,11 @@ p + ul {
 }
 
 .project-grid--card-size-default {
-  --project-card-width: 330px;
+  --project-card-width: 320px;
 }
 
 .project-grid--card-size-compact {
-  --project-card-width: 265px;
+  --project-card-width: 270px;
 }
 
 /* Individual project card (outer wrapper, currently an <a>) */
