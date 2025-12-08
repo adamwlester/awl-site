@@ -208,7 +208,7 @@ This section defines the implicit global style conventions used across `assets/c
 - Section spacing (`_includes/section.html`) uses this same scale.
 
 **Max content width:**  
-- Primary content areas use a standardized max-width container of **1440px** (`--max-width-content`) for consistent readable line-length.
+- Primary content areas use a standardized max-width container of **1200px** (`--max-width-content`) for consistent readable line-length.
 
 **Border radius:**  
 - A minimal set of radii tokens (`--radius-sm`, `--radius-md`) applied consistently across cards, media containers, and interactive elements.
